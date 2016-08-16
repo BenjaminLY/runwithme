@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-4 col-sm-offset-4">
+    <div class="col-sm-8 col-sm-offset-2">
       <h1><%= @event.name %></h1>
       <ul class="list-unstyled">
         <li>This is a
@@ -9,25 +9,34 @@
             <% else %>
             <%= "private" %>
           <% end  %>
-          event organized by <%= @event.user.name %>
+          event organized by <%= @event.user.email %>
         </li>
-        <li>Date: <%=  %>Time: <%=  %></li>
-        <li class="hidden">
-          Are you up for a <%= @event.type %>
-        </li>
-        <li class="hidden">
-            Here is a little description: <%= @event.description %>
-        </li>
+        <li>Date: <%=@event.datetime.strftime('%e %B %Y') %> Time: <%= @event.datetime.strftime('%H:%M') %></li>
+        <% if @event.kind %>
+          <li>
+            Are you up for a <%= @event.kind %> !
+          </li>
+        <% end %>
+        <% if @event.description %>
+          <li>
+              Here is a little description: <%= @event.description %>
+          </li>
+        <% end %>
         <li>Let s meet here: <%= @event.place_name %></li>
-        <li class="hidden">
-          address: <%= @event.place_name %>
-        </li>
+        <% if @event.address %>
+          <li>
+            address: <%= @event.address %>
+          </li>
+        <% end %>
         <li>Our fun goal:
-          <p class="hidden"><%= @event.time_goal %></p>
-          <p class="hidden"><%= @event.trail_goal %></p>
+          <% if @event.time_goal %>
+            <%= @event.time_goal_to_s %>
+          <% else %>
+            <%= @event.trail_goal %> km
+          <% end %>
         </li>
         <li>
-          Hurry up guys ! Just <%= @event.nb_of_participants  %>left !
+          Hurry up guys ! Just <%= @event.nb_of_participants  %> participants left !
         </li>
       </ul>
     </div>

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event
+  before_action :set_event, only: [:show]
 
   def show
   end
