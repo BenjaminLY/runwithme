@@ -1,12 +1,15 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show]
+  before_action :set_event, only: [ :show ]
+
+  def new
+    @event = Event.new
+  end
 
   def show
   end
 
-
-
   private
+
   def set_event
     @event = Event.find(params[:id])
   end
