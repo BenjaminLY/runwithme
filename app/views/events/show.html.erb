@@ -22,17 +22,18 @@
               Here is a little description: <%= @event.description %>
           </li>
         <% end %>
-        <li>Let s meet here: <%= @event.place_name %></li>
+        <li>Let s meet at <%= @event.place_name %></li>
         <% if @event.address %>
           <li>
             address: <%= @event.address %>
           </li>
         <% end %>
-        <li>Our fun goal:
+        <li>
           <% if @event.time_goal %>
-            <%= @event.time_goal_to_s %>
-          <% else %>
-            <%= @event.trail_goal %> km
+            Let s run for <%= @event.time_goal_to_s %> !
+          <% end %>
+          <% if @event.trail_goal %>
+            Let s run <%= @event.trail_goal %> km !
           <% end %>
         </li>
         <li>
