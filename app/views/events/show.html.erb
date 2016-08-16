@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+      <h1><%= @event.name %></h1>
+      <ul class="list-unstyled">
+        <li>This is a
+          <% if @event.public %>
+            <%= "public" %>
+            <% else %>
+            <%= "private" %>
+          <% end  %>
+          event organized by <%= @event.user.name %>
+        </li>
+        <li>Date: <%=  %>Time: <%=  %></li>
+        <li class="hidden">
+          Are you up for a <%= @event.type %>
+        </li>
+        <li class="hidden">
+            Here is a little description: <%= @event.description %>
+        </li>
+        <li>Let s meet here: <%= @event.place_name %></li>
+        <li class="hidden">
+          address: <%= @event.place_name %>
+        </li>
+        <li>Our fun goal:
+          <p class="hidden"><%= @event.time_goal %></p>
+          <p class="hidden"><%= @event.trail_goal %></p>
+        </li>
+        <li>
+          Hurry up guys ! Just <%= @event.nb_of_participants  %>left !
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
