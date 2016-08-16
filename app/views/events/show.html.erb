@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <h1><%= @event.name %></h1>
+      <ul class="list-unstyled">
+        <li>This is a
+          <% if @event.public %>
+            <%= "public" %>
+            <% else %>
+            <%= "private" %>
+          <% end  %>
+          event organized by <%= @event.user.email %>
+        </li>
+        <li>Date: <%=@event.datetime.strftime('%e %B %Y') %> Time: <%= @event.datetime.strftime('%H:%M') %></li>
+        <% if @event.kind %>
+          <li>
+            Are you up for a <%= @event.kind %> !
+          </li>
+        <% end %>
+        <% if @event.description %>
+          <li>
+              Here is a little description: <%= @event.description %>
+          </li>
+        <% end %>
+        <li>Let s meet at <%= @event.place_name %></li>
+        <% if @event.address %>
+          <li>
+            address: <%= @event.address %>
+          </li>
+        <% end %>
+        <li>
+          <% if @event.time_goal %>
+            Let s run for <%= @event.time_goal_to_s %> !
+          <% end %>
+          <% if @event.trail_goal %>
+            Let s run <%= @event.trail_goal %> km !
+          <% end %>
+        </li>
+        <li>
+          Hurry up guys ! Just <%= @event.nb_of_participants  %> participants left !
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
