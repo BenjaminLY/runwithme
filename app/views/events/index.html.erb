@@ -9,18 +9,35 @@
           <div class="card-category"></div>
           <div class="card-description"></div>
         </div>
-        <h3 class = "space-left"> Running aux buttes chaumont </h3>
+        <h3 class = "space-left">
+          <%= event.name %>
+        </h3>
         <div class="event-description">
         <div class="col-xs-12 col-sm-8 col-sm-offset-3">
-         <p> <%= image_tag "http://placehold.it/70x70", class: "avatar" %>pseudo du créteur de l'event</p>
+         <p> <%= image_tag "http://placehold.it/70x70", class: "avatar" %>
+          Event organized by <%= event.user.email %>
+         </p>
         </div>
           <div class = "row">
             <div class="col-xs-12 col-sm-8 col-sm-offset-3">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <p> Date : <%= event.datetime %></p>
-            </div>
-            <div class="col-xs-12 col-sm-10 col-sm-offset-2">
-               <%= event.description %>
+       <!--        <i class="fa fa-calendar" aria-hidden="true"></i> -->
+              <p>
+                Date: <%= event.datetime.strftime('%e %B %Y') %> Time: <%=  event.datetime.strftime('%H:%M') %>
+              </p>
+               <p>Let s meet at <%= event.place_name %></p>
+               <p>
+                 <% if event.time_goal %>
+                   Let s run for <%= event.time_goal_to_s %> !
+                 <% end %>
+                 <% if event.trail_goal %>
+                   Let s run <%= event.trail_goal %> km !
+                 <% end %>
+               </p>
+                <% if event.kind %>
+                  <p>
+                    Are you up for a <%= event.kind %> !
+                  </p>
+                <% end %>
             </div>
             <div class="col-xs-12 col-sm-5 col-sm-offset-4">
               <%= link_to "Plus d'informations", event_path(event), class: "btn btn-primary"%>
