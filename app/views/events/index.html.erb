@@ -2,50 +2,41 @@
   <div class="text-center padded">
     <h2>Les events</h2>
   </div>
-   <div class="row">
-    <% @events.each do |event| %>
-      <div class="col-xs-12 col-sm-6">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://unsplash.it/400/700/?random');">
-          <div class="card-category"></div>
-          <div class="card-description"></div>
-        </div>
-        <h3 class = "space-left">
-          <%= event.name %>
-        </h3>
-        <div class="event-description">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-3">
-         <p> <%= image_tag "http://placehold.it/70x70", class: "avatar" %>
-          Event organized by <%= event.user.email %>
-         </p>
-        </div>
-          <div class = "row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-3">
-       <!--        <i class="fa fa-calendar" aria-hidden="true"></i> -->
-              <p>
-                Date: <%= event.datetime.strftime('%e %B %Y') %> Time: <%=  event.datetime.strftime('%H:%M') %>
-              </p>
-               <p>Let s meet at <%= event.place_name %></p>
-               <p>
-                 <% if event.time_goal %>
-                   Let s run for <%= event.time_goal_to_s %> !
-                 <% end %>
-                 <% if event.trail_goal %>
-                   Let s run <%= event.trail_goal %> km !
-                 <% end %>
-               </p>
-                <% if event.kind %>
-                  <p>
-                    Are you up for a <%= event.kind %> !
-                  </p>
-                <% end %>
-            </div>
-            <div class="col-xs-12 col-sm-5 col-sm-offset-4">
-              <%= link_to "Plus d'informations", event_path(event), class: "btn btn-primary"%>
-            </div>
-          </div>
-        </div>
+  <% @events.each do |event| %>
+    <div class="product">
+      <div class='product-upvote'>
+        <div class="product-arrow"></div>
+        <div class='product-count'>95</div>
       </div>
-    <% end %>
-  </div>
- </div>
+        <%= image_tag "butteschaumont.jpg", class:"product-image hidden-xs"%>
+        <div class='product-body'>
+          <h3><%= event.name %></h3>
+          <p> Event organized by <%= event.user.email %></p>
+          <p> <i class="fa fa-calendar" aria-hidden="true"></i> Date: <%= event.datetime.strftime('%e %B %Y') %> Time: <%=  event.datetime.strftime('%H:%M') %></p>
+          <p>
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            Let's meet at <%= event.place_name %></p>
+          <p>
+           <% if event.time_goal %>
+             Let s run for <%= event.time_goal_to_s %> !
+           <% end %>
+           <% if event.trail_goal %>
+             Let s run <%= event.trail_goal %> km !
+           <% end %>
+          </p>
+          <% if event.kind %>
+          <p>Are you up for a <%= event.kind %> !</p>
+          <% end %>
+
+        </div>
+      <!-- <ul class="list-inline product-controls product-controls-hidden hidden-sm hidden-xs">
+        <li><a href=""><i class="fa fa-heart"></i></a></li>
+        <li><a href=""><i class="fa fa-share"></i></a></li>
+        <li><a href=""><i class="fa fa-star"></i></a></li>
+      </ul> -->
+      <%= link_to event.name, event_path(event)%>
+    </div>
+  <% end %>
+</div>
+
 

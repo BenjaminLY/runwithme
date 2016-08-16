@@ -37,6 +37,6 @@ attributes = [
 }
 ]
 
-attributes.each do |attribute|
-  Event.create!(attribute)
-end
+# attributes.each do |attribute|
+#   Event.create!(attribute)
+# end
