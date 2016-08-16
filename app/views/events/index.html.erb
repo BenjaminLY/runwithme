@@ -2,5 +2,33 @@
   <div class="text-center padded">
     <h2>Les events</h2>
   </div>
-  <p><% @events %><p>
+   <div class="row">
+    <% @events.each do |event| %>
+      <div class="col-xs-12 col-sm-6">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://unsplash.it/400/700/?random');">
+          <div class="card-category"></div>
+          <div class="card-description"></div>
+        </div>
+        <h3 class = "space-left"> Running aux buttes chaumont </h3>
+        <div class="event-description">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-3">
+         <p> <%= image_tag "http://placehold.it/70x70", class: "avatar" %>pseudo du créteur de l'event</p>
+        </div>
+          <div class = "row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-3">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <p> Date : <%= event.datetime %></p>
+            </div>
+            <div class="col-xs-12 col-sm-10 col-sm-offset-2">
+               <%= event.description %>
+            </div>
+            <div class="col-xs-12 col-sm-5 col-sm-offset-4">
+              <%= link_to "Plus d'informations", event_path(event), class: "btn btn-primary"%>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
  </div>
+
