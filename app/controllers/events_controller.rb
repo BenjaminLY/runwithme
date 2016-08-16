@@ -9,6 +9,16 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
+  def create
+    @event = Event.new(event_params)
+    @event.user = current_user
+    if @event.save
+      redirect_to event_path(@event)
+    else
+      render :new
+    end
+  end
+
   def show
   end
 
@@ -16,5 +26,10 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
+  end
+
+  def event_params
+    params.require(:event).permit(:name, :datetime, :public, :kind, :description,
+      :place_name, :address, :time_goal, :trail_goal, :nb_of_participants)
   end
 end
