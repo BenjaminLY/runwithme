@@ -5,17 +5,24 @@
         <%= f.error_notification %>
 
         <%= f.input :name %>
-        <%= f.input :datetime %>
+        <%= f.input :datetime, as: :string, input_html: { class: "datetimepicker" } %>
         <%= f.input :public %>
         <%= f.input :type %>
         <%= f.input :description %>
         <%= f.input :place_name %>
         <%= f.input :address %>
-        <%= f.input :time_goal %>
-        <%= f.input :trail_goal %>
-        <%= f.input :nb_of_participants %>
-
-        <%= f.button :submit %>
+        <div class="row">
+          <div class="col-xs-12 col-md-6">
+            <%= f.input :time_goal, label: "Time goal (minutes)", input_html: { min: '1' }, placeholder: "20 minutes" %>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <%= f.input :trail_goal, label: "Trail goal (kms)", input_html: { min: '1' }, placeholder: "5 kms" %>
+          </div>
+        </div>
+        <%= f.input :nb_of_participants, collection: 1..10 %>
+        <div class="text-center">
+          <%= f.button :submit, class: "btn btn-primary" %>
+        </div>
       <% end %>
     </div>
   </div>
