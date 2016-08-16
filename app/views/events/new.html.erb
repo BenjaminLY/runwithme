@@ -1,0 +1,23 @@
+<div class="container padded">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <%= simple_form_for(@event) do |f| %>
+        <%= f.error_notification %>
+
+        <%= f.input :name %>
+        <%= f.input :datetime %>
+        <%= f.input :public %>
+        <%= f.input :type %>
+        <%= f.input :description %>
+        <%= f.input :place_name %>
+        <%= f.input :address %>
+        <%= f.input :time_goal %>
+        <%= f.input :trail_goal %>
+        <%= f.input :nb_of_participants %>
+
+        <%= f.button :submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
