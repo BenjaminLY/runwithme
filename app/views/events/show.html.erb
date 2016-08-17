@@ -45,7 +45,16 @@
           Hurry up guys ! Just <%= @event.nb_of_participants  %> participants left !
         </li>
       </ul>
-      <%= link_to "Back to events", events_path, class: "btn btn-primary" %>
+      <div><%= link_to "Back to events", events_path, class: "btn btn-primary" %></div>
+      <div>
+        <% content_for :after_js do %>
+          <script>
+            $(document).ready(function() {
+              alert('<%= j @alert_message %>');
+            });
+          </script>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

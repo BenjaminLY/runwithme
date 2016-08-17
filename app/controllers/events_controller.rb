@@ -5,6 +5,10 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
+  def show
+    @alert_message = "You are viewing #{@event.name}"
+  end
+
   def new
     @event = Event.new
   end
@@ -17,9 +21,6 @@ class EventsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def show
   end
 
   def edit
