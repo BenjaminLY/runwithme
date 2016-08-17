@@ -5,36 +5,38 @@
   <% @events.each do |event| %>
     <div class="product">
       <div class='product-upvote'>
-        <div class="product-arrow"></div>
-        <div class='product-count'>95</div>
+        <!-- <div class="product-arrow"></div> -->
+        <div class='product-count'></div>
       </div>
         <%= image_tag "butteschaumont.jpg", class:"product-image hidden-xs"%>
         <div class='product-body'>
-          <h3><%= event.name %></h3>
-          <p> Event organized by <%= event.user.email %></p>
-          <p> <i class="fa fa-calendar" aria-hidden="true"></i> Date: <%= event.datetime.strftime('%e %B %Y') %> Time: <%=  event.datetime.strftime('%H:%M') %></p>
-          <p>
-            <i class="fa fa-map-marker" aria-hidden="true"></i>
-            Let's meet at <%= event.place_name %></p>
-          <p>
+          <h3>
+           <%= event.name %> -
            <% if event.time_goal %>
-             Let s run for <%= event.time_goal_to_s %> !
+             <%= event.time_goal_to_s %>
            <% end %>
            <% if event.trail_goal %>
-             Let s run <%= event.trail_goal %> km !
+              <%= event.trail_goal %> km
            <% end %>
-          </p>
+          </h3>
+          <p>
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+          <%= event.place_name %></p>
           <% if event.kind %>
           <p>Are you up for a <%= event.kind %> !</p>
           <% end %>
-
+          <p> Organized by <%= event.user.email %></p>
+          <p> <i class="fa fa-calendar" aria-hidden="true"></i> Date: <%= event.datetime.strftime('%e %B %Y') %> Time: <%=  event.datetime.strftime('%H:%M') %></p>
         </div>
       <!-- <ul class="list-inline product-controls product-controls-hidden hidden-sm hidden-xs">
         <li><a href=""><i class="fa fa-heart"></i></a></li>
         <li><a href=""><i class="fa fa-share"></i></a></li>
         <li><a href=""><i class="fa fa-star"></i></a></li>
       </ul> -->
-      <%= link_to event.name, event_path(event)%>
+      <div class="btn-toolbar">
+        <%= link_to 'Join', event_path(event), class: 'btn btn-primary'%>
+        <%= link_to 'Maybe', event_path(event), class: 'btn btn-primary'%>
+      </div>
     </div>
   <% end %>
 </div>
