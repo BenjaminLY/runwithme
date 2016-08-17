@@ -1,60 +1,94 @@
-<div class="container">
+<% if @event.photo? %>
+  <%= cl_image_tag @event.photo.path, width: 1700, height: 450 %>
+<% else %>
+  <%= image_tag "running.jpg", width: 1700, height: 450%>
+<% end %>
+<div class="container padded">
   <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-      <% if @event.photo? %>
-        <%= cl_image_tag @event.photo.path, width: 600, height: 300, crop: :fill %>
-      <% else %>
-        <%= image_tag "running.jpg", width: 600, height: 300, class:"product-image hidden-xs"%>
-      <% end %>
-      <h1><%= @event.name %></h1>
-      <ul class="list-unstyled">
-        <li>This is a
-          <% if @event.public %>
-            <%= "public" %>
-            <% else %>
-            <%= "private" %>
-          <% end  %>
-          event organized by <%= @event.user.email %>
-        </li>
-        <li>Date: <%=@event.datetime.strftime('%e %B %Y') %> Time: <%= @event.datetime.strftime('%H:%M') %></li>
-        <% if @event.kind %>
-          <li>
-            Are you up for a <%= @event.kind %> !
-          </li>
+    <div class="text-center">
+      <h1 class= "text-center-sm">
+        <%= @event.name %> -
+        <% if @event.time_goal %>
+          <%= @event.time_goal_to_s %>
         <% end %>
-        <% if @event.description %>
-          <li>
-              Here is a little description: <%= @event.description %>
-          </li>
+        <% if @event.trail_goal %>
+          <%= @event.trail_goal %> km
         <% end %>
-        <li>Let s meet at <%= @event.place_name %></li>
-        <% if @event.address %>
-          <li>
-            address: <%= @event.address %>
-          </li>
-        <% end %>
-        <li>
-          <% if @event.time_goal %>
-            Let s run for <%= @event.time_goal_to_s %> !
-          <% end %>
-          <% if @event.trail_goal %>
-            Let s run <%= @event.trail_goal %> km !
-          <% end %>
-        </li>
-        <li>
-          Hurry up guys ! Just <%= @event.nb_of_participants  %> participants left !
-        </li>
-      </ul>
-      <div><%= link_to "Back to events", events_path, class: "btn btn-primary" %></div>
-      <div>
-        <% content_for :after_js do %>
-          <script>
-            $(document).ready(function() {
-              alert('<%= j @alert_message %>');
-            });
-          </script>
-        <% end %>
-      </div>
+      </h1>
+      <h3>
+        <%= image_tag "joe_pitch.jpg", class: "avatar-large"%>
+        JoeM
+      </h3>
+      <%# @event.user.email %>
     </div>
   </div>
 </div>
+<div class= "container">
+  <div class="row">
+    <div class="col-sm-4">
+      <p class = "text-center">
+        <strong>
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+          <%= @event.place_name %>
+          <% if @event.address%>
+            <%= @event.address%>
+          <% end %>
+        </strong>
+      </p>
+    </div>
+    <div class="col-sm-4">
+      <p class = "text-center">
+        <strong>
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+          <%=@event.datetime.strftime('%e %B %Y') %>
+        </strong>
+      </p>
+    </div>
+    <div class="col-sm-4">
+      <p class = "text-center">
+        <strong>
+        <i class="fa fa-clock-o" aria-hidden="true"></i>
+          <%= @event.datetime.strftime('%H:%M') %>
+        </strong>
+      </p>
+    </div>
+    <p class = "text-center padded">
+      Evenement public ou privé :
+      <% if @event.public %>
+        <%= "public" %>
+      <% else %>
+        <%= "private" %>
+      <% end  %>
+    <% if @event.kind %>
+      <%= @event.kind %>
+    <% end %>
+    <div class="text-center padded">
+      <% if @event.description %>
+        <%= @event.description %>
+      <% end %>
+    </div>
+    <div class="text-center padded">
+      <p>
+        <strong>
+          Les particpants :
+          <%= @event.nb_of_participants%>
+        </strong>
+      </p>
+    </div>
+    <div class="text-center padded">
+      <%= link_to "Back to events", events_path, class: "btn btn-success" %>
+      <%= link_to "Edit my event", edit_event_path(@event), class: "btn btn-success" %>
+      <%= link_to "Delete this event", event_path, method: :delete, class: "btn btn-success" %>
+    <div>
+      <% content_for :after_js do %>
+        <script>
+          $(document).ready(function() {
+            alert('<%= j @alert_message %>');
+          });
+        </script>
+      <% end %>
+    </div>
+    </div>
+  </div>
+</div>
+
