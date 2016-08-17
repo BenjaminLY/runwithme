@@ -27,7 +27,7 @@
           <i class="fa fa-map-marker" aria-hidden="true"></i>
           <%= event.place_name %></p>
           <% if event.kind %>
-          <p>Are you up for a <%= event.kind %> !</p>
+          <p><%= event.kind %> </p>
           <% end %>
           <p> Organized by <%= event.user.email %></p>
           <p> <i class="fa fa-calendar" aria-hidden="true"></i> Date: <%= event.datetime.strftime('%e %B %Y') %> Time: <%=  event.datetime.strftime('%H:%M') %></p>
