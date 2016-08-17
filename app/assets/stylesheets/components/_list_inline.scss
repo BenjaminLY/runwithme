@@ -2,11 +2,11 @@
   display: flex;
   align-items: center;
   padding: 30px;
-  transition: all 0.15s ease;
-  background-color: #CACACA;
+  // transition: all 0.15s ease;
+  background-color: #E8E8E8;
   border-radius: 5px;
   margin-bottom: 25px;
-
+  border: 5px solid transparent;
 }
 
 /* Body design */
@@ -79,8 +79,10 @@
 
 /* Hover effects */
 .product:hover {
-  background: #f7f7fa;
+  background: #E8E8E8;
   cursor: pointer;
+  border-right: 10px inset #32B796;
+  border-bottom: 10px inset #32B796;
 }
 .product-upvote:hover {
   color: #5898f1;
