@@ -46,6 +46,8 @@
         </li>
       </ul>
       <div><%= link_to "Back to events", events_path, class: "btn btn-primary" %></div>
+      <div id="map" style="width: 100%; height: 600px;"></div>
+
     </div>
   </div>
 </div>
@@ -53,8 +55,17 @@
 <% content_for :after_js do %>
   <script>
     $(document).ready(function() {
-      var coord = <%= raw @event_coordinates %>;
-      alert('Event coordinates are ' + coord.lat + ', ' + coord.lng);
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
     });
   </script>
 <% end %>
