@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :user
+  has_attachment :photo
 
   validates :name, presence: true
   validates :datetime, presence: true

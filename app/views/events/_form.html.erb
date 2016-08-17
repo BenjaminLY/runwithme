@@ -1,0 +1,31 @@
+<div class="container padded">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <%= simple_form_for(@event) do |f| %>
+        <%= f.error_notification %>
+
+        <%= f.input :name %>
+        <%= f.input :datetime, as: :string, input_html: { class: "datetimepicker" } %>
+        <%= f.input :public %>
+        <%= f.input :kind, label: "type of activity" %>
+        <%= f.input :description %>
+        <%= f.input :place_name %>
+        <%= f.input :address %>
+        <%= f.input :photo, as: :attachinary  %>
+        <div class="row">
+          <div class="col-xs-12 col-md-6">
+            <%= f.input :time_goal, label: "Time goal (minutes)", input_html: { min: '1' }, placeholder: "20 minutes" %>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <%= f.input :trail_goal, label: "Trail goal (kms)", input_html: { min: '1' }, placeholder: "5 kms" %>
+          </div>
+        </div>
+        <%= f.input :nb_of_participants, collection: 1..10 %>
+        <div class="text-center">
+          <%= f.button :submit, class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :events
+  mount Attachinary::Engine => "/attachinary"
+
 end
 
 #                   Prefix Verb   URI Pattern                    Controller#Action
