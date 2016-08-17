@@ -1,6 +1,6 @@
 <div class="container">
   <div class="text-center padded">
-    <h2>Les events</h2>
+    <h1>Les Events</h1>
   </div>
   <% @events.each do |event| %>
     <div class="product">
@@ -34,8 +34,8 @@
         <li><a href=""><i class="fa fa-star"></i></a></li>
       </ul> -->
       <div class="btn-toolbar">
-        <%= link_to 'Join', event_path(event), class: 'btn btn-primary'%>
-        <%= link_to 'Maybe', event_path(event), class: 'btn btn-primary'%>
+        <%= link_to 'Join', event_path(event), class: 'btn btn-success'%>
+        <%= link_to 'Maybe', event_path(event), class: 'btn btn-success'%>
       </div>
     </div>
   <% end %>
