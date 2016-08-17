@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @alert_message = "You are viewing #{@event.name}"
+    @event_coordinates = { lat: @event.latitude, lng: @event.longitude }
   end
 
   def new

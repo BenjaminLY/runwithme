@@ -46,15 +46,15 @@
         </li>
       </ul>
       <div><%= link_to "Back to events", events_path, class: "btn btn-primary" %></div>
-      <div>
-        <% content_for :after_js do %>
-          <script>
-            $(document).ready(function() {
-              alert('<%= j @alert_message %>');
-            });
-          </script>
-        <% end %>
-      </div>
     </div>
   </div>
 </div>
+
+<% content_for :after_js do %>
+  <script>
+    $(document).ready(function() {
+      var coord = <%= raw @event_coordinates %>;
+      alert('Event coordinates are ' + coord.lat + ', ' + coord.lng);
+    });
+  </script>
+<% end %>
