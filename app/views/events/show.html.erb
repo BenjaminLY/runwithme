@@ -1,6 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
+      <% if @event.photo? %>
+        <%= cl_image_tag @event.photo.path, width: 600, height: 300, crop: :fill %>
+      <% else %>
+        <%= image_tag "running.jpg", width: 600, height: 300, class:"product-image hidden-xs"%>
+      <% end %>
       <h1><%= @event.name %></h1>
       <ul class="list-unstyled">
         <li>This is a
