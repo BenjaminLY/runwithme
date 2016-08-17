@@ -54,15 +54,15 @@
   padding: 0 20px;
   border-radius: 20em;
   line-height: 40px;
-  background-color: #629AE0;
+  background-color: #32B796;
   color: white;
   font-size: 14px;
-  border: 2px solid #629AE0;
+  border: 2px solid #32B796;
 }
 .navbar-wagon-button:hover {
   color: white;
-  background: #629AE4;
-  border-color: #629AE4;
+  background: #32B785;
+  border-color: #32B785;
 }
 
 /* Navbar search form */
@@ -128,4 +128,8 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+
+#login-btn {
+  margin-right: 20px;
 }
