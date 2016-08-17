@@ -8,7 +8,11 @@
         <div class="product-arrow"></div>
         <div class='product-count'>95</div>
       </div>
-        <%= image_tag "butteschaumont.jpg", class:"product-image hidden-xs"%>
+        <% if event.photo? %>
+          <%= cl_image_tag event.photo.path, width: 200, height: 120, crop: :fill, class:"product-image hidden-xs" %>
+        <% else %>
+          <%= image_tag "running.jpg", width: 200, height: 120, class:"product-image hidden-xs"%>
+        <% end %>
         <div class='product-body'>
           <h3><%= event.name %></h3>
           <p> Event organized by <%= event.user.email %></p>
