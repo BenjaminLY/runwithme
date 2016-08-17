@@ -4,8 +4,8 @@
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   color: #EE5F5B;
-  position: relative;
   border-radius: 5px;
+  position: relative;
 }
 .card-user {
   position: absolute;
@@ -30,15 +30,15 @@
 .card-description p {
   font-size: 13px;
   }
-// .card-link {
-//   position: absolute;
-//   top: 0;
-//   bottom: 0;
-//   width: 150%;
-//   z-index:2;
-//   background: black;
-//   opacity: 0;
-// }
-// .card-link:hover{
-//   opacity: 0.1;
-// }
+.card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index:2;
+  // background: black;
+  opacity: 0;
+}
+.card-link:hover{
+  opacity: 0.1;
+}
