@@ -45,7 +45,11 @@
           </div>
         <% end %>
       </div>
-
+      <div class="text-center padded">
+        <p class= "btn btn-success">
+          <%= link_to "Destroy my account", registration_path(current_user), method: :delete, data: { confirm: "Are you sure?" } %>
+        </p>
+      </div>
     </div>
   </div>
 </div>

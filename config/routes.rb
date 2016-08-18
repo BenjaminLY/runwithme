@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :events
 
   get '/profile' => 'users#profile'
-  resources :users, only: [ :update ]
+  resources :users, only: [ :update, :destroy ]
   mount Attachinary::Engine => "/attachinary"
 
 end

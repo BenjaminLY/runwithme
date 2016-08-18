@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [ :profile, :edit ,:update ]
+  before_action :set_user, only: [ :profile, :edit ,:update, :destroy ]
 
   def profile
   end
@@ -14,7 +14,16 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
 
+  def destroy
+
+    @user.destroy
+    if @user.destroy
+      redirect_to root_url, notice: "User deleted."
+    else
+      render 'profile'
+    end
   end
 
   private
