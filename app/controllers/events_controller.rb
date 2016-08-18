@@ -7,13 +7,10 @@ class EventsController < ApplicationController
 
   def show
     @event_coordinates = { lat: @event.latitude, lng: @event.longitude }
-
-    if @event.latitude &&  @event.longitude
-       @hash = Gmaps4rails.build_markers(@event) do |event, marker|
-         marker.lat event.latitude
-         marker.lng event.longitude
-         # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
-        end
+    @hash = Gmaps4rails.build_markers(@event) do |event, marker|
+     marker.lat event.latitude
+     marker.lng event.longitude
+     # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
     end
   end
 
