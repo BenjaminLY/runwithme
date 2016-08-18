@@ -4,9 +4,10 @@
     <p>Keep working, still running !</p>
     <br>
     <% if user_signed_in? %>
-      <%= link_to 'View events', events_path, class:"btn-treehouse" %>
+      <%= link_to 'View events', events_path, class:"btn-medium", id: "home-page" %>
     <% else %>
-      <%= link_to 'Sign in', new_user_session_path, class:"btn-treehouse btn-lg" %>
+      <%= link_to 'Sign in', new_user_session_path, class:"btn-medium-full" %>
+      <%= link_to 'Learn more', new_user_session_path, class:"btn-medium", id: "home-page" %>
     <% end %>
   </div>
 </div>

@@ -8,6 +8,7 @@
   padding: 0px 30px;
   align-items: center;
   justify-content: space-between;
+  color: #999999
 }
 
 /* Optional class to fix the navbar on top */
@@ -21,7 +22,7 @@
 
 /* Navbar logo */
 .navbar-wagon-brand img {
-  width: 50px;
+  height: 55px;
 }
 
 /* Navbar right section (with form, links, button) */
@@ -133,3 +134,26 @@
 #login-btn {
   margin-right: 20px;
 }
+
+.navbar-run {
+  margin: auto;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media (min-width: 768px){
+    width: 750px;
+  }
+  @media (min-width: 992px){
+    width: 970px;
+  }
+  @media(min-width: 1200px){
+    width: 1170px;
+  }
+}
+
+.navbar-wagon i {
+  font-size: 25px;
+}
+
+
