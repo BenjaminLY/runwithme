@@ -3,7 +3,7 @@
     <h1>Les Events</h1>
   </div>
   <% @events.each do |event| %>
-    <% if event.public %>
+    <% unless event.private %>
       <div class="product">
   <!--       <div class='product-upvote'>
           <div class="product-arrow"></div> 
@@ -16,7 +16,7 @@
           <% end %>
           <div class='product-body'>
             <h3>
-             <%= event.name %> -
+             <%= event.type_of %> -
              <% if event.time_goal %>
                <%= event.time_goal_to_s %>
              <% end %>
@@ -26,10 +26,7 @@
             </h3>
             <p>
             <i class="fa fa-map-marker" aria-hidden="true"></i>
-            <%= event.place_name %></p>
-            <% if event.kind %>
-            <p><%= event.kind %> </p>
-            <% end %>
+            <%= event.meeting_point %></p>
             <p> Organized by <%= event.user.email %></p>
             <p> <i class="fa fa-calendar" aria-hidden="true"></i> Date: <%= event.datetime.strftime('%e %B %Y') %> Time: <%=  event.datetime.strftime('%H:%M') %></p>
           </div>
