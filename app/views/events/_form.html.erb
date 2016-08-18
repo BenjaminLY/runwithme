@@ -4,7 +4,7 @@
       <%= simple_form_for(@event) do |f| %>
         <%= f.error_notification %>
 
-        <%= f.input :type_of, label: "Type of event", collection: Event::MEETING, prompt: "Select an event" %>
+        <%= f.input :type_of, autofocus: true, label: "Type of event", collection: Event::MEETING, prompt: "Select an event" %>
         <%= f.input :datetime, as: :string, input_html: { class: "datetimepicker" } %>
         <%= f.input :private %>
         <%= f.input :description %>

@@ -10,6 +10,8 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
+      <%= link_to t(".top_call_to_action", default: "Create an event"), new_event_path, class: "btn-medium", id: "login-btn" %>
+
       <!-- Notification -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
@@ -46,11 +48,9 @@
 
       <!-- Login text link -->
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn-medium", id: "login-btn" %>
-
+      <i class="fa fa-search"></i>
     <% end %>
 
-    <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Create an event"), new_event_path, class: "btn-treehouse" %>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
