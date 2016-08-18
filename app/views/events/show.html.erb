@@ -66,7 +66,16 @@
       <% end %>
     </div>
     <div class="text-center padded">
-
+      <p>Participations :</p>
+      <ul> 
+          <% @event.participations.each do |participation| %>
+        <li>
+          <%= participation.status %>
+          <%= participation.user.first_name %>
+          <%= participation.user.last_name %> 
+        </li>
+          <% end %>
+      </ul>
     </div>
     <div class="text-center padded">
       <%= link_to "Back to events", events_path, class: "btn btn-success" %>

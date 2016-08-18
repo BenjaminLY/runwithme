@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :user
+  has_many :participations, dependent: :destroy
   has_attachment :photo
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
@@ -25,6 +26,10 @@ class Event < ApplicationRecord
     min = time_goal % 60
     min = "0#{min}" if min < 10
     hours == 0 ? "#{min}min" : "#{hours}h#{min}min"
+  end
+
+  def joined?(user)
+    self.participations.map(&:user).include?(user)
   end
 end
 
