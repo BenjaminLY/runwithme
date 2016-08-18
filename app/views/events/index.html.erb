@@ -36,8 +36,8 @@
           <li><a href=""><i class="fa fa-star"></i></a></li>
         </ul> -->
         <div class="btn-toolbar">
-          <%= link_to 'Join', event_path(event), class: 'btn btn-success'%>
-          <%= link_to 'Maybe', event_path(event), class: 'btn btn-success'%>
+          <%= link_to 'Join', event_participations_path(event, status: "going"), class: 'btn btn-success'%>
+          <%= link_to 'Maybe', event_participations_path(event, status: "maybe"), class: 'btn btn-success'%>
         </div>
         <%= link_to '', event_path(event), class: 'card-link'%>
       </div>
