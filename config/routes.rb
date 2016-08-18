@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :events
+
+  get '/profile' => 'users#profile'
+  resources :users, only: [ :update ]
   mount Attachinary::Engine => "/attachinary"
 
 end
