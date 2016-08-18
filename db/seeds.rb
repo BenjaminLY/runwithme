@@ -31,7 +31,7 @@ attributes = [
     datetime: DateTime.new(2016, 9, 10),
     private: true,
     description: "Une belle marche dans le quartier populaire d'Oberkampf",
-    meeting_point: "metro Oberkampf"
+    meeting_point: "metro Oberkampf",
     address: "16 villa gaudelet, Paris",
     trail_goal: 5,
   },
@@ -49,7 +49,7 @@ attributes = [
     datetime: DateTime.new(2016, 9, 30),
     private: false,
     description: "Let's run run run",
-    address: "Place de la Bastille"
+    address: "Place de la Bastille",
     meeting_point: "Place de la Bastille",
     trail_goal: 21,
   }

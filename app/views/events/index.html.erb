@@ -3,7 +3,7 @@
     <h1>Les Events</h1>
   </div>
   <% @events.each do |event| %>
-    <% if event.public %>
+    <% unless event.private %>
       <div class="product">
   <!--       <div class='product-upvote'>
           <div class="product-arrow"></div> 
