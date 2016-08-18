@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :events
   mount Attachinary::Engine => "/attachinary"
-
+  get '/profile' => "users#profile"
 end
 
 #                   Prefix Verb   URI Pattern                    Controller#Action
