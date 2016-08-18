@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20160818154902) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,18 +33,16 @@ ActiveRecord::Schema.define(version: 20160818154902) do
 
   create_table "events", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "name"
     t.datetime "datetime"
-    t.boolean  "public"
-    t.string   "kind"
+    t.boolean  "private"
+    t.string   "type_of"
     t.text     "description"
-    t.string   "place_name"
+    t.string   "meeting_point"
     t.string   "address"
     t.integer  "time_goal"
     t.integer  "trail_goal"
-    t.integer  "nb_of_participants"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.float    "latitude"
     t.float    "longitude"
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree

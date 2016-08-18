@@ -14,50 +14,44 @@ user_2 = User.create!(email: "benjamin@gmail.com", password: "testtest")
 user_3 = User.create!(email: "abel@gmail.com", password: "testtest")
 user_4 = User.create!(email: "joe@gmail.com", password: "testtest")
 
+
 attributes = [
   {
     user_id: user_1.id,
-    name: "Course au bord du canal Saint Martin",
+    type_of: "Endurance run",
     datetime: DateTime.new(2016, 8, 20),
-    public: false,
-    kind: "Perf run",
+    private: true,
     description: "Course intensive avec un objectif temps déterminé",
-    place_name: "Canal Saint Martin, Paris",
+    meeting_point: "Canal Saint Martin",
     time_goal: 55,
-    nb_of_participants: 5
   },
   {
     user_id: user_2.id,
-    name: "Marche rapide",
+    type_of: "Speed walk",
     datetime: DateTime.new(2016, 9, 10),
-    public: true,
-    kind: "Chatting run",
+    private: true,
     description: "Une belle marche dans le quartier populaire d'Oberkampf",
-    place_name: "Oberkampf",
+    meeting_point: "metro Oberkampf",
     address: "16 villa gaudelet, Paris",
     trail_goal: 5,
-    nb_of_participants: 3
   },
   {
     user_id: user_1.id,
-    name: "Une course semi intensive ",
+    type_of: "Cool run",
     datetime: DateTime.new(2016, 12, 12),
-    public: true,
-    kind: "Chatting run",
-    place_name: "Buttes Chaumont",
+    private: false,
+    meeting_point: "Buttes Chaumont",
     time_goal: 45,
-    nb_of_participants: 5
   },
   {
     user_id: user_2.id,
-    name: "Semi marathon ",
+    type_of: "Endurance run",
     datetime: DateTime.new(2016, 9, 30),
-    public: true,
-    kind: "Perf run",
+    private: false,
     description: "Let's run run run",
-    place_name: "Place de la Bastille",
+    address: "Place de la Bastille",
+    meeting_point: "Place de la Bastille",
     trail_goal: 21,
-    nb_of_participants: 4
   }
 ]
 

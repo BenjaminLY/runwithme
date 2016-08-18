@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get '/profile' => 'users#profile'
   resources :users, only: [ :update, :destroy ]
   mount Attachinary::Engine => "/attachinary"
-
 end
 
 #                   Prefix Verb   URI Pattern                    Controller#Action

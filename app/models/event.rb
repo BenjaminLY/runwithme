@@ -4,12 +4,13 @@ class Event < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
-  validates :name, presence: true
+  MEETING = ["Intarvall run", "Endurance run", "Cool run", "Chatting run", "Speed walk", "Pleasant walk"]
+
+  validates :type_of, inclusion: { in: MEETING }
   validates :datetime, presence: true
-  validates :public, :inclusion => { :in => [true, false] }
-  validates :place_name, presence: true
+  validates :private, :inclusion => { :in => [true, false] }
+  validates :meeting_point, presence: true
   validate :goal
-  validates :nb_of_participants, presence: true
 
   def goal
     if time_goal.nil? && trail_goal.nil?
@@ -26,3 +27,4 @@ class Event < ApplicationRecord
     hours == 0 ? "#{min}min" : "#{hours}h#{min}min"
   end
 end
+
