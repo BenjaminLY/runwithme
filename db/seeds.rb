@@ -9,10 +9,10 @@
 Event.destroy_all
 User.destroy_all
 
-user_1 = User.create!(email: "coline@gmail.com", password: "testtest")
-user_2 = User.create!(email: "benjamin@gmail.com", password: "testtest")
-user_3 = User.create!(email: "abel@gmail.com", password: "testtest")
-user_4 = User.create!(email: "joe@gmail.com", password: "testtest")
+user_1 = User.create!(email: "coline@gmail.com", password: "testtest", first_name: "coline", last_name: "colnat", job_title: "web dev" )
+user_2 = User.create!(email: "benjamin@gmail.com", password: "testtest", first_name: "benjamin" , last_name: "lyphoudt", job_title: "webmaster" )
+user_3 = User.create!(email: "abdel@gmail.com", password: "testtest", first_name: "abdel", last_name: "malik" , job_title: "lawyer" )
+user_4 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joe", last_name: "star" , job_title: "business man")
 
 
 attributes = [
@@ -29,7 +29,7 @@ attributes = [
     user_id: user_2.id,
     type_of: "Speed walk",
     datetime: DateTime.new(2016, 9, 10),
-    private: true,
+    private: false,
     description: "Une belle marche dans le quartier populaire d'Oberkampf",
     meeting_point: "metro Oberkampf",
     address: "16 villa gaudelet, Paris",
