@@ -3,7 +3,6 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.where(private: false)
-    @participations = Participation.where(event.private == true)
   end
 
   def show
@@ -55,6 +54,7 @@ class EventsController < ApplicationController
     params.require(:event).permit(:datetime, :private, :type_of, :description,
       :meeting_point, :address, :time_goal, :trail_goal, :photo)
   end
+
 end
 
 

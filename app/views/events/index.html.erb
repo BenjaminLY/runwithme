@@ -45,16 +45,14 @@
             <li><a href=""><i class="fa fa-share"></i></a></li>
             <li><a href=""><i class="fa fa-star"></i></a></li>
           </ul> -->
-          <div class="btn-toolbar">
-            <% @events.participations.each do |participation| %>
-              <% if participation.user == current_user %>
-                <p>Already joined</p>
-                <%= link_to 'Update your participation', event_participations_path(event, status: "maybe"), method: :post, class: 'btn btn-success'%>
-              <% else %>
+          <div class="btn-toolbar"> 
+            <% if event.joined?(current_user) %>
+              <p>Already joined</p>
+              <%= link_to 'Update your participation', '#', class: 'btn btn-success'%>
+            <% else %>
               <%= link_to 'Join', event_participations_path(event, status: "going"), method: :post, class: 'btn btn-success'%>
-              <%= link_to 'Maybe', event_participations_path(event, status: "maybe"), method: :post, class: 'btn btn-success'%>      
-              <% end %>
-            <% end %>
+              <%= link_to 'Maybe', event_participations_path(event, status: "maybe"), method: :post, class: 'btn btn-success'%> 
+            <% end %>     
           </div>
           <%= link_to '', event_path(event), class: 'card-link'%>
         </div>

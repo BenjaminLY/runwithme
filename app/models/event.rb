@@ -27,5 +27,9 @@ class Event < ApplicationRecord
     min = "0#{min}" if min < 10
     hours == 0 ? "#{min}min" : "#{hours}h#{min}min"
   end
+
+  def joined?(user)
+    self.participations.map(&:user).include?(user)
+  end
 end
 
