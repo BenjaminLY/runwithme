@@ -1,0 +1,59 @@
+<div class="container padded">
+  <div class="row">
+    <h1 class="text-center">Mon Profil</h1>
+    <div class="col-xs-12 col-sm-4 col-sm-offset-2 padded">
+      <p class = "btn btn-success">
+        <i class="fa fa-calendar" aria-hidden="true"></i>
+        Les events auxquels j'ai participé
+      </p>
+    </div>
+     <div class="col-xs-12 col-sm-4 col-sm-offset-2 padded">
+      <p class = "btn btn-success">
+        <i class="fa fa-clock-o" aria-hidden="true"></i>
+         Mes events
+      </p>
+    </div>
+    <h1 class="text-center padded">Edition du profil</h1>
+    <div class="col-xs-12 col-sm-5 col-sm-offset-4">
+      <%= simple_form_for(@user) do |f| %>
+        <%= f.input :first_name, label: "Prénom" %>
+        <%= f.input :last_name, label: "Nom" %>
+        <%= f.input :email, :readonly => true %>
+        <%= f.input :job_title, label: "Poste" %>
+        <%= f.input :run_level, label: "Niveau de running" %>
+        <%= f.input :expectation, label: "Type de running : " %>
+        <%= f.input :description, label: "Parlez de vous :" %>
+        <div class="actions text-center">
+          <%= f.button :submit, class: 'btn btn-success'%>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-5 col-sm-offset-4">
+      <h1 class="text-center">Avatar</h1>
+      <p class = "text-center">
+      <% if @user.photo? %>
+        <%= cl_image_tag @user.photo.path, class: "avatar-large"%>
+      <% else %>
+        <%= image_tag "http://placehold.it/30x30", class: "avatar-large"%>
+      <% end %>
+      </p>
+      <div class = "text-center">
+        <%= simple_form_for(@user) do |f| %>
+          <%= f.input :photo, as: :attachinary %>
+          <div class="actions text-center">
+            <%= f.button :submit, class: 'btn btn-success'%>
+          </div>
+        <% end %>
+      </div>
+      <div class="text-center padded">
+        <p class= "btn btn-success">
+          <%= link_to "Destroy my account", registration_path(current_user), method: :delete, data: { confirm: "Are you sure?" } %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

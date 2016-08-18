@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :events do 
   	resources :participations, only: [:create, :edit, :update]
   end
+  get '/profile' => 'users#profile'
+  resources :users, only: [ :update, :destroy ]
   mount Attachinary::Engine => "/attachinary"
 end
 
