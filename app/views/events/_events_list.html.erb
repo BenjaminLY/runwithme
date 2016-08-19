@@ -21,19 +21,19 @@
       <% if event.joined?(current_user) %>
         <% case event.participations.find_by(user: current_user).status %>
           <% when "going" %>
-            <%= link_to 'Going', participation_path(event.participations.find_by(user: current_user), status: "going"), method: :patch, class: 'btn-medium'%>
-            <%= link_to 'Maybe', participation_path(event.participations.find_by(user: current_user), status: "maybe"), method: :patch, class: 'btn-medium-full'%>
-            <%= link_to 'Can t go', participation_path(event.participations.find_by(user: current_user), status: "can t go"), method: :patch, class: 'btn-medium-full'%>
+            <%= link_to 'Going', participation_path(event.participations.find_by(user: current_user), status: "going"), method: :patch, class: 'btn-medium', id: 'select' %>
+            <%= link_to 'Maybe', participation_path(event.participations.find_by(user: current_user), status: "maybe"), method: :patch, class: 'btn-medium-full', id: 'update' %>
+            <%= link_to 'Can t go', participation_path(event.participations.find_by(user: current_user), status: "can t go"), method: :patch, class: 'btn-medium-full', id: 'update' %>
 
           <% when "maybe" %>
-            <%= link_to 'Going', participation_path(event.participations.find_by(user: current_user), status: "going"), method: :patch, class: 'btn-medium-full'%>
-            <%= link_to 'Maybe', participation_path(event.participations.find_by(user: current_user), status: "maybe"), method: :patch, class: 'btn-medium'%>
-            <%= link_to 'Can t go', participation_path(event.participations.find_by(user: current_user), status: "can t go"), method: :patch, class: 'btn-medium-full'%>
+            <%= link_to 'Going', participation_path(event.participations.find_by(user: current_user), status: "going"), method: :patch, class: 'btn-medium-full', id: 'update' %>
+            <%= link_to 'Maybe', participation_path(event.participations.find_by(user: current_user), status: "maybe"), method: :patch, class: 'btn-medium', id: 'select' %>
+            <%= link_to 'Can t go', participation_path(event.participations.find_by(user: current_user), status: "can t go"), method: :patch, class: 'btn-medium-full', id: 'update' %>
 
           <% when "can t go" %>
-            <%= link_to 'Going', participation_path(event.participations.find_by(user: current_user), status: "going"), method: :patch, class: 'btn-medium-full'%>
-            <%= link_to 'Maybe', participation_path(event.participations.find_by(user: current_user), status: "maybe"), method: :patch, class: 'btn-medium-full'%>
-            <%= link_to 'Can t go', participation_path(event.participations.find_by(user: current_user), status: "can t go"), method: :patch, class: 'btn-medium'%>
+            <%= link_to 'Going', participation_path(event.participations.find_by(user: current_user), status: "going"), method: :patch, class: 'btn-medium-full', id: 'update' %>
+            <%= link_to 'Maybe', participation_path(event.participations.find_by(user: current_user), status: "maybe"), method: :patch, class: 'btn-medium-full', id: 'update' %>
+            <%= link_to 'Can t go', participation_path(event.participations.find_by(user: current_user), status: "can t go"), method: :patch, class: 'btn-medium', id: 'select' %>
         <% end %>
       <% else %>
         <%= link_to 'Going', event_participations_path(event, status: "going"), method: :post, class: 'btn-medium-full'%>
