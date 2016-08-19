@@ -6,30 +6,14 @@
     <div class="text-center">
       <%= link_to "Update Info", edit_user_path(@user), class: 'btn btn-success' %>
     </div>
-    <div class="col-xs-12 col-sm-4 col-sm-offset-2 padded">
+    <div class="col-xs-12 padded">
       <p>
         <i class="fa fa-calendar" aria-hidden="true"></i>
         Events I participate
+        
       </p>
-      <ul class="list-unstyled">
-        <% @user.participations.each do |participation| %>
-          <li> 
-            <%= participation.event.type_of %>
-            <%= render 'events/goal', event: participation.event %>
-            <p class="btn btn-success">
-              <%= participation.status %>
-            </p>  
-          </li>
-        <% end %>
-      </ul>
+          <%= render 'events/events_list', events: @user.events_as_participant %>
     </div>
-     <div class="col-xs-12 col-sm-4 col-sm-offset-2 padded">
-      <p class = "btn btn-success">
-        <i class="fa fa-clock-o" aria-hidden="true"></i>
-         Events I ve created
-      </p>
-    </div>
-
   </div>
 </div>
 
