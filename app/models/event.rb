@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
-  MEETING = ["Intarvall run", "Endurance run", "Cool run", "Chatting run", "Speed walk", "Pleasant walk"]
+  MEETING = ["Interval run", "Endurance run", "Cool run", "Chatting run", "Speed walk", "Pleasant walk"]
 
   validates :type_of, inclusion: { in: MEETING }
   validates :datetime, presence: true
