@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @events = Event.all
+    @events = Event.where(private: false)
   end
 
   def show
@@ -54,6 +54,7 @@ class EventsController < ApplicationController
     params.require(:event).permit(:datetime, :private, :type_of, :description,
       :meeting_point, :address, :time_goal, :trail_goal, :photo)
   end
+
 end
 
 
