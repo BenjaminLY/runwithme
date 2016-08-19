@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :user
-  has_many :participations, dependent: :destroy
+  has_many :participations, dependent: :nullify
   has_attachment :photo
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
