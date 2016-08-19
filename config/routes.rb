@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   	resources :participations, only: [:create, :edit, :update]
   end
   get '/profile' => 'users#profile'
-  resources :users, only: [ :update, :destroy ]
+  resources :users, only: [ :edit, :update, :destroy ]
   mount Attachinary::Engine => "/attachinary"
 end
 
@@ -39,5 +39,9 @@ end
 #                          PATCH  /events/:id(.:format)                               events#update
 #                          PUT    /events/:id(.:format)                               events#update
 #                          DELETE /events/:id(.:format)                               events#destroy
+#                  profile GET    /profile(.:format)                                  users#profile
+#                     user PATCH  /users/:id(.:format)                                users#update
+#                          PUT    /users/:id(.:format)                                users#update
+#                          DELETE /users/:id(.:format)                                users#destroy
 #              attachinary        /attachinary                                        Attachinary::Engine
 
