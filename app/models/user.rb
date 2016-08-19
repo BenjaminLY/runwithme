@@ -6,6 +6,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_attachment :photo
+  validates :job_title, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
   def events_as_participant
   	self.participations.map do |participation|
