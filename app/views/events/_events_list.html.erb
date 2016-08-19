@@ -1,10 +1,6 @@
 <% events.each do |event| %>
   <div class="product">
-      <% if event.photo? %>
-        <%= cl_image_tag event.photo.path, width: 200, height: 120, crop: :fill, class:"product-image hidden-xs" %>
-      <% else %>
-        <%= image_tag "running.jpg", width: 200, height: 120, class:"product-image hidden-xs"%>
-      <% end %>
+    <%= render "users/avatar", user: event.user %>
       <div class='product-body'>
         <h3>
          <%= event.type_of %> -
@@ -21,13 +17,13 @@
         <p> Organized by <%= event.user.email %></p>
         <p> <i class="fa fa-calendar" aria-hidden="true"></i> Date: <%= event.datetime.strftime('%e %B %Y') %> Time: <%=  event.datetime.strftime('%H:%M') %></p>
       </div>
-    <div class="btn-toolbar"> 
+    <div class="btn-toolbar">
       <% if event.joined?(current_user) %>
         <%= link_to 'Already joined ! Update your participation ?', '#', class: 'btn btn-success'%>
       <% else %>
         <%= link_to 'Join', event_participations_path(event, status: "going"), method: :post, class: 'btn btn-success'%>
-        <%= link_to 'Maybe', event_participations_path(event, status: "maybe"), method: :post, class: 'btn btn-success'%> 
-      <% end %>     
+        <%= link_to 'Maybe', event_participations_path(event, status: "maybe"), method: :post, class: 'btn btn-success'%>
+      <% end %>
     </div>
     <%= link_to '', event_path(event), class: 'card-link'%>
   </div>
