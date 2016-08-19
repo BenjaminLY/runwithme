@@ -6,7 +6,7 @@
   background-color: #E8E8E8;
   border-radius: 5px;
   margin-bottom: 25px;
-  border: 5px solid transparent;
+  border: 5px solid #E8E8E8;
   position: relative;
 }
 
@@ -80,10 +80,8 @@
 
 /* Hover effects */
 .product:hover {
-  background: #E8E8E8;
+  background: none;
   cursor: pointer;
-  border-right: 10px inset #32B796;
-  border-bottom: 10px inset #32B796;
 }
 .product-upvote:hover {
   color: #5898f1;

@@ -21,7 +21,10 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user = current_user
-    if @event.save
+    @participation = Participation.new(status: "going")
+    @participation.user = current_user
+    @participation.event = @event
+    if @event.save && @participation.save
       redirect_to event_path(@event)
     else
       render :new
