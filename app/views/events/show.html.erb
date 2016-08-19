@@ -1,108 +1,112 @@
-<% if @event.photo? %>
-  <%= cl_image_tag @event.photo.path, width: 1700, height: 450 %>
-<% else %>
-  <%= image_tag "running.jpg", width: 1700, height: 450%>
+<% if @event.photo%>
+  <div class= "banner-event" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path @event.photo.path%>);">
+  <div class= "banner-event" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("running.jpg");"></div>
 <% end %>
-<div class="container padded">
-  <div class="row">
-    <div class="text-center">
-      <h1 class= "text-center-sm">
-        <%= @event.type_of %> -
-        <% if @event.time_goal %>
-          <%= @event.time_goal_to_s %>
+
+  <div class="container padded pad">
+    <div class="row">
+      <div class="text-center">
+        <h1 class= "text-center">
+          <%= @event.type_of %> -
+          <% if @event.time_goal %>
+            <%= @event.time_goal_to_s %>
+          <% end %>
+          <% if @event.trail_goal %>
+            <%= @event.trail_goal %> km
+          <% end %>
+        </h1>
+        <div>
+          <%= image_tag "joe_pitch.jpg", class: "avatar-xlarge"%>
+          <p>JoeM</p>
+        </div>
+        <!-- <%# @event.user.email %> -->
+      </div>
+      <div class="col-sm-4">
+        <p class = "text-center">
+          <strong>
+            <i class="fa fa-map-marker color" aria-hidden="true"></i>
+            <%= @event.meeting_point %>
+            <% if @event.address%>
+              <%= @event.address%>
+            <% end %>
+          </strong>
+        </p>
+      </div>
+      <div class="col-sm-4">
+        <p class = "text-center">
+          <strong>
+            <i class="fa fa-calendar color" aria-hidden="true"></i>
+            <%=@event.datetime.strftime('%e %B %Y') %>
+          </strong>
+        </p>
+      </div>
+      <div class="col-sm-4">
+        <p class = "text-center">
+          <strong>
+          <i class="fa fa-clock-o color" aria-hidden="true"></i>
+            <%= @event.datetime.strftime('%H:%M') %>
+          </strong>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <h3 class = "text-center">
+          Event :
+          <% if @event.private %>
+            <%= "private" %>
+          <% else %>
+            <%= "public" %>
+          <% end  %>
+        </h3>
+        <div class="text-center padded">
+          <h3>Description :</h3>
+          <p>
+            <% if @event.description %>
+              <%= @event.description %>
+            <% end %>
+          </p>
+        </div>
+        <div class="text-center padded">
+          <h3>Participations :</h3>
+          <ul>
+              <% @event.participations.each do |participation| %>
+            <li>
+              <%= participation.status %> -
+              <%= participation.user.first_name %>
+              <%= participation.user.last_name %>
+            </li>
+              <% end %>
+          </ul>
+        </div>
+        <div class="text-center padded">
+          <%= link_to "Back to events", events_path, class: "btn btn-success" %>
+          <%= link_to "Edit my event", edit_event_path(@event), class: "btn btn-success" %>
+          <%= link_to "Delete this event", event_path, method: :delete, class: "btn btn-success" %>
+        </div>
+        <% if @event.latitude &&  @event.longitude %>
+          <div id="map" style="width: 100%; height: 600px;"></div>
         <% end %>
-        <% if @event.trail_goal %>
-          <%= @event.trail_goal %> km
-        <% end %>
-      </h1>
-      <h3>
-        <%= image_tag "joe_pitch.jpg", class: "avatar-large"%>
-        JoeM
-      </h3>
-      <%# @event.user.email %>
+      </div>
     </div>
   </div>
-</div>
-<div class= "container">
-  <div class="row">
-    <div class="col-sm-4">
-      <p class = "text-center">
-        <strong>
-          <i class="fa fa-map-marker" aria-hidden="true"></i>
-          <%= @event.meeting_point %>
-          <% if @event.address%>
-            <%= @event.address%>
-          <% end %>
 
-        </strong>
-      </p>
-    </div>
-    <div class="col-sm-4">
-      <p class = "text-center">
-        <strong>
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-          <%=@event.datetime.strftime('%e %B %Y') %>
-        </strong>
-      </p>
-    </div>
-    <div class="col-sm-4">
-      <p class = "text-center">
-        <strong>
-        <i class="fa fa-clock-o" aria-hidden="true"></i>
-          <%= @event.datetime.strftime('%H:%M') %>
-        </strong>
-      </p>
-    </div>
-    <p class = "text-center padded">
-      Event :
-      <% if @event.private %>
-        <%= "private" %>
-      <% else %>
-        <%= "public" %>
-      <% end  %>
-    <div class="text-center padded">
-      <% if @event.description %>
-        <%= @event.description %>
-      <% end %>
-    </div>
-    <div class="text-center padded">
-      <p>Participations :</p>
-      <ul> 
-          <% @event.participations.each do |participation| %>
-        <li>
-          <%= participation.status %>
-          <%= participation.user.first_name %>
-          <%= participation.user.last_name %> 
-        </li>
-          <% end %>
-      </ul>
-    </div>
-    <div class="text-center padded">
-      <%= link_to "Back to events", events_path, class: "btn btn-success" %>
-      <%= link_to "Edit my event", edit_event_path(@event), class: "btn btn-success" %>
-      <%= link_to "Delete this event", event_path, method: :delete, class: "btn btn-success" %>
-    </div>
-    <% if @event.latitude &&  @event.longitude %>
-      <div id="map" style="width: 100%; height: 600px;"></div>
-    <% end %>
-  </div>
-</div>
-
-<% content_for :after_js do %>
-  <script>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
+  <% content_for :after_js do %>
+    <script>
+      $(document).ready(function() {
+        var handler = Gmaps.build('Google');
+        handler.buildMap({ internal: { id: 'map' } }, function() {
+          markers = handler.addMarkers(<%= raw @hash.to_json %>);
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+          if (markers.length == 0) {
+            handler.getMap().setZoom(2);
+          } else if (markers.length == 1) {
+            handler.getMap().setZoom(14);
+          }
+        });
       });
-    });
-  </script>
-<% end %>
+    </script>
+  <% end %>
+</div>
 
