@@ -1,6 +1,6 @@
 .btn-medium {
-  color: #36D16C;
-  border: 1px solid #36D16C;
+  color: $green;
+  border: 1px solid $green;
   padding: 10px 25px;
   border-radius: 50px;
   font-weight: lighter;
@@ -10,20 +10,22 @@
   background-color: rgba(0, 0, 0, 0.3);
 }
 .btn-medium-full {
-  background-color: #36D16C;
+  background-color: $green;
   color: white;
   padding: 10px 25px;
   border-radius: 50px;
   font-weight: lighter;
-  opacity: 1;
+  opacity: 0.8;
 }
 .btn-medium:hover {
   text-decoration: none;
-  color: #36D16C;
+  color: $green;
+  opacity: 1;
 }
 .btn-medium-full:hover {
   text-decoration: none;
   color: white;
+  opacity: 1;
 }
 .btn-treehouse {
   color: white;
@@ -39,3 +41,26 @@
   text-decoration: none;
   color: white;
 }
+
+#login-btn {
+  margin-right: 20px;
+  color: white;
+  background-color: #47D579;
+  border-radius: 12px;
+  padding: 10px 15px;
+}
+
+.green-btn {
+  margin-right: 20px;
+  color: white;
+  background-color: #47D579;
+  border-radius: 12px;
+  padding: 10px 15px;
+}
+
+.green-btn:hover {
+  color: white;
+  background-color: $green;
+}
+
+
