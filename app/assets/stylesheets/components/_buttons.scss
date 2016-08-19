@@ -1,6 +1,6 @@
 .btn-medium {
-  color: #36D16C;
-  border: 1px solid #36D16C;
+  color: $green;
+  border: 1px solid $green;
   padding: 10px 25px;
   border-radius: 50px;
   font-weight: lighter;
@@ -10,7 +10,7 @@
   background-color: rgba(0, 0, 0, 0.3);
 }
 .btn-medium-full {
-  background-color: #36D16C;
+  background-color: $green;
   color: white;
   padding: 10px 25px;
   border-radius: 50px;
@@ -19,7 +19,7 @@
 }
 .btn-medium:hover {
   text-decoration: none;
-  color: #36D16C;
+  color: $green;
   opacity: 1;
 }
 .btn-medium-full:hover {
@@ -60,7 +60,7 @@
 
 .green-btn:hover {
   color: white;
-  background-color: #36D16C;
+  background-color: $green;
 }
 
 

@@ -10,10 +10,15 @@
 
           <div class="form-inputs">
             <%= f.input :email, label: false, required: true, autofocus: true, placeholder: 'Email*' %>
-            <br>
-            <%= f.input :password, label: false, required: true, placeholder: 'Password*', hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+            <%= f.input :password, label: false, required: true, placeholder: 'Password*' %>
             <%= f.input :password_confirmation,label: false, placeholder: 'Password confirmation*', required: true %>
+            <%= f.input :photo, label: 'Profile picture', as: :attachinary%>
           </div>
+<!--           <div class="input-file-container">
+            <input class="input-file" id="my-file" type="file">
+            <label for="my-file" class="input-file-trigger" tabindex="0">Select a file...</label>
+          </div>
+          <p class="file-return"></p> -->
           <br>
           <div class="form-actions">
             <%= f.button :submit, "Sign up", class: 'green-btn' %>
