@@ -14,40 +14,24 @@
 
 <div class="banner-light">
   <div class="container">
+    <h2>How it works?</h2>
+    <br>
+    <br>
     <div class="row">
       <div class="col-xs-12 col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('background.jpg');">
-          <div class="card-category">Popular</div>
-          <div class="card-description">
-            <h2>Some stuff</h2>
-            <p>Very cool stuff, useful and smart</p>
-          </div>
-        </div>
+        <%= image_tag 'picto_hp_3.png', class: "picto-hp" %>
+        <p>I sign up with my professional email</p>
       </div>
       <div class="col-xs-12 col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('background.jpg');">
-          <div class="card-category">Popular</div>
-          <div class="card-description">
-            <h2>Some stuff</h2>
-            <p>Very cool stuff, useful and smart</p>
-          </div>
-        </div>
+        <%= image_tag 'picto_hp_2.png', class: "picto-hp" %>
+        <p>I edit my profile</p>
       </div>
       <div class="col-xs-12 col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('background.jpg');">
-          <div class="card-category">Popular</div>
-          <div class="card-description">
-            <h2>Some stuff</h2>
-            <p>Very cool stuff, useful and smart</p>
-          </div>
-        </div>
+        <%= image_tag 'picto_hp_1.png', class: "picto-hp" %>
+        <p>I join an event or create my own</p>
       </div>
     </div>
   </div>
 </div>
-
-<div class="banner-light">
-  <div class="container">
-    <div class="banner" style="background-image: url('<%= image_path 'sign_in_3.jpg' %>'); height: 50vh;" ></div>
-  </div>
+<div class="banner" style="background-image: url(<%= image_path 'sign_in_3.jpg' %>); height: 50vh;">
 </div>

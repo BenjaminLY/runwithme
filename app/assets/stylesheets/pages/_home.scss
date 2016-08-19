@@ -25,10 +25,20 @@
   color: black;
   text-align: center;
   height: 60vh;
-  background-color: #F2FFE5;
+  background-color: #FFFFFA;
   background-size: cover !important;
   background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  p {
+    font-size: 18px;
+    font-weight: bolder;
+  }
 }
+
+.banner-dark {
+  height: 80vh;
+  background-color: $green;
+}
+
