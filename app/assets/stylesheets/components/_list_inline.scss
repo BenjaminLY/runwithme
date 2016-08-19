@@ -3,11 +3,12 @@
   align-items: center;
   padding: 30px;
   // transition: all 0.15s ease;
-  background-color: #E8E8E8;
-  border-radius: 5px;
+  background-color: #F7FCFF;
+  border-radius: 12px;
   margin-bottom: 25px;
-  border: 5px solid #E8E8E8;
+  border: 5px solid #F7FCFF;
   position: relative;
+
 }
 
 /* Body design */
@@ -18,11 +19,13 @@
   font-weight: bold;
   font-size: 23px;
   margin-top: 0;
+  margin-left: 20px;
 }
 .product-body p {
   font-weight: lighter;
   color: #999999;
   margin-bottom: 0;
+  margin-left : 20px;
 }
 
 /* Product image */
