@@ -9,10 +9,13 @@
           <%= f.error_notification %>
 
           <div class="form-inputs">
+            <%= f.input :first_name, label: false, required: true, placeholder: 'Firstname*' %>
+            <%= f.input :last_name, label: false, required: true, placeholder: 'Lastname*' %>
+            <%= f.input :job_title, label: false, required: true, placeholder: 'Job title*' %>
             <%= f.input :email, label: false, required: true, autofocus: true, placeholder: 'Email*' %>
             <%= f.input :password, label: false, required: true, placeholder: 'Password*' %>
             <%= f.input :password_confirmation,label: false, placeholder: 'Password confirmation*', required: true %>
-            <%= f.input :photo, label: 'Profile picture', as: :attachinary%>
+            <%#= f.input :photo, label: 'Profile picture', as: :attachinary%>
           </div>
 <!--           <div class="input-file-container">
             <input class="input-file" id="my-file" type="file">
