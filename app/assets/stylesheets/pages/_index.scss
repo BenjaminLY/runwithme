@@ -1,6 +1,5 @@
 @import "home";
 @import "login";
-@import "events_list";
 
 .pad {
   background-color: #ffffff;
@@ -21,4 +20,10 @@
 
 .color {
   color: $green;
+}
+
+h1 {
+	color: #90c1d4;
+	font-weight:  bold;
+	font-size: 50px;
 }
