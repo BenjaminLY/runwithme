@@ -1,8 +1,8 @@
 <div class="container padded">
   <div class="row">
-    <%= render 'avatar' %>
+    <%= render 'avatar', user: @user %>
     <h1 class="text-center"><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h1>
-    <h2 class="text-center"><%= @user.job_title %></h2>
+    <h2 class="text-center"><%= @user.job_title.capitalize %></h2>
     <div class="text-center">
       <%= link_to "Update Info", edit_user_path(@user), class: 'btn btn-success' %>
     </div>

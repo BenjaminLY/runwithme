@@ -1,4 +1,4 @@
-  <%= render 'avatar' %>
+  <%= render 'avatar', user: @user %>
     <div class="col-xs-12 col-sm-5 col-sm-offset-4">
       <%= simple_form_for(@user) do |f| %>
         <%= f.input :photo, as: :attachinary %>
