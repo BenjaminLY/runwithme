@@ -1,0 +1,18 @@
+  <%= render 'avatar' %>
+    <div class="col-xs-12 col-sm-5 col-sm-offset-4">
+      <%= simple_form_for(@user) do |f| %>
+        <%= f.input :photo, as: :attachinary %>
+        <%= f.input :first_name, label: "First Name" %>
+        <%= f.input :last_name, label: "Last Name" %>
+        <%= f.input :email, :readonly => true %>
+        <%= f.input :job_title, label: "Job" %>
+        <%= f.input :run_level, label: "Level of running" %>
+        <%= f.input :expectation, label: "Type of running : " %>
+        <%= f.input :description, label: "About you :" %>
+        <div class="actions text-center">
+          <%= f.button :submit, class: 'btn btn-success'%>
+          <%= link_to "Destroy my account", registration_path(current_user), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-success"  %>
+          <%= link_to "Back to my profile", profile_path(@user), class: "btn btn-success"  %>
+        </div>
+      <% end %>
+    </div>

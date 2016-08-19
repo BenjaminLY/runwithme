@@ -10,10 +10,13 @@ Event.destroy_all
 User.destroy_all
 
 user_1 = User.create!(email: "coline@gmail.com", password: "testtest", first_name: "coline", last_name: "colnat", job_title: "web dev" )
+puts "#{user_1} a bien été créé'"
 user_2 = User.create!(email: "benjamin@gmail.com", password: "testtest", first_name: "benjamin" , last_name: "lyphoudt", job_title: "webmaster" )
+puts "#{user_2} a bien été créé'"
 user_3 = User.create!(email: "abdel@gmail.com", password: "testtest", first_name: "abdel", last_name: "malik" , job_title: "lawyer" )
+puts "#{user_3} a bien été créé'"
 user_4 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joe", last_name: "star" , job_title: "business man")
-
+puts "#{user_4} a bien été créé'"
 
 attributes = [
   {
@@ -57,4 +60,5 @@ attributes = [
 
 attributes.each do |attribute|
   Event.create!(attribute)
+  puts " l'event a bien été créé"
 end

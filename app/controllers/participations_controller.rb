@@ -5,7 +5,11 @@ class ParticipationsController < ApplicationController
 		@participation = Participation.new(status: params[:status])
 		@participation.user = current_user
 		@participation.event = @event
-		@participation.save
+		if @participation.save
+			redirect_to events_path
+		else
+			render "events/index"
+		end
 	end
 
 	def edit

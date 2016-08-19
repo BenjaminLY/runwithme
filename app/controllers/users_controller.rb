@@ -17,7 +17,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-
     @user.destroy
     if @user.destroy
       redirect_to root_url, notice: "User deleted."
