@@ -16,7 +16,7 @@ class ParticipationsController < ApplicationController
 		@participation = Participation.find(params[:id])
 		@participation.status = params[:status]
 		if @participation.save
-			redirect_to events_path
+			redirect_to profile_path
 		else
 			render "events/index"
 		end
