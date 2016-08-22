@@ -12,7 +12,13 @@
     <div class="text-center padded">
       <h1 id= "events">Events</h1>
     </div>
-    <%= render 'events_list', events: @events %>
+    <div> 
+      <%= render 'events_list', events: @events %>
+    </div>
+    <div> 
+      <%= render 'events_list', events: @my_events %>
+    </div>
+
   <% end %>
 </div>
 
