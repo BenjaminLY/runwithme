@@ -23,6 +23,7 @@ gem "jquery-fileupload-rails"
 gem "geocoder"
 gem "coffee-rails"
 gem "gmaps4rails"
+gem "pundit"
 
 
 source 'https://rails-assets.org' do
