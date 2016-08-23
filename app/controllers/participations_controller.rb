@@ -16,9 +16,15 @@ class ParticipationsController < ApplicationController
 		@participation = Participation.find(params[:id])
 		@participation.status = params[:status]
 		if @participation.save
-			redirect_to profile_path
+     	respond_to do |format|
+       format.html { redirect_to profile_path }
+       format.js  # <-- will render `app/views/reviews/create.js.erb`
+     	end
 		else
-			render "events/index"
+     	respond_to do |format|
+       format.html { render 'events/show' }
+       format.js  # <-- idem
+		  end
 		end
 	end
 
