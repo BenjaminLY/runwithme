@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823141559) do
+ActiveRecord::Schema.define(version: 20160823145723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,8 +33,11 @@ ActiveRecord::Schema.define(version: 20160823141559) do
   create_table "companies", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "name_of_contact"
+    t.string   "phone_number"
+    t.string   "email"
   end
 
   create_table "events", force: :cascade do |t|
@@ -95,6 +98,8 @@ ActiveRecord::Schema.define(version: 20160823141559) do
     t.string   "run_level"
     t.string   "expectation"
     t.text     "description"
+    t.integer  "company_id"
+    t.index ["company_id"], name: "index_users_on_company_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -104,4 +109,5 @@ ActiveRecord::Schema.define(version: 20160823141559) do
   add_foreign_key "messages", "users"
   add_foreign_key "participations", "events"
   add_foreign_key "participations", "users"
+  add_foreign_key "users", "companies"
 end
