@@ -2,7 +2,8 @@ class EventsController < ApplicationController
   before_action :set_event, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @events = Event.where(private: false)
+    @events = policy_scope(Event).where(private: false)
+    @my_events = Event.my_private_events(current_user)
   end
 
   def show
@@ -16,6 +17,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    authorize @event
   end
 
   def create
@@ -24,6 +26,7 @@ class EventsController < ApplicationController
     @participation = Participation.new(status: "going")
     @participation.user = current_user
     @participation.event = @event
+    authorize @event
     if @event.save && @participation.save
       redirect_to event_path(@event)
     else
@@ -51,6 +54,7 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
+    authorize @event
   end
 
   def event_params

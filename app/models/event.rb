@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :user
   has_many :messages, dependent: :destroy
-  has_many :participations, dependent: :nullify
+  has_many :participations, dependent: :destroy
   has_attachment :photo
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
@@ -36,5 +36,17 @@ class Event < ApplicationRecord
   def joined?(user)
     self.participations.map(&:user).include?(user)
   end
+
+  def self.my_private_events(user)
+    private_events = Event.where(private: true)
+    my_private_events =[]
+    private_events.each do |event|
+      if event.joined?(user)
+        my_private_events << event
+      end
+    end
+    return my_private_events
+  end
+
 end
 
