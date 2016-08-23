@@ -29,6 +29,10 @@ class Event < ApplicationRecord
     hours == 0 ? "#{min}min" : "#{hours}h#{min}min"
   end
 
+  def start_time
+      self.datetime.strftime('%e %B %Y') ##Where 'start' is a attribute of type 'Date' accessible through MyModel's relationship
+  end
+
   def joined?(user)
     self.participations.map(&:user).include?(user)
   end
