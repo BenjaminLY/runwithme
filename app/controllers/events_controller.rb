@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
   def index
     @events = policy_scope(Event).where(private: false)
-    @my_events = current_user.events_as_participant
+    @my_events = Event.my_private_events(current_user)
   end
 
   def show
@@ -17,6 +17,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    authorize @event
   end
 
   def create
@@ -25,6 +26,7 @@ class EventsController < ApplicationController
     @participation = Participation.new(status: "going")
     @participation.user = current_user
     @participation.event = @event
+    authorize @event
     if @event.save && @participation.save
       redirect_to event_path(@event)
     else

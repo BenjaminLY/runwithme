@@ -10,9 +10,14 @@
       <p>
         <i class="fa fa-calendar" aria-hidden="true"></i>
         Events I participate
-
       </p>
-          <%= render 'events/events_list', events: @user.events_as_participant %>
+      <div>  
+        <% @user.events_as_participant .each do |event| %>  
+          <div id="event_<%= event.id %>"> 
+            <%= render 'events/event', event: event %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
