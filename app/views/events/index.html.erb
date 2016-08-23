@@ -1,14 +1,128 @@
+<style>
+  .event {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 110px;
+  }
+  .event-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    z-index: 2;
+    color: #4C4C4C;
+  }
+  .event-time {
+    flex: 0 0 8%;
+    margin: auto;
+    text-align: center;
+  }
+  .event-avatar {
+    flex: 0 0 14%;
+    width: 100px;
+    border-radius: 50%;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    border: white 2px solid;
+  }
+  .event-type {
+    flex: 1 0 auto;
+    padding-left: 15px;
+    margin: auto 0;
+  }
+  .event-rdv {
+    flex: 0 0 18%;
+    text-align: center;
+    font-size: 13px;
+  }
+  .event-rdv i {
+    font-size: 20px;
+  }
+  .event-validations {
+    flex: 0 0 20%;
+    font-size: 30px;
+    display: flex;
+    justify-content: space-around;
+    margin-right: 35px;
+  }
+  .validation {
+    flex: 0 0 auto;
+  }
+
+  .event-bar {
+    position: relative;
+    position: absolute;
+    height: 65px;
+    border-radius: 6px;
+    background-color: #E6E6E6;
+    width: 100%;
+    z-index: 1;
+    top: 25px;
+  }
+  .event-status {
+    position: absolute;
+    padding: 5px 15px;
+    border-radius: 8px;
+    right: -20px;
+    top: -18px;
+    background-color: orange;
+  }
+</style>
+
 <div class="container">
-  <% if @events == [] && @my_events == [] %>
-      <h1>Sorry there is no public event at the moment ! </h1>
+  <h2 class="text-center">Evénements à venir</h2>
+  <div class="row">
+    <div class="col-xs-3">
+      <ul class="list-inline">
+        <li>Tous</li>
+        <li>Publics</li>
+        <li>Privés</li>
+        <li><a href="#" class="btn btn-primary">Create an event</a></li>
+      </ul>
+    </div>
+    <div class="col-xs-9">
+      <div>
+
+      <h4><i class="fa fa-calendar" aria-hidden="true"></i> Today</h4>
+      </div>
+    <div class="event">
+      <div class="event-content">
+        <h4 class="event-time">12:00</h4>
+        <%= image_tag 'chicken-avatar-green.png', class: 'event-avatar',
+          data: {toggle: 'tooltip'}, title: 'organisé par Coline' %>
+        <h3 class="event-type">Fun run</h3>
+        <div class="event-rdv">
+          <i class="fa fa-map-marker" aria-hidden="true"></i>
+          <div>meeting point bla blablabla</div>
+        </div>
+        <div class="event-validations">
+          <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
+          <i class="fa fa-times" data-toggle="tooltip" title="Je n'y vais pas"></i>
+          <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
+        </div>
+      </div>
+      <div class='event-bar'>
+        <div class="event-status">Privé</div>
+      </div>
+    </div>
+  </div>
+  <a href="#" data-toggle="tooltip" title="Hooray!">Hover over me</a>
+
+
+
+
+
+
+
+
+  <%# if @events == [] && @my_events == [] %>
+<!--       <h1>Sorry there is no public event at the moment ! </h1>
       <h1>
         Go on poules create yours !
-        <%= image_tag "chicken.png", width: 80 %>
-        <%= image_tag "chicken.png", width: 80 %>
-        <%= image_tag "chicken.png", width: 80 %>
-        <%= image_tag "chicken.png", width: 80 %>
-      </h1>
-  <% else %>
+        <%#= image_tag "chicken.png", width: 80 %>
+      </h1> -->
+  <%# else %>
     <div class="text-center padded">
       <h1 id= "events">Events</h1>
     </div>
@@ -20,15 +134,15 @@
       <% end %>
     </div>
 
-    <div>  
-      <% @my_events.each do |event| %>  
-        <div id="event_<%= event.id %>"> 
+    <div>
+      <% @my_events.each do |event| %>
+        <div id="event_<%= event.id %>">
           <%= render 'event', event: event %>
         </div>
       <% end %>
     </div>
 
-  <% end %>
+  <%# end %>
 </div>
 
 
