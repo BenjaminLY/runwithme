@@ -1,5 +1,5 @@
 <div class="container">
-  <% if @events == [] %>
+  <% if @events == [] && @my_events == [] %>
       <h1>Sorry there is no public event at the moment ! </h1>
       <h1>
         Go on poules create yours !
@@ -12,7 +12,22 @@
     <div class="text-center padded">
       <h1 id= "events">Events</h1>
     </div>
-    <%= render 'events_list', events: @events %>
+    <div>
+      <% @events.each do |event| %>
+        <div id="event_<%= event.id %>">
+          <%= render 'event', event: event %>
+        </div>
+      <% end %>
+    </div>
+
+    <div>  
+      <% @my_events.each do |event| %>  
+        <div id="event_<%= event.id %>"> 
+          <%= render 'event', event: event %>
+        </div>
+      <% end %>
+    </div>
+
   <% end %>
 </div>
 

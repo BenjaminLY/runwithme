@@ -1,0 +1,42 @@
+  <div class="product">
+    <%= render "users/avatar", user: event.user %>
+      <div class='product-body'>
+        <h3>
+         <%= event.type_of %> -
+           <% if event.time_goal %>
+             <%= event.time_goal_to_s %>
+           <% end %>
+           <% if event.trail_goal %>
+              <%= event.trail_goal %> km
+           <% end %>
+        </h3>
+        <p>
+        <i class="fa fa-map-marker" aria-hidden="true"></i>
+        <%= event.meeting_point %></p>
+        <p> Organized by <%= event.user.email %></p>
+        <p> <i class="fa fa-calendar" aria-hidden="true"></i> Date: <%= event.datetime.strftime('%e %B %Y') %> Time: <%=  event.datetime.strftime('%H:%M') %></p>
+      </div>
+    <div class="btn-toolbar">
+      <% if event.joined?(current_user) %>
+        <% case event.participations.find_by(user: current_user).status %>
+          <% when "going" %>
+            <%= link_to 'Going', participation_path(event.participations.find_by(user: current_user), status: "going"), method: :patch, class: 'btn-medium-full', remote: true %>  
+            <%= link_to 'Maybe', participation_path(event.participations.find_by(user: current_user), status: "maybe"), method: :patch, class: 'btn-medium', remote: true %>
+            <%= link_to 'Can t go', participation_path(event.participations.find_by(user: current_user), status: "can t go"), method: :patch, class: 'btn-medium', remote: true %>    
+          <% when "maybe" %>
+            <%= link_to 'Going', participation_path(event.participations.find_by(user: current_user), status: "going"), method: :patch, class: 'btn-medium', remote: true %>
+            <%= link_to 'Maybe', participation_path(event.participations.find_by(user: current_user), status: "maybe"), method: :patch, class: 'btn-medium-full', remote: true %>
+            <%= link_to 'Can t go', participation_path(event.participations.find_by(user: current_user), status: "can t go"), method: :patch, class: 'btn-medium', remote: true %>
+
+          <% when "can t go" %>
+            <%= link_to 'Going', participation_path(event.participations.find_by(user: current_user), status: "going"), method: :patch, class: 'btn-medium', remote: true %>
+            <%= link_to 'Maybe', participation_path(event.participations.find_by(user: current_user), status: "maybe"), method: :patch, class: 'btn-medium', remote: true %>
+            <%= link_to 'Can t go', participation_path(event.participations.find_by(user: current_user), status: "can t go"), method: :patch, class: 'btn-medium-full', remote: true %>
+        <% end %>
+      <% else %>
+        <%= link_to 'Going', event_participations_path(event, status: "going"), method: :post, class: 'btn-medium-full' %>
+        <%= link_to 'Maybe', event_participations_path(event, status: "maybe"), method: :post, class: 'btn-medium-full' %>
+      <% end %>
+    </div>
+    <%#= link_to '', event_path(event), class: 'card-link'%>
+  </div>
