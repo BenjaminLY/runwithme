@@ -1,4 +1,24 @@
 <style>
+  .index-menu {
+    background-color: #F6EEDF;
+    padding: 20px;
+  }
+  .index-menu li:last-child {
+    padding-top: 20px;
+    margin: 10px;
+  }
+  .event-list-title {
+    color: grey;
+    margin-bottom: 35px;
+  }
+  .event-date {
+    color: #004080;
+    width: 100%;
+    background-color: #F8F6F5;
+    padding: 3px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
   .event {
     position: relative;
     display: flex;
@@ -10,12 +30,12 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
+    width: 98%;
     z-index: 2;
     color: #4C4C4C;
   }
   .event-time {
-    flex: 0 0 8%;
+    flex: 0 0 10%;
     margin: auto;
     text-align: center;
   }
@@ -32,7 +52,7 @@
     margin: auto 0;
   }
   .event-rdv {
-    flex: 0 0 18%;
+    flex: 0 0 25%;
     text-align: center;
     font-size: 13px;
   }
@@ -50,13 +70,21 @@
     flex: 0 0 auto;
   }
 
+  .event-owner {
+    position: absolute;
+    top: -20px;
+    left: 195px;
+    font-weight: lighter;
+    font-size: 13px;
+  }
+
   .event-bar {
     position: relative;
     position: absolute;
     height: 65px;
     border-radius: 6px;
     background-color: #E6E6E6;
-    width: 100%;
+    width: 98%;
     z-index: 1;
     top: 25px;
   }
@@ -64,50 +92,81 @@
     position: absolute;
     padding: 5px 15px;
     border-radius: 8px;
-    right: -20px;
-    top: -18px;
+    left: -16px;
+/*    right: -20px;*/
+    top: -22px;
     background-color: orange;
+    transform:rotate(-10deg);
+    -ms-transform:rotate(-10deg); /* Internet Explorer */
+    -moz-transform:rotate(-10deg); /* Firefox */
+    -webkit-transform:rotate(-10deg); /* Safari et Chrome */
+    -o-transform:rotate(-10deg); /* Opera */
   }
 </style>
 
 <div class="container">
-  <h2 class="text-center">Evénements à venir</h2>
+  <h2 class="event-list-title text-center">Evénements à venir</h2>
   <div class="row">
     <div class="col-xs-3">
-      <ul class="list-inline">
-        <li>Tous</li>
-        <li>Publics</li>
-        <li>Privés</li>
-        <li><a href="#" class="btn btn-primary">Create an event</a></li>
+      <ul class="nav index-menu">
+        <li><%= link_to 'Tous' %></li>
+        <li><%= link_to 'Publics' %></li>
+        <li><%= link_to 'Privés' %></li>
+        <li><%= link_to 'Refusés' %></li>
+        <li><%= link_to "Créer un événement", '', class: "btn btn-primary" %></li>
       </ul>
     </div>
     <div class="col-xs-9">
-      <div>
-
-      <h4><i class="fa fa-calendar" aria-hidden="true"></i> Today</h4>
-      </div>
-    <div class="event">
-      <div class="event-content">
-        <h4 class="event-time">12:00</h4>
-        <%= image_tag 'chicken-avatar-green.png', class: 'event-avatar',
-          data: {toggle: 'tooltip'}, title: 'organisé par Coline' %>
-        <h3 class="event-type">Fun run</h3>
-        <div class="event-rdv">
-          <i class="fa fa-map-marker" aria-hidden="true"></i>
-          <div>meeting point bla blablabla</div>
-        </div>
-        <div class="event-validations">
-          <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
-          <i class="fa fa-times" data-toggle="tooltip" title="Je n'y vais pas"></i>
-          <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
+      <div class="event-date">
+        <div>
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+          <%= false ? "Aujourd'hui" : "Demain" %>
         </div>
       </div>
-      <div class='event-bar'>
-        <div class="event-status">Privé</div>
+      <div class="event">
+        <div class="event-content">
+          <div class="event-time">
+            <h4>12:00</h4>
+          </div>
+          <%= image_tag 'chicken-avatar-green.png', class: 'event-avatar',
+            data: {toggle: 'tooltip'}, title: 'organisé par Coline' %>
+          <h3 class="event-type">Fun run</h3>
+          <div class="event-rdv">
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <div>meeting point bla blablabla</div>
+          </div>
+          <div class="event-validations">
+            <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
+            <i class="fa fa-times" data-toggle="tooltip" title="Je n'y vais pas"></i>
+            <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
+          </div>
+        </div>
+        <div class='event-bar'>
+          <div class="event-status">Privé</div>
+          <div class="event-owner">organisé par Coline</div>
+        </div>
       </div>
     </div>
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <li>
+          <a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li>
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
-  <a href="#" data-toggle="tooltip" title="Hooray!">Hover over me</a>
 
 
 
