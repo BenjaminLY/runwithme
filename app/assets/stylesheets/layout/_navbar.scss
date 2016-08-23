@@ -1,7 +1,17 @@
+
+/* -------------------------------------
+ * Colors & Fonts
+ * ------------------------------------- */
+
+$navbar-bg: transparent;
+
+
+
+
 /* Main class */
 .navbar-wagon {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: white;
+  background:$navbar-bg ;
   transition: all 0.3s ease;
   display: flex;
   height: 70px;
@@ -11,17 +21,17 @@
   color: #999999
 }
 
-.navbar-wagon {
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background-color: transparent;
-  transition: all 0.3s ease;
-  display: flex;
-  height: 70px;
-  padding: 0px 30px;
-  align-items: center;
-  justify-content: space-between;
-  color: #999999
-}
+// .navbar-wagon {
+//   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+//   background-color: transparent;
+//   transition: all 0.3s ease;
+//   display: flex;
+//   height: 70px;
+//   padding: 0px 30px;
+//   align-items: center;
+//   justify-content: space-between;
+//   color: #999999
+// }
 
 /* Optional class to fix the navbar on top */
 .navbar-wagon-fixed {
@@ -168,5 +178,6 @@
   font-size: 25px;
   color: #47D579;
 }
+
 
 
