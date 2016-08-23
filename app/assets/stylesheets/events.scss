@@ -4,3 +4,18 @@
 .body {
   background-color: #F2F2F2;
 }
+
+.event {
+	display: flex;
+	flex-direction: column;
+	margin-top: -40px;
+	.event-details {
+		display: flex;
+		.description {
+			width: 60%;
+		}
+		.participation {
+			width: 40%;
+		}
+	}
+}
