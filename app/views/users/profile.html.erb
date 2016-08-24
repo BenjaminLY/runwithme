@@ -12,7 +12,36 @@
         <%= link_to "Edite mon profil", edit_user_path(@user), class: 'btn-medium-full' %>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-8 padded">
+    <div class="col-xs-12 col-sm-2 pad-top">
+      <div class="icon-wrapper"><p class="custom-icon">Ce mois-ci :<strong> 5 évènements</strong><span class="fix-editor">&nbsp;</span></p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-2 pad-top">
+      <div class="icon-wrapper"><p class="custom-icon">Vitesse Moyenne : <strong>13 km/h</strong><span class="fix-editor">&nbsp;</span></p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-2 pad-top">
+      <div class="icon-wrapper"><p class="custom-icon">Distance parcourue : <strong>80 km</strong><span class="fix-editor">&nbsp;</span></p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-2 pad-top">
+      <div class="icon-wrapper"><p class="custom-icon">Temps couru : <strong>800 heures</strong><span class="fix-editor">&nbsp;</span></p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-2 simple-calendar">
+     <%= month_calendar events: @user.events_as_participant do |date, events| %>
+        <%= date.strftime("%e") %>
+        <% events.each do |event| %>
+          <div class = "event_calendar_notif" data-toggle="tooltip" title="<%= event.type_of %>">
+            <strong><i class="fa fa-circle"></i></strong>
+          </div>
+          <div class = "event_calendar_content">
+            <strong><%= event.type_of %></strong>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-12">
       <p>
         <i class="fa fa-calendar" aria-hidden="true"></i>
        Mes evenements
@@ -25,21 +54,13 @@
         <% end %>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-4 padded simple-calendar">
-     <%= month_calendar events: @user.events_as_participant do |date, events| %>
-        <%= date.strftime("%e") %>
-        <% events.each do |event| %>
-          <div class = "event_calendar_notif">
-            <strong><i class="fa fa-circle"></i></strong>
-          </div>
-          <div class = "event_calendar_content data-toggle="tooltip" title= '<%= event.type_of %>'">
-            <strong><%= event.type_of %></strong>
-          </div>
-      <% end %>
-    <% end %>
-    </div>
   </div>
 </div>
 
-
+<!-- <script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+});
+</script>
+ -->
 
