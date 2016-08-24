@@ -1,0 +1,20 @@
+.event {
+	display: flex;
+	flex-direction: column;
+	margin-top: -40px;
+	justify-content: space-between;
+	background: #E6E6E6;
+	border-radius: 12px;
+	.event_header {
+		display: flex;
+	}
+	.event-details {
+		display: flex;
+		.description {
+			width: 60%;
+		}
+		.participation {
+			width: 40%;
+		}
+	}
+}
