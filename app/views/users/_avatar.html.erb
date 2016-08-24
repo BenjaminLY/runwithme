@@ -2,6 +2,6 @@
 	<% if user.photo? %>
 		<%= cl_image_tag user.photo.path, width: 171, height: 171, crop: :fill, class: "avatar-xlarge"%>
 	<% else %>
-		<%= image_tag "chicken-avatar-green.png", class: "avatar-xlarge"%>
+		<%= image_tag "chicken-avatar-green.png", width: 171, height: 171, crop: :fill, class: "avatar-xlarge"%>
 	<% end %>
 </p>
