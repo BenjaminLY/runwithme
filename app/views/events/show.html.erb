@@ -82,94 +82,7 @@
               </div>
             </div>
             <div class="participation">
-              <div class="participation_all">
-                <div class="participation_header">
-                  <div><h4>Les poules qui ont dit oui!</h4></div>
-                  <div class="participation_icone">
-                    <% if @event.joined?(current_user) %>
-                      <%= link_to participation_path(@event.participations.find_by(user: current_user), status: "going"), method: :patch,remote: true do %>  
-                        <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
-                      <% end %>
-                    <% else %>
-                       <%= link_to event_participations_path(@event, status: "going"), method: :post do %>
-                        <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
-                      <% end %> 
-                    <% end %>
-                  </div>
-                </div>
-                <div class="particpation_avatar">
-                  <% @event.participations.each do |participation| %>
-                    <%if participation.status == "going" %>
-                      <div class="avatar_user">
-                        <%= render "users/avatar_small", user: participation.user %>  
-                      </div>
-                    <% end %>
-                  <% end %>
-                </div>
-              </div>
-              <div class="participation_all">
-                <div class="participation_header">
-                  <div><h4>Les poules qui hésitent encore!</h4></div>
-                  <div class="participation_icone">
-                    <% if @event.joined?(current_user) %>
-                      <%= link_to participation_path(@event.participations.find_by(user: current_user), status: "maybe"), method: :patch, remote: true do %>
-                        <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
-                      <% end %>
-                    <% else %>
-                      <%= link_to event_participations_path(@event, status: "maybe"), method: :post do %>
-                        <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
-                      <% end %>
-                    <% end %> 
-                  </div>
-                </div>
-                <div class="particpation_avatar">
-                  <% @event.participations.each do |participation| %>
-                    <%if participation.status == "maybe" %>
-                      <div class="avatar_user">
-                        <%= render "users/avatar_small", user: participation.user %>  
-                      </div>
-                    <% end %>
-                  <% end %>
-                </div>
-              </div>
-              <div class="participation_all">
-                <div class="participation_header">
-                  <div><h4>Les poules qui ont dit non!</h4></div>
-                  <div class="participation_icone">
-                    <% if @event.joined?(current_user) %>
-                      <%= link_to participation_path(@event.participations.find_by(user: current_user), status: "can t go"), method: :patch, remote: true do %>
-                        <i class="fa fa-times" data-toggle="tooltip" title="Je n'y vais pas"></i>
-                      <% end %> 
-                    <% else %>
-                      <%= link_to event_participations_path(@event, status: "can t go"), method: :post do %>
-                        <i class="fa fa-times" data-toggle="tooltip" title="Je n'y vais pas"></i>
-                      <% end %>
-                    <% end %>
-                  </div>
-                </div>
-                <div class="particpation_avatar">
-                  <% @event.participations.each do |participation| %>
-                    <%if participation.status == "can t go" %>
-                      <div class="avatar_user">
-                        <%= render "users/avatar_small", user: participation.user %>  
-                      </div>
-                    <% end %>
-                  <% end %>
-                </div>
-              </div>
-              <div>
-                
-              </div>
-              <h4>Participations </h4>
-              <ul>
-                <% @event.participations.each do |participation| %>
-                  <li>
-                    <%= participation.status %> -
-                    <%= participation.user.first_name %>
-                    <%= participation.user.last_name %>
-                  </li>
-                <% end %>
-              </ul>     
+              <%= render "events/participations", event: @event %>
             </div>
           </div>
         </div>
@@ -193,20 +106,23 @@
 
 
   <% content_for :after_js do %>
-    <script>
-      $(document).ready(function() {
-        var handler = Gmaps.build('Google');
-        handler.buildMap({ internal: { id: 'map' } }, function() {
-          markers = handler.addMarkers(<%= raw @hash.to_json %>);
-          handler.bounds.extendWith(markers);
-          handler.fitMapToBounds();
-          if (markers.length == 0) {
-            handler.getMap().setZoom(2);
-          } else if (markers.length == 1) {
-            handler.getMap().setZoom(14);
-          }
+    <% if @event.latitude &&  @event.longitude %>
+
+      <script>
+        $(document).ready(function() {
+          var handler = Gmaps.build('Google');
+          handler.buildMap({ internal: { id: 'map' } }, function() {
+            markers = handler.addMarkers(<%= raw @hash.to_json %>);
+            handler.bounds.extendWith(markers);
+            handler.fitMapToBounds();
+            if (markers.length == 0) {
+              handler.getMap().setZoom(2);
+            } else if (markers.length == 1) {
+              handler.getMap().setZoom(14);
+            }
+          });
         });
-      });
-    </script>
+      </script>
+    <% end %>
   <% end %>
 

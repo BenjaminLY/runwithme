@@ -51,10 +51,10 @@
               <% end %>
           <% end %>
         <% else %>
-          <%= link_to event_participations_path(event, status: "going"), method: :post do %>
+          <%= link_to event_participations_path(event, status: "going"), method: :post, remote: true do %>
             <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
           <% end %>
-          <%= link_to event_participations_path(event, status: "maybe"), method: :post do %>
+          <%= link_to event_participations_path(event, status: "maybe"), method: :post, remote: true do %>
             <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
           <% end %>
         <% end %>

@@ -49,7 +49,7 @@ attributes = [
     trail_goal: 5,
   },
   {
-    user_id: user_1.id,
+    user_id: user_3.id,
     type_of: "Cool run",
     datetime: DateTime.new(2016, 12, 12),
     private: false,
@@ -57,10 +57,10 @@ attributes = [
     time_goal: 45,
   },
   {
-    user_id: user_2.id,
+    user_id: user_4.id,
     type_of: "Endurance run",
     datetime: DateTime.new(2016, 9, 30),
-    private: true,
+    private: false,
     description: "Let's run run run",
     address: "Place de la Bastille",
     meeting_point: "Place de la Bastille",
