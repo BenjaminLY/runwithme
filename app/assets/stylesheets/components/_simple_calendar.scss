@@ -43,6 +43,24 @@
   .current-month {}
 
   .has-events {
-    background-color: #ddd9d9;
+    .event_calendar_notif{
+      color: $green;
+      display: block;
+    }
+    .event_calendar_content{
+      display: none;
+      font-size: 10px;
+    }
   }
+  // .has-events:hover {
+  //   // background-color: #ddd9d9;
+  //   // .event_calendar_content{
+  //   //   display: block;
+  //   //   width: 20px;
+  //   // }
+  //   .event_calendar_notif {
+  //     display: none;
+  //   }
+  // }
+
 }

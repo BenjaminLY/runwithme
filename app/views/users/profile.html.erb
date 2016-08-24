@@ -9,17 +9,17 @@
     </div>
     <div class="col-xs-12 col-sm-2 col-sm-offset-5 padded">
      <div class="text-center">
-        <%= link_to "Update Info", edit_user_path(@user), class: 'btn-medium-full' %>
+        <%= link_to "Edite mon profil", edit_user_path(@user), class: 'btn-medium-full' %>
       </div>
     </div>
     <div class="col-xs-12 col-sm-8 padded">
       <p>
         <i class="fa fa-calendar" aria-hidden="true"></i>
-        My Events
+       Mes evenements
       </p>
-      <div>  
-        <% @user.events_as_participant .each do |event| %>  
-          <div id="event_<%= event.id %>"> 
+      <div>
+        <% @user.events_as_participant .each do |event| %>
+          <div id="event_<%= event.id %>">
             <%= render 'events/event', event: event %>
           </div>
         <% end %>
@@ -28,16 +28,18 @@
     <div class="col-xs-12 col-sm-4 padded simple-calendar">
      <%= month_calendar events: @user.events_as_participant do |date, events| %>
         <%= date.strftime("%e") %>
-      <% events.each do |event| %>
-    <div>
-      <%= event.type_of %>
-    </div>
+        <% events.each do |event| %>
+          <div class = "event_calendar_notif">
+            <strong><i class="fa fa-circle"></i></strong>
+          </div>
+          <div class = "event_calendar_content data-toggle="tooltip" title= '<%= event.type_of %>'">
+            <strong><%= event.type_of %></strong>
+          </div>
       <% end %>
     <% end %>
     </div>
   </div>
 </div>
-
 
 
 
