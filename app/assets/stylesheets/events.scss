@@ -22,8 +22,12 @@
     width: 100%;
     background-color: #F8F6F5;
     padding: 3px 20px;
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0;
     margin-bottom: 20px;
+  }
+  .events-date-bg {
+    background-color: #FFF7E4;
+    border-radius: 10px;
   }
   .events {
     position: relative;
