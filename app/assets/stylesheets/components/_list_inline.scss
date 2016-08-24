@@ -44,6 +44,7 @@
   font-size: 13px;
   line-height: 20px;
 }
+
 .product-count {
   margin: 2px 0 0;
 }
@@ -122,8 +123,39 @@
 .pad-top {
   padding-top: 80px;
 }
+.pad-bot {
+  padding-bottom: 30px;
+}
+
+.pad-left {
+  padding-left: 320px;
+}
 
 .size_text {
   font-size: 30px;
-  color: #90c1d4;
+}
+.calendar-heading {
+  display: flex;
+  margin-left: 107px;
+  justify-content: space-between;
+}
+
+.line {
+  border-bottom: 2px solid #90c1d4;
+}
+.triangle_inside_line {
+  margin-left: 551px;
+  width: 0px;
+  height: 0px;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #90c1d4;
+  cursor: pointer;
+}
+.container-top {
+  background-color: #90c1d4;
+}
+
+.stats {
+  background-color: $orange;
 }
