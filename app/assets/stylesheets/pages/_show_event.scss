@@ -45,6 +45,12 @@
 				border: 2px dotted #FFEEE5;
 				border-radius: 12px;
 				padding: 10px;
+				.particpation_avatar {
+					display: flex;
+					.avatar_user {
+						padding: 5px;
+					}
+				}
 			}
 
 		}

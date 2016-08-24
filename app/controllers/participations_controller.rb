@@ -9,24 +9,24 @@ class ParticipationsController < ApplicationController
 		@events = policy_scope(Event).where(private: false)
 		@my_events = Event.my_private_events(current_user)
 		if @participation.save
-			redirect_to events_path
+			redirect_to event_path(@event)
 		else
-			render events_path
+			render 'events/show'
 		end
 	end
 
 	def update
 		@participation = Participation.find(params[:id])
 		@participation.status = params[:status]
+		@event = @participation.event
 		if @participation.save
 			@events = policy_scope(Event).where(private: false)
 			@my_events = Event.my_private_events(current_user)
      	respond_to do |format|
-				format.html { redirect_to events_path }
+				format.html { redirect_to event_path(@event) }
 				format.js  # <-- will render `app/views/reviews/create.js.erb`
      	end
 		else
-			@event = @participation.event
      	respond_to do |format|
 				format.html { render 'events/show' }
 				format.js  # <-- idem
