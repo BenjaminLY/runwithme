@@ -99,9 +99,6 @@
   background:#fff;
   background:#fff;
   padding:30px;
-  -webkit-border-radius:1100%;
-  -moz-border-radius:100%;
-  -o-border-radius:100%;
   border-radius:100%;
   border:6px solid #90c1d4;
   color: grey;
@@ -111,10 +108,6 @@
   vertical-align:middle;
   width: 175px;
   height: 158px;
-  -moz-transition:.5s;
-  -webkit-transition:.5s;
-  -o-transition:.5s;
-  transition:.5s;
 }
 .custom-icon:hover {
   background:#fff;
