@@ -20,22 +20,22 @@
         <div class="event">
           <div class="event_header">
             <div class='event-date'>
-              <div class="date">
-                <h3> Date: <%= @event.datetime.strftime('%e %B %Y') %> </h3>   
+              <div>
+                <h3> <%= @event.datetime.strftime('%e %B %Y') %> </h3>   
               </div>
-              <div class="time">
-                <h3> Heure du rdv: <%= @event.datetime.strftime('%H:%M') %> </h3> 
+              <div>
+                <h3> <%= @event.datetime.strftime('%H:%M') %> </h3> 
               </div>
-              <h3>
+              <div class="public_private">
               <% if @event.private %>
                 <%= "PRIVE" %>
               <% else %>
                 <%= "PUBLIC" %>
               <% end  %>           
-              </h3>
+              </div>
             </div> 
             <div class="event_type">
-              <div class="goal">
+              <div>
                 <h3>
                  <%= @event.type_of %> -
                    <% if @event.time_goal %>
@@ -46,35 +46,35 @@
                    <% end %>
                 </h3>
               </div>
-              <div class="organizer">
+              <div>
                 <h3> Organisé par <%= @event.user.first_name %> <%= @event.user.last_name  %></h3>
               </div>
             </div> 
-            <div class="organizer_avatar">
+            <div>
               <%= render "users/avatar", user: @event.user %>
             </div>
           </div>
           <div class="event-details">
             <div class="description">
               <div>
-                <h3>Lieu de rendez-vous: </h3>
+                <h4>Lieu de rendez-vous </h4>
                 <p><%= @event.meeting_point %></p>
               </div>
               <div>
                 <% unless @event.address.blank? %>
-                  <%= "Adresse de l'evenement:" %>
+                  <h4><%= "Adresse de l'evenement" %></h4>
                   <p><%= @event.address %></p>
                 <% end %>
               </div>
               <div>
                 <% unless @event.description.blank? %>
-                  <%= "Description de l'evenement:" %>
+                  <h4><%= "Description de l'evenement" %></h4>
                   <p><%= @event.description %></p>
                 <% end %>
               </div>
               <div>
                 <% unless @event.messages.empty? %>
-                  <%= "Messages:" %>
+                  <h4><%= "Messages" %></h4>
                   <% @event.messages.each do |message| %>
                     <%= message %>
                   <% end %>
@@ -82,7 +82,28 @@
               </div>
             </div>
             <div class="participation">
-              <h3>Participations :</h3>
+              <div class="going">
+                <h4>Going</h4>
+                <%= link_to event_participations_path(@event, status: "going"), method: :post do %>
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                <% end %>
+                <div>
+                  
+                </div>
+                <div class="going_avatar">
+                  
+                </div>
+              </div>
+              <div>
+                
+              </div>
+              <div>
+                
+              </div>
+              <div>
+                
+              </div>
+              <h4>Participations </h4>
               <ul>
                 <% @event.participations.each do |participation| %>
                   <li>
