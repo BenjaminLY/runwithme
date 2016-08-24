@@ -13,8 +13,9 @@ class EventsController < ApplicationController
       @events = current_user.refused_events
     else
       @events = policy_scope(Event).public + current_user.private_events
+      @events.sort_by! { |ev| ev[:datetime].to_i }
     end
-    @events.sort_by { |ev| ev[:datetime].date }
+    @events = @events.group_by(&:datetime)
   end
 
   def show

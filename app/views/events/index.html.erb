@@ -12,90 +12,54 @@
     </div>
     <div class="col-xs-9">
       <h4 class="events-counter">Résultats: <%= @events.count %></h4>
-      <% @events.each do |event| %>
-        <div class="events-date">
-          <div>
-            <i class="fa fa-calendar" aria-hidden="true"></i>
-            <%= event.datetime %>
-            <%= false ? "Aujourd'hui" : "Demain" %>
-          </div>
-        </div>
-        <div class="events">
-          <div class="events-content">
-            <div class="events-time">
-              <h4>12:00</h4>
-            </div>
-            <%= image_tag 'chicken-avatar-green.png', class: 'events-avatar',
-              data: {toggle: 'tooltip'}, title: 'organisé par Coline' %>
-            <h3 class="events-type">Fun run</h3>
-            <div class="events-rdv">
-              <i class="fa fa-map-marker" aria-hidden="true"></i>
-              <div>meeting point bla blablabla</div>
-            </div>
-            <div class="events-validations">
-              <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
-              <i class="fa fa-times" data-toggle="tooltip" title="Je n'y vais pas"></i>
-              <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
+      <% today = DateTime.now.to_date %>
+      <%= today %>
+      <% @events.each do |date, events| %>
+        <div class="events-date-bg">
+          <div class="events-date">
+            <div>
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <% if date.to_date == today %>
+                Aujourd'hui
+              <% elsif date.to_date == (today + 1.days) %>
+                Demain
+              <% else %>
+                <%= date.strftime('%e %B %Y') %>
+              <% end %>
             </div>
           </div>
-          <div class='events-bar'>
-            <div class="events-status">Privé</div>
-            <div class="events-owner">organisé par Coline</div>
-          </div>
+          <% events.each do |event| %>
+            <div class="events">
+              <div class="events-content">
+                <div class="events-time">
+                  <h4><%= event.datetime.strftime('%R') %></h4>
+                </div>
+                <% if event.user.photo? %>
+                  <%= cl_image_tag event.user.photo.path, class: 'events-avatar' %>
+                <% else %>
+                  <%= image_tag 'chicken-avatar-green.png', class: 'events-avatar' %>
+                <% end %>
+                <h3 class="events-type">Fun run</h3>
+                <div class="events-rdv">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <div>meeting point bla blablabla</div>
+                </div>
+                <div class="events-validations">
+                  <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
+                  <i class="fa fa-times" data-toggle="tooltip" title="Je n'y vais pas"></i>
+                  <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
+                </div>
+              </div>
+              <div class='events-bar'>
+                <div class="events-status">Privé</div>
+                <div class="events-owner">organisé par <%= event.user.first_name.capitalize %></div>
+              </div>
+            </div>
+          <% end %>
         </div>
       <% end %>
     </div>
-    <!-- <nav aria-label="Page navigation">
-      <ul class="pagination">
-        <li>
-          <a href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li>
-          <a href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav> -->
   </div>
-
-
-
-
-
-
-
-
-  <%# if @events == [] && @my_events == [] %>
-<!--       <h1>Sorry there is no public event at the moment ! </h1>
-      <h1>
-        Go on poules create yours !
-        <%#= image_tag "chicken.png", width: 80 %>
-      </h1> -->
-  <%# else %>
-    <div>
-      <% @public_events.each do |event| %>
-        <div id="event_<%= event.id %>">
-          <%= render 'event', event: event %>
-        </div>
-      <% end %>
-    </div>
-    <div>
-      <% @my_private_events.each do |event| %>
-        <div id="event_<%= event.id %>">
-          <%= render 'event', event: event %>
-        </div>
-      <% end %>
-    </div>
-
-  <%# end %>
 </div>
 
 
