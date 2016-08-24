@@ -13,7 +13,6 @@
     <div class="col-xs-9">
       <h4 class="events-counter">Résultats: <%= @events.count %></h4>
       <% today = DateTime.now.to_date %>
-      <%= today %>
       <% @events.each do |date, events| %>
         <div class="events-date-bg">
           <div class="events-date">
@@ -39,10 +38,10 @@
                 <% else %>
                   <%= image_tag 'chicken-avatar-green.png', class: 'events-avatar' %>
                 <% end %>
-                <h3 class="events-type">Fun run</h3>
+                <%= link_to event.type_of, event_path(event), class: 'events-type' %>
                 <div class="events-rdv">
                   <i class="fa fa-map-marker" aria-hidden="true"></i>
-                  <div>meeting point bla blablabla</div>
+                  <div><%= event.meeting_point %></div>
                 </div>
                 <div class="events-validations">
                   <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
@@ -51,7 +50,11 @@
                 </div>
               </div>
               <div class='events-bar'>
-                <div class="events-status">Privé</div>
+                <% if event.private %>
+                  <div class="events-status-private">Privé</div>
+                <% else %>
+                  <div class="events-status">Public</div>
+                <% end %>
                 <div class="events-owner">organisé par <%= event.user.first_name.capitalize %></div>
               </div>
             </div>
