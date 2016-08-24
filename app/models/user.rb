@@ -17,4 +17,8 @@ class User < ApplicationRecord
   		participation.event
   	end
   end
+
+  def private_events
+    self.events_as_participant.select { |event| event.private }
+  end
 end

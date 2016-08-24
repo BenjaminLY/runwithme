@@ -2,8 +2,16 @@ class EventsController < ApplicationController
   before_action :set_event, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @events = policy_scope(Event).where(private: false)
-    @my_events = Event.my_private_events(current_user)
+    @public_events = policy_scope(Event).where(private: false)
+    @my_private_events = policy_scope(Event).my_private_events(current_user)
+    if params[:filter] == 'public'
+      @events = policy_scope(Event).public
+    elsif params[:filter] == 'private'
+      # @events = policy_scope(Event).my_private_events(current_user)
+      @events = current_user.private_events
+    else
+      @events = policy_scope(Event).public + current_user.private_events
+    end
   end
 
   def show

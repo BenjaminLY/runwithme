@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  resources :events do 
-  	resources :participations, only: [:create]
+  get '/events/filter', to: 'events#index'
+  resources :events do
+    resources :participations, only: [:create]
   end
   get '/profile' => 'users#profile'
   resources :users, only: [ :edit, :update, :destroy ]
