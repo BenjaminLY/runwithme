@@ -19,13 +19,14 @@
   font-weight: lighter;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 20px;
+  position: relative;
 }
 
 .banner-light {
   color: black;
   text-align: center;
   height: 60vh;
-  background-color: #FFFFFA;
+  background-color: white;
   background-size: cover !important;
   background-position: center;
   display: flex;
@@ -40,5 +41,12 @@
 .banner-dark {
   height: 80vh;
   background-color: $green;
+}
+
+.block {
+  background-color: #36D16C;
+  padding: 15px;
+  border-radius: 20px;
+
 }
 
