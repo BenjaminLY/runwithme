@@ -1,207 +1,68 @@
-<style>
-  .index-menu {
-    background-color: #F6EEDF;
-    padding: 20px;
-  }
-  .index-menu li:last-child {
-    padding-top: 20px;
-    margin: 10px;
-  }
-  .event-list-title {
-    color: grey;
-    margin-bottom: 35px;
-  }
-  .event-date {
-    color: #004080;
-    width: 100%;
-    background-color: #F8F6F5;
-    padding: 3px 20px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-  }
-  .event {
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 110px;
-  }
-  .event-content {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 98%;
-    z-index: 2;
-    color: #4C4C4C;
-  }
-  .event-time {
-    flex: 0 0 10%;
-    margin: auto;
-    text-align: center;
-  }
-  .event-avatar {
-    flex: 0 0 14%;
-    width: 100px;
-    border-radius: 50%;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    border: white 2px solid;
-  }
-  .event-type {
-    flex: 1 0 auto;
-    padding-left: 15px;
-    margin: auto 0;
-  }
-  .event-rdv {
-    flex: 0 0 25%;
-    text-align: center;
-    font-size: 13px;
-  }
-  .event-rdv i {
-    font-size: 20px;
-  }
-  .event-validations {
-    flex: 0 0 20%;
-    font-size: 30px;
-    display: flex;
-    justify-content: space-around;
-    margin-right: 35px;
-  }
-  .validation {
-    flex: 0 0 auto;
-  }
-
-  .event-owner {
-    position: absolute;
-    top: -20px;
-    left: 195px;
-    font-weight: lighter;
-    font-size: 13px;
-  }
-
-  .event-bar {
-    position: relative;
-    position: absolute;
-    height: 65px;
-    border-radius: 6px;
-    background-color: #E6E6E6;
-    width: 98%;
-    z-index: 1;
-    top: 25px;
-  }
-  .event-status {
-    position: absolute;
-    padding: 5px 15px;
-    border-radius: 8px;
-    left: -16px;
-/*    right: -20px;*/
-    top: -22px;
-    background-color: orange;
-    transform:rotate(-10deg);
-    -ms-transform:rotate(-10deg); /* Internet Explorer */
-    -moz-transform:rotate(-10deg); /* Firefox */
-    -webkit-transform:rotate(-10deg); /* Safari et Chrome */
-    -o-transform:rotate(-10deg); /* Opera */
-  }
-</style>
-
 <div class="container">
-  <h2 class="event-list-title text-center">Evénements à venir</h2>
+  <h2 class="events-list-title text-center">Evénements à venir</h2>
   <div class="row">
     <div class="col-xs-3">
       <ul class="nav index-menu">
-        <li><%= link_to 'Tous' %></li>
-        <li><%= link_to 'Publics' %></li>
-        <li><%= link_to 'Privés' %></li>
-        <li><%= link_to 'Refusés' %></li>
-        <li><%= link_to "Créer un événement", '', class: "btn btn-primary" %></li>
+        <li><%= link_to 'Tous', events_path %></li>
+        <li><%= link_to 'Publics', events_path(filter: 'public') %></li>
+        <li><%= link_to 'Privés', events_path(filter: 'private') %></li>
+        <li><%= link_to 'Refusés', events_path(filter: 'refused') %></li>
+        <li><%= link_to "Créer un événement", new_event_path, class: "btn btn-primary" %></li>
       </ul>
     </div>
     <div class="col-xs-9">
-      <div class="event-date">
-        <div>
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-          <%= false ? "Aujourd'hui" : "Demain" %>
-        </div>
-      </div>
-      <div class="event">
-        <div class="event-content">
-          <div class="event-time">
-            <h4>12:00</h4>
+      <h4 class="events-counter">Résultats: <%= @events.count %></h4>
+      <% today = DateTime.now.to_date %>
+      <% @events.each do |date, events| %>
+        <div class="events-date-bg">
+          <div class="events-date">
+            <div>
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <% if date.to_date == today %>
+                Aujourd'hui
+              <% elsif date.to_date == (today + 1.days) %>
+                Demain
+              <% else %>
+                <%= date.strftime('%e %B %Y') %>
+              <% end %>
+            </div>
           </div>
-          <%= image_tag 'chicken-avatar-green.png', class: 'event-avatar',
-            data: {toggle: 'tooltip'}, title: 'organisé par Coline' %>
-          <h3 class="event-type">Fun run</h3>
-          <div class="event-rdv">
-            <i class="fa fa-map-marker" aria-hidden="true"></i>
-            <div>meeting point bla blablabla</div>
-          </div>
-          <div class="event-validations">
-            <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
-            <i class="fa fa-times" data-toggle="tooltip" title="Je n'y vais pas"></i>
-            <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
-          </div>
+          <% events.each do |event| %>
+            <div class="events">
+              <div class="events-content">
+                <div class="events-time">
+                  <h4><%= event.datetime.strftime('%R') %></h4>
+                </div>
+                <% if event.user.photo? %>
+                  <%= cl_image_tag event.user.photo.path, class: 'events-avatar' %>
+                <% else %>
+                  <%= image_tag 'chicken-avatar-green.png', class: 'events-avatar' %>
+                <% end %>
+                <%= link_to event.type_of, event_path(event), class: 'events-type' %>
+                <div class="events-rdv">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <div><%= event.meeting_point %></div>
+                </div>
+                <div class="events-validations">
+                  <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
+                  <i class="fa fa-times" data-toggle="tooltip" title="Je n'y vais pas"></i>
+                  <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
+                </div>
+              </div>
+              <div class='events-bar'>
+                <% if event.private %>
+                  <div class="events-status-private">Privé</div>
+                <% else %>
+                  <div class="events-status">Public</div>
+                <% end %>
+                <div class="events-owner">organisé par <%= event.user.first_name.capitalize %></div>
+              </div>
+            </div>
+          <% end %>
         </div>
-        <div class='event-bar'>
-          <div class="event-status">Privé</div>
-          <div class="event-owner">organisé par Coline</div>
-        </div>
-      </div>
+      <% end %>
     </div>
-    <nav aria-label="Page navigation">
-      <ul class="pagination">
-        <li>
-          <a href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li>
-          <a href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
   </div>
-
-
-
-
-
-
-
-
-  <%# if @events == [] && @my_events == [] %>
-<!--       <h1>Sorry there is no public event at the moment ! </h1>
-      <h1>
-        Go on poules create yours !
-        <%#= image_tag "chicken.png", width: 80 %>
-      </h1> -->
-  <%# else %>
-    <div class="text-center padded">
-      <h1 id= "events">Events</h1>
-    </div>
-    <div>
-      <% @events.each do |event| %>
-        <div id="event_<%= event.id %>">
-          <%= render 'event', event: event %>
-        </div>
-      <% end %>
-    </div>
-
-    <div>
-      <% @my_events.each do |event| %>
-        <div id="event_<%= event.id %>">
-          <%= render 'event', event: event %>
-        </div>
-      <% end %>
-    </div>
-
-  <%# end %>
 </div>
 
 
