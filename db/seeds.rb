@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Event.destroy_all
+Participation.destroy_all
 User.destroy_all
 Company.destroy_all
 
@@ -59,7 +60,7 @@ attributes = [
     user_id: user_2.id,
     type_of: "Endurance run",
     datetime: DateTime.new(2016, 9, 30),
-    private: false,
+    private: true,
     description: "Let's run run run",
     address: "Place de la Bastille",
     meeting_point: "Place de la Bastille",
@@ -68,6 +69,8 @@ attributes = [
 ]
 
 attributes.each do |attribute|
-  Event.create!(attribute)
-  puts " l'event a bien été créé"
+  event = Event.create!(attribute)
+  Participation.create!(status: "going", user_id: attribute[:user_id], event_id: event.id)
+  puts " l'event et la participation ont bien été créés"
 end
+
