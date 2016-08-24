@@ -95,7 +95,7 @@
 .product-upvote:hover .product-arrow { border-bottom: 9px solid #5898f1 }
 
 .custom-icon {
-  font-size:10px;
+  font-size:15px;
   background:#fff;
   background:#fff;
   padding:30px;
@@ -103,7 +103,7 @@
   -moz-border-radius:100%;
   -o-border-radius:100%;
   border-radius:100%;
-  border:6px solid $green;
+  border:6px solid #90c1d4;
   color: grey;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.46);
   text-align:center;
@@ -128,4 +128,9 @@
 
 .pad-top {
   padding-top: 80px;
+}
+
+.size_text {
+  font-size: 30px;
+  color: #90c1d4;
 }

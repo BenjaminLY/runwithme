@@ -9,26 +9,46 @@
     </div>
     <div class="col-xs-12 col-sm-2 col-sm-offset-5 padded">
      <div class="text-center">
-        <%= link_to "Edite mon profil", edit_user_path(@user), class: 'btn-medium-full' %>
+        <%= link_to "Editer profil", edit_user_path(@user), class: 'btn-medium-full' %>
       </div>
     </div>
     <div class="col-xs-12 col-sm-2 pad-top">
-      <div class="icon-wrapper"><p class="custom-icon">Ce mois-ci :<strong> 5 évènements</strong><span class="fix-editor">&nbsp;</span></p>
+      <div class="icon-wrapper">
+      <p class="custom-icon">
+        <i class="fa fa-users" aria-hidden="true"></i>
+        Ce mois-ci :
+        <strong> 5 évènements</strong>
+        <span class="fix-editor">&nbsp;</span>
+      </p>
       </div>
     </div>
     <div class="col-xs-12 col-sm-2 pad-top">
-      <div class="icon-wrapper"><p class="custom-icon">Vitesse Moyenne : <strong>13 km/h</strong><span class="fix-editor">&nbsp;</span></p>
+      <div class="icon-wrapper">
+      <p class="custom-icon">Vitesse Moyenne :
+        <strong>13 km/h</strong>
+        <span class="fix-editor">&nbsp;</span>
+      </p>
       </div>
     </div>
     <div class="col-xs-12 col-sm-2 pad-top">
-      <div class="icon-wrapper"><p class="custom-icon">Distance parcourue : <strong>80 km</strong><span class="fix-editor">&nbsp;</span></p>
+      <div class="icon-wrapper">
+      <p class="custom-icon">
+        <i class="fa fa-map-o" aria-hidden="true"></i>
+        Distance parcourue :
+        <strong>80 km</strong>
+        <span class="fix-editor">&nbsp;</span>
+      </p>
       </div>
     </div>
     <div class="col-xs-12 col-sm-2 pad-top">
-      <div class="icon-wrapper"><p class="custom-icon">Temps couru : <strong>800 heures</strong><span class="fix-editor">&nbsp;</span></p>
+      <div class="icon-wrapper">
+      <p class="custom-icon">Temps couru :
+        <strong>800 heures</strong>
+        <span class="fix-editor">&nbsp;</span>
+      </p>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-2 simple-calendar">
+    <div class="col-xs-12 col-sm-1 col-sm-offset-1 simple-calendar">
      <%= month_calendar events: @user.events_as_participant do |date, events| %>
         <%= date.strftime("%e") %>
         <% events.each do |event| %>
@@ -42,9 +62,9 @@
       <% end %>
     </div>
     <div class="col-xs-12 col-sm-12">
-      <p>
+      <p class="text-center size_text">
         <i class="fa fa-calendar" aria-hidden="true"></i>
-       Mes evenements
+        Mes évènements
       </p>
       <div>
         <% @user.events_as_participant .each do |event| %>
