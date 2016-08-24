@@ -57,18 +57,18 @@
           <div class="event-details">
             <div class="description">
               <div>
-                <h4>Lieu de rendez-vous </h4>
+                <h4>Lieu du rendez-vous </h4>
                 <p><%= @event.meeting_point %></p>
               </div>
               <div>
                 <% unless @event.address.blank? %>
-                  <h4><%= "Adresse de l'evenement" %></h4>
+                  <h4><%= "Adresse de l'activité" %></h4>
                   <p><%= @event.address %></p>
                 <% end %>
               </div>
               <div>
                 <% unless @event.description.blank? %>
-                  <h4><%= "Description de l'evenement" %></h4>
+                  <h4><%= "Description de l'activité" %></h4>
                   <p><%= @event.description %></p>
                 <% end %>
               </div>
@@ -82,23 +82,62 @@
               </div>
             </div>
             <div class="participation">
-              <div class="going">
-                <h4>Going</h4>
-                <%= link_to event_participations_path(@event, status: "going"), method: :post do %>
-                  <i class="fa fa-plus" aria-hidden="true"></i>
-                <% end %>
-                <div>
-                  
+              <div class="participation_all">
+                <div class="participation_header">
+                  <div><h4>J'y vais</h4></div>
+                  <div class="participation_icone">
+                    <% if @event.joined?(current_user) %>
+                      <%= link_to participation_path(@event.participations.find_by(user: current_user), status: "going"), method: :patch,remote: true do %>  
+                        <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
+                      <% end %>
+                    <% else %>
+                       <%= link_to event_participations_path(@event, status: "going"), method: :post do %>
+                        <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
+                      <% end %> 
+                    <% end %>
+                  </div>
                 </div>
-                <div class="going_avatar">
+                <div class="particpation_avatar">
                   
                 </div>
               </div>
-              <div>
-                
+              <div class="participation_all">
+                <div class="participation_header">
+                  <div><h4>Peut être</h4></div>
+                  <div class="participation_icone">
+                    <% if @event.joined?(current_user) %>
+                      <%= link_to participation_path(@event.participations.find_by(user: current_user), status: "maybe"), method: :patch, remote: true do %>
+                        <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
+                      <% end %>
+                    <% else %>
+                      <%= link_to event_participations_path(@event, status: "maybe"), method: :post do %>
+                        <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
+                      <% end %>
+                    <% end %> 
+                  </div>
+                </div>
+                <div class="particpation_avatar">
+                  
+                </div>
               </div>
-              <div>
-                
+              <div class="participation_all">
+                <div class="participation_header">
+                  <div><h4>Je n'y vais pas</h4></div>
+                  <div class="participation_icone">
+                    <% if @event.joined?(current_user) %>
+                      <%= link_to participation_path(@event.participations.find_by(user: current_user), status: "can t go"), method: :patch, remote: true do %>
+                        <i class="fa fa-times" data-toggle="tooltip" title="Je n'y vais pas"></i>
+                      <% end %> 
+                    <% else %>
+                      <%= link_to event_participations_path(@event, status: "can t go"), method: :post do %>
+                        <i class="fa fa-question" data-toggle="tooltip" title="Je n'y vais pas"></i>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="particpation_avatar">
+                  
+                </div>
               </div>
               <div>
                 

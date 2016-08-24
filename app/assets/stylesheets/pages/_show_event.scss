@@ -33,6 +33,19 @@
 			border: 3px solid #FFEEE5;
 			padding: 20px;
 			border-radius: 12px;
+			.participation_header {
+				display: flex;
+				justify-content: space-between;
+				.participation_icone {
+					width: 40px;
+					text-align: center
+				}
+			}
+			.participation_all {
+				border: 2px dotted #FFEEE5;
+				border-radius: 12px;
+				padding: 10px;
+			}
 
 		}
 	}

@@ -6,7 +6,11 @@ class EventPolicy < ApplicationPolicy
   end
 
   def show?
-  	true
+    if record.joined?(user) || record.private == false
+  	   true
+    else
+      false
+    end
   end
   def create?
     true # tout le monde peut créer un event
