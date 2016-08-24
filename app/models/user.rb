@@ -21,4 +21,14 @@ class User < ApplicationRecord
   def private_events
     self.events_as_participant.select { |event| event.private }
   end
+
+  def refused_events
+    events = []
+    self.participations.each do |participation|
+      if participation.status == "can t go"
+        events << participation.event
+      end
+    end
+    events
+  end
 end

@@ -12,37 +12,39 @@
     </div>
     <div class="col-xs-9">
       <h4 class="events-counter">Résultats: <%= @events.count %></h4>
-      <div class="events-date">
-        <div>
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-          <%= false ? "Aujourd'hui" : "Demain" %>
-        </div>
-      </div>
-      <div class="events">
-        <div class="events-content">
-          <div class="events-time">
-            <h4>12:00</h4>
-          </div>
-          <%= image_tag 'chicken-avatar-green.png', class: 'events-avatar',
-            data: {toggle: 'tooltip'}, title: 'organisé par Coline' %>
-          <h3 class="events-type">Fun run</h3>
-          <div class="events-rdv">
-            <i class="fa fa-map-marker" aria-hidden="true"></i>
-            <div>meeting point bla blablabla</div>
-          </div>
-          <div class="events-validations">
-            <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
-            <i class="fa fa-times" data-toggle="tooltip" title="Je n'y vais pas"></i>
-            <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
+      <% @events.each do |event| %>
+        <div class="events-date">
+          <div>
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            <%= false ? "Aujourd'hui" : "Demain" %>
           </div>
         </div>
-        <div class='events-bar'>
-          <div class="events-status">Privé</div>
-          <div class="events-owner">organisé par Coline</div>
+        <div class="events">
+          <div class="events-content">
+            <div class="events-time">
+              <h4>12:00</h4>
+            </div>
+            <%= image_tag 'chicken-avatar-green.png', class: 'events-avatar',
+              data: {toggle: 'tooltip'}, title: 'organisé par Coline' %>
+            <h3 class="events-type">Fun run</h3>
+            <div class="events-rdv">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <div>meeting point bla blablabla</div>
+            </div>
+            <div class="events-validations">
+              <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
+              <i class="fa fa-times" data-toggle="tooltip" title="Je n'y vais pas"></i>
+              <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
+            </div>
+          </div>
+          <div class='events-bar'>
+            <div class="events-status">Privé</div>
+            <div class="events-owner">organisé par Coline</div>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
-    <nav aria-label="Page navigation">
+    <!-- <nav aria-label="Page navigation">
       <ul class="pagination">
         <li>
           <a href="#" aria-label="Previous">
@@ -60,7 +62,7 @@
           </a>
         </li>
       </ul>
-    </nav>
+    </nav> -->
   </div>
 
 
@@ -77,9 +79,6 @@
         <%#= image_tag "chicken.png", width: 80 %>
       </h1> -->
   <%# else %>
-    <div class="text-center padded">
-      <h1 id= "events">Events</h1>
-    </div>
     <div>
       <% @public_events.each do |event| %>
         <div id="event_<%= event.id %>">

@@ -66,11 +66,12 @@
     font-size: 20px;
   }
   .events-validations {
-    flex: 0 0 20%;
+    flex: 0 0 15%;
     font-size: 30px;
     display: flex;
-    justify-content: space-around;
-    margin-right: 35px;
+    justify-content: space-between;
+    margin-right: 50px;
+    margin-left: 10px;
   }
   .validation {
     flex: 0 0 auto;

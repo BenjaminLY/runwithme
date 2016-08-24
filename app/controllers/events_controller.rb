@@ -9,6 +9,8 @@ class EventsController < ApplicationController
     elsif params[:filter] == 'private'
       # @events = policy_scope(Event).my_private_events(current_user)
       @events = current_user.private_events
+    elsif params[:filter] == 'refused'
+      @events = current_user.refused_events
     else
       @events = policy_scope(Event).public + current_user.private_events
     end
