@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  belongs_to :company
   has_many :events, dependent: :destroy
   has_many :participations, dependent: :destroy
   has_many :messages, dependent: :destroy
