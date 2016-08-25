@@ -1,12 +1,16 @@
 class EventPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope
+      scope.order(datetime: :asc)
     end
   end
 
   def show?
-  	true
+    if record.joined?(user) || record.private == false
+  	   true
+    else
+      false
+    end
   end
   def create?
     true # tout le monde peut créer un event
@@ -26,6 +30,6 @@ class EventPolicy < ApplicationPolicy
   private
 
   def is_user_organizer?
-    record.user == user 
-  end 
+    record.user == user
+  end
 end

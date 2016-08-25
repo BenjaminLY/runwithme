@@ -1,5 +1,6 @@
 @import "home";
 @import "login";
+@import "show_event";
 
 .pad {
   background-color: #ffffff;
@@ -27,4 +28,9 @@
   color: #90c1d4;
   font-weight:  bold;
   font-size: 50px;
+}
+
+a {
+  font-size: 30px;
+  color: #4C4C4C;
 }

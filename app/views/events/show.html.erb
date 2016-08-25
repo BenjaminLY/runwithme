@@ -1,84 +1,164 @@
-<% if @event.photo%>
-  <div class= "banner-event" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path @event.photo.path%>);">
-  <div class= "banner-event" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("running.jpg");"></div>
-<% end %>
+<% case @event.type_of %>
+  <% when "Interval run"%>
+    <% photo = "interval.jpg" %>
+  <% when "Endurance run"%>
+    <% photo = "endurance.jpg" %>
+  <% when "Cool run" %>
+    <% photo = "cool_run.jpg" %>
+  <% when "Chatting run" %>
+    <% photo = "chatting_run.jpg" %>
+  <% when "Speed walk" %>
+    <% photo = "speed_walk.jpg" %>
+  <% else %>
+    <% photo = "pleasant_walk.jpg" %>
+  <% end %> 
+  <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path photo, width: 600, height: 300, crop: :fill %>);"></div>
 
-  <div class="container padded pad">
-    <div class="row">
-      <div class="text-center">
-        <h1 class= "text-center">
-          <%= @event.type_of %> -
-          <% if @event.time_goal %>
-            <%= @event.time_goal_to_s %>
-          <% end %>
-          <% if @event.trail_goal %>
-            <%= @event.trail_goal %> km
-          <% end %>
-        </h1>
-        <div>
-          <%= image_tag "joe_pitch.jpg", class: "avatar-xlarge"%>
-          <p>JoeM</p>
-        </div>
-        <!-- <%# @event.user.email %> -->
-      </div>
-      <div class="col-sm-4">
-        <p class = "text-center">
-          <strong>
-            <i class="fa fa-map-marker color" aria-hidden="true"></i>
-            <%= @event.meeting_point %>
-            <% if @event.address%>
-              <%= @event.address%>
-            <% end %>
-          </strong>
-        </p>
-      </div>
-      <div class="col-sm-4">
-        <p class = "text-center">
-          <strong>
-            <i class="fa fa-calendar color" aria-hidden="true"></i>
-            <%=@event.datetime.strftime('%e %B %Y') %>
-          </strong>
-        </p>
-      </div>
-      <div class="col-sm-4">
-        <p class = "text-center">
-          <strong>
-          <i class="fa fa-clock-o color" aria-hidden="true"></i>
-            <%= @event.datetime.strftime('%H:%M') %>
-          </strong>
-        </p>
-      </div>
-    </div>
+  <div class="container">
     <div class="row">
       <div class="col-xs-12">
-        <h3 class = "text-center">
-          Event :
-          <% if @event.private %>
-            <%= "private" %>
-          <% else %>
-            <%= "public" %>
-          <% end  %>
-        </h3>
-        <div class="text-center padded">
-          <h3>Description :</h3>
-          <p>
-            <% if @event.description %>
-              <%= @event.description %>
-            <% end %>
-          </p>
+        <div class="event">
+          <div class="event_header">
+            <div class='event-date'>
+              <div>
+                <h3> <%= @event.datetime.strftime('%e %B %Y') %> </h3>   
+              </div>
+              <div>
+                <h3> <%= @event.datetime.strftime('%H:%M') %> </h3> 
+              </div>
+              <div class="public_private">
+              <% if @event.private %>
+                <%= "PRIVE" %>
+              <% else %>
+                <%= "PUBLIC" %>
+              <% end  %>           
+              </div>
+            </div> 
+            <div class="event_type">
+              <div>
+                <h3>
+                 <%= @event.type_of %> -
+                   <% if @event.time_goal %>
+                     <%= @event.time_goal_to_s %>
+                   <% end %>
+                   <% if @event.trail_goal %>
+                      <%= @event.trail_goal %> km
+                   <% end %>
+                </h3>
+              </div>
+              <div>
+                <h3> Organisé par <%= @event.user.first_name %> <%= @event.user.last_name  %></h3>
+              </div>
+            </div> 
+            <div>
+              <%= render "users/avatar", user: @event.user %>
+            </div>
+          </div>
+          <div class="event-details">
+            <div class="description">
+              <div>
+                <h4>Lieu du rendez-vous </h4>
+                <p><%= @event.meeting_point %></p>
+              </div>
+              <div>
+                <% unless @event.address.blank? %>
+                  <h4><%= "Adresse de l'activité" %></h4>
+                  <p><%= @event.address %></p>
+                <% end %>
+              </div>
+              <div>
+                <% unless @event.description.blank? %>
+                  <h4><%= "Description de l'activité" %></h4>
+                  <p><%= @event.description %></p>
+                <% end %>
+              </div>
+              <div>
+                <% unless @event.messages.empty? %>
+                  <h4><%= "Messages" %></h4>
+                  <% @event.messages.each do |message| %>
+                    <%= message %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+            <div class="participation">
+              <div class="participation_all">
+                <div class="participation_header">
+                  <div><h4>J'y vais</h4></div>
+                  <div class="participation_icone">
+                    <% if @event.joined?(current_user) %>
+                      <%= link_to participation_path(@event.participations.find_by(user: current_user), status: "going"), method: :patch,remote: true do %>  
+                        <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
+                      <% end %>
+                    <% else %>
+                       <%= link_to event_participations_path(@event, status: "going"), method: :post do %>
+                        <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
+                      <% end %> 
+                    <% end %>
+                  </div>
+                </div>
+                <div class="particpation_avatar">
+                  
+                </div>
+              </div>
+              <div class="participation_all">
+                <div class="participation_header">
+                  <div><h4>Peut être</h4></div>
+                  <div class="participation_icone">
+                    <% if @event.joined?(current_user) %>
+                      <%= link_to participation_path(@event.participations.find_by(user: current_user), status: "maybe"), method: :patch, remote: true do %>
+                        <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
+                      <% end %>
+                    <% else %>
+                      <%= link_to event_participations_path(@event, status: "maybe"), method: :post do %>
+                        <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
+                      <% end %>
+                    <% end %> 
+                  </div>
+                </div>
+                <div class="particpation_avatar">
+                  
+                </div>
+              </div>
+              <div class="participation_all">
+                <div class="participation_header">
+                  <div><h4>Je n'y vais pas</h4></div>
+                  <div class="participation_icone">
+                    <% if @event.joined?(current_user) %>
+                      <%= link_to participation_path(@event.participations.find_by(user: current_user), status: "can t go"), method: :patch, remote: true do %>
+                        <i class="fa fa-times" data-toggle="tooltip" title="Je n'y vais pas"></i>
+                      <% end %> 
+                    <% else %>
+                      <%= link_to event_participations_path(@event, status: "can t go"), method: :post do %>
+                        <i class="fa fa-question" data-toggle="tooltip" title="Je n'y vais pas"></i>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="particpation_avatar">
+                  
+                </div>
+              </div>
+              <div>
+                
+              </div>
+              <h4>Participations </h4>
+              <ul>
+                <% @event.participations.each do |participation| %>
+                  <li>
+                    <%= participation.status %> -
+                    <%= participation.user.first_name %>
+                    <%= participation.user.last_name %>
+                  </li>
+                <% end %>
+              </ul>     
+            </div>
+          </div>
         </div>
-        <div class="text-center padded">
-          <h3>Participations :</h3>
-          <ul>
-              <% @event.participations.each do |participation| %>
-            <li>
-              <%= participation.status %> -
-              <%= participation.user.first_name %>
-              <%= participation.user.last_name %>
-            </li>
-              <% end %>
-          </ul>
-        </div>
+        
+
+
+
         <div class="text-center padded">
           <%= link_to "Back to events", events_path, class: "btn-medium-full" %>
           <%= link_to "Edit my event", edit_event_path(@event), class: "btn-medium-full" %>
@@ -90,6 +170,9 @@
       </div>
     </div>
   </div>
+
+
+
 
   <% content_for :after_js do %>
     <script>
@@ -108,5 +191,4 @@
       });
     </script>
   <% end %>
-</div>
 
