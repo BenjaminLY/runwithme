@@ -1,7 +1,7 @@
 <div class="wrapper-grey">
   <div class="container">
     <div class="row">
-      <div class =" pad-top">
+      <div class =" pad-top-more">
         <div class="col-xs-12 col-sm-1 simple-calendar pad-top margin-chevron">
           <%= month_calendar events: @user.events_as_participant do |date, events| %>
             <%= date.strftime("%e") %>
@@ -16,14 +16,13 @@
           <% end %>
         </div>
         <div class="col-xs-12 col-sm-2">
-          <p>
-            <img src="http://www.reputatiolab.com/wp-content/uploads/2015/01/logo-societe-generale-1024x1007.jpg", class="avatar pad-logo-company">
-          </p>
           <%= render 'avatar', user: @user %>
         </div>
         <div class="col-xs-12 col-sm-3">
           <h2 class="text-center"><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h2>
-          <h3 class="text-center"><%= @user.job_title.capitalize %></h3>
+          <h3 class="text-center"><%= @user.job_title.capitalize %> at
+            <!-- <img src="http://www.reputatiolab.com/wp-content/uploads/2015/01/logo-societe-generale-1024x1007.jpg", class="avatar pad-logo-company"> -->
+          </h3>
           <h4 class="pad-name-company pad-bot">
             Société générale
           </h4>
@@ -104,11 +103,11 @@
       </div>
       <div class="triangle_inside_line pad-bot" id="triangle_show"></div>
       <div class="events_to_show" style="display:none;">
-         <% @user.events_as_participant .each do |event| %>
-        <div id="event_<%= event.id %>">
-          <%= render 'events/event', event: event %>
-        </div>
-       <% end %>
+        <% @user.events_as_participant.each do |event| %>
+          <div class="events" id="event_<%= event.id %>">
+            <%= render 'events/event', event: event %>
+          </div>
+        <% end %>
       </div>
     </div>
       <div class="col-xs-12 col-sm-10">
@@ -122,8 +121,8 @@
         </div>
         <div class="events_where_participate" style="display:none;">
           <% @user.events_as_participant .each do |event| %>
-          <div id="event_<%= event.id %>">
-          <%= render 'events/event_2', event: event %>
+          <div class="events" id="event_<%= event.id %>">
+          <%= render 'events/event', event: event %>
           </div>
           <% end %>
         </div>
