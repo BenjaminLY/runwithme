@@ -78,7 +78,7 @@
     <div><h5>Postez vos selfies pris pendant l'effort!</h5></div>
       <%= simple_form_for(@event) do |f| %>
       <%= f.input :photo, label: false, as: :attachinary  %>  
-      <%= f.button :submit, class: "btn-medium-full" %>
+      <%= f.button :submit, value: 'false', class: "btn-medium-full" %>
       <% end %>
     </div>  
   </div>

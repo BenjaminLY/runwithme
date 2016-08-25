@@ -27,6 +27,14 @@ class EventPolicy < ApplicationPolicy
      is_user_organizer?
   end
 
+  def edit_pictures?
+    true
+  end
+
+  def add_pictures?
+    true
+  end
+
   private
 
   def is_user_organizer?
