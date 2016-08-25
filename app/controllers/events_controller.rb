@@ -35,6 +35,7 @@ class EventsController < ApplicationController
   end
 
   def create
+    raise
     @event = Event.new(event_params)
     @event.user = current_user
     @participation = Participation.new(status: "going")
@@ -65,7 +66,7 @@ class EventsController < ApplicationController
   end
 
   def add_pictures
-    @event.update(event_picture) 
+    @event.update(event_picture)
     redirect_to event_path(@event)
   end
 
@@ -82,7 +83,7 @@ class EventsController < ApplicationController
   end
 
   def event_picture
-    params.require(:event).permit(photos: []) 
+    params.require(:event).permit(photos: [])
   end
 
 end
