@@ -103,11 +103,11 @@
       </div>
       <div class="triangle_inside_line pad-bot" id="triangle_show"></div>
       <div class="events_to_show" style="display:none;">
-         <% @user.events_as_participant .each do |event| %>
-        <div id="event_<%= event.id %>">
-          <%= render 'events/event', event: event %>
-        </div>
-       <% end %>
+        <% @user.events_as_participant.each do |event| %>
+          <div class="events" id="event_<%= event.id %>">
+            <%= render 'events/event', event: event %>
+          </div>
+        <% end %>
       </div>
     </div>
       <div class="col-xs-12 col-sm-10">
@@ -121,7 +121,7 @@
         </div>
         <div class="events_where_participate" style="display:none;">
           <% @user.events_as_participant .each do |event| %>
-          <div id="event_<%= event.id %>">
+          <div class="events" id="event_<%= event.id %>">
           <%= render 'events/event', event: event %>
           </div>
           <% end %>
