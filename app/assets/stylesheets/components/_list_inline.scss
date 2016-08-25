@@ -107,9 +107,11 @@
   -webkit-transition: 0.1s;
   transition: 0.1s;
   opacity: 0.8;
+  cursor: pointer;
 }
 .custom-icon:hover {
   background:#fff;
+  cursor: pointer;
 }
 .fix-editor {
   display:none;
@@ -164,4 +166,13 @@
 
 .pad-name-company {
   margin-left: 20px;
+}
+
+.wrapper-grey {
+background-color: #fff;
+}
+
+.container-top {
+  border-radius: 50px;
+  background-color: blue;
 }
