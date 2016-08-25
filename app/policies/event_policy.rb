@@ -1,7 +1,7 @@
 class EventPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope
+      scope.order(datetime: :asc)
     end
   end
 
@@ -38,6 +38,6 @@ class EventPolicy < ApplicationPolicy
   private
 
   def is_user_organizer?
-    record.user == user 
-  end 
+    record.user == user
+  end
 end

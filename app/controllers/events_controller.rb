@@ -2,8 +2,21 @@ class EventsController < ApplicationController
   before_action :set_event, only: [ :show, :edit, :update, :destroy, :edit_pictures, :add_pictures ]
 
   def index
-    @events = policy_scope(Event).where(private: false)
-    @my_events = Event.my_private_events(current_user)
+    @public_events = policy_scope(Event).where(private: false)
+    @my_private_events = policy_scope(Event).my_private_events(current_user)
+    if params[:filter] == 'public'
+      @events = policy_scope(Event).public
+    elsif params[:filter] == 'private'
+      # @events = policy_scope(Event).my_private_events(current_user)
+      @events = current_user.private_events
+    elsif params[:filter] == 'refused'
+      @events = current_user.refused_events
+    else
+      @events = policy_scope(Event).public + current_user.private_events
+      @events.sort_by! { |ev| ev[:datetime].to_i }
+    end
+    # @events = @events.group_by(&:datetime)
+    @events = @events.group_by{ |e| e.datetime.to_date }
   end
 
   def show

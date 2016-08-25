@@ -37,16 +37,16 @@ class Event < ApplicationRecord
     self.participations.map(&:user).include?(user)
   end
 
-  def self.my_private_events(user)
-    private_events = Event.where(private: true)
-    my_private_events =[]
-    private_events.each do |event|
-      if event.joined?(user)
-        my_private_events << event
-      end
-    end
-    return my_private_events
+  def self.public
+    Event.where(private: false)
   end
 
+  def self.my_private_events(user)
+    events = Event.where(private: true)
+    events.map do |event|
+      event.joined?(user)
+    end
+    events
+  end
 end
 

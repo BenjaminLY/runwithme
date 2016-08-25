@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # get "events/:id/edit_pictures" => "events#edit_pictures", as: "edit_pictures"
   # patch "events/:id" => "events#add_pictures"
-  resources :events do 
-  	resources :participations, only: [:create]
+  
+  resources :events do
+    resources :participations, only: [:create]
   end
   get '/profile' => 'users#profile'
   resources :users, only: [ :edit, :update, :destroy ]
