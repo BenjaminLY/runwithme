@@ -95,19 +95,18 @@
 .product-upvote:hover .product-arrow { border-bottom: 9px solid #5898f1 }
 
 .custom-icon {
-  font-size:15px;
-  background:#fff;
-  background:#fff;
-  padding:30px;
-  border-radius:100%;
-  border:6px solid #90c1d4;
+  border-radius: 50%;
   color: grey;
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.46);
-  text-align:center;
-  display:table-cell;
-  vertical-align:middle;
-  width: 175px;
-  height: 158px;
+  background-color: #fff;
+  background-image: -webkit-linear-gradient(top, #fff, #ddd);
+  border: 4px solid #90c1d4;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-top: 24px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  opacity: 0.8;
 }
 .custom-icon:hover {
   background:#fff;
@@ -129,7 +128,7 @@
 }
 
 .pad-left {
-  padding-left: 320px;
+  padding-left: 350px;
 }
 
 .size_text {
@@ -153,10 +152,16 @@
   border-top: 20px solid #90c1d4;
   cursor: pointer;
 }
-.container-top {
-  // background-color: #90c1d4;
+
+.margin-chevron {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-.stats {
-  // background-color: $orange;
+.pad-logo-company {
+  margin-left: 30px;
+}
+
+.pad-name-company {
+  margin-left: 20px;
 }

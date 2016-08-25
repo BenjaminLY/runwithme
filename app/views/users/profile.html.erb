@@ -13,9 +13,9 @@
       </div>
       <div class="col-xs-12 col-sm-1 col-sm-offset-5">
         <p>
-          <img src="http://www.reputatiolab.com/wp-content/uploads/2015/01/logo-societe-generale-1024x1007.jpg", class="avatar-large">
+          <img src="http://www.reputatiolab.com/wp-content/uploads/2015/01/logo-societe-generale-1024x1007.jpg", class="avatar-large pad-logo-company">
         </p>
-        <h3>
+        <h3 class="pad-name-company">
           Société générale
         </h3>
       </div>
@@ -23,19 +23,21 @@
     <div class="col-xs-12 col-sm-9">
       <div class="stats">
         <h3 class="pad-left pad-top">Vos Stats</h3>
-        <div class="col-xs-12 col-sm-2">
+        <div class="col-xs-12 col-sm-3">
           <div class="icon-wrapper">
           <div class="custom-icon">
            <i class="fa fa-users" aria-hidden="true"></i>
             <p>
               Participations
-              <strong> 5 évènements</strong>
               <span class="fix-editor">&nbsp;</span>
+            </p>
+            <p>
+              <strong> 5 évènements</strong>
             </p>
             </div>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-2">
+        <div class="col-xs-12 col-sm-3">
           <div class="icon-wrapper">
             <div  class="custom-icon">
               <i class="fa fa-users" aria-hidden="true"></i>
@@ -48,26 +50,28 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-2">
+        <div class="col-xs-12 col-sm-3">
           <div class="icon-wrapper">
             <div class="custom-icon">
               <i class="fa fa-map-o" aria-hidden="true"></i>
               <p>
                 Distance parcourue
-                <strong>80 km</strong>
                 <span class="fix-editor">&nbsp;</span>
               </p>
+                <strong>80 km</strong>
             </div>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-2">
+        <div class="col-xs-12 col-sm-3">
           <div class="icon-wrapper">
             <div class="custom-icon">
              <i class="fa fa-map-o" aria-hidden="true"></i>
               <p>
                 Temps couru
-                <strong>800 heures</strong>
                 <span class="fix-editor">&nbsp;</span>
+              </p>
+              <p>
+                <strong>800 heures</strong>
               </p>
             </div>
           </div>
@@ -75,7 +79,7 @@
       </div>
     </div>
     <div class="container-calendar">
-      <div class="col-xs-12 col-sm-1 simple-calendar">
+      <div class="col-xs-12 col-sm-1 simple-calendar pad-top margin-chevron">
        <%= month_calendar events: @user.events_as_participant do |date, events| %>
           <%= date.strftime("%e") %>
           <% events.each do |event| %>
