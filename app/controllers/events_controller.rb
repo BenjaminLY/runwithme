@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [ :show, :edit, :update, :destroy, :edit_pictures, :add_pictures ]
+  before_action :set_event, only: [ :show, :edit, :update, :destroy, :add_pictures ]
 
   def index
     @public_events = policy_scope(Event).where(private: false)
@@ -64,11 +64,9 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
-  def edit_pictures
-  end
-
   def add_pictures
     @event.update(event_picture) 
+    redirect_to event_path(@event)
   end
 
   private
@@ -80,11 +78,11 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:datetime, :private, :type_of, :description,
-      :meeting_point, :address, :time_goal, :trail_goal, :photo)
+      :meeting_point, :address, :time_goal, :trail_goal)
   end
 
   def event_picture
-    params.require(:event).permit(:photo)
+    params.require(:event).permit(photos: []) 
   end
 
 end
