@@ -1,26 +1,47 @@
 <!-- <div class="banner" style="background-image: linear-gradient(-225deg, rgba(171,207,230,0.5) 0%, rgba(0,36,61,0.3) 50%), url("<%#= image_path 'runners.jpg' %>");">  -->
-<div class="banner">
-  <div class="banner-content">
-    <h1>Ne courez plus jamais seul !</h1>
-    <p>Créez ou rejoignez des courses proposées par vos collègues de travail.</p>
-    <br>
-    <% if user_signed_in? %>
-      <%= link_to 'View events', events_path, class:"btn-medium", id: "home-page" %>
-    <% else %>
-      <%= link_to 'Se connecter', new_user_registration_path, class:"btn-medium-full" %>
-      <%#= link_to 'En savoir plus', new_user_session_path, class:"btn-medium", id: "home-page" %>
-    <% end %>
+<div class="homepage-hero-module">
+  <div class="video-container">
+    <div class="filter"></div>
+    <%= video_tag("The-Boulevard/The-Boulevard.mp4", autoplay: true, loop: true, poster: "The-Boulevard/The-Boulevard.jpg") %>
+
+       <!--  <video autoplay loop class="fillWidth">
+
+          <source src="../../app/assets/images/The-Boulevard/The-Boulevard.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+          <source src="../../app/assets/images/The-Boulevard/The-Boulevard.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+      </video>
+    <div class="poster hidden">
+      <%#= image_tag "The-Boulevard/The-Boulevard.jpg" %>
+    </div> -->
+    <div class="banner">
+      <%= render 'shared/navbar' %>
+      <div class="banner-content">
+        <h1>Ne courez plus jamais seul !</h1>
+        <p>Créez ou rejoignez des courses proposées par vos collègues de travail.</p>
+        <br>
+        <% if user_signed_in? %>
+          <%= link_to 'View events', events_path, class:"btn-medium", id: "home-page" %>
+        <% else %>
+          <%= link_to 'Se connecter', new_user_registration_path, class:"btn-medium-full" %>
+          <%#= link_to 'En savoir plus', new_user_session_path, class:"btn-medium", id: "home-page" %>
+        <% end %>
+        <a href="#shoes">
+          <i class="fa fa-angle-down pulse"></i>
+        </a>
+
+      </div>
+      <!-- <div class="text-center">  --><!-- style="position: absolute; bottom: -50px;" -->
+      <!-- <a href="#features">
+        <i class="fa fa-angle-down pulse" style="font-size: 90px; color: white;">
+        </i>
+      </a> -->
+      <!-- </div> -->
+    </div>
   </div>
 
-  <div class="text-center" style="position: absolute; bottom: -50px;">
-    <a href="#features">
-      <i class="fa fa-angle-down pulse" style="font-size: 90px; color: white;">
-      </i>
-    </a>
-  </div>
 </div>
 
-<div class="wrapper-shoes">
+
+<div class="wrapper-shoes" id="shoes">
 
   <div class= "col-xs-12 col-md-6" id="left-block">
     <div id="text-left-block">
