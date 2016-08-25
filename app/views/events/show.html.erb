@@ -71,13 +71,13 @@
                   <p><%= @event.description %></p>
                 <% end %>
               </div>
-              <div>
+              <div class="messages">
                 <% unless @event.messages.empty? %>
                   <h4><%= "Messages" %></h4>
                   <% @event.messages.each do |message| %>
-                    <div>
-                      <%= message.content %>
-                      posté par <%= message.user.first_name %> <%= message.user.last_name %>     
+                    <div class="message">
+                      <strong><%= message.user.first_name %> <%= message.user.last_name %></strong> - <%= message.created_at %>    
+                      <p><%= message.content %></p>
                     </div>
                   <% end %>
                 <% end %>
@@ -89,9 +89,9 @@
                 <% end %>
               </div>
             </div>
-            <div class="participation">
-              <%= render "events/participations", event: @event %>
-            </div>
+          </div>
+          <div class="participation">
+            <%= render "events/participations", event: @event %>
           </div>
         </div>
         
