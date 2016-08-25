@@ -1,5 +1,6 @@
 class ParticipationsController < ApplicationController
 	before_action :set_event, only: [:create]
+	before_action :set_participation, only: [:update]
 	skip_after_action :verify_authorized
 
 	def create
@@ -23,8 +24,7 @@ class ParticipationsController < ApplicationController
 	end
 
 	def update
-		@participation = Participation.find(params[:id])
-		@participation.status = params[:status]
+		@participation.update(status: params[:status])
 		@type = params[:type] || "index"
 		@event = @participation.event
 		if @participation.save
@@ -46,6 +46,10 @@ class ParticipationsController < ApplicationController
 
 	def set_event
 		@event = Event.find(params[:event_id])
+	end
+	
+	def set_participation
+		@participation = Participation.find(params[:id])
 	end
 
 end
