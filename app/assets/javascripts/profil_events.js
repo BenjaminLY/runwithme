@@ -4,7 +4,7 @@ $(document).ready(function() {
     if ( $(".events_to_show").hasClass("open") ) {
       $(".events_to_show").removeClass("open").slideUp(700);
     } else {
-      $(".events_to_show").addClass("open").slideDown(1000);
+      $(".events_to_show").addClass("open").slideDown(500);
     }
   });
 
@@ -12,8 +12,7 @@ $(document).ready(function() {
     if ( $(".events_where_participate").hasClass("open") ) {
       $(".events_where_participate").removeClass("open").slideUp(700);
     } else {
-      $(".events_where_participate").addClass("open").slideDown(1000);
+      $(".events_where_participate").addClass("open").slideDown(500);
     }
   });
-
 });

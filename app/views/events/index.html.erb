@@ -12,15 +12,15 @@
     </div>
     <div class="col-xs-9">
       <h4 class="events-counter">Résultats: <%= @events.count %></h4>
-      <% today = DateTime.now.to_date %>
+      <% today = Date.today %>
       <% @events.each do |date, events| %>
         <div class="events-date-bg">
           <div class="events-date">
             <div>
               <i class="fa fa-calendar" aria-hidden="true"></i>
-              <% if date.to_date == today %>
+              <% if date == today %>
                 Aujourd'hui
-              <% elsif date.to_date == (today + 1.days) %>
+              <% elsif date == (today + 1.days) %>
                 Demain
               <% else %>
                 <%= date.strftime('%e %B %Y') %>
@@ -28,35 +28,8 @@
             </div>
           </div>
           <% events.each do |event| %>
-            <div class="events">
-              <div class="events-content">
-                <div class="events-time">
-                  <h4><%= event.datetime.strftime('%R') %></h4>
-                </div>
-                <% if event.user.photo? %>
-                  <%= cl_image_tag event.user.photo.path, class: 'events-avatar' %>
-                <% else %>
-                  <%= image_tag 'chicken-avatar-green.png', class: 'events-avatar' %>
-                <% end %>
-                <%= link_to event.type_of, event_path(event), class: 'events-type' %>
-                <div class="events-rdv">
-                  <i class="fa fa-map-marker" aria-hidden="true"></i>
-                  <div><%= event.meeting_point %></div>
-                </div>
-                <div class="events-validations">
-                  <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
-                  <i class="fa fa-times" data-toggle="tooltip" title="Je n'y vais pas"></i>
-                  <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
-                </div>
-              </div>
-              <div class='events-bar'>
-                <% if event.private %>
-                  <div class="events-status-private">Privé</div>
-                <% else %>
-                  <div class="events-status-public">Public</div>
-                <% end %>
-                <div class="events-owner">organisé par <%= event.user.first_name.capitalize %></div>
-              </div>
+            <div class="events" id="event_<%= event.id %>">
+              <%= render 'event', event: event %>
             </div>
           <% end %>
         </div>

@@ -1,4 +1,4 @@
-<div class="navbar-wagon">
+<div class="navbar-wagon navbar-fixed-top">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo-white.png" %>
@@ -44,8 +44,8 @@
     <% else %>
 
       <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Log in"), new_user_session_path, class: "btn-medium", id: "login-btn" %>
-      <i class="fa fa-search"></i>
+      <%= link_to t(".sign_in", default: "Inscription"), new_user_session_path, class: "btn-medium", id: "login-btn" %>
+     <!--  <i class="fa fa-search"></i> -->
     <% end %>
 
   </div>

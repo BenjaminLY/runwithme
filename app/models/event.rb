@@ -31,7 +31,7 @@ class Event < ApplicationRecord
     hours = time_goal / 60
     min = time_goal % 60
     min = "0#{min}" if min < 10
-    hours == 0 ? "#{min}min" : "#{hours}h#{min}min"
+    hours == 0 ? "#{min} min" : "#{hours}h#{min} min"
   end
 
   def start_time

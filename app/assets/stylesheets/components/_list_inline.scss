@@ -1,134 +1,40 @@
-.product {
-  display: flex;
-  align-items: center;
-  padding: 30px;
-  // transition: all 0.15s ease;
-  background-color: #e2f3f9;
-  border-radius: 12px;
-  margin-bottom: 25px;
-  border: 5px solid #e2f3f9;
-  position: relative;
-
-}
-
-/* Body design */
-.product-body {
-  flex: 1 1 auto;
-}
-.product-body h3 {
-  font-weight: bold;
-  font-size: 23px;
-  margin-top: 0;
-  margin-left: 20px;
-}
-.product-body p {
-  font-weight: lighter;
-  color: #999999;
-  margin-bottom: 0;
-  margin-left : 20px;
-}
-
-/* Product image */
-.product-image {
-  border-radius: 10px;
-  margin-right: 20px;
-  width: 175px;
-}
-
-/* Upvote design */
-.product-upvote {
-  padding-right: 20px;
-  text-align: center;
-  transition: all 0.15s ease;
-  font-weight: bold;
-  font-size: 13px;
-  line-height: 20px;
-}
-
-.product-count {
-  margin: 2px 0 0;
-}
-.product-arrow {
-  transition: all 0.15s ease;
-  width: 0;
-  height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 6px solid transparent;
-  border-bottom: 9px solid black;
-  border-radius: 2px;
-  margin: auto;
-}
-
-/* Controls design */
-.product-controls {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  margin: 0px;
-}
-.product-controls a {
-  padding: 0 20px;
-  font-size: 17px;
-  color: #E6E6E6;
-}
-.product-controls a:hover {
-  color: #D3473C !important
-}
-.product-controls-hidden a {
-  color: transparent;
-  font-size: 15px;
-  transition: all 0.15s ease;
-  border-color: transparent;
-}
-
-/* Hover effects */
-.product:hover {
-  background: none;
-  cursor: pointer;
-}
-.product-upvote:hover {
-  color: #5898f1;
-  cursor: pointer;
-}
-.product:hover .product-upvote { transform: scale(1.2) }
-.product:hover .product-controls-hidden a { color: #E6E6E6 }
-.product-upvote:hover .product-arrow { border-bottom: 9px solid #5898f1 }
-
 .custom-icon {
-  font-size:15px;
-  background:#fff;
-  background:#fff;
-  padding:30px;
-  border-radius:100%;
-  border:6px solid #90c1d4;
+  border-radius: 50%;
   color: grey;
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.46);
-  text-align:center;
-  display:table-cell;
-  vertical-align:middle;
-  width: 175px;
-  height: 158px;
+  background-color: #fff;
+  background-image: -webkit-linear-gradient(top, #fff, #ddd);
+  border: 4px solid #90c1d4;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-top: 24px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  opacity: 0.8;
+  cursor: pointer;
 }
 .custom-icon:hover {
   background:#fff;
+  cursor: pointer;
 }
 .fix-editor {
   display:none;
 }
 .icon-wrapper {
   display:inline-block;
+  height: 150px;
+  width: 150px;
 }
 
 .pad-top {
-  padding-top: 80px;
+  padding-top: 30px;
 }
 .pad-bot {
   padding-bottom: 30px;
 }
 
 .pad-left {
-  padding-left: 320px;
+  padding-left: 350px;
 }
 
 .size_text {
@@ -136,7 +42,7 @@
 }
 .calendar-heading {
   display: flex;
-  margin-left: 107px;
+  margin-left: 5px;
   justify-content: space-between;
 }
 
@@ -144,7 +50,7 @@
   border-bottom: 2px solid #90c1d4;
 }
 .triangle_inside_line {
-  margin-left: 551px;
+  margin-left: 445px;
   width: 0px;
   height: 0px;
   border-left: 20px solid transparent;
@@ -152,10 +58,49 @@
   border-top: 20px solid #90c1d4;
   cursor: pointer;
 }
-.container-top {
-  background-color: #90c1d4;
+
+.margin-chevron {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-.stats {
-  background-color: $orange;
+.pad-logo-company {
+  margin-left: -30px;
 }
+
+.pad-name-company {
+  margin-left: 53px;
+}
+
+// .wrapper-grey {
+// background-color: #26609C;
+// }
+
+
+.title {
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 80px;
+  // color: #fff;
+}
+
+// .title .bg {
+//   text-align: center;
+//   font-size: 60px;
+//   font-family: "Noto-bold";
+//   font-weight: bolder;
+//   text-transform: uppercase;
+//   color: #ececec;
+//   z-index: -1;
+//   position: absolute;
+//   left: 0;
+//   right: 0;
+//   overflow: hidden;
+//   white-space: nowrap;
+// }
+
+.line-border-top {
+  border: 4px solid #90C1D4;
+  width: 239px;
+  margin-left: 337px;
+ }
