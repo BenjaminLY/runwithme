@@ -1,35 +1,43 @@
-<div class="events-content">
-  <div class="events-time">
-    <h4><%= event.datetime.strftime('%R') %></h4>
-  </div>
-  <% if event.user.photo? %>
-    <%= cl_image_tag event.user.photo.path, class: 'events-avatar' %>
-  <% else %>
-    <%= image_tag 'chicken-grey_1.png', class: 'events-avatar' %>
-  <% end %>
-  <%= link_to event_path(event), class: 'events-type' do %>
-    <span class="events-type-underline" >
-      <%= event.type_of %>
-      <% if event.time_goal %>
-        <%= event.time_goal_to_s %>
-      <% else %>
-        <%= event.trail_goal %> km(s)
-      <% end %>
-    </span>
-  <% end %>
-  <!-- <div class="events-rdv">
-    <i class="fa fa-map-marker" aria-hidden="true"></i>
-    <div><%= event.meeting_point %></div>
-  </div> -->
-  <div class="events-validations">
-    <%= render 'events/participation', event: event %>
-  </div>
-</div>
-<div class='events-bar'>
-  <% if event.private %>
-    <div class="events-status-private">Privé</div>
-  <% else %>
-    <div class="events-status-public">Public</div>
-  <% end %>
-  <div class="events-owner">organisé par <%= event.user.first_name.capitalize %></div>
-</div>
+
+      <% if event.joined?(current_user) %>
+        <% case event.participations.find_by(user: current_user).status %>
+          <% when "going" %>
+            <%= link_to participation_path(event.participations.find_by(user: current_user), status: "going"), method: :patch, style: "color: orange !important;",remote: true do %>
+              <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
+            <% end %>
+            <%= link_to participation_path(event.participations.find_by(user: current_user), status: "maybe"), method: :patch, remote: true do %>
+              <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
+            <% end %>
+            <%= link_to participation_path(event.participations.find_by(user: current_user), status: "can t go"), method: :patch, remote: true do %>
+              <i class="fa fa-times" data-toggle="tooltip" title="Je n'y vais pas"></i>
+            <% end %>
+          <% when "maybe" %>
+            <%= link_to participation_path(event.participations.find_by(user: current_user), status: "going"), method: :patch,remote: true do %>
+              <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
+            <% end %>
+            <%= link_to participation_path(event.participations.find_by(user: current_user), status: "maybe"), method: :patch, style: "color: orange;", remote: true do %>
+              <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
+            <% end %>
+            <%= link_to participation_path(event.participations.find_by(user: current_user), status: "can t go"), method: :patch, remote: true do %>
+              <i class="fa fa-times" data-toggle="tooltip" title="Je n'y vais pas"></i>
+            <% end %>
+          <% when "can t go" %>
+            <%= link_to participation_path(event.participations.find_by(user: current_user), status: "going"), method: :patch,remote: true do %>
+              <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
+            <% end %>
+            <%= link_to participation_path(event.participations.find_by(user: current_user), status: "maybe"), method: :patch, remote: true do %>
+              <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
+            <% end %>
+            <%= link_to participation_path(event.participations.find_by(user: current_user), status: "can t go"), method: :patch, style: "color: orange;", remote: true do %>
+              <i class="fa fa-times" data-toggle="tooltip" title="Je n'y vais pas"></i>
+            <% end %>
+          <% end %>
+        <% else %>
+          <%= link_to event_participations_path(event, status: "going"), method: :post, remote: true do %>
+            <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
+          <% end %>
+          <%= link_to event_participations_path(event, status: "maybe"), method: :post, remote: true do %>
+            <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
+          <% end %>
+        <% end %>
+

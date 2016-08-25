@@ -14,10 +14,6 @@ class Event < ApplicationRecord
   validates :meeting_point, presence: true
   validate :goal
 
-  def initialize
-    @photos = []
-    
-  end
 
   def goal
     if time_goal.nil? && trail_goal.nil?
