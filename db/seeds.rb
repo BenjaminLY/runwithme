@@ -19,7 +19,7 @@ company_3 = Company.create!(name: "Danone", address: "17 boulevard Haussmann, 75
 puts "#{company_3} a bien été créée"
 
 
-user_1 = User.create!(email: "coline@gmail.com", password: "testtest", first_name: "coline", last_name: "colnat", job_title: "Web dev", pcompany_id: company_1.id)
+user_1 = User.create!(email: "coline@gmail.com", password: "testtest", first_name: "coline", last_name: "colnat", job_title: "Web dev", company_id: company_1.id)
 puts "#{user_1} a bien été créé'"
 user_2 = User.create!(email: "benjamin@gmail.com", password: "testtest", first_name: "benjamin" , last_name: "lyphoudt", job_title: "webmaster", company_id: company_1.id)
 puts "#{user_2} a bien été créé'"
