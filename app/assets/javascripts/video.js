@@ -18,9 +18,9 @@ $( document ).ready(function() {
 
 function scaleVideoContainer() {
 
-    var height = $(window).height() + 5;
-    var unitHeight = parseInt(height) + 'px';
-    $('.homepage-hero-module').css('height',unitHeight);
+    // var height = $(window).height() + 5;
+    // var unitHeight = parseInt(height) + 'px';
+    $('.homepage-hero-module').css('height','100vh');
 
 }
 
