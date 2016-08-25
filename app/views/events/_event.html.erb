@@ -17,6 +17,23 @@
         <p> <i class="fa fa-calendar" aria-hidden="true"></i> Date: <%= event.datetime.strftime('%e %B %Y') %> Time: <%=  event.datetime.strftime('%H:%M') %></p>
       </div>
     <div class="btn-toolbar">
+<<<<<<< HEAD
+      <% if event.joined?(current_user) %>
+        <% case event.participations.find_by(user: current_user).status %>
+          <% when "going" %>
+            <%= link_to 'Going', participation_path(event.participations.find_by(user: current_user), status: "going"), method: :patch, class: 'btn-medium-full', remote: true %>
+            <%= link_to 'Maybe', participation_path(event.participations.find_by(user: current_user), status: "maybe"), method: :patch, class: 'btn-medium', remote: true %>
+            <%= link_to 'Can t go', participation_path(event.participations.find_by(user: current_user), status: "can t go"), method: :patch, class: 'btn-medium', remote: true %>
+          <% when "maybe" %>
+            <%= link_to 'Going', participation_path(event.participations.find_by(user: current_user), status: "going"), method: :patch, class: 'btn-medium', remote: true %>
+            <%= link_to 'Maybe', participation_path(event.participations.find_by(user: current_user), status: "maybe"), method: :patch, class: 'btn-medium-full', remote: true %>
+            <%= link_to 'Can t go', participation_path(event.participations.find_by(user: current_user), status: "can t go"), method: :patch, class: 'btn-medium', remote: true %>
+
+          <% when "can t go" %>
+            <%= link_to 'Going', participation_path(event.participations.find_by(user: current_user), status: "going"), method: :patch, class: 'btn-medium', remote: true %>
+            <%= link_to 'Maybe', participation_path(event.participations.find_by(user: current_user), status: "maybe"), method: :patch, class: 'btn-medium', remote: true %>
+            <%= link_to 'Can t go', participation_path(event.participations.find_by(user: current_user), status: "can t go"), method: :patch, class: 'btn-medium-full', remote: true %>
+=======
         <% if event.joined?(current_user) %>
           <% case event.participations.find_by(user: current_user).status %>
             <% when "going" %>
@@ -57,6 +74,7 @@
           <%= link_to event_participations_path(event, status: "maybe"), method: :post do %>
             <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
           <% end %>
+>>>>>>> 7f2a39767c1c8f520338dda54b7c5b9ac322aa05
         <% end %>
     </div>
     <%#= link_to '', event_path(event), class: 'card-link'%>
