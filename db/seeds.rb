@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Event.destroy_all
+Participation.destroy_all
 User.destroy_all
 Company.destroy_all
 
@@ -20,11 +21,11 @@ puts "#{company_3} a bien été créée"
 
 user_1 = User.create!(email: "coline@gmail.com", password: "testtest", first_name: "coline", last_name: "colnat", job_title: "Web dev", company_id: company_1.id)
 puts "#{user_1} a bien été créé'"
-user_2 = User.create!(email: "benjamin@gmail.com", password: "testtest", first_name: "benjamin" , last_name: "lyphoudt", job_title: "webmaster", company_id: company_2.id)
+user_2 = User.create!(email: "benjamin@gmail.com", password: "testtest", first_name: "benjamin" , last_name: "lyphoudt", job_title: "webmaster", company_id: company_1.id)
 puts "#{user_2} a bien été créé'"
 user_3 = User.create!(email: "abdel@gmail.com", password: "testtest", first_name: "abdel", last_name: "malik" , job_title: "Lawyer", company_id: company_1.id)
 puts "#{user_3} a bien été créé'"
-user_4 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joe", last_name: "star" , job_title: "Accountant", company_id: company_3.id)
+user_4 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joe", last_name: "star" , job_title: "Accountant", company_id: company_1.id)
 puts "#{user_4} a bien été créé'"
 
 attributes = [
@@ -48,7 +49,7 @@ attributes = [
     trail_goal: 5,
   },
   {
-    user_id: user_1.id,
+    user_id: user_3.id,
     type_of: "Cool run",
     datetime: DateTime.new(2016, 12, 12),
     private: false,
@@ -56,7 +57,7 @@ attributes = [
     time_goal: 45,
   },
   {
-    user_id: user_2.id,
+    user_id: user_4.id,
     type_of: "Endurance run",
     datetime: DateTime.new(2016, 9, 30),
     private: false,
@@ -68,6 +69,8 @@ attributes = [
 ]
 
 attributes.each do |attribute|
-  Event.create!(attribute)
-  puts " l'event a bien été créé"
+  event = Event.create!(attribute)
+  Participation.create!(status: "going", user_id: attribute[:user_id], event_id: event.id)
+  puts " l'event et la participation ont bien été créés"
 end
+

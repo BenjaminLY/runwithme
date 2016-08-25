@@ -1,16 +1,30 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_event, only: [ :show, :edit, :update, :destroy, :edit_pictures, :add_pictures ]
 
   def index
-    @events = policy_scope(Event).where(private: false)
-    @my_events = Event.my_private_events(current_user)
+    @public_events = policy_scope(Event).where(private: false)
+    @my_private_events = policy_scope(Event).my_private_events(current_user)
+    if params[:filter] == 'public'
+      @events = policy_scope(Event).public
+    elsif params[:filter] == 'private'
+      # @events = policy_scope(Event).my_private_events(current_user)
+      @events = current_user.private_events
+    elsif params[:filter] == 'refused'
+      @events = current_user.refused_events
+    else
+      @events = policy_scope(Event).public + current_user.private_events
+      @events.sort_by! { |ev| ev[:datetime].to_i }
+    end
+    # @events = @events.group_by(&:datetime)
+    @events = @events.group_by{ |e| e.datetime.to_date }
   end
 
   def show
-    @event_coordinates = { lat: @event.latitude, lng: @event.longitude }
     @hash = Gmaps4rails.build_markers(@event) do |event, marker|
-     marker.lat event.latitude
-     marker.lng event.longitude
+      if event.latitude && event.longitude
+        marker.lat event.latitude
+        marker.lng event.longitude
+     end
      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
     end
   end
@@ -50,6 +64,13 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
+  def edit_pictures
+  end
+
+  def add_pictures
+    @event.update(event_picture) 
+  end
+
   private
 
   def set_event
@@ -60,6 +81,10 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:datetime, :private, :type_of, :description,
       :meeting_point, :address, :time_goal, :trail_goal, :photo)
+  end
+
+  def event_picture
+    params.require(:event).permit(:photo)
   end
 
 end

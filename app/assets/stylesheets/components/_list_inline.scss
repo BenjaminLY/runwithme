@@ -8,7 +8,6 @@
   margin-bottom: 25px;
   border: 5px solid #e2f3f9;
   position: relative;
-
 }
 
 /* Body design */
@@ -44,6 +43,7 @@
   font-size: 13px;
   line-height: 20px;
 }
+
 .product-count {
   margin: 2px 0 0;
 }
@@ -93,3 +93,70 @@
 .product:hover .product-upvote { transform: scale(1.2) }
 .product:hover .product-controls-hidden a { color: #E6E6E6 }
 .product-upvote:hover .product-arrow { border-bottom: 9px solid #5898f1 }
+
+.custom-icon {
+  font-size:15px;
+  background:#fff;
+  background:#fff;
+  padding:30px;
+  border-radius:100%;
+  border:6px solid #90c1d4;
+  color: grey;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.46);
+  text-align:center;
+  display:table-cell;
+  vertical-align:middle;
+  width: 175px;
+  height: 158px;
+}
+.custom-icon:hover {
+  background:#fff;
+}
+.fix-editor {
+  display:none;
+}
+.icon-wrapper {
+  display:inline-block;
+  height: 150px;
+  width: 150px;
+}
+
+.pad-top {
+  padding-top: 80px;
+}
+.pad-bot {
+  padding-bottom: 30px;
+}
+
+.pad-left {
+  padding-left: 320px;
+}
+
+.size_text {
+  font-size: 30px;
+}
+.calendar-heading {
+  display: flex;
+  margin-left: 107px;
+  justify-content: space-between;
+}
+
+.line {
+  border-bottom: 2px solid #90c1d4;
+}
+.triangle_inside_line {
+  margin-left: 551px;
+  width: 0px;
+  height: 0px;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #90c1d4;
+  cursor: pointer;
+}
+.container-top {
+  // background-color: #90c1d4;
+}
+
+.stats {
+  // background-color: $orange;
+}

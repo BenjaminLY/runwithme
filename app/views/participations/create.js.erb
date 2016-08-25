@@ -1,1 +1,5 @@
-$('#event_<%= @participation.event.id %>').html('<%= j render "events/event", event: @participation.event %>')
+<% if @type == "index" %>
+	$('#event_<%= @participation.event.id %>').html('<%= j render "events/event", event: @participation.event %>')
+<% else %>
+	$('.participation').html('<%= j render "events/participations", event: @participation.event %>')
+<% end %>
