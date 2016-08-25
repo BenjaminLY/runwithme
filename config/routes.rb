@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   
   resources :events do
     resources :participations, only: [:create]
+    resources :messages, only: [:create]
   end
   get '/profile' => 'users#profile'
   resources :users, only: [ :edit, :update, :destroy ]
@@ -30,9 +31,9 @@ end
 #                          PUT    /users(.:format)                           devise/registrations#update
 #                          DELETE /users(.:format)                           devise/registrations#destroy
 #                     root GET    /                                          pages#home
-#            edit_pictures GET    /events/:id/edit_pictures(.:format)        events#edit_pictures
 #             add_pictures PATCH  /events/:id/add_pictures(.:format)         events#add_pictures
 #     event_participations POST   /events/:event_id/participations(.:format) participations#create
+#           event_messages POST   /events/:event_id/messages(.:format)       messages#create
 #                   events GET    /events(.:format)                          events#index
 #                          POST   /events(.:format)                          events#create
 #                new_event GET    /events/new(.:format)                      events#new
@@ -49,7 +50,8 @@ end
 #            participation PATCH  /participations/:id(.:format)              participations#update
 #                          PUT    /participations/:id(.:format)              participations#update
 #                          DELETE /participations/:id(.:format)              participations#destroy
-#              # attachinary        /attachinary                               Attachinary::Engine
+#              attachinary        /attachinary                               Attachinary::Engine
+
 
 
 

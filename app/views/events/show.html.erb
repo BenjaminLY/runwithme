@@ -65,7 +65,6 @@
                   <h4><%= "Adresse de l'activité" %></h4>
                   <p><%= @event.address %></p>
                 <% end %>
-              </div>
               <div>
                 <% unless @event.description.blank? %>
                   <h4><%= "Description de l'activité" %></h4>
@@ -76,8 +75,17 @@
                 <% unless @event.messages.empty? %>
                   <h4><%= "Messages" %></h4>
                   <% @event.messages.each do |message| %>
-                    <%= message %>
+                    <div>
+                      <%= message.content %>
+                      posté par <%= message.user.first_name %> <%= message.user.last_name %>     
+                    </div>
                   <% end %>
+                <% end %>
+              </div>
+              <div>
+                <%= simple_form_for [@event, @message] do |f| %>
+                <%= f.input :content, label: false, placeholder: "votre message"  %>  
+                <%= f.button :submit, value: 'Postez', class: "btn btn-primary" %>
                 <% end %>
               </div>
             </div>
