@@ -27,62 +27,6 @@
               <% end %>
             </div>
           </div>
-<<<<<<< HEAD
-          <%= image_tag 'chicken-avatar-green.png', class: 'event-avatar',
-            data: {toggle: 'tooltip'}, title: 'organisé par Coline' %>
-          <h3 class="event-type">Fun run</h3>
-          <div class="event-rdv">
-            <i class="fa fa-map-marker" aria-hidden="true"></i>
-            <div>meeting point bla blablabla</div>
-          </div>
-          <div class="event-validations">
-            <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
-            <i class="fa fa-times" data-toggle="tooltip" title="Je n'y vais pas"></i>
-            <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
-          </div>
-        </div>
-        <div class='event-bar'>
-          <div class="event-status">Privé</div>
-          <div class="event-owner">organisé par Coline</div>
-        </div>
-      </div>
-    </div>
-    <nav aria-label="Page navigation">
-      <ul class="pagination">
-        <li>
-          <a href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li>
-          <a href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-
-  <%# if @events == [] && @my_events == [] %>
-<!--       <h1>Sorry there is no public event at the moment ! </h1>
-      <h1>
-        Go on poules create yours !
-        <%#= image_tag "chicken.png", width: 80 %>
-      </h1> -->
-  <%# else %>
-    <div class="text-center padded">
-      <h1 id= "events">Events</h1>
-    </div>
-    <div>
-      <% @events.each do |event| %>
-        <div id="event_<%= event.id %>">
-          <%= render 'event', event: event %>
-=======
           <% events.each do |event| %>
             <div class="events">
               <div class="events-content">
@@ -115,7 +59,6 @@
               </div>
             </div>
           <% end %>
->>>>>>> 7f2a39767c1c8f520338dda54b7c5b9ac322aa05
         </div>
       <% end %>
     </div>

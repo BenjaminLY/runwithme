@@ -23,98 +23,92 @@
   </div>
   <div class="row">
     <div class="col-sm-6">
-      <div class="container">
-        <div class="stats">
-          <h3 class="pad-left">Vos Stats</h3>
-            <div class="icon-wrapper">
-              <p class="custom-icon">
-                <i class="fa fa-users" aria-hidden="true"></i>
-                Ce mois-ci :
-                <strong> 5 évènements</strong>
-                <span class="fix-editor">&nbsp;</span>
-              </p>
-            </div>
-          <div class="col-xs-12 col-sm-2">
-            <div class="icon-wrapper">
-            <p class="custom-icon">Vitesse Moyenne :
-              <strong>13 km/h</strong>
+      <div class="stats">
+        <h3 class="pad-left">Vos Stats</h3>
+          <div class="icon-wrapper">
+            <p class="custom-icon">
+              <i class="fa fa-users" aria-hidden="true"></i>
+              Ce mois-ci :
+              <strong> 5 évènements</strong>
               <span class="fix-editor">&nbsp;</span>
             </p>
-            </div>
           </div>
-          <div class="col-xs-12 col-sm-2">
-            <div class="icon-wrapper">
-              <p class="custom-icon">
-                <i class="fa fa-map-o" aria-hidden="true"></i>
-                Distance parcourue :
-                <strong>80 km</strong>
-                <span class="fix-editor">&nbsp;</span>
-              </p>
-            </div>
+        <div class="col-xs-12 col-sm-2">
+          <div class="icon-wrapper">
+          <p class="custom-icon">Vitesse Moyenne :
+            <strong>13 km/h</strong>
+            <span class="fix-editor">&nbsp;</span>
+          </p>
           </div>
-          <div class="col-xs-12 col-sm-2">
-            <div class="icon-wrapper">
-            <p class="custom-icon">Temps couru :
-              <strong>800 heures</strong>
+        </div>
+        <div class="col-xs-12 col-sm-2">
+          <div class="icon-wrapper">
+            <p class="custom-icon">
+              <i class="fa fa-map-o" aria-hidden="true"></i>
+              Distance parcourue :
+              <strong>80 km</strong>
               <span class="fix-editor">&nbsp;</span>
             </p>
-            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-2">
+          <div class="icon-wrapper">
+          <p class="custom-icon">Temps couru :
+            <strong>800 heures</strong>
+            <span class="fix-editor">&nbsp;</span>
+          </p>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="container">
-    <div class="container-calendar">
-      <div class="col-xs-12 col-sm-1 simple-calendar">
-       <%= month_calendar events: @user.events_as_participant do |date, events| %>
-          <%= date.strftime("%e") %>
-          <% events.each do |event| %>
-            <div class = "event_calendar_notif" data-toggle="tooltip" title="<%= event.type_of %>">
-              <strong><i class="fa fa-circle"></i></strong>
-            </div>
-            <div class = "event_calendar_content">
-              <strong><%= event.type_of %></strong>
-            </div>
-          <% end %>
+  <div class="container-calendar">
+    <div class="col-xs-12 col-sm-1 simple-calendar">
+     <%= month_calendar events: @user.events_as_participant do |date, events| %>
+        <%= date.strftime("%e") %>
+        <% events.each do |event| %>
+          <div class = "event_calendar_notif" data-toggle="tooltip" title="<%= event.type_of %>">
+            <strong><i class="fa fa-circle"></i></strong>
+          </div>
+          <div class = "event_calendar_content">
+            <strong><%= event.type_of %></strong>
+          </div>
         <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
-  <div class="container">
-    <div class="col-xs-12 col-sm-12 pad-bot">
-      <div class="text-center line">
-        <h1 class="size_text">
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-          Mes évènements
-        </h1>
-      </div>
-      <div class="triangle_inside_line pad-bot" id="triangle_show">
-      </div>
-      <div class="events_to_show" style="display:none;">
-         <% @user.events_as_participant .each do |event| %>
-        <div id="event_<%= event.id %>">
-          <%= render 'events/event', event: event %>
-        </div>
-       <% end %>
-      </div>
+  <div class="col-xs-12 col-sm-12 pad-bot">
+    <div class="text-center line">
+      <h1 class="size_text">
+        <i class="fa fa-calendar" aria-hidden="true"></i>
+        Mes évènements
+      </h1>
     </div>
-    <div class="col-xs-12 col-sm-12">
-      <div class="text-center line">
-        <h1 class="size_text">
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-          Les évènements auxquels je participe
-        </h1>
-      </div>
-      <div class="triangle_inside_line pad-bot" id="triangle_participate">
-      </div>
-      <div class="events_where_participate" style="display:none;">
-        <% @user.events_as_participant .each do |event| %>
-        <div id="event_<%= event.id %>">
+    <div class="triangle_inside_line pad-bot" id="triangle_show">
+    </div>
+    <div class="events_to_show" style="display:none;">
+       <% @user.events_as_participant .each do |event| %>
+      <div id="event_<%= event.id %>">
         <%= render 'events/event', event: event %>
-        </div>
-        <% end %>
       </div>
+     <% end %>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-12">
+    <div class="text-center line">
+      <h1 class="size_text">
+        <i class="fa fa-calendar" aria-hidden="true"></i>
+        Les évènements auxquels je participe
+      </h1>
+    </div>
+    <div class="triangle_inside_line pad-bot" id="triangle_participate">
+    </div>
+    <div class="events_where_participate" style="display:none;">
+      <% @user.events_as_participant .each do |event| %>
+      <div id="event_<%= event.id %>">
+      <%= render 'events/event', event: event %>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>
