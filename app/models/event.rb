@@ -2,7 +2,7 @@ class Event < ApplicationRecord
   belongs_to :user
   has_many :messages, dependent: :destroy
   has_many :participations, dependent: :destroy
-  has_attachment :photo
+  has_attachments :photos, maximum: 10
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
@@ -13,6 +13,7 @@ class Event < ApplicationRecord
   validates :private, :inclusion => { :in => [true, false] }
   validates :meeting_point, presence: true
   validate :goal
+
 
   def goal
     if time_goal.nil? && trail_goal.nil?
