@@ -123,7 +123,7 @@
         <div class="events_where_participate" style="display:none;">
           <% @user.events_as_participant .each do |event| %>
           <div id="event_<%= event.id %>">
-          <%= render 'events/event', event: event %>
+          <%= render 'events/event_2', event: event %>
           </div>
           <% end %>
         </div>
