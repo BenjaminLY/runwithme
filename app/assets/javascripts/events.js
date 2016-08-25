@@ -17,8 +17,12 @@ $(document).ready(function() {
   $(window).on("scroll", function(){
     if ( $(this).scrollTop() > 80 ){
        $(".navbar-wagon").css("background-color", "#222222");
+       $('#login-btn').css("color", '#41B65F');
+       $('#login-btn').css("border-color", '#41B65F');
     } else {
        $(".navbar-wagon").css("background-color", "transparent");
+       $('#login-btn').css("color", 'white');
+       $('#login-btn').css("border-color", 'white');
     }
   });
 });
