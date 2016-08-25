@@ -36,17 +36,24 @@
                 <% if event.user.photo? %>
                   <%= cl_image_tag event.user.photo.path, class: 'events-avatar' %>
                 <% else %>
-                  <%= image_tag 'chicken-avatar-green.png', class: 'events-avatar' %>
+                  <%= image_tag 'chicken-grey_1.png', class: 'events-avatar' %>
                 <% end %>
-                <%= link_to event.type_of, event_path(event), class: 'events-type' %>
-                <div class="events-rdv">
+                <%= link_to event_path(event), class: 'events-type' do %>
+                  <span class="events-type-underline" >
+                    <%= event.type_of %>
+                    <% if event.time_goal %>
+                      <%= event.time_goal_to_s %>
+                    <% else %>
+                      <%= event.trail_goal %> km(s)
+                    <% end %>
+                  </span>
+                <% end %>
+                <!-- <div class="events-rdv">
                   <i class="fa fa-map-marker" aria-hidden="true"></i>
                   <div><%= event.meeting_point %></div>
-                </div>
-                <div class="events-validations">
-                  <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
-                  <i class="fa fa-times" data-toggle="tooltip" title="Je n'y vais pas"></i>
-                  <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
+                </div> -->
+                <div class="events-validations" id="event_<%= event.id %>">
+                  <%= render 'event', event: event %>
                 </div>
               </div>
               <div class='events-bar'>
