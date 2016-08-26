@@ -17,6 +17,12 @@
 			width: 100px;
 			padding: 5px;
 		}
+		.event_type {
+			a {
+				padding-right: 10px;
+				color: #222222;
+			}
+		}
 	}
 	.event-details {
 		display: flex;
@@ -46,7 +52,11 @@
 				justify-content: space-between;
 				.participation_icone {
 					width: 40px;
-					text-align: center
+					text-align: center;
+					a {
+				  font-size: 30px;
+				  color: #4C4C4C;
+				}
 				}
 			}
 			.participation_all {
@@ -74,8 +84,7 @@
 	p {
 		margin-bottom: 20px;
 	}
-	a {
-  font-size: 30px;
-  color: #4C4C4C;
-}
+	h3 {
+		font-size: 24px;
+	}
 }
