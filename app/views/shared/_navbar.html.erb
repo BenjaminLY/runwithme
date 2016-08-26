@@ -10,22 +10,27 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
-      <%= link_to t(".top_call_to_action", default: "All events"), events_path, class: "btn-medium", style: "margin-right: 20px;" %>
+      <%= link_to t(".top_call_to_action", default: "All events"), events_path, class: "no-btn", style: "margin-right: 20px;" %>
 
       <%= link_to t(".top_call_to_action", default: "Create an event"), new_event_path, class: "btn-medium" %>
 
       <!-- Notification -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
-          <i class="fa fa-bell-o"></i>
-          <div class="badge badge-green">3</div>
+          <i class="fa fa-bell-o no-btn" style="color: white;"></i>
+          <div class="badge badge-blue-light no-btn">3</div>
         </div>
       <% end %>
 
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag 'chicken-avatar-green.png', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <div class="dropdown-toggle" , id="navbar-wagon-menu", data-toggle="dropdown", aria-hidden="true">
+            <i class="fa fa-user no-btn">
+            </i>
+            <span class= "white-name"> <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></span>
+        </div>
+         <%#= image_tag 'chicken-avatar-green.png', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to profile_path do %>
