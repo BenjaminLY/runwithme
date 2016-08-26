@@ -65,15 +65,23 @@
 .wrapper-shoes {
   height: 720px;
   margin: 0 auto;
+  position: relative;
+
   // width: 970px;
 }
 
-.wrapper-run {
+.wrapper-group {
   height: 720px;
   margin: 0 auto;
-  // width: 970px;
-  border: black 3px solid;
+  z-index: 0;
 }
+
+// .wrapper-run {
+//   height: 720px;
+//   margin: 0 auto;
+//   // width: 970px;
+//   border: black 3px solid;
+// }
 
 #left-block {
   border-right: 1px solid;
@@ -96,21 +104,46 @@
   right: 20px;
   padding-left: 80px;
   padding-right: 62px;
-  margin-top: -141px;
+  margin-top: -15px;
 }
 
-#left-block-one {
-  border-right: 1px solid;
-  background-image: image-url('#');
+#left-block-group {
+  // border-right: 1px solid;
+  background-image: image-url('runners-park3.jpg');
   background-size: cover !important;
-  position: relative;
-  height: 714px;
+  height: 100%;
 }
 
-#right-block-two {
+#right-block-group {
   border-right: 1px solid;
-  height: 714px;
+  position: relative;
 }
+
+#text-right-block-group {
+  font-family:'Libre Baskerville', serif;
+  font-size: 36px;
+  line-height: 42px;
+  position : absolute;
+  top: 323px;
+  right: 20px;
+  padding-left: 80px;
+  padding-right: 62px;
+  margin-top: -30px;
+  margin-left: 40px;
+}
+
+// #left-block-one {
+//   border-right: 1px solid;
+//   background-image: image-url('#');
+//   background-size: cover !important;
+//   position: relative;
+//   height: 714px;
+// }
+
+// #right-block-two {
+//   border-right: 1px solid;
+//   height: 714px;
+// }
 
 .homepage-hero-module {
     border-right: none;
@@ -155,14 +188,24 @@
     width: 100%;
 }
 
-.fa-angle-down {
+#fa-angle-down-1 {
   position: absolute;
   bottom: 10px;
-  left: 5px;
   font-size: 90px;
   color: white;
   right: 0;
   left: 0;
 }
+
+#arrow-2 {
+  color: black;
+  font-size: 90px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+
 
 
