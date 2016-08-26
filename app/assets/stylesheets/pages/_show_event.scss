@@ -6,16 +6,22 @@
 		display: flex;
 		justify-content: space-between;
 		border-radius: 12px;
-		background: #FFEEE5;
-		padding: 20px;
+		background: white;
+		padding: 25px 40px;
 		.public_private{
-			background: $green;
+			background: $blue;
 			color: white;
 			font-weight: bold;
 			text-align: center;
-			border-radius: 5px;
+			border-radius: 3px;
 			width: 100px;
 			padding: 5px;
+		}
+		.event_type {
+			a {
+				padding-right: 10px;
+				color: #222222;
+			}
 		}
 	}
 	.event-details {
@@ -23,27 +29,36 @@
 		margin-top: 20px;
 		.description {
 			width: 60%;
-			border: 3px solid #FFEEE5;
+			border: 3px solid white;
 			margin-right: 20px;
-			padding: 20px;
 			border-radius: 12px;
+			padding: 20px;
+			.messages {
+				h4 {
+					border-bottom: 3px solid black;
+				}	margin-bottom: 15px;
+			}
+			.message {
+				border-bottom: 1px solid black;
+			}
 		}
 		.participation {
 			width: 40%;
-			border: 3px solid #FFEEE5;
-			padding: 20px;
+			border: 3px solid white;
 			border-radius: 12px;
 			.participation_header {
 				display: flex;
 				justify-content: space-between;
 				.participation_icone {
 					width: 40px;
-					text-align: center
+					text-align: center;
+					a {
+				  font-size: 30px;
+				  color: #4C4C4C;
+				}
 				}
 			}
 			.participation_all {
-				border: 2px dotted #FFEEE5;
-				border-radius: 12px;
 				padding: 10px;
 				.particpation_avatar {
 					display: flex;
@@ -52,12 +67,18 @@
 					}
 				}
 			}
+			hr {
+				border: 3px solid white;
+
+			}
 
 		}
 	}
 	h4 {
 		font-weight: bold;
 		margin-bottom: 3px;
+		text-transform: uppercase;
+		font-size: 16px;
 	}
 	h5 {
 		font-weight: bold;
@@ -66,8 +87,19 @@
 	p {
 		margin-bottom: 20px;
 	}
-	a {
-  font-size: 30px;
-  color: #4C4C4C;
-}
+	h3 {
+		font-size: 24px;
+	}
+	.photos {
+		border: 3px solid white;
+		border-radius: 12px;
+		padding: 20px;
+		.photos_btn {
+			margin-left: 15px;
+		}
+		h4 {
+			border-bottom: 3px solid black;
+			margin-bottom: 15px;
+		}
+	}
 }
