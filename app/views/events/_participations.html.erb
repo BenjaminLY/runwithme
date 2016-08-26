@@ -23,6 +23,7 @@
       <% end %>
     </div>
   </div>
+  <hr>
   <div class="participation_all">
     <div class="participation_header">
       <div><h4>Les poules qui hésitent encore!</h4></div>
@@ -48,6 +49,7 @@
       <% end %>
     </div>
   </div>
+  <hr>
   <div class="participation_all">
     <div class="participation_header">
       <div><h4>Les poules qui ont dit non!</h4></div>
@@ -73,63 +75,7 @@
       <% end %>
     </div>
   </div>
-  <div class="participation_all">
-    <div class="photos">
-     <!-- Button trigger modal -->
-     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addPhotos">
-       Postez vos selfies!
-     </button>
-     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#seePhotos">
-       Découvrez les! 
-     </button>
-     <!-- Modal -->
-     <div class="modal fade" id="addPhotos" tabindex="-1" role="dialog" aria-labelledby="addPhotosLabel">
-       <div class="modal-dialog" role="document">
-         <div class="modal-content">
-           <div class="modal-header">
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-             <h4 class="modal-title" id="addPhotosLabel">Partagez vos selfies! </h4>
-           </div>
-           <div class="modal-body">
-            <%= simple_form_for(@event, :url => add_pictures_path, :method => :patch) do |f| %>
-            <%= f.input :photos, as: :attachinary  %>  
-            <%= f.button :submit, value: 'Postez', class: "btn btn-primary" %>
-            <% end %>
-           </div>
-           <div class="modal-footer">
-             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-           </div>
-         </div>
-       </div>
-     </div> 
-     <!-- Button trigger modal -->
-
-     <!-- Modal -->
-     <div class="modal fade" id="seePhotos" tabindex="-1" role="dialog" aria-labelledby="seePhotosLabel">
-       <div class="modal-dialog" role="document">
-         <div class="modal-content">
-           <div class="modal-header">
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-             <h4 class="modal-title" id="seePhotosLabel">Vous êtes beaux pendant l'effort!</h4>
-           </div>
-           <div class="modal-body">
-            <% unless @event.photos.nil? %>
-              <% @event.photos.each do |photo| %>
-                <div class="photo">
-                  <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
-                </div>
-              <% end %>
-            <% end %>
-           </div>
-           <div class="modal-footer">
-             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-           </div>
-         </div>
-       </div>
-     </div>
-    </div>  
-  </div>
-
+  
 
 
 
