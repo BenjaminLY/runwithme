@@ -28,11 +28,13 @@
                 <% end %>
               </div>
             </div>
+            <div class="box">
             <% events.each do |event| %>
-              <div class="events" id="event_<%= event.id %>">
+              <div class="ev" id="event_<%= event.id %>">
                 <%= render 'event', event: event %>
               </div>
             <% end %>
+            </div>
           </div>
         <% end %>
       </div>
