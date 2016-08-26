@@ -100,8 +100,21 @@
 
 </div>
 
-
-
+<% content_for :after_js do %>
+  <script>
+    $(window).on("scroll", function(){
+      if ( $(this).scrollTop() > 80 ){
+         $(".navbar-wagon").css("background-color", "#222222");
+         $('#login-btn').css("color", '#41B65F');
+         $('#login-btn').css("border-color", '#41B65F');
+      } else {
+         $(".navbar-wagon").css("background-color", "transparent");
+         $('#login-btn').css("color", 'white');
+         $('#login-btn').css("border-color", 'white');
+      }
+    });
+  </script>
+<% end %>
 
 <!--
 <div class="banner" style="background-image: url(<%#= image_path 'sign_in_3.jpg' %>); height: 50vh;">
