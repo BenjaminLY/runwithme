@@ -14,11 +14,5 @@ $(document).ready(function() {
     }
   });
 
-  $(window).on("scroll", function(){
-    if ( $(this).scrollTop() > 80 ){
-       $(".navbar-wagon").css("background-color", "#222222");
-    } else {
-       $(".navbar-wagon").css("background-color", "transparent");
-    }
-  });
+
 });

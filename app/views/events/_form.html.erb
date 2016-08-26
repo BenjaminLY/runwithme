@@ -1,44 +1,94 @@
+<style>
+  #public {
+    color: #4C4C4C;
+  }
+  #private {
+    color: orange;
+    border-color: orange;
+  }
+  .status {
+    width: 100%;
+  }
+</style>
+
 <div class="container padded">
   <div class="row">
     <div class="col-xs-12 col-md-4 col-md-offset-4">
       <%= simple_form_for(@event) do |f| %>
         <%= f.error_notification %>
-        <a class="btn btn-default public"><i class="icon-remove"></i> Disable</a>
-        <a class="btn btn-default private"><i class="icon-ok"></i> Enable</a>
-        <%= f.input :private %>
-        <%= f.input :type_of, autofocus: true, label: false, placeholder: "Type of event", collection: Event::MEETING, prompt: "Select an event" %>
-        <div class="row">
-          <div class="col-xs-12 col-md-6">
-            <%= f.input :time_goal,label: false ,placeholder: "Time goal (minutes)", input_html: { min: '1' }, placeholder: "20 minutes" %>
-          </div>
-          ou
-          <div class="col-xs-12 col-md-6">
-            <%= f.input :trail_goal,label: false ,placeholder: "Trail goal (kms)", input_html: { min: '1' }, placeholder: "5 kms" %>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-xs-6">
+              <a class="btn btn-default status active" id="public">Public</a>
+            </div>
+            <div class="col-xs-6">
+              <a class="btn btn-default status" id="private">Privé</a>
+            </div>
           </div>
         </div>
-        <%= f.input :datetime,label: false, as: :string, input_html: { class: "datetimepicker" } %>
+        <%= f.input :private, as: :hidden %>
+        <%= f.input :type_of, autofocus: true, label: false, placeholder: "Type of event", collection: Event::MEETING, prompt: "Type d'événement*" %>
+        <%= f.input :datetime,label: false, placeholder: 'Date', as: :string, input_html: { class: "datetimepicker" } %>
+<!--         <div class="form-group">
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="input-group date" id="datepicker">
+                <%#= text_field_tag "event[date]", f.object.datetime.try(:to_date), for: "disabledTextInput", class: "form-control", placeholder: "Date*" %>
+                <div class="input-group-addon" id="disabledTextInput">
+                  <span class="glyphicon glyphicon-th"></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <%#= select_time(f.object.datetime.try(:to_time), {}, { class: "form-control time-select", name: "event[time]" }) %>
+            </div>
+
+          </div>
+        </div>  -->
+          <div class="text-center">
+          <%= f.label 'Objectif' %>
+          </div>
+        <div class="row">
+          <div class="col-xs-12 col-md-6">
+            <%= f.input :time_goal,label: false ,placeholder: "Mins*", input_html: { min: '1' } %>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <%= f.input :trail_goal,label: false ,placeholder: "Kms*", input_html: { min: '1' } %>
+          </div>
+        </div>
         <%= f.input :description,label: false , placeholder: "Description de l'activité" %>
-        <%= f.input :meeting_point,label: false , placeholder: 'Lieu de rendez-vous' %>
-        <%= f.input :address,label: false ,placeholder: 'adresse' %>
+        <%= f.input :meeting_point,label: false , placeholder: 'Lieu de rendez-vous*' %>
+        <%= f.input :address,label: false ,placeholder: 'Adresse' %>
         <br>
         <div class="text-center">
-          <%= f.button :submit, class: "btn-medium-full", method: 'get' %>
+          <%= f.button :submit, class: "btn-medium-full" %>
         </div>
       <% end %>
     </div>
   </div>
 </div>
 
+
+
 <% content_for :after_js do %>
   <script>
-    $('.public').click(function () {
-      $('.disable-example').prop('private', false);
-      // $('.disable-example').selectpicker('refresh');
+
+    $('#private').click(function () {
+      $(this).addClass('active');
+      $('#public').removeClass('active');
+      $('#event_private').val('true');
     });
 
-    $('.private').click(function () {
-      $('.disable-example').prop('private', true);
-      // $('.disable-example').selectpicker('refresh');
+    $('#public').click(function () {
+      $(this).addClass('active');
+      $('#private').removeClass('active');
+      $('#event_private').val('false');
     });
+
+    $('.selectpicker').selectpicker({
+      style: 'btn-info',
+      size: 4
+    });
+
   </script>
 <% end %>

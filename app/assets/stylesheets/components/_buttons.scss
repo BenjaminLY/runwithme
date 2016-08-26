@@ -1,10 +1,11 @@
 .btn-medium {
   color: $green;
-  border: 1px solid $green;
+  background-color: $green;
+  border: 1px solid #f5f5f5;
   padding: 10px 25px;
   border-radius: 50px;
   font-weight: lighter;
-  opacity: 0.8;
+  // opacity: 0.8;
 }
 
 #orange {
@@ -61,9 +62,10 @@
 #login-btn {
   margin-right: 20px;
   color: white;
-  background-color: #47D579;
-  border-radius: 12px;
+  background-color: transparent;
+  border-radius: 50px;
   padding: 10px 15px;
+  border: white 1px solid;
 }
 
 .green-btn {
