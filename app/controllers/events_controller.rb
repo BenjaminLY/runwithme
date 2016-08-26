@@ -35,7 +35,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    raise
     @event = Event.new(event_params)
     @event.user = current_user
     @participation = Participation.new(status: "going")

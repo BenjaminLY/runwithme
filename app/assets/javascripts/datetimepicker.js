@@ -2,6 +2,6 @@
   $('.datetimepicker').datetimepicker({
     inline: true,
     format: "DD/MM/YYYY h:mm A",
-    sideBySide: true,
+    //sideBySide: true,
     stepping: 15
   });

@@ -28,59 +28,23 @@
         </div>
         <%= f.input :private, as: :hidden %>
         <%= f.input :type_of, autofocus: true, label: false, placeholder: "Type of event", collection: Event::MEETING, prompt: "Type d'événement*" %>
-        <%#= f.input :datetime,label: false, placeholder: 'Date', as: :string, input_html: { class: "datepicker" } %>
-        <div class="form-group">
+        <%= f.input :datetime,label: false, placeholder: 'Date', as: :string, input_html: { class: "datetimepicker" } %>
+<!--         <div class="form-group">
           <div class="row">
             <div class="col-xs-6">
               <div class="input-group date" id="datepicker">
-                <input type="text" class="form-control" name="event[date]" id="event_date" for="disabledTextInput" placeholder="Date*">
+                <%#= text_field_tag "event[date]", f.object.datetime.try(:to_date), for: "disabledTextInput", class: "form-control", placeholder: "Date*" %>
                 <div class="input-group-addon" id="disabledTextInput">
                   <span class="glyphicon glyphicon-th"></span>
                 </div>
               </div>
             </div>
-            <div class="col-xs-3">
-              <select class="form-control" name="event[hours]">
-                <option>HH</option>
-                <option value="0">00</option>
-                <option value="1">01</option>
-                <option value="2">02</option>
-                <option value="3">03</option>
-                <option value="4">04</option>
-                <option value="5">05</option>
-                <option value="6">06</option>
-                <option value="7">07</option>
-                <option value="8">08</option>
-                <option value="9">09</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
-                <option value="17">17</option>
-                <option value="18">18</option>
-                <option value="19">19</option>
-                <option value="20">20</option>
-                <option value="21">21</option>
-                <option value="22">22</option>
-                <option value="23">23</option>
-              </select>
-            </div>
-            <div class="col-xs-3">
-              <select class="form-control" name="event[minutes]">
-                <option>MM</option>
-                <option value="00">00</option>
-                <option value="15">15</option>
-                <option value="30">30</option>
-                <option value="45">45</option>
-              </select>
+            <div class="col-xs-6">
+              <%#= select_time(f.object.datetime.try(:to_time), {}, { class: "form-control time-select", name: "event[time]" }) %>
             </div>
 
           </div>
-        </div>
-
+        </div>  -->
           <div class="text-center">
           <%= f.label 'Objectif' %>
           </div>
