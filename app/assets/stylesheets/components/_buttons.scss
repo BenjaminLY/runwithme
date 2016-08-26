@@ -1,11 +1,17 @@
 .btn-medium {
-  color: $green;
-  background-color: $green;
-  border: 1px solid #f5f5f5;
+  color: white;
+  // background-color: $green;
+  border: 1px solid white;
   padding: 10px 25px;
-  border-radius: 50px;
+  border-radius: 3px;
   font-weight: lighter;
-  // opacity: 0.8;
+  // opacity: 0.5;
+  &:hover {
+    text-decoration: none;
+    color: white;
+    opacity: 1;
+    opacity: 0.7;
+  }
 }
 
 #orange {
@@ -27,45 +33,45 @@
 /*}*/
 
 .btn-medium-full {
-  background-color: $green;
+  background-color: transparent;
   color: white;
   padding: 10px 25px;
-  border-radius: 50px;
+  border: 1px solid white;
+  border-radius: 3px;
   font-weight: lighter;
-  opacity: 0.8;
-}
-.btn-medium:hover {
-  text-decoration: none;
-  color: $green;
   opacity: 1;
+  &:hover {
+    text-decoration: none;
+    color: white;
+    opacity: 1;
+  }
 }
-.btn-medium-full:hover {
-  text-decoration: none;
-  color: white;
-  opacity: 1;
-}
+
 .btn-treehouse {
   color: white;
   padding: 10px 15px;
-  border-radius: 12px;
+  border-radius: 3px;
   font-weight: bold;
   background: #6AD58B;
   transition: background 0.3s ease;
-}
-.btn-treehouse:hover {
-  opacity: 1;
-  background: #3ac162;
-  text-decoration: none;
-  color: white;
+  &:hover {
+    opacity: 1;
+    background: #3ac162;
+    text-decoration: none;
+    color: white;
+  }
 }
 
 #login-btn {
   margin-right: 20px;
   color: white;
   background-color: transparent;
-  border-radius: 50px;
+  border-radius: 10px;
   padding: 10px 15px;
   border: white 1px solid;
+  &:hover {
+    color: white;
+  }
 }
 
 .green-btn {
@@ -74,11 +80,22 @@
   background-color: #47D579;
   border-radius: 12px;
   padding: 10px 15px;
+  &:hover {
+    color: white;
+    background-color: $green;
+  }
 }
 
-.green-btn:hover {
+.no-btn {
   color: white;
-  background-color: $green;
+  // opacity: 0,7;
+  &:hover {
+    color:white;
+    text-decoration: none;
+    opacity: 0.7;
+  }
 }
 
-
+.white-name {
+  color: white;
+}

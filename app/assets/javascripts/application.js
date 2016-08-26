@@ -3,6 +3,7 @@
 //= require momentjs
 //= require bootstrap-sprockets
 //= require bootstrap3-datetimepicker
+//= require bootstrap-datepicker
 //= require jquery-fileupload/basic
 //= require underscore
 //= require gmaps/google

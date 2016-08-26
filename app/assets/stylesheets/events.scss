@@ -20,15 +20,15 @@
   margin-bottom: 35px;
 }
 .events-date {
-  color: #004080;
+  color: white;
   width: 100%;
-  background-color: #CCCCCC;
+  background-color: $blue;
   padding: 3px 20px;
   border-radius: 5px 5px 0 0;
   margin-bottom: 20px;
 }
 .events-date-bg {
-  border: #CCCCCC 1px solid;
+  border: $blue 1px solid;
   border-radius: 5px;
   margin-bottom: 10px;
 }
@@ -90,7 +90,7 @@
 }
 .events-validations {
   flex: 0 0 15%;
-  font-size: 30px;
+  font-size: 25px;
   display: flex;
   justify-content: space-between;
   margin-right: 50px;
@@ -146,5 +146,10 @@
   -moz-transform:rotate(-10deg); /* Firefox */
   -webkit-transform:rotate(-10deg); /* Safari et Chrome */
   -o-transform:rotate(-10deg); /* Opera */
+}
+
+.time-select {
+   width: 45%;
+   display: inline-block;
 }
 

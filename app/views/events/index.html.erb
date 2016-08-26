@@ -1,41 +1,42 @@
-<div class="container">
-  <h2 class="events-list-title text-center">Evénements à venir</h2>
-  <div class="row">
-    <div class="col-xs-3">
-      <ul class="nav index-menu">
-        <li><%= link_to 'Tous', events_path %></li>
-        <li><%= link_to 'Publics', events_path(filter: 'public') %></li>
-        <li><%= link_to 'Privés', events_path(filter: 'private') %></li>
-        <li><%= link_to 'Refusés', events_path(filter: 'refused') %></li>
-        <li><%= link_to "Créer un événement", new_event_path, class: "btn btn-primary" %></li>
-      </ul>
-    </div>
-    <div class="col-xs-9">
-      <h4 class="events-counter">Résultats: <%= @events.count %></h4>
-      <% today = Date.today %>
-      <% @events.each do |date, events| %>
-        <div class="events-date-bg">
-          <div class="events-date">
-            <div>
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <% if date == today %>
-                Aujourd'hui
-              <% elsif date == (today + 1.days) %>
-                Demain
-              <% else %>
-                <%= date.strftime('%e %B %Y') %>
-              <% end %>
+<div class="grey-wrapper">
+  <div class="container">
+    <h2 class="events-list-title text-center">Evénements à venir</h2>
+    <div class="row">
+      <div class="col-xs-3">
+        <ul class="nav index-menu">
+          <li><%= link_to 'Tous', events_path %></li>
+          <li><%= link_to 'Publics', events_path(filter: 'public') %></li>
+          <li><%= link_to 'Privés', events_path(filter: 'private') %></li>
+          <li><%= link_to 'Refusés', events_path(filter: 'refused') %></li>
+          <li><%= link_to "Créer un événement", new_event_path, class: "btn btn-primary" %></li>
+        </ul>
+      </div>
+      <div class="col-xs-9">
+        <h4 class="events-counter">Résultats: <%= @events.count %></h4>
+        <% today = Date.today %>
+        <% @events.each do |date, events| %>
+          <div class="events-date-bg">
+            <div class="events-date">
+              <div>
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                <% if date == today %>
+                  Aujourd'hui
+                <% elsif date == (today + 1.days) %>
+                  Demain
+                <% else %>
+                  <%= date.strftime('%e %B %Y') %>
+                <% end %>
+              </div>
             </div>
+            <% events.each do |event| %>
+              <div class="events" id="event_<%= event.id %>">
+                <%= render 'event', event: event %>
+              </div>
+            <% end %>
           </div>
-          <% events.each do |event| %>
-            <div class="events" id="event_<%= event.id %>">
-              <%= render 'event', event: event %>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-
 

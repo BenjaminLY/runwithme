@@ -2,10 +2,9 @@
  * Fonts
  * ------------------------------------- */
 // Google fonts
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
-@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Libre+Baskerville:400,700");
 $base-font: "Open Sans", "Helvetica", "sans-serif";
-$header-font: "Raleway", "Helvetica", "sans-serif";
+$header-font: "Libre Baskerville", "Helvetica", "sans-serif";
 
 // Local fonts (uncomment following lines)
 // @font-face {
@@ -28,10 +27,11 @@ $base-height: 1.4;
 $brand-color: #D23333;
 
 $red: #EE5F5B;
-$blue: 	#1086b9;
-$yellow: #FDB631;
+$blue: 	#90C1D4;
+$dark-blue: #134074;
+$yellow: #EFC86B;
 $orange: #E67E22;
-$green: #36D16C;
+$green: #30BA60;
 
 // Gray scale
 $gray-darker:  lighten(#000, 13.5%); // #222

@@ -9,10 +9,6 @@
   color: black ;
 }
 
-.wrapper {
-  background-color: #EDEDED ;
-}
-
 .banner-event {
   height: 350px;
   background-size: cover;
@@ -30,3 +26,15 @@
   font-size: 50px;
 }
 
+.pages-wrapper {
+  min-height: 90vh;
+  margin-top: 70px;
+}
+.pages-home {
+  .pages-wrapper {
+    margin-top: 0px;
+  }
+  .navbar-wagon {
+    background-color: transparent;
+  }
+}
