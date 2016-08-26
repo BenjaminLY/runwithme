@@ -99,3 +99,14 @@
 .white-name {
   color: white;
 }
+
+.btn-blue-edit {
+  // background-color: $green;
+  border: 1px solid #90C1D4;
+  padding: 10px 25px;
+  border-radius: 3px;
+  font-weight: lighter;
+  &:hover {
+    text-decoration: none;
+  }
+}
