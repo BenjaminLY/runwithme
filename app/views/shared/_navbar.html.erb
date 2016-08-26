@@ -17,18 +17,18 @@
       <!-- Notification -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
-          <i class="fa fa-bell-o" style="color: white;"></i>
-          <div class="badge badge-green">3</div>
+          <i class="fa fa-bell-o no-btn" style="color: white;"></i>
+          <div class="badge badge-green no-btn">3</div>
         </div>
       <% end %>
 
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-        <i class="fa fa-user dropdown-toggle", id="navbar-wagon-menu", data-toggle="dropdown", aria-hidden="true" >
-          <%#= @user.first_name.capitalize %> <%#= @user.last_name.capitalize %>
+        <i class="fa fa-user dropdown-toggle no-btn", id="navbar-wagon-menu", data-toggle="dropdown", aria-hidden="true">
+          <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>
         </i>
-         <!--  <%#=# image_tag 'chicken-avatar-green.png', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %> -->
+         <%#= image_tag 'chicken-avatar-green.png', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to profile_path do %>
