@@ -1,15 +1,12 @@
 @import "home";
 @import "login";
+@import "show_event";
 
 .pad {
   background-color: #ffffff;
   padding: 20px 20px 40px 60px;
   margin-top: -90px;
   color: black ;
-}
-
-.wrapper {
-  background-color: #EDEDED ;
 }
 
 .banner-event {
@@ -27,4 +24,17 @@
   color: #90c1d4;
   font-weight:  bold;
   font-size: 50px;
+}
+
+.pages-wrapper {
+  min-height: 90vh;
+  margin-top: 70px;
+}
+.pages-home {
+  .pages-wrapper {
+    margin-top: 0px;
+  }
+  .navbar-wagon {
+    background-color: transparent;
+  }
 }

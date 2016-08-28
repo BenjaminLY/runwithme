@@ -1,6 +1,8 @@
 class User < ApplicationRecord
+  belongs_to :company
   has_many :events, dependent: :destroy
-  has_many :participations, dependent: :nullify
+  has_many :participations, dependent: :destroy
+  has_many :messages, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -14,5 +16,19 @@ class User < ApplicationRecord
   	self.participations.map do |participation|
   		participation.event
   	end
+  end
+
+  def private_events
+    self.events_as_participant.select { |event| event.private }
+  end
+
+  def refused_events
+    events = []
+    self.participations.each do |participation|
+      if participation.status == "can t go"
+        events << participation.event
+      end
+    end
+    events
   end
 end

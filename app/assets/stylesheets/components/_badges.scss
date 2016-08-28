@@ -29,10 +29,18 @@
 .badge-blue {
   background: #469AE0;
 }
+
+.badge-blue-light {
+  background: #90C1D4;
+}
 .badge-black {
   background: black;
 }
 .badge-bordered {
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
+}
+
+.badge-white {
+  background: white;
 }

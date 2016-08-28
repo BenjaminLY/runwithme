@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  resources :events do 
-  	resources :participations, only: [:create]
+  patch "events/:id/add_pictures" => "events#add_pictures", as: "add_pictures"
+  
+  resources :events do
+    resources :participations, only: [:create]
+    resources :messages, only: [:create]
   end
   get '/profile' => 'users#profile'
   resources :users, only: [ :edit, :update, :destroy ]
@@ -11,6 +14,7 @@ Rails.application.routes.draw do
 end
 
 
+#                   Prefix Verb   URI Pattern                                Controller#Action
 #         new_user_session GET    /users/sign_in(.:format)                   devise/sessions#new
 #             user_session POST   /users/sign_in(.:format)                   devise/sessions#create
 #     destroy_user_session DELETE /users/sign_out(.:format)                  devise/sessions#destroy
@@ -27,7 +31,9 @@ end
 #                          PUT    /users(.:format)                           devise/registrations#update
 #                          DELETE /users(.:format)                           devise/registrations#destroy
 #                     root GET    /                                          pages#home
+#             add_pictures PATCH  /events/:id/add_pictures(.:format)         events#add_pictures
 #     event_participations POST   /events/:event_id/participations(.:format) participations#create
+#           event_messages POST   /events/:event_id/messages(.:format)       messages#create
 #                   events GET    /events(.:format)                          events#index
 #                          POST   /events(.:format)                          events#create
 #                new_event GET    /events/new(.:format)                      events#new
@@ -45,4 +51,7 @@ end
 #                          PUT    /participations/:id(.:format)              participations#update
 #                          DELETE /participations/:id(.:format)              participations#destroy
 #              attachinary        /attachinary                               Attachinary::Engine
+
+
+
 

@@ -1,7 +1,8 @@
 class Event < ApplicationRecord
   belongs_to :user
-  has_many :participations, dependent: :nullify
-  has_attachment :photo
+  has_many :messages, dependent: :destroy
+  has_many :participations, dependent: :destroy
+  has_attachments :photos, maximum: 10
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
@@ -12,6 +13,7 @@ class Event < ApplicationRecord
   validates :private, :inclusion => { :in => [true, false] }
   validates :meeting_point, presence: true
   validate :goal
+
 
   def goal
     if time_goal.nil? && trail_goal.nil?
@@ -25,11 +27,27 @@ class Event < ApplicationRecord
     hours = time_goal / 60
     min = time_goal % 60
     min = "0#{min}" if min < 10
-    hours == 0 ? "#{min}min" : "#{hours}h#{min}min"
+    hours == 0 ? "#{min} min" : "#{hours}h#{min} min"
+  end
+
+  def start_time
+      self.datetime.strftime('%e %B %Y') ##Where 'start' is a attribute of type 'Date' accessible through MyModel's relationship
   end
 
   def joined?(user)
     self.participations.map(&:user).include?(user)
+  end
+
+  def self.public
+    Event.where(private: false)
+  end
+
+  def self.my_private_events(user)
+    events = Event.where(private: true)
+    events.map do |event|
+      event.joined?(user)
+    end
+    events
   end
 end
 

@@ -1,112 +1,177 @@
-<% if @event.photo%>
-  <div class= "banner-event" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path @event.photo.path%>);">
-  <div class= "banner-event" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("running.jpg");"></div>
-<% end %>
+<% case @event.type_of %>
+  <% when "Interval run"%>
+    <% photo = "interval.jpg" %>
+  <% when "Endurance run"%>
+    <% photo = "endurance.jpg" %>
+  <% when "Cool run" %>
+    <% photo = "cool_run.jpg" %>
+  <% when "Chatting run" %>
+    <% photo = "chatting_run.jpg" %>
+  <% when "Speed walk" %>
+    <% photo = "speed_walk.jpg" %>
+  <% else %>
+    <% photo = "pleasant_walk.jpg" %>
+  <% end %> 
+  <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path photo, width: 600, height: 300, crop: :fill %>);"></div>
 
-  <div class="container padded pad">
+  <div class="container">
     <div class="row">
-      <div class="text-center">
-        <h1 class= "text-center">
-          <%= @event.type_of %> -
-          <% if @event.time_goal %>
-            <%= @event.time_goal_to_s %>
+      <div class="col-xs-10 col-xs-offset-1">
+        <div class="event">
+          <div class="event_header">
+            <div class='event-date'>
+              <div>
+                <h3> <%= @event.datetime.strftime('%e %B %Y') %> </h3>   
+              </div>
+              <div>
+                <h3> <%= @event.datetime.strftime('%H:%M') %> </h3> 
+              </div>
+              <div class="public_private">
+              <% if @event.private %>
+                <%= "PRIVE" %>
+              <% else %>
+                <%= "PUBLIC" %>
+              <% end  %>           
+              </div>
+            </div> 
+            <div class="event_type">
+              <div>
+                <h3>
+                 <%= @event.type_of %> -
+                   <% if @event.time_goal %>
+                     <%= @event.time_goal_to_s %>
+                   <% end %>
+                   <% if @event.trail_goal %>
+                      <%= @event.trail_goal %> km
+                   <% end %>
+                </h3>
+              </div>
+              <div>
+                <h3> Organisé par <%= @event.user.first_name %> <%= @event.user.last_name  %></h3>
+                <% if policy(@event).edit? %>
+                  <%= link_to "Edit", edit_event_path(@event) %>
+                <% end %>
+                <% if policy(@event).destroy? %>
+                  <%= link_to "Delete", event_path, method: :delete %>
+                <% end %>
+              </div>
+            </div> 
+            <div>
+              <%= render "users/avatar", user: @event.user %>
+            </div>
+          </div>
+          <div class="event-details">
+            <div class="description">
+              <div>
+                <h4>Lieu du rendez-vous </h4>
+                <p><%= @event.meeting_point %></p>
+              </div>
+              <div>
+                <% unless @event.address.blank? %>
+                  <h4><%= "Adresse de l'activité" %></h4>
+                  <p><%= @event.address %></p>
+                <% end %>
+              <div>
+                <% unless @event.description.blank? %>
+                  <h4><%= "Description de l'activité" %></h4>
+                  <p><%= @event.description %></p>
+                <% end %>
+              </div>
+              <div class="messages">
+                <h4><%= "Messages" %></h4>
+                <% unless @event.messages.empty? %>
+                  <% @event.messages.each do |message| %>
+                    <div class="message">
+                      <strong><%= message.user.first_name %> <%= message.user.last_name %></strong> - <%= message.created_at %>    
+                      <p><%= message.content %></p>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+              <div>
+                <%= simple_form_for [@event, @message] do |f| %>
+                <%= f.input :content, label: false, placeholder: "votre message"  %>  
+                <%= f.button :submit, value: 'Postez', class: "btn btn-primary" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="participation">
+            <%= render "events/participations", event: @event %>
+          </div>
+        </div>
+        <div class= "pad-bot pad-top">
+          <%= link_to "Back to events", events_path %>
+        </div>
+        <div class="photos">
+          <div class="photos_header">          
+            <h4><%= "Vos selfies!" %></h4>
+            <div class="photos_btn">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPhotos">
+                 Postez vos selfies!
+              </button> 
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <% unless @event.photos.nil? %>
+                <% @event.photos.each do |photo| %>
+                  <div class="col-xs-4 col-sm-3 col-sm-2">
+                    <div class="photo pad-top">
+                      <%= cl_image_tag photo.path, width: 200, height: 200, crop: :fill %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>    
+              </div>
+            </div>
+        </div>
+          <% if @event.latitude &&  @event.longitude %>
+            <div id="map" style="width: 100%; height: 600px;"></div>
           <% end %>
-          <% if @event.trail_goal %>
-            <%= @event.trail_goal %> km
-          <% end %>
-        </h1>
-        <div>
-          <%= image_tag "joe_pitch.jpg", class: "avatar-xlarge"%>
-          <p>JoeM</p>
-        </div>
-        <!-- <%# @event.user.email %> -->
-      </div>
-      <div class="col-sm-4">
-        <p class = "text-center">
-          <strong>
-            <i class="fa fa-map-marker color" aria-hidden="true"></i>
-            <%= @event.meeting_point %>
-            <% if @event.address%>
-              <%= @event.address%>
-            <% end %>
-          </strong>
-        </p>
-      </div>
-      <div class="col-sm-4">
-        <p class = "text-center">
-          <strong>
-            <i class="fa fa-calendar color" aria-hidden="true"></i>
-            <%=@event.datetime.strftime('%e %B %Y') %>
-          </strong>
-        </p>
-      </div>
-      <div class="col-sm-4">
-        <p class = "text-center">
-          <strong>
-          <i class="fa fa-clock-o color" aria-hidden="true"></i>
-            <%= @event.datetime.strftime('%H:%M') %>
-          </strong>
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <h3 class = "text-center">
-          Event :
-          <% if @event.private %>
-            <%= "private" %>
-          <% else %>
-            <%= "public" %>
-          <% end  %>
-        </h3>
-        <div class="text-center padded">
-          <h3>Description :</h3>
-          <p>
-            <% if @event.description %>
-              <%= @event.description %>
-            <% end %>
-          </p>
-        </div>
-        <div class="text-center padded">
-          <h3>Participations :</h3>
-          <ul>
-              <% @event.participations.each do |participation| %>
-            <li>
-              <%= participation.status %> -
-              <%= participation.user.first_name %>
-              <%= participation.user.last_name %>
-            </li>
-              <% end %>
-          </ul>
-        </div>
-        <div class="text-center padded">
-          <%= link_to "Back to events", events_path, class: "btn-medium-full" %>
-          <%= link_to "Edit my event", edit_event_path(@event), class: "btn-medium-full" %>
-          <%= link_to "Delete this event", event_path, method: :delete, class: "btn-medium-full" %>
-        </div>
-        <% if @event.latitude &&  @event.longitude %>
-          <div id="map" style="width: 100%; height: 600px;"></div>
-        <% end %>
       </div>
     </div>
   </div>
+</div>
+
+ <div class="modal fade" id="addPhotos" tabindex="-1" role="dialog" aria-labelledby="addPhotosLabel">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <h4 class="modal-title" id="addPhotosLabel">Partagez vos selfies! </h4>
+       </div>
+       <div class="modal-body">
+        <%= simple_form_for(@event, :url => add_pictures_path, :method => :patch) do |f| %>
+        <%= f.input :photos, as: :attachinary  %>  
+        <%= f.button :submit, value: 'Postez', class: "btn btn-primary" %>
+        <% end %>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       </div>
+     </div>
+   </div>
+ </div>
 
   <% content_for :after_js do %>
-    <script>
-      $(document).ready(function() {
-        var handler = Gmaps.build('Google');
-        handler.buildMap({ internal: { id: 'map' } }, function() {
-          markers = handler.addMarkers(<%= raw @hash.to_json %>);
-          handler.bounds.extendWith(markers);
-          handler.fitMapToBounds();
-          if (markers.length == 0) {
-            handler.getMap().setZoom(2);
-          } else if (markers.length == 1) {
-            handler.getMap().setZoom(14);
-          }
+    <% if @event.latitude &&  @event.longitude %>
+
+      <script>
+        $(document).ready(function() {
+          var handler = Gmaps.build('Google');
+          handler.buildMap({ internal: { id: 'map' } }, function() {
+            markers = handler.addMarkers(<%= raw @hash.to_json %>);
+            handler.bounds.extendWith(markers);
+            handler.fitMapToBounds();
+            if (markers.length == 0) {
+              handler.getMap().setZoom(2);
+            } else if (markers.length == 1) {
+              handler.getMap().setZoom(14);
+            }
+          });
         });
-      });
-    </script>
+      </script>
+    <% end %>
   <% end %>
-</div>
 

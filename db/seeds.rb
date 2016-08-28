@@ -7,15 +7,25 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Event.destroy_all
+Participation.destroy_all
 User.destroy_all
+Company.destroy_all
 
-user_1 = User.create!(email: "coline@gmail.com", password: "testtest", first_name: "coline", last_name: "colnat", job_title: "Web dev" )
+company_1 = Company.create!(name: "Hermes", address: "24 rue du Faubourg, Saint-Honoré 75008 Paris", name_of_contact: "Georges Kelly", phone_number: "0140174600", email: "georges.kelly@hermes.com" )
+puts "#{company_1} a bien été créée"
+company_2 = Company.create!(name: "LVMH", address: "22 avenue Montaigne, 75008 Paris", name_of_contact: "Vicky Adler", phone_number: "0144132222", email: "vicky.adler@lvmh.com")
+puts "#{company_2} a bien été créée"
+company_3 = Company.create!(name: "Danone", address: "17 boulevard Haussmann, 75009 Paris", name_of_contact: "Gerard Lactee", phone_number: "0144352020", email: "gerard.lactee@danone.com")
+puts "#{company_3} a bien été créée"
+
+
+user_1 = User.create!(email: "coline@gmail.com", password: "testtest", first_name: "coline", last_name: "colnat", job_title: "Web dev", company_id: company_1.id)
 puts "#{user_1} a bien été créé'"
-user_2 = User.create!(email: "benjamin@gmail.com", password: "testtest", first_name: "benjamin" , last_name: "lyphoudt", job_title: "webmaster" )
+user_2 = User.create!(email: "benjamin@gmail.com", password: "testtest", first_name: "benjamin" , last_name: "lyphoudt", job_title: "webmaster", company_id: company_1.id)
 puts "#{user_2} a bien été créé'"
-user_3 = User.create!(email: "abdel@gmail.com", password: "testtest", first_name: "abdel", last_name: "malik" , job_title: "Lawyer" )
+user_3 = User.create!(email: "abdel@gmail.com", password: "testtest", first_name: "abdel", last_name: "malik" , job_title: "Lawyer", company_id: company_1.id)
 puts "#{user_3} a bien été créé'"
-user_4 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joe", last_name: "star" , job_title: "Accountant")
+user_4 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joe", last_name: "star" , job_title: "Accountant", company_id: company_1.id)
 puts "#{user_4} a bien été créé'"
 
 attributes = [
@@ -39,7 +49,7 @@ attributes = [
     trail_goal: 5,
   },
   {
-    user_id: user_1.id,
+    user_id: user_3.id,
     type_of: "Cool run",
     datetime: DateTime.new(2016, 12, 12),
     private: false,
@@ -47,7 +57,7 @@ attributes = [
     time_goal: 45,
   },
   {
-    user_id: user_2.id,
+    user_id: user_4.id,
     type_of: "Endurance run",
     datetime: DateTime.new(2016, 9, 30),
     private: false,
@@ -59,6 +69,8 @@ attributes = [
 ]
 
 attributes.each do |attribute|
-  Event.create!(attribute)
-  puts " l'event a bien été créé"
+  event = Event.create!(attribute)
+  Participation.create!(status: "going", user_id: attribute[:user_id], event_id: event.id)
+  puts " l'event et la participation ont bien été créés"
 end
+

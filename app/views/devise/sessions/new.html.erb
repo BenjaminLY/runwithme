@@ -2,7 +2,7 @@
   <div class="container padded ">
     <div class="row">
       <div class="col-xs-12 col-md-6 col-md-offset-3 login-form">
-        <h2>Already a member ? Please log in :</h2>
+        <h2>Déjà membre ? Connectez-vous !</h2>
         <br>
         <br>
 
@@ -11,14 +11,14 @@
           <div class="form-inputs">
             <%= f.input :email, label: false, placeholder: 'Email*', required: false, autofocus: true %>
             <br>
-            <%= f.input :password, label: false, placeholder: 'Password*', required: false %>
+            <%= f.input :password, label: false, placeholder: 'Mot de passe*', required: false %>
             <br>
             <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
           </div>
 
             <br>
           <div class="form-actions">
-            <%= f.button :submit, "Log me in", class: "green-btn" %>
+            <%= f.button :submit, "Log me in", class: "btn-blue-edit text-color-log" %>
           </div>
         <% end %>
         <br>

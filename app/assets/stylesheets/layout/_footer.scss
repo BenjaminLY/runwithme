@@ -1,1 +1,47 @@
-// Your footer style
+#footer {
+  background: $gray-darker;
+  padding: 15px 0;
+  height: 209px;
+  color: $gray-lighter;
+  p {
+  margin-top: 17px;
+  text-align: center;
+  }
+  ul {
+  margin-top: 10px;
+  }
+  a {
+  color: white;
+  font-size: 30px;
+  letter-spacing: 20px;
+  transition: color 0.5s ease;
+  &:hover {
+  color: $green;
+  }
+ }
+}// Your footer style
+
+.social-network {
+  border-top: white 1px solid;
+  margin: 50px;
+}
+
+.social-icons {
+  border: white 1px solid;
+  width: 45px;
+  border-radius: 22px;
+  background-color: transparent;
+}
+
+#icon-insta {
+  padding-left: 9px;
+}
+
+#icon-fb {
+  padding-left: 12px;
+}
+
+#icon-twitter {
+padding-left: 8px;
+}
+

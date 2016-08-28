@@ -1,22 +1,134 @@
-<div class="container padded">
-  <div class="row">
-    <%= render 'avatar', user: @user %>
-    <h1 class="text-center"><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h1>
-    <h2 class="text-center"><%= @user.job_title.capitalize %></h2>
-    <div class="text-center">
-      <%= link_to "Update Info", edit_user_path(@user), class: 'btn-medium-full' %>
+<div class="wrapper-grey">
+  <div class="container">
+    <div class="row">
+      <div class =" pad-top-more">
+        <div class="col-xs-12 col-sm-1 simple-calendar pad-top margin-chevron">
+          <%= month_calendar events: @user.events_as_participant do |date, events| %>
+            <%= date.strftime("%e") %>
+            <% events.each do |event| %>
+              <div class = "event_calendar_notif" data-toggle="tooltip" title="<%= event.type_of %>">
+                <strong><i class="fa fa-circle"></i></strong>
+              </div>
+              <div class = "event_calendar_content">
+                <strong><%= event.type_of %></strong>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col-xs-12 col-sm-2">
+          <%= render 'avatar', user: @user %>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+          <h2 class="text-center"><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h2>
+          <h3 class="text-center"><%= @user.job_title.capitalize %> at
+            <!-- <img src="http://www.reputatiolab.com/wp-content/uploads/2015/01/logo-societe-generale-1024x1007.jpg", class="avatar pad-logo-company"> -->
+          </h3>
+          <h4 class="pad-name-company pad-bot">
+            Société générale
+          </h4>
+          <div class="text-center pad-bot">
+            <%= link_to "Editer profil", edit_user_path(@user), class: 'btn-blue-edit' %>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-xs-12 padded">
-      <p>
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-        Events I participate
-
-      </p>
-          <%= render 'events/events_list', events: @user.events_as_participant %>
+    <div class="col-xs-12 col-sm-10">
+      <div class="stats">
+        <div class="title">
+          <!-- div class="pad-left pad-top bg">Vos Stats</div> -->
+          <div class="line-border-top"></div>
+          <h1> Vos stats </h1>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+          <div class="icon-wrapper">
+          <div class="custom-icon">
+           <i class="fa fa-users" aria-hidden="true"></i>
+            <p>
+              Participations
+              <span class="fix-editor">&nbsp;</span>
+            </p>
+            <p>
+              <strong> 5 évènements</strong>
+            </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+          <div class="icon-wrapper">
+            <div  class="custom-icon">
+              <i class="fa fa-users" aria-hidden="true"></i>
+              <p>Vitesse Moyenne
+                <span class="fix-editor">&nbsp;</span>
+              </p>
+              <p>
+                <strong>13 km/h</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+          <div class="icon-wrapper">
+            <div class="custom-icon">
+              <i class="fa fa-map-o" aria-hidden="true"></i>
+              <p>
+                Distance parcourue
+                <span class="fix-editor">&nbsp;</span>
+              </p>
+                <strong>80 km</strong>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+          <div class="icon-wrapper">
+            <div class="custom-icon">
+             <i class="fa fa-map-o" aria-hidden="true"></i>
+              <p>
+                Temps couru
+                <span class="fix-editor">&nbsp;</span>
+              </p>
+              <p>
+                <strong>800 heures</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-10 pad-bot pad-top">
+      <div class="text-center line">
+        <h1 class="size_text">
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+          Mes évènements
+        </h1>
+      </div>
+      <div class="triangle_inside_line pad-bot" id="triangle_show"></div>
+      <div class="events_to_show" style="display:none;">
+        <% @user.events_as_participant.each do |event| %>
+          <div class="events" id="event_<%= event.id %>">
+            <%= render 'events/event', event: event %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+      <div class="col-xs-12 col-sm-10">
+        <div class="text-center line">
+          <h1 class="size_text">
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            Les évènements auxquels je participe
+          </h1>
+        </div>
+        <div class="triangle_inside_line pad-bot" id="triangle_participate">
+        </div>
+        <div class="events_where_participate" style="display:none;">
+          <% @user.events_as_participant .each do |event| %>
+          <div class="events" id="event_<%= event.id %>">
+          <%= render 'events/event', event: event %>
+          </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-
 
 

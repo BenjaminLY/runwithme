@@ -1,0 +1,68 @@
+.simple-calendar {
+  .day {
+    background-color: grey;
+  }
+
+  .wday-0 {
+    background-color: #ffffff;
+
+  }
+  .wday-1 {
+    background-color: #ffffff;
+  }
+  .wday-2 {
+    background-color: #ffffff;
+  }
+  .wday-3 {
+    background-color: #ffffff;
+  }
+  .wday-4 {
+    background-color: #ffffff;
+  }
+  .wday-5 {
+    background-color: #ffffff;
+  }
+  .wday-6 {
+    background-color: #ffffff;
+  }
+
+  .today {
+    background-color: $green;
+  }
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {
+    color: grey;
+  }
+  .next-month {
+    color: grey;
+   }
+  .current-month {}
+
+  .has-events {
+    .event_calendar_notif{
+      color: $green;
+      display: block;
+      cursor: pointer;
+    }
+    .event_calendar_content{
+      display: none;
+      font-size: 10px;
+    }
+  }
+  // .has-events:hover {
+  //   // background-color: #ddd9d9;
+  //   // .event_calendar_content{
+  //   //   display: block;
+  //   //   width: 20px;
+  //   // }
+  //   .event_calendar_notif {
+  //     display: none;
+  //   }
+  // }
+  position: fixed;
+  margin-left: 470px;
+}

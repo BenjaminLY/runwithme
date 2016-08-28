@@ -1,37 +1,150 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(171,207,230,0.5) 0%, rgba(0,36,61,0.3) 50%), url(<%= image_path 'home.jpg' %>);">
-  <div class="banner-content">
-    <h1>Keep working, still running !</h1>
-    <p>The best app to connect with you colleagues and enjoy outdoors activities.  </p>
-    <br>
-    <% if user_signed_in? %>
-      <%= link_to 'View events', events_path, class:"btn-medium", id: "home-page" %>
-    <% else %>
-      <%= link_to 'Sign up', new_user_registration_path, class:"btn-medium-full" %>
-      <%= link_to 'Learn more', new_user_session_path, class:"btn-medium", id: "home-page" %>
-    <% end %>
+<!-- <div class="banner" style="background-image: linear-gradient(-225deg, rgba(171,207,230,0.5) 0%, rgba(0,36,61,0.3) 50%), url("<%#= image_path 'runners.jpg' %>");">  -->
+<div class="homepage-hero-module">
+  <div class="video-container">
+    <div class="filter"></div>
+    <%= video_tag("The-Boulevard/The-Boulevard.mp4", autoplay: true, loop: true, poster: "The-Boulevard/The-Boulevard.jpg") %>
+
+       <!--  <video autoplay loop class="fillWidth">
+
+          <source src="../../app/assets/images/The-Boulevard/The-Boulevard.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+          <source src="../../app/assets/images/The-Boulevard/The-Boulevard.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+      </video>
+    <div class="poster hidden">
+      <%#= image_tag "The-Boulevard/The-Boulevard.jpg" %>
+    </div> -->
+    <div class="banner">
+      <%#= render 'shared/navbar' %>
+      <div class="banner-content">
+        <h1>Ne courez plus jamais seul !</h1>
+        <p>Créez ou rejoignez des courses proposées par vos collègues de travail</p>
+        <br>
+        <% if user_signed_in? %>
+          <%= link_to 'View events', events_path, class:"btn-medium", id: "home-page" %>
+        <% else %>
+          <%= link_to 'Se connecter', new_user_session_path, class:"btn-medium-full" %>
+          <%#= link_to 'En savoir plus', new_user_session_path, class:"btn-medium", id: "home-page" %>
+        <% end %>
+        <a href="#shoes">
+          <div id="fa-angle-down-1">
+            <i class="fa fa-angle-down"></i>
+          </div>
+        </a>
+
+      </div>
+      <!-- <div class="text-center">  --><!-- style="position: absolute; bottom: -50px;" -->
+      <!-- <a href="#features">
+        <i class="fa fa-angle-down pulse" style="font-size: 90px; color: white;">
+        </i>
+      </a> -->
+      <!-- </div> -->
+    </div>
+
+
+
+
+
   </div>
+
 </div>
 
-<div class="banner-light">
-  <div class="container">
-    <h2>How it works?</h2>
-    <br>
-    <br>
-    <div class="row">
-      <div class="col-xs-12 col-sm-4">
-        <%= image_tag 'picto_hp_3.png', class: "picto-hp" %>
-        <p>I sign up with my professional email</p>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <%= image_tag 'picto_hp_2.png', class: "picto-hp" %>
-        <p>I edit my profile</p>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <%= image_tag 'picto_hp_1.png', class: "picto-hp" %>
-        <p>I join an event or create my own</p>
-      </div>
+
+<div class="wrapper-shoes" id="shoes">
+
+  <div class= "col-xs-12 col-md-6" id="left-block">
+    <div id="text-left-block">
+
+      <p>
+      Planifier des activités sportives avec vos collègues en un seul clic.
+      <p>
+
     </div>
   </div>
+
+  <div class= "col-xs-12 col-md-6" id="right-block">
+
+  </div>
+
+  <a href="#group" class="text-center">
+    <i class="fa fa-angle-down" id="arrow-2"></i>
+  </a>
+
 </div>
-<div class="banner" style="background-image: url(<%= image_path 'sign_in_3.jpg' %>); height: 50vh;">
+
+<div class="wrapper-group" id="group">
+
+  <div class= "col-xs-12 col-md-6" id="left-block-group">
+
+  </div>
+
+  <div class= "col-xs-12 col-md-6" id="right-block-group">
+
+    <div id="text-right-block-group">
+
+      <p>
+      Profitez de l'émulation d'un groupe pour vous surpasser.
+      </p>
+
+    </div>
+
+  </div>
+
+
+
 </div>
+
+<!-- <div class="wrapper-run">
+
+  <div class= "col-xs-12 col-md-6" id="left-block-one">
+
+  </div>
+
+  <div class= "col-xs-12 col-md-6" id="right-block-two">
+    <div id="text-left-block-two">
+      <p>Profitez de l'émulation d'un groupe pour vous surpasser.</p>
+    </div>
+  </div>
+
+</div> -->
+
+  <!-- <div class="wrapper-runners" style="background-image: url(<%#=image_path 'runners.jpg' %>);"> -->
+   <!--  <div class="container">
+      <h2>How it works?</h2>
+      <br>
+      <br>
+      <div class="row"> -->
+      <!--   <div class="col-xs-12 col-sm-4">
+          <%#= image_tag '', class: "picto-hp" %>
+          <p>I sign up with my professional email and edit my profile</p>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <%#= image_tag '', class: "picto-hp" %>
+          <p>I can check all the upcoming events and choose to join an event or create my own</p>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <%#= image_tag '', class: "picto-hp" %>
+          <p>I enjoy my run with my colleagues</p>
+        </div>
+
+</div> -->
+
+</div>
+
+<% content_for :after_js do %>
+  <script>
+    $(window).on("scroll", function(){
+      if ( $(this).scrollTop() > 80 ){
+         $(".navbar-wagon").css("background-color", "#222222");
+         $('#login-btn').css("color", '#41B65F');
+         $('#login-btn').css("border-color", '#41B65F');
+      } else {
+         $(".navbar-wagon").css("background-color", "transparent");
+         $('#login-btn').css("color", 'white');
+         $('#login-btn').css("border-color", 'white');
+      }
+    });
+  </script>
+<% end %>
+
+<!--
+<div class="banner" style="background-image: url(<%#= image_path 'sign_in_3.jpg' %>); height: 50vh;">
+</div> -->
