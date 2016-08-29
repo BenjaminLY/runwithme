@@ -88,12 +88,14 @@
                   <% end %>
                 <% end %>
               </div>
-              <div>
-                <%= simple_form_for [@event, @message] do |f| %>
-                <%= f.input :content, label: false, placeholder: "votre message"  %>  
-                <%= f.button :submit, value: 'Postez', class: "btn btn-primary" %>
-                <% end %>
-              </div>
+              <% if policy(@message).create? %>
+                <div>
+                  <%= simple_form_for [@event, @message] do |f| %>
+                  <%= f.input :content, label: false, placeholder: "votre message"  %>  
+                  <%= f.button :submit, value: 'Postez', class: "btn btn-primary" %>
+                  <% end %>
+                </div>
+              <% end %>
             </div>
           </div>
           <div class="participation">

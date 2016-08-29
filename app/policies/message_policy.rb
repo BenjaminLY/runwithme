@@ -6,12 +6,12 @@ class MessagePolicy < ApplicationPolicy
   end
 
   def create?
-   true
+   is_user_participant?
   end
 
   private
 
   def is_user_participant?
-    record.user == user
+    record.event.joined?(user)
   end
 end
