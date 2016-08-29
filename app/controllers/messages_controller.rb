@@ -6,7 +6,16 @@ class MessagesController < ApplicationController
 		@message.event = @event
 		@message.user = @user
 		authorize @message
-		@message.save
-		redirect_to event_path(@event)
-	end	
+    if @message.save
+      respond_to do |format|
+        format.html { redirect_to event_path(@event) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
+    else
+      respond_to do |format|
+        format.html { render 'events/show' }
+        format.js  # <-- idem
+      end
+    end
+  end
 end

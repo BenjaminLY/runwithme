@@ -23,16 +23,22 @@
 				color: #222222;
 			}
 		}
+    .organizer {
+      margin-top: 10px;
+      p {
+      margin-bottom: 0px;
+    }
+    }
 	}
 	.event-details {
 		display: flex;
 		margin-top: 20px;
-		.description {
-			width: 60%;
-			border: 3px solid white;
-			margin-right: 20px;
-			border-radius: 12px;
-			padding: 20px;
+    .description {
+      width: 60%;
+      margin-right: 20px;
+      border-radius: 12px;
+      padding: 20px;
+      background: white;
 			.messages {
 				h4 {
 					border-bottom: 3px solid black;
@@ -44,8 +50,8 @@
 		}
 		.participation {
 			width: 40%;
-			border: 3px solid white;
 			border-radius: 12px;
+      background: white;
 			.participation_header {
 				display: flex;
 				justify-content: space-between;
@@ -56,6 +62,18 @@
 				  font-size: 30px;
 				  color: #4C4C4C;
 				}
+          .going {
+            color: #00FF80 !important;
+            font-size: 30px;
+          }
+          .maybe {
+            color: #FF8000 !important;
+            font-size: 30px;
+          }
+          .dont_go {
+            color: red !important;
+            font-size: 30px;
+          }
 				}
 			}
 			.participation_all {
@@ -68,7 +86,7 @@
 				}
 			}
 			hr {
-				border: 3px solid white;
+				border: 3px solid $blue;
 
 			}
 

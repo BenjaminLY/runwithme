@@ -1,0 +1,8 @@
+<% unless message.created_at.strftime('%e %B %Y') == Message.where(event_id: message.event_id).last(2).first.created_at.strftime('%e %B %Y') %>
+  <%= message.created_at.strftime('%e %B %Y') %>
+<% end %>
+<div class="message" id="message_<%= message.id %>">
+  <strong><%= message.user.first_name %> <%= message.user.last_name %></strong> -
+  <%= (message.created_at + 7200).strftime('%H:%M') %>
+  <p><%= message.content %></p>
+</div>
