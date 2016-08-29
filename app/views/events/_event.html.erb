@@ -31,11 +31,11 @@
       </span>
     <% end %>
 
-    <div class="ev-validations">
       <% if event.joined?(current_user) %>
+      <div class="ev-validations">
       <% case event.participations.find_by(user: current_user).status %>
         <% when "going" %>
-          <%= link_to participation_path(event.participations.find_by(user: current_user), status: "going"), method: :patch, style: "color: orange !important;",remote: true do %>
+          <%= link_to participation_path(event.participations.find_by(user: current_user), status: "going"), method: :patch, style: "color: #00FF80 !important; font-size: 30px",remote: true do %>
             <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
           <% end %>
           <%= link_to participation_path(event.participations.find_by(user: current_user), status: "maybe"), method: :patch, remote: true do %>
@@ -48,7 +48,7 @@
           <%= link_to participation_path(event.participations.find_by(user: current_user), status: "going"), method: :patch,remote: true do %>
             <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
           <% end %>
-          <%= link_to participation_path(event.participations.find_by(user: current_user), status: "maybe"), method: :patch, style: "color: orange;", remote: true do %>
+          <%= link_to participation_path(event.participations.find_by(user: current_user), status: "maybe"), method: :patch, style: "color: #FF8000; font-size: 30px", remote: true do %>
             <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
           <% end %>
           <%= link_to participation_path(event.participations.find_by(user: current_user), status: "can t go"), method: :patch, remote: true do %>
@@ -61,19 +61,21 @@
           <%= link_to participation_path(event.participations.find_by(user: current_user), status: "maybe"), method: :patch, remote: true do %>
             <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
           <% end %>
-          <%= link_to participation_path(event.participations.find_by(user: current_user), status: "can t go"), method: :patch, style: "color: orange;", remote: true do %>
+          <%= link_to participation_path(event.participations.find_by(user: current_user), status: "can t go"), method: :patch, style: "color: red; font-size: 30px", remote: true do %>
             <i class="fa fa-times" data-toggle="tooltip" title="Je n'y vais pas"></i>
           <% end %>
         <% end %>
+        </div>
       <% else %>
-        <%= link_to event_participations_path(event, status: "going"), method: :post, remote: true do %>
-          <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
-        <% end %>
-        <%= link_to event_participations_path(event, status: "maybe"), method: :post, remote: true do %>
-          <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
-        <% end %>
+        <div  class=""ev-validations" id="create_participation">
+          <%= link_to event_participations_path(event, status: "going"), method: :post, remote: true do %>
+            <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
+          <% end %>
+          <%= link_to event_participations_path(event, status: "maybe"), method: :post, remote: true do %>
+            <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
+          <% end %>
+        </div>
       <% end %>
-    </div>
   </div>
 
 
