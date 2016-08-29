@@ -2,12 +2,13 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   patch "events/:id/add_pictures" => "events#add_pictures", as: "add_pictures"
-  
+
   resources :events do
     resources :participations, only: [:create]
     resources :messages, only: [:create]
   end
   get '/profile' => 'users#profile'
+  get '/search' => 'users#search'
   resources :users, only: [ :edit, :update, :destroy ]
   resources :participations, only: [:update, :destroy]
   mount Attachinary::Engine => "/attachinary"

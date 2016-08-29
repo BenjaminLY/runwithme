@@ -32,6 +32,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap3-datetimepicker'
   gem "rails-assets-underscore"
   gem 'rails-assets-bootstrap-datepicker'
+  gem 'rails-assets-chosen'
 end
 
 group :development, :test do

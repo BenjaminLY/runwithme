@@ -41,6 +41,8 @@
     </div>
     <%= f.input :meeting_point, label: false , placeholder: 'Lieu de rendez-vous*' %>
     <br>
+    <%= f.association :users, as: :search, data:
+  {autocomplete_source: search_path } %>
     <div class="text-center">
       <%= f.button :submit, class: "btn-primary" %>
     </div>
@@ -58,6 +60,8 @@
         $('#private').removeClass('status_on');
         $('#event_private').val('false');
       });
+      $('#task_user_name').autocomplete
+      source: JSON.parse($('#task_user_name').data('autocomplete-source'))
     </script>
   <% end %>
 
