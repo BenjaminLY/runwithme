@@ -98,14 +98,9 @@
                   </div>
                 <% end %>
               </div>
-              <% if policy(@message).create? %>
-                <div>
-                  <%= simple_form_for([@event, @message], remote: true) do |f| %>
-                    <%= f.input :content, label: false, placeholder: "votre message"  %>
-                    <%= f.button :submit, value: 'Postez', class: "btn btn-primary" %>
-                  <% end %>
-                </div>
-              <% end %>
+              <div class="message_box">
+                <%= render 'events/message_box', event: @event, message: @message %>
+              </div>
           </div>
           <div class="participation">
             <%= render "events/participations", event: @event %>

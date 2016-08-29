@@ -6,6 +6,7 @@ var alert = $('<div class="alert alert-info"> Votre participation a bien été e
   alert.slideUp(1000);
 <% else %>
   $('.participation').html('<%= j render "events/participations", event: @participation.event %>');
+  $('.message_box').html('<%= j render "events/message_box", event: @participation.event, message: @message %>');
   $('.participation').append(alert);
   alert.slideDown(1500);
   alert.slideUp(1000);
