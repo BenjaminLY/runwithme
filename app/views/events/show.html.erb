@@ -87,9 +87,15 @@
               <div class="messages">
                 <h4><%= "Messages" %></h4>
                 <% unless @event.messages.empty? %>
+                  <div class="message">
                     <% @event.messages.each do |message| %>
-                      <%= render 'events/messages', message: message %>
+                    <% unless message.created_at.strftime('%e %B %Y') == Message.where(event_id: message.event_id).last(2).first.created_at.strftime('%e %B %Y') %>
+                      <%= message.created_at.strftime('%e %B %Y') %>
                     <% end %>
+                      <%= render 'events/messages', message: message %>
+                      <hr>
+                    <% end %>
+                  </div>
                 <% end %>
               </div>
               <% if policy(@message).create? %>

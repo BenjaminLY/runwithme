@@ -41,12 +41,15 @@
       background: white;
 			.messages {
 				h4 {
-					border-bottom: 3px solid black;
+					border-bottom: 3px solid $blue;
 				}	margin-bottom: 15px;
 			}
-			.message {
-				border-bottom: 1px solid black;
-			}
+        .message_avatar {
+          display: flex;
+          p {
+            margin-left: 5px;
+          }
+        }
 		}
 		.participation {
 			width: 40%;
@@ -86,7 +89,7 @@
 				}
 			}
 			hr {
-				border: 3px solid $blue;
+				border: 2px solid $blue;
 
 			}
 
@@ -96,7 +99,7 @@
 		font-weight: bold;
 		margin-bottom: 3px;
 		text-transform: uppercase;
-		font-size: 16px;
+		font-size: 14px;
 	}
 	h5 {
 		font-weight: bold;

@@ -47,7 +47,7 @@ class ParticipationsController < ApplicationController
 	def set_event
 		@event = Event.find(params[:event_id])
 	end
-	
+
 	def set_participation
 		@participation = Participation.find(params[:id])
 	end
