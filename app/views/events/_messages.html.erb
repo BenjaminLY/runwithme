@@ -1,0 +1,10 @@
+<div class="message_bulle" id="message_<%= message.id %>">
+  <div class="message_avatar">
+    <%= render "users/avatar_xsmall", user: message.user %>
+    <p>
+      <strong> <%= message.user.first_name %> <%= message.user.last_name %></strong> -
+      <%= (message.created_at + 7200).strftime('%H:%M') %>
+    </p>
+  </div>
+  <p><%= message.content %></p>
+</div>

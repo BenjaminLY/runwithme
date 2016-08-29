@@ -1,0 +1,11 @@
+
+  // new_message.slideDown();
+  // // Remove the text from the content textarea.
+  // $('#message_content').val('');
+
+var message = $('<%= j render "events/messages", message: @message %>').hide();
+
+$('.messages').append(message);
+message.slideDown();
+ $('#message_content').val('');
+

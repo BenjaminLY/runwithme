@@ -1,15 +1,17 @@
+  <% participation = @event.participations.find_by(user: current_user) %>
+
   <div class="participation_all">
     <div class="participation_header">
       <div><h4>Les poules qui ont dit oui!</h4></div>
       <div class="participation_icone">
         <% if @event.joined?(current_user) %>
-          <%= link_to participation_path(@event.participations.find_by(user: current_user), status: "going", type: "show"), method: :patch, remote: true do %>  
+          <%= link_to participation_path(participation, status: "going", type: "show"), method: :patch, remote: true, class: (participation.status == "going" ? "going" : "" )  do %>
             <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
           <% end %>
         <% else %>
            <%= link_to event_participations_path(@event, status: "going", type: "show"), method: :post, remote: true do %>
             <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
-          <% end %> 
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -17,7 +19,7 @@
       <% @event.participations.each do |participation| %>
         <%if participation.status == "going" %>
           <div class="avatar_user">
-            <%= render "users/avatar_small", user: participation.user %>  
+            <%= render "users/avatar_small", user: participation.user %>
           </div>
         <% end %>
       <% end %>
@@ -29,21 +31,21 @@
       <div><h4>Les poules qui hésitent encore!</h4></div>
       <div class="participation_icone">
         <% if @event.joined?(current_user) %>
-          <%= link_to participation_path(@event.participations.find_by(user: current_user), status: "maybe", type: "show"), method: :patch, remote: true do %>
+          <%= link_to participation_path(participation, status: "maybe", type: "show"), method: :patch, remote: true, class: (participation.status == "maybe" ? "maybe" : "" ) do %>
             <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
           <% end %>
         <% else %>
           <%= link_to event_participations_path(@event, status: "maybe", type: "show"), method: :post, remote: true do %>
             <i class="fa fa-question" data-toggle="tooltip" title="Peut-être"></i>
           <% end %>
-        <% end %> 
+        <% end %>
       </div>
     </div>
     <div class="particpation_avatar">
       <% @event.participations.each do |participation| %>
         <%if participation.status == "maybe" %>
           <div class="avatar_user">
-            <%= render "users/avatar_small", user: participation.user %>  
+            <%= render "users/avatar_small", user: participation.user %>
           </div>
         <% end %>
       <% end %>
@@ -55,9 +57,9 @@
       <div><h4>Les poules qui ont dit non!</h4></div>
       <div class="participation_icone">
         <% if @event.joined?(current_user) %>
-          <%= link_to participation_path(@event.participations.find_by(user: current_user), status: "can t go", type: "show"), method: :patch, remote: true do %>
+          <%= link_to participation_path(participation, status: "can t go", type: "show"), method: :patch, remote: true, class: (participation.status == "can t go" ? "dont_go" : "" ) do %>
             <i class="fa fa-times" data-toggle="tooltip" title="Je n'y vais pas"></i>
-          <% end %> 
+          <% end %>
         <% else %>
           <%= link_to event_participations_path(@event, status: "can t go", type: "show"), method: :post, remote: true do %>
             <i class="fa fa-times" data-toggle="tooltip" title="Je n'y vais pas"></i>
@@ -69,13 +71,12 @@
       <% @event.participations.each do |participation| %>
         <%if participation.status == "can t go" %>
           <div class="avatar_user">
-            <%= render "users/avatar_small", user: participation.user %>  
+            <%= render "users/avatar_small", user: participation.user %>
           </div>
         <% end %>
       <% end %>
     </div>
   </div>
-  
 
 
 

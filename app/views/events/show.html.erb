@@ -11,7 +11,7 @@
     <% photo = "speed_walk.jpg" %>
   <% else %>
     <% photo = "pleasant_walk.jpg" %>
-  <% end %> 
+  <% end %>
   <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path photo, width: 600, height: 300, crop: :fill %>);"></div>
 
   <div class="container">
@@ -21,19 +21,19 @@
           <div class="event_header">
             <div class='event-date'>
               <div>
-                <h3> <%= @event.datetime.strftime('%e %B %Y') %> </h3>   
+                <h3> <%= @event.datetime.strftime('%e %B %Y') %> </h3>
               </div>
               <div>
-                <h3> <%= @event.datetime.strftime('%H:%M') %> </h3> 
+                <h3> <%= @event.datetime.strftime('%H:%M') %> </h3>
               </div>
               <div class="public_private">
               <% if @event.private %>
                 <%= "PRIVE" %>
               <% else %>
                 <%= "PUBLIC" %>
-              <% end  %>           
+              <% end  %>
               </div>
-            </div> 
+            </div>
             <div class="event_type">
               <div>
                 <h3>
@@ -47,30 +47,37 @@
                 </h3>
               </div>
               <div>
-                <h3> Organisé par <%= @event.user.first_name %> <%= @event.user.last_name  %></h3>
+                <h3>RDV - <%= @event.meeting_point %> </h3>
+              </div>
+              <div>
                 <% if policy(@event).edit? %>
-                  <%= link_to "Edit", edit_event_path(@event) %>
+                  <%= link_to edit_event_path(@event) do %>
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  <% end %>
                 <% end %>
                 <% if policy(@event).destroy? %>
-                  <%= link_to "Delete", event_path, method: :delete %>
+                  <%= link_to event_path, method: :delete do %>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  <% end %>
                 <% end %>
               </div>
-            </div> 
-            <div>
+            </div>
+            <div class="text-center">
               <%= render "users/avatar", user: @event.user %>
+              <div class="organizer">
+                <p>Organisé par</p>
+                <p> <%= @event.user.first_name.capitalize %> <%= @event.user.last_name.capitalize  %></p>
+              </div>
             </div>
           </div>
           <div class="event-details">
             <div class="description">
               <div>
-                <h4>Lieu du rendez-vous </h4>
-                <p><%= @event.meeting_point %></p>
-              </div>
-              <div>
                 <% unless @event.address.blank? %>
                   <h4><%= "Adresse de l'activité" %></h4>
                   <p><%= @event.address %></p>
                 <% end %>
+              </div>
               <div>
                 <% unless @event.description.blank? %>
                   <h4><%= "Description de l'activité" %></h4>
@@ -80,23 +87,25 @@
               <div class="messages">
                 <h4><%= "Messages" %></h4>
                 <% unless @event.messages.empty? %>
-                  <% @event.messages.each do |message| %>
-                    <div class="message">
-                      <strong><%= message.user.first_name %> <%= message.user.last_name %></strong> - <%= message.created_at %>    
-                      <p><%= message.content %></p>
-                    </div>
-                  <% end %>
+                  <div class="message">
+                    <% @event.messages.each do |message| %>
+                    <% unless message.created_at.strftime('%e %B %Y') == Message.where(event_id: message.event_id).last(2).first.created_at.strftime('%e %B %Y') %>
+                      <%= message.created_at.strftime('%e %B %Y') %>
+                    <% end %>
+                      <%= render 'events/messages', message: message %>
+                      <hr>
+                    <% end %>
+                  </div>
                 <% end %>
               </div>
               <% if policy(@message).create? %>
                 <div>
-                  <%= simple_form_for [@event, @message] do |f| %>
-                  <%= f.input :content, label: false, placeholder: "votre message"  %>  
-                  <%= f.button :submit, value: 'Postez', class: "btn btn-primary" %>
+                  <%= simple_form_for([@event, @message], remote: true) do |f| %>
+                    <%= f.input :content, label: false, placeholder: "votre message"  %>
+                    <%= f.button :submit, value: 'Postez', class: "btn btn-primary" %>
                   <% end %>
                 </div>
               <% end %>
-            </div>
           </div>
           <div class="participation">
             <%= render "events/participations", event: @event %>
@@ -106,12 +115,12 @@
           <%= link_to "Back to events", events_path %>
         </div>
         <div class="photos">
-          <div class="photos_header">          
+          <div class="photos_header">
             <h4><%= "Vos selfies!" %></h4>
             <div class="photos_btn">
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPhotos">
                  Postez vos selfies!
-              </button> 
+              </button>
             </div>
           </div>
           <div class="container">
@@ -124,7 +133,7 @@
                     </div>
                   </div>
                 <% end %>
-              <% end %>    
+              <% end %>
               </div>
             </div>
         </div>
@@ -145,7 +154,7 @@
        </div>
        <div class="modal-body">
         <%= simple_form_for(@event, :url => add_pictures_path, :method => :patch) do |f| %>
-        <%= f.input :photos, as: :attachinary  %>  
+        <%= f.input :photos, as: :attachinary  %>
         <%= f.button :submit, value: 'Postez', class: "btn btn-primary" %>
         <% end %>
        </div>
