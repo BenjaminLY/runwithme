@@ -2,7 +2,8 @@
 <div class="homepage-hero-module">
   <div class="video-container">
     <div class="filter"></div>
-    <%= video_tag("The-Boulevard/The-Boulevard.mp4", autoplay: true, loop: true, poster: "The-Boulevard/The-Boulevard.jpg") %>
+    <%#= video_tag("The-Boulevard/The-Boulevard.mp4", autoplay: true, loop: true, poster: "The-Boulevard/The-Boulevard.jpg") %>
+    <%= video_tag("vid-backrunners.mp4.mov", autoplay: true, loop: true,) %>
 
        <!--  <video autoplay loop class="fillWidth">
 
@@ -25,8 +26,8 @@
           <%#= link_to 'En savoir plus', new_user_session_path, class:"btn-medium", id: "home-page" %>
         <% end %>
         <a href="#shoes">
-          <div id="fa-angle-down-1">
-            <i class="fa fa-angle-down"></i>
+          <div id="arrow-1">
+            <i class="fa fa-angle-down pulse"></i>
           </div>
         </a>
 
@@ -65,7 +66,7 @@
   </div>
 
   <a href="#group" class="text-center">
-    <i class="fa fa-angle-down" id="arrow-2"></i>
+    <i class="fa fa-angle-down pulse" id="arrow-2"></i>
   </a>
 
 </div>
