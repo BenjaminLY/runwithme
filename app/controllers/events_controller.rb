@@ -25,7 +25,7 @@ class EventsController < ApplicationController
       if event.latitude && event.longitude
         marker.lat event.latitude
         marker.lng event.longitude
-     end
+      end
      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
     end
   end
@@ -36,16 +36,28 @@ class EventsController < ApplicationController
   end
 
   def create
+    if params['datetime'].present?
+      time = Time.new(2000, 01, 01, event_time_params['hour'], event_time_params['minute'], 0, "+02:00")
+      event_params['datetime'] = event_params['datetime'].to_datetime + time.seconds_since_midnight.seconds
+    end
+
     @event = Event.new(event_params)
     @event.user = current_user
     @participation = Participation.new(status: "going")
     @participation.user = current_user
     @participation.event = @event
     authorize @event
+
     if @event.save && @participation.save
-      redirect_to event_path(@event)
+      respond_to do |format|
+        format.html { redirect_to event_path(@event) }
+        format.js  # <-- 'app/views/events/create.js.erb'
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render 'new', event: @event }
+        format.js  # <-- 'app/views/events/create.js.erb'
+      end
     end
   end
 
@@ -80,6 +92,10 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:datetime, :private, :type_of, :description,
       :meeting_point, :address, :time_goal, :trail_goal)
+  end
+
+  def event_time_params
+    params.require(:date).permit(:hour, :minute)
   end
 
   def event_picture

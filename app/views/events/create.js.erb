@@ -1,0 +1,8 @@
+// Here you will write *javascript* that would be executed by the browser
+<% if @event.errors.any? %>
+  // Render new review form with errors
+  $('#new_event').html("<%= j render 'new', event: @event %>");
+<% else %>
+  // Redirect to event page
+  window.location = "<%= event_path(@event) %>";
+<% end %>
