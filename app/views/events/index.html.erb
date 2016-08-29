@@ -8,7 +8,9 @@
           <li><%= link_to 'Publics', events_path(filter: 'public') %></li>
           <li><%= link_to 'Privés', events_path(filter: 'private') %></li>
           <li><%= link_to 'Refusés', events_path(filter: 'refused') %></li>
-          <li><%= link_to "Créer un événement", new_event_path, class: "btn btn-primary" %></li>
+          <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_event_form">
+        Nouvel événement
+      </button></li>
         </ul>
       </div>
       <div class="col-xs-9">
