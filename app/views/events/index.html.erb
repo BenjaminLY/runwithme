@@ -1,4 +1,4 @@
-<div class="grey-wrapper">
+<div class="grey-wrapper pad-top pad-bot">
   <div class="container">
     <h2 class="events-list-title text-center">Evénements à venir</h2>
     <div class="row">
@@ -14,7 +14,7 @@
         </ul>
       </div>
       <div class="col-xs-9">
-        <h4 class="events-counter">Résultats: <%= @events.count %></h4>
+        <h4 class="events-counter"> <%= pluralize @events.size, "résultat" %></h4>
         <% today = Date.today %>
         <% @events.each do |date, events| %>
           <div class="events-date-bg">

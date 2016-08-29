@@ -1,5 +1,13 @@
+var alert = $('<div class="alert alert-info"> Votre participation a bien été enregistrée </div>').hide();
 <% if @type == "index" %>
-	$('#event_<%= @participation.event.id %>').html('<%= j render "events/event", event: @participation.event %>')
+  $('#event_<%= @participation.event.id %>').html('<%= j render "events/event", event: @participation.event %>');
+  $('#event_<%= @participation.event.id %>').append(alert);
+  alert.slideDown(1500);
+  alert.slideUp(1000);
 <% else %>
-	$('.participation').html('<%= j render "events/participations", event: @participation.event %>')
+  $('.participation').html('<%= j render "events/participations", event: @participation.event %>');
+  $('.message_box').html('<%= j render "events/message_box", event: @participation.event, message: @message %>');
+  $('.participation').append(alert);
+  alert.slideDown(1500);
+  alert.slideUp(1000);
 <% end %>
