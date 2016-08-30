@@ -14,3 +14,29 @@
   background: $red;
 
 }
+
+
+.alert {
+ margin: 0;
+ text-align: center;
+ color: white;
+ background: none;
+ border: none;
+ position: fixed;
+ top: 85px;
+ left: 50%;
+ width: 300px;
+ margin-left: -150px;
+ z-index: 2;
+
+}
+.alert-info {
+ background: #2ECC71 ;
+ border-radius: 4px;
+ opacity: 0.9;
+}
+.alert-warning {
+ background: #EA4335 ;
+ border-radius: 4px;
+ opacity: 0.9;
+}
