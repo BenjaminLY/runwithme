@@ -2,9 +2,9 @@
   <!-- Logo -->
   <div class="navbar-wagon-left">
     <% if user_signed_in? %>
-      <%= link_to t(".top_call_to_action", default: "Liste des Run"), events_path, class: "no-btn" %>
+      <%= link_to t(".top_call_to_action", default: "Tous les défis"), events_path, class: "no-btn" %>
     <% else %>
-      <%= link_to "Professionnel", '#' %>
+      <%= link_to "Je suis une société", '#' %>
     <%end %>
 
   </div>
