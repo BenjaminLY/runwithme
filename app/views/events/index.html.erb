@@ -4,13 +4,15 @@
     <div class="row">
       <div class="col-xs-12 col-md-10 col-md-offset-1 ">
         <ul class="nav index-menu">
-          <li class="all-child"><%= link_to 'Tous', events_path %></li>
-          <li class="all-child"><%= link_to 'Publics', events_path(filter: 'public') %></li>
-          <li class="all-child"><%= link_to 'Privés', events_path(filter: 'private') %></li>
-          <li class="all-child"><%= link_to 'Refusés', events_path(filter: 'refused') %></li>
-          <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_event_form">
-        Nouvel événement
-      </button></li>
+          <li class="all-child hvr-underline-from-left"><%= link_to 'Mes runs', events_path(filter: 'Own_run') %></li>
+          <li class="all-child hvr-underline-from-left"><%= link_to 'Publics', events_path(filter: 'public') %></li>
+          <li class="all-child hvr-underline-from-left"><%= link_to 'Défis reçus', events_path(filter: 'private') %></li>
+          <li class="all-child hvr-underline-from-left"><%= link_to 'Challenges Entreprises', events_path(filter: 'private') %></li>
+          <!-- li class="all-child">
+            <%#= link_to events_path(filter: 'refused') do %>
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            <# end %>
+          </li> -->
         </ul>
       </div>
       <div class="col-xs-12 col-md-10 col-md-offset-1">
