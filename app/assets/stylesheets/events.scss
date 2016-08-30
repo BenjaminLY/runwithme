@@ -221,6 +221,23 @@
    display: inline-block;
 }
 
+.time-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-dialog {
+  margin-top: 100px;
+}
+
+.modal-invited {
+  padding: 3px 8px !important;
+  color: $dark-blue;
+}
+.modal-invited li {
+  font-size: 14px;
+
 .nav > li > a {
   color: white;
   &:hover {
