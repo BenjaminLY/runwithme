@@ -36,6 +36,8 @@ class EventsController < ApplicationController
   end
 
   def create
+
+
     if params['datetime'].present?
       time = Time.new(2000, 01, 01, event_time_params['hour'], event_time_params['minute'], 0, "+02:00")
       event_params['datetime'] = event_params['datetime'].to_datetime + time.seconds_since_midnight.seconds
@@ -48,6 +50,7 @@ class EventsController < ApplicationController
     @participation.event = @event
     authorize @event
 
+    raise
     if @event.save && @participation.save
       respond_to do |format|
         format.html { redirect_to event_path(@event) }

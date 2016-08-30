@@ -43,27 +43,21 @@
         </div>
         <%= f.input :meeting_point, label: false , placeholder: 'Lieu de rendez-vous*' %>
         <br>
-        <%= f.association :users %>
+        <%= f.association :users, label_method: :full_name, value_method: :id %>
         <div class="text-center">
           <%= f.button :submit, class: "btn-primary" %>
         </div>
       <% end %>
 
-      <% content_for :after_js do %>
-        <script>
-          $('#private').click(function () {
-            $(this).addClass('status_on');
-            $('#public').removeClass('status_on');
-            $('#event_private').val('true');
-          });
-          $('#public').click(function () {
-            $(this).addClass('status_on');
-            $('#private').removeClass('status_on');
-            $('#event_private').val('false');
-          });
-          $("#event_user_ids").chosen()
-        </script>
-      <% end %>
+       <% content_for :after_js do %>
+          <script>
+            $(document).ready(function() {
+              setEventType();
+              callDatePicker();
+              setChosenSelect();
+            })
+          </script>
+        <% end %>
 
     </div>
   </div>
