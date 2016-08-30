@@ -21,9 +21,12 @@
       <%= link_to activities_path, class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
           <i class="fa fa-bell-o no-btn" style="color: white;"></i>
-          <div class="badge badge-blue-light no-btn">
-            <%= @activities.where(read_at: nil).count %>
-          </div>
+          <% nbr_activities = @activities.where(read_at: nil).count %>
+          <% unless nbr_activities == 0 %>
+            <div class="badge badge-blue-light no-btn">
+            <%= nbr_activities %>
+            </div>
+          <% end %>
         </div>
       <% end %>
 

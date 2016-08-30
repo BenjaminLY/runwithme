@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [ :profile, :edit ,:update, :destroy ]
+
   skip_after_action :verify_authorized
+
   def search
     @users = User.order(:first_name)
     @users = @users.where("first_name like ?", "%#{params[:term]}%") if params[:term]
