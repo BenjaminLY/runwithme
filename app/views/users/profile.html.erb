@@ -21,7 +21,8 @@
         <div class="stats">
           <div class="icon-wrapper text-center">
             <div id="participations">
-              <p>Nb de courses
+              <p class="event-next">
+                Nb de courses
                 <span class="fix-editor">&nbsp;</span>
               </p>
             </div>
@@ -33,7 +34,8 @@
           </div>
           <div class="icon-wrapper text-center">
             <div id="speed">
-              <p>Vitesse moyenne
+              <p class="event-next">
+                Vitesse moyenne
                 <span class="fix-editor">&nbsp;</span>
               </p>
             </div>
@@ -45,7 +47,7 @@
           </div>
           <div class="icon-wrapper text-center">
             <div id="distance">
-              <p>
+              <p class="event-next">
                 Distance parcourue
                 <span class="fix-editor">&nbsp;</span>
               </p>
@@ -60,15 +62,24 @@
         <h1 class="event-next">
           <i class="fa fa-calendar" aria-hidden="true"></i>
           Prochaines courses
+          <div class="triangle_inside_line pad-bot" id="triangle_show"></div>
         </h1>
-        <div>
-          <% @user.events_as_participant.each do |event| %>
-            <div class="events" id="event_<%= event.id %>">
-              <%= render 'events/event', event: event %>
-            </div>
-          <% end %>
+          <div class="events_to_show" style="display:none;">
+            <% @user.events_as_participant.each do |event| %>
+              <div class="events" id="event_<%#= event.id %>">
+                <%= render 'events/event', event: event %>
+              </div>
+            <% end %>
+          </div>
         </div>
-      </div>
+        <!-- <div>
+          <%# @user.events_as_participant.each do |event| %>
+            <div class="events" id="event_<%#= event.id %>">
+              <%#= render 'events/event', event: event %>
+            </div>
+          <%# end %>
+        </div> -->
+      <!-- </div> -->
     </div>
   </div>
 </div>
