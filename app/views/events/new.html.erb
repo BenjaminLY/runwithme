@@ -1,7 +1,7 @@
 <div class="container padded">
   <div class="row">
     <div class="col-xs-6 col-xs-offset-3">
-      <%= simple_form_for([@event], remote: true) do |f| %>
+      <%= simple_form_for([@event]) do |f| %>
         <%= f.error_notification %>
         <div class="form-group">
           <div class="row error-msg-form">
@@ -13,7 +13,7 @@
             </div>
           </div>
         </div>
-        <%= f.input :private, as: :hidden %>
+        <%= f.input :private, as: :hidden%>
         <%= f.input :type_of, autofocus: true, label: false, placeholder: "Type of event", collection: Event::MEETING, prompt: "Type d'événement*" %>
         <div class="form-group">
           <div class="row">

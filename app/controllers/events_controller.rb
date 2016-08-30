@@ -36,7 +36,8 @@ class EventsController < ApplicationController
   end
 
   def create
-
+    invited_users_id = params['event']['user_ids']
+    invited_users_id.shift
 
     if params['datetime'].present?
       time = Time.new(2000, 01, 01, event_time_params['hour'], event_time_params['minute'], 0, "+02:00")
@@ -50,8 +51,12 @@ class EventsController < ApplicationController
     @participation.event = @event
     authorize @event
 
-    raise
     if @event.save && @participation.save
+      if invited_users_id.present?
+        invited_users_id.each do |user_id|
+          Participation.create(event_id: @event.id, user_id: user_id, status: "maybe")
+        end
+      end
       respond_to do |format|
         format.html { redirect_to event_path(@event) }
         format.js  # <-- 'app/views/events/create.js.erb'
