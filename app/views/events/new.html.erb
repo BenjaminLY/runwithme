@@ -1,0 +1,72 @@
+<div class="container padded">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <%= simple_form_for([@event], remote: true) do |f| %>
+        <%= f.error_notification %>
+        <div class="form-group">
+          <div class="row error-msg-form">
+            <div class="col-xs-6">
+              <a class="btn btn-default status status_on" id="public">Public</a>
+            </div>
+            <div class="col-xs-6">
+              <a class="btn btn-default status" id="private">Privé</a>
+            </div>
+          </div>
+        </div>
+        <%= f.input :private, as: :hidden %>
+        <%= f.input :type_of, autofocus: true, label: false, placeholder: "Type of event", collection: Event::MEETING, prompt: "Type d'événement*" %>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="input-group date" id="datepicker">
+                <%= text_field_tag "event[datetime]", f.object.datetime.try(:to_date), for: "disabledTextInput", class: "form-control", placeholder: "Date*" %>
+                <div class="input-group-addon" id="disabledTextInput">
+                  <span class="glyphicon glyphicon-th"></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <%= select_time(f.object.datetime.try(:to_time), {}, { class: "form-control time-select" }) %>
+            </div>
+          </div>
+        </div>
+        <div class="text-center">
+          <%= f.label 'Objectif' %>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-md-6">
+            <%= f.input :time_goal,label: false ,placeholder: "Mins*", input_html: { min: '1' } %>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <%= f.input :trail_goal,label: false ,placeholder: "Kms*", input_html: { min: '1' } %>
+          </div>
+        </div>
+        <%= f.input :meeting_point, label: false , placeholder: 'Lieu de rendez-vous*' %>
+        <br>
+        <%= f.association :users %>
+        <div class="text-center">
+          <%= f.button :submit, class: "btn-primary" %>
+        </div>
+      <% end %>
+
+      <% content_for :after_js do %>
+        <script>
+          $('#private').click(function () {
+            $(this).addClass('status_on');
+            $('#public').removeClass('status_on');
+            $('#event_private').val('true');
+          });
+          $('#public').click(function () {
+            $(this).addClass('status_on');
+            $('#private').removeClass('status_on');
+            $('#event_private').val('false');
+          });
+          $("#event_user_ids").chosen()
+        </script>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+
