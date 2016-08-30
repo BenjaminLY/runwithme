@@ -7,12 +7,12 @@ class EventsController < ApplicationController
     if params[:filter] == 'public'
       @events = policy_scope(Event).public
     elsif params[:filter] == 'Own_run'
-      @event.user
+      @events = Event.where(user_id: current_user)
     elsif params[:filter] == 'private'
       # @events = policy_scope(Event).my_private_events(current_user)
       @events = current_user.private_events
     elsif params[:filter] == 'refused'
-      @events = current_user.refused_events
+      @events = currener.refused_events
     else
       @events = policy_scope(Event).public + current_user.private_events
       @events.sort_by! { |ev| ev[:datetime].to_i }
