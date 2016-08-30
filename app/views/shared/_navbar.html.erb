@@ -22,7 +22,9 @@
         <div class="badge-container">
           <i class="fa fa-bell-o no-btn" style="color: white;"></i>
           <div class="badge badge-blue-light no-btn">
+            <% unless @activities == nil %>
             <%= @activities.where(read_at: nil).count %>
+            <% end %>
           </div>
         </div>
       <% end %>
