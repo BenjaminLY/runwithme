@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
+  before_action :set_current_user_activities
 
   include Pundit
 
@@ -31,8 +32,11 @@ class ApplicationController < ActionController::Base
     devise_controller? || params[:controller] =~ /^(active_)?admin/
   end
 
-  # def set_current_user_activities
-  #   @activities = PublicActivity::Activity.order("created_at desc")
-  # end
+  def set_current_user_activities
+    event_ids = current_user.events_as_participant.map do |event|
+      event.id
+    end
+    @activities = PublicActivity::Activity.order("created_at desc").where(trackable_id: event_ids)
+  end
 
 end
