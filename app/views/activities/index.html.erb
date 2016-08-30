@@ -1,0 +1,7 @@
+<% @activities.each do |activity| %>
+  <div class="activity">
+  <%= activity.inspect %>
+    <%= link_to "#{activity.owner.first_name} #{activity.owner.last_name}", activity.owner if activity.owner %>
+    <%= render_activity activity %>
+  </div>
+<% end %>

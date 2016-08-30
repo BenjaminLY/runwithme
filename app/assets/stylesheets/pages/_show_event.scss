@@ -39,6 +39,8 @@
       border-radius: 12px;
       padding: 20px;
       background: white;
+      height: 500px;
+      overflow: scroll;
 			.messages {
 				h4 {
 					border-bottom: 3px solid $blue;
@@ -55,6 +57,8 @@
 			width: 40%;
 			border-radius: 12px;
       background: white;
+      height: 500px;
+      overflow: scroll;
 			.participation_header {
 				display: flex;
 				justify-content: space-between;

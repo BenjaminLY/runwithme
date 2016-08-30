@@ -1,0 +1,7 @@
+updated an event
+
+<% if activity.trackable %>
+  <%= link_to activity.trackable.type_of, activity.trackable %>
+<% else %>
+  which has since been removed
+<% end %>
