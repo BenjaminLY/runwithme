@@ -6,6 +6,8 @@ class EventsController < ApplicationController
     @my_private_events = policy_scope(Event).my_private_events(current_user)
     if params[:filter] == 'public'
       @events = policy_scope(Event).public
+    elsif params[:filter] == 'Own_run'
+      @event.user
     elsif params[:filter] == 'private'
       # @events = policy_scope(Event).my_private_events(current_user)
       @events = current_user.private_events
