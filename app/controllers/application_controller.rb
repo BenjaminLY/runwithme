@@ -2,11 +2,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
+  before_action :set_current_user_activities
 
   include Pundit
 
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
+
+  include PublicActivity::StoreController
 
   # Uncomment when you *get* Pundit!
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -27,6 +30,13 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /^(active_)?admin/
+  end
+
+  def set_current_user_activities
+    event_ids = current_user.events_as_participant.map do |event|
+      event.id
+    end
+    @activities = PublicActivity::Activity.order("created_at desc").where(trackable_id: event_ids)
   end
 
 end

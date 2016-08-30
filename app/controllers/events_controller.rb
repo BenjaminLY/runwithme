@@ -51,6 +51,7 @@ class EventsController < ApplicationController
     authorize @event
 
     if @event.save && @participation.save
+      @event.create_activity :create, owner: current_user
       respond_to do |format|
         format.html { redirect_to event_path(@event) }
         format.js  # <-- 'app/views/events/create.js.erb'
@@ -68,6 +69,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
+      @event.create_activity :update, owner: current_user
       redirect_to event_path(@event)
     else
       render :edit
@@ -75,6 +77,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @event.create_activity :destroy, owner: current_user
     @event.destroy
     redirect_to events_path
   end

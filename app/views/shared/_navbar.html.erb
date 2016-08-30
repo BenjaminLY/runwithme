@@ -18,10 +18,12 @@
       </button>
 
       <!-- Notification -->
-      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
+      <%= link_to activities_path, class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
           <i class="fa fa-bell-o no-btn" style="color: white;"></i>
-          <div class="badge badge-blue-light no-btn">3</div>
+          <div class="badge badge-blue-light no-btn">
+            <%= @activities.where(read_at: nil).count %>
+          </div>
         </div>
       <% end %>
 
