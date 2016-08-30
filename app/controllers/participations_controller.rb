@@ -7,6 +7,7 @@ class ParticipationsController < ApplicationController
 		@participation = Participation.new(status: params[:status])
 		@participation.user = current_user
 		@participation.event = @event
+    @message = Message.new(event_id: @event.id)
 		@events = policy_scope(Event).where(private: false)
 		@my_events = Event.my_private_events(current_user)
 		@type = params[:type] || "index"
@@ -47,7 +48,7 @@ class ParticipationsController < ApplicationController
 	def set_event
 		@event = Event.find(params[:event_id])
 	end
-	
+
 	def set_participation
 		@participation = Participation.find(params[:id])
 	end

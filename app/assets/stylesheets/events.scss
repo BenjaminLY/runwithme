@@ -7,6 +7,7 @@
 
 .box {
   padding: 15px 30px;
+  margin-bottom: 30px;
 }
 
 .ev {
@@ -67,9 +68,13 @@
   font-size: 25px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-
+#create_participation {
+  justify-content: space-around;
+  flex: 0 0 7%;
+}
 
 
 

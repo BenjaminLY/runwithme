@@ -1,0 +1,6 @@
+<% if policy(@message).create? %>
+  <%= simple_form_for([event, message], remote: true) do |f| %>
+    <%= f.input :content, label: false, placeholder: "votre message"  %>
+    <%= f.button :submit, value: 'Postez', class: "btn btn-primary" %>
+  <% end %>
+<% end %>

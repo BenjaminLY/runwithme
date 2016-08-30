@@ -12,7 +12,10 @@
 
       <%= link_to t(".top_call_to_action", default: "All events"), events_path, class: "no-btn", style: "margin-right: 20px;" %>
 
-      <%= link_to t(".top_call_to_action", default: "Create an event"), new_event_path, class: "btn-medium" %>
+      <%#= link_to t(".top_call_to_action", default: "Nouvel événement"), new_event_path, class: "btn-medium", data: { toggle: 'modal', target: "#gridSystemModal" } %>
+      <button type="button" class="btn-medium" data-toggle="modal" data-target="#new_event_form">
+        Nouvel événement
+      </button>
 
       <!-- Notification -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
@@ -67,4 +70,20 @@
     </div>
   </div>
 </div>
+<div id="new_event_form" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center title-modal" id="gridModalLabel">Créer un nouvel événement</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid bd-example-row">
+          <%= render 'events/new', event: Event.new %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 

@@ -23,29 +23,38 @@
 				color: #222222;
 			}
 		}
+    .organizer {
+      margin-top: 10px;
+      p {
+      margin-bottom: 0px;
+    }
+    }
 	}
 	.event-details {
 		display: flex;
 		margin-top: 20px;
-		.description {
-			width: 60%;
-			border: 3px solid white;
-			margin-right: 20px;
-			border-radius: 12px;
-			padding: 20px;
+    .description {
+      width: 60%;
+      margin-right: 20px;
+      border-radius: 12px;
+      padding: 20px;
+      background: white;
 			.messages {
 				h4 {
-					border-bottom: 3px solid black;
+					border-bottom: 3px solid $blue;
 				}	margin-bottom: 15px;
 			}
-			.message {
-				border-bottom: 1px solid black;
-			}
+        .message_avatar {
+          display: flex;
+          p {
+            margin-left: 5px;
+          }
+        }
 		}
 		.participation {
 			width: 40%;
-			border: 3px solid white;
 			border-radius: 12px;
+      background: white;
 			.participation_header {
 				display: flex;
 				justify-content: space-between;
@@ -56,6 +65,18 @@
 				  font-size: 30px;
 				  color: #4C4C4C;
 				}
+          .going {
+            color: #00FF80 !important;
+            font-size: 30px;
+          }
+          .maybe {
+            color: #FF8000 !important;
+            font-size: 30px;
+          }
+          .dont_go {
+            color: red !important;
+            font-size: 30px;
+          }
 				}
 			}
 			.participation_all {
@@ -68,7 +89,7 @@
 				}
 			}
 			hr {
-				border: 3px solid white;
+				border: 2px solid $blue;
 
 			}
 
@@ -78,7 +99,7 @@
 		font-weight: bold;
 		margin-bottom: 3px;
 		text-transform: uppercase;
-		font-size: 16px;
+		font-size: 14px;
 	}
 	h5 {
 		font-weight: bold;
@@ -94,11 +115,13 @@
 		border: 3px solid white;
 		border-radius: 12px;
 		padding: 20px;
+    margin-top: 30px;
+    background: white;
 		.photos_btn {
 			margin-left: 15px;
 		}
 		h4 {
-			border-bottom: 3px solid black;
+			border-bottom: 3px solid $blue;
 			margin-bottom: 15px;
 		}
 	}

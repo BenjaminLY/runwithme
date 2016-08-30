@@ -5,11 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+def seed_image(file_name)
+  File.open(File.join(Rails.root, "/app/assets/images/seed/#{file_name}.jpg"))
+end
 
 Event.destroy_all
 Participation.destroy_all
 User.destroy_all
 Company.destroy_all
+
 
 company_1 = Company.create!(name: "Hermes", address: "24 rue du Faubourg, Saint-Honoré 75008 Paris", name_of_contact: "Georges Kelly", phone_number: "0140174600", email: "georges.kelly@hermes.com" )
 puts "#{company_1} a bien été créée"
@@ -19,13 +23,13 @@ company_3 = Company.create!(name: "Danone", address: "17 boulevard Haussmann, 75
 puts "#{company_3} a bien été créée"
 
 
-user_1 = User.create!(email: "coline@gmail.com", password: "testtest", first_name: "coline", last_name: "colnat", job_title: "Web dev", company_id: company_1.id)
+user_1 = User.create!(email: "coline@gmail.com", password: "testtest", first_name: "coline", last_name: "colnat", job_title: "Web dev", company_id: company_1.id, photo: seed_image('coline') )
 puts "#{user_1} a bien été créé'"
-user_2 = User.create!(email: "benjamin@gmail.com", password: "testtest", first_name: "benjamin" , last_name: "lyphoudt", job_title: "webmaster", company_id: company_1.id)
+user_2 = User.create!(email: "benjamin@gmail.com", password: "testtest", first_name: "benjamin" , last_name: "lyphoudt", job_title: "webmaster", company_id: company_1.id, photo: seed_image('benjamin'))
 puts "#{user_2} a bien été créé'"
-user_3 = User.create!(email: "abdel@gmail.com", password: "testtest", first_name: "abdel", last_name: "malik" , job_title: "Avocat", company_id: company_1.id)
+user_3 = User.create!(email: "abdel@gmail.com", password: "testtest", first_name: "abdel", last_name: "malik" , job_title: "Avocat", company_id: company_1.id, photo: seed_image('abdel'))
 puts "#{user_3} a bien été créé'"
-user_4 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joe", last_name: "star" , job_title: "Comptable", company_id: company_1.id)
+user_4 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joe", last_name: "star" , job_title: "Comptable", company_id: company_1.id, photo: seed_image('joe'))
 puts "#{user_4} a bien été créé'"
 
 attributes = [

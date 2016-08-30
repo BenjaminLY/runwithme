@@ -32,3 +32,22 @@
   height: 150px;
   margin-bottom: 30px;
 }
+
+.status {
+  width: 100%;
+  border: 1px grey solid;
+  background-color: #E6E6E6;
+  &:hover {
+    background-color: white;
+    color: $dark-blue;
+    border: 2px $dark-blue solid;
+    font-weight: bolder;
+  }
+}
+.status_on {
+  color: grey;
+  color: $dark-blue;
+  border: 2px $dark-blue solid;
+  background-color: white;
+  font-weight: bolder;
+}
