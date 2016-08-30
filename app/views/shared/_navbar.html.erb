@@ -1,8 +1,22 @@
 <div class="navbar-wagon navbar-fixed-top">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo-white.png" %>
-  <% end %>
+  <div class="navbar-wagon-left">
+    <% if user_signed_in? %>
+      <%= link_to t(".top_call_to_action", default: "Liste des Run"), events_path, class: "no-btn" %>
+    <% else %>
+      <%= link_to "Professionnel", '#' %>
+    <%end %>
+
+  </div>
+  <%#= link_to root_path, class: "navbar-wagon-brand" do %>
+    <%#= image_tag "logo-white.png" %>
+  <%# end %>
+
+  <div class="navbar-center">
+   <%= link_to root_path, class: "navbar-wagon-brand" do %>
+     <%= image_tag "logo-white.png" %>
+   <% end %>
+  </div>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
@@ -10,11 +24,11 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
-      <%= link_to t(".top_call_to_action", default: "All events"), events_path, class: "no-btn", style: "margin-right: 20px;" %>
+      <%#= link_to t(".top_call_to_action", default: "All events"), events_path, class: "no-btn", style: "margin-right: 20px;" %>
 
       <%#= link_to t(".top_call_to_action", default: "Nouvel événement"), new_event_path, class: "btn-medium", data: { toggle: 'modal', target: "#gridSystemModal" } %>
       <button type="button" class="btn-medium" data-toggle="modal" data-target="#new_event_form">
-        Nouvel événement
+        Nouveau Run
       </button>
 
       <!-- Notification -->
@@ -29,7 +43,7 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <div class="dropdown-toggle" , id="navbar-wagon-menu", data-toggle="dropdown", aria-hidden="true">
-            <i class="fa fa-user no-btn">
+            <i class="fa fa-user no-btn" id="character">
             </i>
             <span class= "white-name"> <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></span>
         </div>
@@ -42,7 +56,7 @@
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Se déconnecter") %>
               <% end %>
             </li>
           </ul>
@@ -75,7 +89,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title text-center title-modal" id="gridModalLabel">Créer un nouvel événement</h4>
+        <h4 class="modal-title text-center title-modal" id="gridModalLabel">Organiser un run</h4>
       </div>
       <div class="modal-body">
         <div class="container-fluid bd-example-row">
