@@ -1,11 +1,12 @@
-
 <div class="container">
   <div class="row">
     <% @activities.each do |activity| %>
       <div class="col-xs-10">
         <div class="activity">
           <h5>
-            <strong><%= activity.owner.first_name.capitalize %> <%= activity.owner.last_name.capitalize %></strong>
+            <strong>
+              <%= activity.owner.first_name.capitalize %> <%= activity.owner.last_name.capitalize %>
+            </strong>
             <%= render_activity activity %>
           </h5>
         </div>
