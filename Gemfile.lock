@@ -147,6 +147,11 @@ GEM
       pry (~> 0.10)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
+    public_activity (1.5.0)
+      actionpack (>= 3.0.0)
+      activerecord (>= 3.0)
+      i18n (>= 0.5.0)
+      railties (>= 3.0.0)
     puma (3.6.0)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
@@ -165,6 +170,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 5.0.0)
       sprockets-rails (>= 2.0.0)
+    rails-assets-Hover (2.0.2)
     rails-assets-bootstrap-datepicker (1.6.4)
       rails-assets-jquery (>= 1.7.1)
     rails-assets-bootstrap3-datetimepicker (4.17.37)
@@ -265,9 +271,11 @@ DEPENDENCIES
   pg
   pry-byebug
   pry-rails
+  public_activity
   puma
   pundit
   rails (= 5.0.0)
+  rails-assets-Hover!
   rails-assets-bootstrap-datepicker!
   rails-assets-bootstrap3-datetimepicker!
   rails-assets-chosen!

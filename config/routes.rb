@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   root to: 'pages#home'
   patch "events/:id/add_pictures" => "events#add_pictures", as: "add_pictures"
@@ -11,11 +12,13 @@ Rails.application.routes.draw do
   get '/search' => 'users#search'
   resources :users, only: [ :edit, :update, :destroy ]
   resources :participations, only: [:update, :destroy]
+  resources :activities, only: [:index]
   mount Attachinary::Engine => "/attachinary"
 end
 
 
 #                   Prefix Verb   URI Pattern                                Controller#Action
+#         activities_index GET    /activities/index(.:format)                activities#index
 #         new_user_session GET    /users/sign_in(.:format)                   devise/sessions#new
 #             user_session POST   /users/sign_in(.:format)                   devise/sessions#create
 #     destroy_user_session DELETE /users/sign_out(.:format)                  devise/sessions#destroy
@@ -51,6 +54,7 @@ end
 #            participation PATCH  /participations/:id(.:format)              participations#update
 #                          PUT    /participations/:id(.:format)              participations#update
 #                          DELETE /participations/:id(.:format)              participations#destroy
+#               activities GET    /activities(.:format)                      activities#index
 #              attachinary        /attachinary                               Attachinary::Engine
 
 
