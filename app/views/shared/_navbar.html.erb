@@ -1,8 +1,22 @@
 <div class="navbar-wagon navbar-fixed-top">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo-white.png" %>
-  <% end %>
+  <div class="navbar-wagon-left">
+    <% if user_signed_in? %>
+      <%= link_to t(".top_call_to_action", default: "Liste des Run"), events_path, class: "no-btn" %>
+    <% else %>
+      <%= link_to "Professionnel", '#' %>
+    <%end %>
+
+  </div>
+  <%#= link_to root_path, class: "navbar-wagon-brand" do %>
+    <%#= image_tag "logo-white.png" %>
+  <%# end %>
+
+  <div class="navbar-center">
+   <%= link_to root_path, class: "navbar-wagon-brand" do %>
+     <%= image_tag "logo-white.png" %>
+   <% end %>
+  </div>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
@@ -10,22 +24,23 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
-      <%= link_to t(".top_call_to_action", default: "All events"), events_path, class: "no-btn", style: "margin-right: 20px;" %>
+      <%#= link_to t(".top_call_to_action", default: "All events"), events_path, class: "no-btn", style: "margin-right: 20px;" %>
 
       <%#= link_to t(".top_call_to_action", default: "Nouvel événement"), new_event_path, class: "btn-medium", data: { toggle: 'modal', target: "#gridSystemModal" } %>
       <button type="button" class="btn-medium" data-toggle="modal" data-target="#new_event_form">
-        Nouvel événement
+        Nouveau Run
       </button>
 
       <!-- Notification -->
       <%= link_to activities_path, class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
           <i class="fa fa-bell-o no-btn" style="color: white;"></i>
-          <div class="badge badge-blue-light no-btn">
-            <% unless @activities == nil %>
-            <%= @activities.where(read_at: nil).count %>
-            <% end %>
-          </div>
+          <% nbr_activities = @activities.where(read_at: nil).count %>
+          <% unless nbr_activities == 0 %>
+            <div class="badge badge-blue-light no-btn">
+            <%= nbr_activities %>
+            </div>
+          <% end %>
         </div>
       <% end %>
 
@@ -33,7 +48,7 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <div class="dropdown-toggle" , id="navbar-wagon-menu", data-toggle="dropdown", aria-hidden="true">
-            <i class="fa fa-user no-btn">
+            <i class="fa fa-user no-btn" id="character">
             </i>
             <span class= "white-name"> <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></span>
         </div>
@@ -46,7 +61,7 @@
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Se déconnecter") %>
               <% end %>
             </li>
           </ul>

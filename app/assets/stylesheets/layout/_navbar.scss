@@ -60,12 +60,14 @@ $navbar-bg: transparent;
   flex: 0 1 auto;
   cursor: pointer;
   padding: 0 20px;
+
 }
 
 /* Navbar standard link */
 .navbar-wagon-link {
   color: #616668;
   font-size: 14px;
+  margin-left: 25px;
 }
 .navbar-wagon-link:hover {
   color: #da552f;
@@ -177,7 +179,7 @@ $navbar-bg: transparent;
 
 .navbar-wagon i {
   font-size: 25px;
-  color: white;
+  color: black;
 }
 
 .title-modal {
@@ -190,5 +192,30 @@ $navbar-bg: transparent;
 
 .error-msg-form {
   margin-top: 15px;
+}
+
+.navbar-wagon-left {
+  flex: 0 0 40%;
+}
+
+.navbar-wagon-left a {
+  font-family: Open Sans;
+  font-weight: lighter;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-wagon i {
+  font-size: 25px;
+  color: black;
+}
+
+.navbar-wagon-right {
+  flex: 0 0 40%;
+  justify-content: flex-end;
+}
+
+#character {
+  color: white;
 }
 
