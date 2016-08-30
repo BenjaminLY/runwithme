@@ -7,11 +7,10 @@
   font-size: 15px;
   border: white 1px solid;
   border-radius: 12px;
-  padding-bottom: 51px;
-  padding-left: 18px;
-  padding-top: 30px;
-  margin-left: 16px;
+  height: 350px;
   background-color: white;
+  padding: 40px 40px;
+  margin-top: 50px;
 
   h2 {
     font-size: 24px;
@@ -27,15 +26,33 @@
 
 }
 
+.wrapper-grey {
+  min-height: calc(100vh-70px);
+}
+
 .stats {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
   border: white 1px solid;
   background-color: white;
   border-radius: 12px;
-  padding-top: 22px;
-  padding-left: 11px;
-  padding-right: 11px;
+  height: 350px;
+  margin-top:50px;
+}
+
+.icon-wrapper {
+  flex: 0 0 20px;
+}
+
+#speed {
+  font-family: Libre Baskerville;
+  font-weight: bold;
+}
+
+#distance {
+  font-family: Libre Baskerville;
+  font-weight: bold;
 }
 
 #speed-number {
@@ -58,13 +75,14 @@
   border: white 1px solid;
   background-color: white;
   border-radius: 12px;
-  margin-top: 187px;
-  margin-left: 405px;
-  margin-right: 15px;
+  margin-top: 450px;
+  margin-left: 13px;
+  margin-right: 13px;
   padding-top: 59px;
   padding-bottom: 59px;
-  position: relative;
+  // position: relative;
   height: 155px;
+
 }
 
 .size_text {
@@ -89,6 +107,14 @@
   margin-left: -5px;
   margin-top: 20px;
   padding-bottom: 68px;
+}
+
+#participations {
+  font-family: libre baskerville;
+  font-weight: bold;
+  p {
+    font-family: Libre Baskerville;
+  }
 }
 
 // .pad-name-company {

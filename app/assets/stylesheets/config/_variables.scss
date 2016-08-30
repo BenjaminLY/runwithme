@@ -2,7 +2,7 @@
  * Fonts
  * ------------------------------------- */
 // Google fonts
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Libre+Baskerville:400,700");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:100, 400,300,700|Libre+Baskerville:400,700");
 $base-font: "Open Sans", "Helvetica", "sans-serif";
 $header-font: "Libre Baskerville", "Helvetica", "sans-serif";
 
@@ -32,6 +32,7 @@ $dark-blue: #134074;
 $yellow: #EFC86B;
 $orange: #E67E22;
 $green: #30BA60;
+$white: #f9f9f9;
 
 // Gray scale
 $gray-darker:  lighten(#000, 13.5%); // #222

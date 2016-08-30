@@ -1,7 +1,6 @@
 <div class="wrapper-grey">
   <div class="container">
     <div class="row">
-      <div class =" pad-top-more">
         <!-- <div class="col-xs-12 col-sm-1 simple-calendar pad-top margin-chevron">
           <%#= month_calendar events: @user.events_as_participant do |date, events| %>
             <%#= date.strftime("%e") %>
@@ -42,26 +41,23 @@
 
           <div class="stats">
 
-            <div class="col-xs-6 col-md-3">
-              <div class="icon-wrapper">
-               <!--  <div class="custom-icon"> -->
-                 <!-- <i class="fa fa-users" aria-hidden="true"></i> -->
-                  <div id="participations">
-                    <p>Nb de courses
-                      <span class="fix-editor">&nbsp;</span>
-                    </p>
-                  </div>
+            <div class="icon-wrapper text-center">
+             <!--  <div class="custom-icon"> -->
+               <!-- <i class="fa fa-users" aria-hidden="true"></i> -->
+                <div id="participations">
+                  <p>Nb de courses
+                    <span class="fix-editor">&nbsp;</span>
+                  </p>
+                </div>
 
-                  <div id="number-participations">
-                    <p>
-                      <span class="number"><strong> 5 </strong></span>
-                    </p>
-                  </div>
+                <div id="number-participations">
+                  <p>
+                    <span class="number">5</span>
+                  </p>
+                </div>
 
-                <!-- </div> -->
-              </div>
             </div>
-            <div class="icon-wrapper">
+            <div class="icon-wrapper text-center">
              <!--  <div  class="custom-icon"> -->
                 <!-- <i class="fa fa-users" aria-hidden="true"></i> -->
                 <div id="speed">
@@ -71,13 +67,13 @@
                 </div>
                 <div id="speed-number">
                   <p>
-                    <span class="number"><strong>13</strong></span>km/h
+                    <span class="number">13</span>km/h
                   </p>
                 </div>
              <!--  </div> -->
             </div>
 
-            <div class="icon-wrapper">
+            <div class="icon-wrapper text-center">
               <!-- <div class="custom-icon"> -->
                 <!-- <i class="fa fa-map-o" aria-hidden="true"></i> -->
                 <div id="distance">
@@ -88,33 +84,16 @@
                 </div>
 
                 <div id="distance-number">
-                  <span class="number"><strong>80</strong></span>km
+                  <span class="number">80</span>km
                 </div>
 
              <!--  </div> -->
             </div>
-
-            <!-- <div class="icon-wrapper">
-              <!-- <div class="custom-icon"> -->
-                <!-- <i class="fa fa-map-o" aria-hidden="true"></i> -->
-                <!-- <div id="time">
-                  <p>
-                    Temps couru
-                    <span class="fix-editor">&nbsp;</span>
-                  </p>
-                </div> -->
-
-               <!--  <div id="time-run">
-                  <p>
-                    <span class="number"><strong>5</strong></span>h
-                  </p>
-                </div> -->
-              <!-- </div> -->
-            </div>
-
           </div>
 
-          <div class="myevents">
+        </div>
+
+        <div class="myevents">
             <h1 class="size_text">
               <i class="fa fa-calendar" aria-hidden="true"></i>
               Prochaines courses
@@ -127,31 +106,13 @@
                 </div>
               <% end %>
             </div>
-
-
-          </div>
-
-
-
-
-
-
-
-
-
         </div>
 
 
-
-
-      </div>
-
-      <div class="button-update">
-
-        <%= link_to "Editer mon profil", edit_user_path(@user), class: 'btn-blue-edit' %>
-
-      </div>
     </div>
+  </div>
+</div>
+
 
 
 
