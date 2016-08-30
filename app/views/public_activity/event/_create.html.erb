@@ -1,0 +1,8 @@
+a créé le run
+
+<% if activity.trackable %>
+  <%= link_to activity.trackable.type_of, activity.trackable %>
+    et t'a invité à y participer ! Lucky you !
+<% else %>
+  qui a depuis été supprimé.
+<% end %>

@@ -11,6 +11,7 @@ gem 'redis'
 
 gem 'sass-rails'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'uglifier'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
@@ -25,6 +26,7 @@ gem "coffee-rails"
 gem "gmaps4rails"
 gem "pundit"
 gem "simple_calendar", "~> 2.0"
+gem 'public_activity'
 
 
 source 'https://rails-assets.org' do
@@ -32,6 +34,8 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap3-datetimepicker'
   gem "rails-assets-underscore"
   gem 'rails-assets-bootstrap-datepicker'
+  gem 'rails-assets-chosen'
+  gem 'rails-assets-Hover'
 end
 
 group :development, :test do

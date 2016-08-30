@@ -12,6 +12,10 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+  def full_name
+    "#{first_name.capitalize} #{last_name.capitalize}"
+  end
+
   def events_as_participant
   	self.participations.map do |participation|
   		participation.event
@@ -19,7 +23,9 @@ class User < ApplicationRecord
   end
 
   def private_events
-    self.events_as_participant.select { |event| event.private }
+    private_events = self.events_as_participant.select do |event|
+      event.private && event.user_id =! self.id
+    end
   end
 
   def refused_events

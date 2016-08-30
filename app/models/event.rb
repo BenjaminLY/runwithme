@@ -2,9 +2,12 @@ class Event < ApplicationRecord
   belongs_to :user
   has_many :messages, dependent: :destroy
   has_many :participations, dependent: :destroy
+  has_many :users, through: :participations
   has_attachments :photos, maximum: 10
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+  include PublicActivity::Common
+  # tracked owner: ->(controller, model) { controller && controller.current_user }
 
   MEETING = ["Interval run", "Endurance run", "Cool run", "Chatting run", "Speed walk", "Pleasant walk"]
 

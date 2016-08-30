@@ -24,7 +24,9 @@
           </div>
         </div>
         <div class="col-xs-6">
-          <%= select_time(f.object.datetime.try(:to_time), {}, { class: "form-control time-select" }) %>
+          <div class="time-form">
+            <%= select_time(f.object.datetime.try(:to_time), {}, { class: "form-control time-select" }) %>
+          </div>
         </div>
       </div>
     </div>
@@ -40,6 +42,7 @@
       </div>
     </div>
     <%= f.input :meeting_point, label: false , placeholder: 'Lieu de rendez-vous*' %>
+    <%= f.association :users, collection: User.where.not(id: current_user.id), label: "Inviter ses amis", label_method: :full_name, value_method: :id, class: "form-control" %>
     <br>
     <div class="text-center">
       <%= f.button :submit, class: "btn-primary" %>
@@ -48,16 +51,11 @@
 
   <% content_for :after_js do %>
     <script>
-      $('#private').click(function () {
-        $(this).addClass('status_on');
-        $('#public').removeClass('status_on');
-        $('#event_private').val('true');
-      });
-      $('#public').click(function () {
-        $(this).addClass('status_on');
-        $('#private').removeClass('status_on');
-        $('#event_private').val('false');
-      });
+      $(document).ready(function() {
+        setEventType();
+        callDatePicker();
+        setChosenSelect();
+      })
     </script>
   <% end %>
 

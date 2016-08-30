@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .body {
-  background-color: #F2F2F2;
+  background-color: #F9F9F9;
 }
 
 .box {
@@ -76,18 +76,21 @@
   flex: 0 0 7%;
 }
 
-
-
 .index-menu {
-  background-color: #E6E6E6;
-  padding: 20px;
+  background-color: #90C1D4;
   margin-top: 32px;
   border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+  color: white;
 }
-.index-menu li:last-child {
-  padding-top: 20px;
-  margin: 10px;
+
+.all-child {
+  margin-top: 10px;
 }
+
+
 .events-list-title {
   color: grey;
   margin-bottom: 35px;
@@ -216,5 +219,33 @@
 .time-select {
    width: 45%;
    display: inline-block;
+}
+
+.time-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-dialog {
+  margin-top: 100px;
+}
+
+.modal-invited {
+  padding: 3px 8px !important;
+  color: $dark-blue;
+}
+.modal-invited li {
+  font-size: 14px;
+}
+.nav > li > a {
+  color: white;
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+.hvr-underline-from-left:before {
+  background: white;
 }
 

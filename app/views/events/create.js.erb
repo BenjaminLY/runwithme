@@ -2,6 +2,9 @@
 <% if @event.errors.any? %>
   // Render new review form with errors
   $('#new_event').html("<%= j render 'new', event: @event %>");
+  setEventType();
+  callDatePicker();
+  setChosenSelect();
 <% else %>
   // Redirect to event page
   window.location = "<%= event_path(@event) %>";
