@@ -23,8 +23,8 @@ class EventsController < ApplicationController
       @events.sort_by! { |ev| ev[:datetime].to_i }
     end
     # @events = @events.group_by(&:datetime)
-    @events = @events.group_by{ |e| e.datetime.to_date }
-    @my_participations = @my_participations.group_by{ |e| e.datetime.to_date } if @my_participations
+    @events_sorted = @events.group_by{ |e| e.datetime.to_date }
+    @my_participations_sorted = @my_participations.group_by{ |e| e.datetime.to_date } if @my_participations
   end
 
   def show

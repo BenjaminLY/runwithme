@@ -1,6 +1,6 @@
 <h4 class="events-counter"> <%= pluralize events.size, "résultat" %></h4>
 <% today = Date.today %>
-<% events.each do |date, e| %>
+<% events_sorted.each do |date, e| %>
   <div class="events-date-bg">
     <div class="events-date">
       <div>
