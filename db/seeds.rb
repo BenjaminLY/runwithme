@@ -126,7 +126,7 @@ attributes = [
   },
   {
     user_id: user_4.id,
-    type_of: "Running fractionné",
+    type_of: "Endurance run",
     datetime: DateTime.new(2016, 9, 30),
     private: true,
     description: "J'aime les fractionnés",
