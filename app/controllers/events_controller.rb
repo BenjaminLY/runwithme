@@ -5,7 +5,7 @@ class EventsController < ApplicationController
     @public_events = policy_scope(Event).where(private: false)
     @my_private_events = policy_scope(Event).my_private_events(current_user)
     if params[:filter] == 'public'
-      @events = policy_scope(Event).public
+      @events = Event.where(private: false)
     elsif params[:filter] == 'Own_run'
       @events = Event.where(user_id: current_user)
     elsif params[:filter] == 'private'
@@ -13,6 +13,8 @@ class EventsController < ApplicationController
       @events = current_user.private_events
     elsif params[:filter] == 'refused'
       @events = currener.refused_events
+    elsif params[:filter] == 'challenge'
+      @events = Event.joins(:user).where.not(users: {company: current_user.company})
     else
       @events = policy_scope(Event).public + current_user.private_events
       @events.sort_by! { |ev| ev[:datetime].to_i }

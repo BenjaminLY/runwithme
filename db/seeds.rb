@@ -25,11 +25,11 @@ puts "#{company_3} a bien été créée"
 
 user_1 = User.create!(email: "coline@gmail.com", password: "testtest", first_name: "coline", last_name: "colnat", job_title: "Web dev", company_id: company_1.id, photo: seed_image('coline') )
 puts "#{user_1} a bien été créé'"
-user_2 = User.create!(email: "benjamin@gmail.com", password: "testtest", first_name: "benjamin" , last_name: "lyphoudt", job_title: "Webmaster", company_id: company_1.id, photo: seed_image('benjamin'))
+user_2 = User.create!(email: "benjamin@gmail.com", password: "testtest", first_name: "benjamin" , last_name: "lyphoudt", job_title: "Webmaster", company_id: company_2.id, photo: seed_image('benjamin'))
 puts "#{user_2} a bien été créé'"
-user_3 = User.create!(email: "abdel@gmail.com", password: "testtest", first_name: "abdel", last_name: "malik" , job_title: "Juriste", company_id: company_1.id, photo: seed_image('abdel'))
+user_3 = User.create!(email: "abdel@gmail.com", password: "testtest", first_name: "abdel", last_name: "malik" , job_title: "Juriste", company_id: company_3.id, photo: seed_image('abdel'))
 puts "#{user_3} a bien été créé'"
-user_4 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joe", last_name: "star" , job_title: "Comptable", company_id: company_1.id, photo: seed_image('joe'))
+user_4 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joe", last_name: "star" , job_title: "Comptable", company_id: company_3.id, photo: seed_image('joe'))
 puts "#{user_4} a bien été créé'"
 
 attributes = [
