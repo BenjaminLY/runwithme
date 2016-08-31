@@ -41,12 +41,14 @@ class EventsController < ApplicationController
     invited_users_id = params['event']['user_ids']
     invited_users_id.shift
 
+    params = event_params
+
     if params['datetime'].present?
       time = Time.new(2000, 01, 01, event_time_params['hour'], event_time_params['minute'], 0, "+02:00")
-      event_params['datetime'] = event_params['datetime'].to_datetime + time.seconds_since_midnight.seconds
+      params['datetime'] = event_params['datetime'].to_datetime + time.seconds_since_midnight.seconds
     end
 
-    @event = Event.new(event_params)
+    @event = Event.new(params)
     @event.user = current_user
     @participation = Participation.new(status: "going")
     @participation.user = current_user
