@@ -104,6 +104,56 @@ attributes = [
     meeting_point: "Place de la Bastille",
     trail_goal: 21,
   }
+  {
+    user_id: user_4.id,
+    type_of: "Endurance run",
+    datetime: DateTime.new(2016, 9, 30),
+    private: false,
+    description: "Let's run run run",
+    address: "Place de la Bastille",
+    meeting_point: "Place de la Bastille",
+    trail_goal: 21,
+  },
+  {
+    user_id: user_4.id,
+    type_of: "Endurance run",
+    datetime: DateTime.new(2016, 9, 30),
+    private: false,
+    description: "Running entre collègues",
+    address: "Bois de boulogne",
+    meeting_point: "Place de la Bastille",
+    trail_goal: 17,
+  },
+  {
+    user_id: user_4.id,
+    type_of: "Running fractionné",
+    datetime: DateTime.new(2016, 9, 30),
+    private: true,
+    description: "J'aime les fractionnés",
+    address: "Place de la Bastille",
+    meeting_point: "Place de la Bastille",
+    trail_goal: 30,
+  },
+  {
+    user_id: user_4.id,
+    type_of: "Endurance run",
+    datetime: DateTime.new(2016, 9, 30),
+    private: true,
+    description: "Let's run run run",
+    address: "Place de la Bastille",
+    meeting_point: "Place de la Bastille",
+    trail_goal: 21,
+  },
+  {
+    user_id: user_4.id,
+    type_of: "Endurance run",
+    datetime: DateTime.new(2016, 9, 30),
+    private: true,
+    description: "Let's run run run",
+    address: "Place de la Bastille",
+    meeting_point: "Place de la Bastille",
+    trail_goal: 21,
+  }
 ]
 
 attributes.each do |attribute|
