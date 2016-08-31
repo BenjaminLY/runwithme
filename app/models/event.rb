@@ -41,10 +41,6 @@ class Event < ApplicationRecord
     self.participations.map(&:user).include?(user)
   end
 
-  def self.public
-    Event.where(private: false)
-  end
-
   def self.my_private_events(user)
     events = Event.where(private: true)
     events.map do |event|
@@ -53,4 +49,3 @@ class Event < ApplicationRecord
     events
   end
 end
-

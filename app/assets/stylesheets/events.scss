@@ -252,12 +252,18 @@
   }
 }
 
-.hvr-underline-from-left:before {
-  background: white;
+.hvr-underline-from-left {
+  &:before {
+    background: white;
+  }
 }
 
 .event-banner {
   height: 276px;
   background-size: cover;
+}
+
+.all-child.active {
+  @extend .hvr-underline-from-left:hover;
 }
 
