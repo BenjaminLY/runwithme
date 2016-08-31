@@ -22,9 +22,20 @@ class User < ApplicationRecord
   end
 
   def events_as_participant
-  	self.participations.map do |participation|
-  		participation.event
-  	end
+  	participations.map(&:event)
+  end
+
+  def events_only_as_participant
+    events_as_participant.select {|event| event.user != self}
+  end
+
+  def my_run_buddies
+    events_as_participant.map{|event| event.users.where.not(id: self.id).where(users: {company: self.company})}.flatten.uniq
+  end
+
+  def adversaires_buddies
+    events_as_participant.map{|event| event.users.where.not(id: self.id, users: {company: self.company})}.flatten.uniq
+
   end
 
   def private_events

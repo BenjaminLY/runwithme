@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-xs-12 col-md-10 col-md-offset-1 blue-nav allevents">
       <ul class="nav index-menu">
-        <li class="all-child hvr-underline-from-left"><%= link_to 'Mes runs', events_path(filter: 'Own_run') %></li>
+        <li class="all-child hvr-underline-from-left"><%= link_to 'Mes run', events_path(filter: 'Own_run') %></li>
         <li class="all-child hvr-underline-from-left"><%= link_to 'Run publics', events_path(filter: 'public') %></li>
         <li class="all-child hvr-underline-from-left"><%= link_to 'Invitations', events_path(filter: 'private') %></li>
         <li class="all-child hvr-underline-from-left"><%= link_to 'Challenges Entreprises', events_path(filter: 'private') %></li>
@@ -17,31 +17,16 @@
       </ul>
     </div>
     <div class="col-xs-12 col-md-10 col-md-offset-1">
-      <h4 class="events-counter"> <%= pluralize @events.size, "résultat" %></h4>
-      <% today = Date.today %>
-      <% @events.each do |date, events| %>
-        <div class="events-date-bg">
-          <div class="events-date">
-            <div>
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <% if date == today %>
-                Aujourd'hui
-              <% elsif date == (today + 1.days) %>
-                Demain
-              <% else %>
-                <%= date.strftime('%e %B %Y') %>
-              <% end %>
-            </div>
-          </div>
-          <div class="box">
-          <% events.each do |event| %>
-            <div class="ev" id="event_<%= event.id %>">
-              <%= render 'event', event: event %>
-            </div>
-          <% end %>
-          </div>
-        </div>
+      <div class="events_content">
+      <% if @filter == 'Own_run' %>
+        <h4 class="mybuddies-title">Les run que j'organise</h4>
+        <%= render 'events/events', events: @events, events_sorted: @events_sorted %>
+        <h4 class="mybuddies-title">Les run auxquels je participe</h4>
+        <%= render 'events/events', events: @my_participations, events_sorted: @my_participations_sorted %>
+      <% else %>
+        <%= render 'events/events', events: @events, events_sorted: @events_sorted %>
       <% end %>
+      </div>
     </div>
   </div>
 </div>
