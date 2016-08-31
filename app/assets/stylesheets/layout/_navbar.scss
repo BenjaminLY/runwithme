@@ -203,6 +203,7 @@ $navbar-bg: transparent;
   font-weight: lighter;
   color: white;
   text-decoration: none;
+  border-bottom: 2px solid white
 }
 
 .navbar-wagon i {
@@ -217,5 +218,9 @@ $navbar-bg: transparent;
 
 #character {
   color: white;
+}
+
+.dropdown-menu {
+  background-color: #f9f9f9
 }
 

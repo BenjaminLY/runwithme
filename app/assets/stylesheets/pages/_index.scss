@@ -16,8 +16,29 @@
 
 }
 
+// .grey-wrapper {
+//   background-image: url('runners-train');
+// }
+
+.blue-nav {
+  margin-bottom: 30px;
+}
+
 .color {
   color: $green;
+}
+
+.events-counter {
+  margin-bottom: 26px;
+}
+
+.nav {
+  padding-top: 6px;
+  padding-bottom: 16px;
+}
+
+.container {
+  padding-bottom: 40px;
 }
 
 
@@ -38,4 +59,8 @@
   .navbar-wagon {
     background-color: transparent;
   }
+}
+
+.opacity {
+  opacity: 0.8;
 }

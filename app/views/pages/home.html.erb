@@ -20,7 +20,7 @@
         <p>Créez ou rejoignez des courses proposées par vos collègues de travail</p>
         <br>
         <% if user_signed_in? %>
-          <%= link_to 'View events', events_path, class:"btn-medium", id: "home-page" %>
+          <%= link_to 'Voir les défis', events_path, class:"btn-medium", id: "home-page" %>
         <% else %>
           <%= link_to 'Se connecter', new_user_session_path, class:"btn-medium-full" %>
           <%#= link_to 'En savoir plus', new_user_session_path, class:"btn-medium", id: "home-page" %>
