@@ -3,12 +3,12 @@ class UsersController < ApplicationController
 
   skip_after_action :verify_authorized
 
-  def search
-    @users = User.order(:first_name)
-    @users = @users.where("first_name like ?", "%#{params[:term]}%") if params[:term]
+  def random
+    @random_user = User.where(run_level: current_user.run_level).where.not(id: current_user.id)
+    @random_user.sample
     respond_to do |format|
       format.html  # index.html.erb
-      format.json  { render :json => @users.map(&:name) }
+      format.json
     end
   end
 

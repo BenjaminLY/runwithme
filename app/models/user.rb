@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates :job_title, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :run_level, presence: true
 
   def full_name
     "#{first_name.capitalize} #{last_name.capitalize}"

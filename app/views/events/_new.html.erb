@@ -1,9 +1,5 @@
-<style>
-
-</style>
-
   <%= simple_form_for([event], remote: true) do |f| %>
-    <%= f.error_notification %>
+    <%#= f.error_notification %>
     <div class="form-group">
       <div class="row error-msg-form">
         <div class="col-xs-6">
@@ -54,16 +50,14 @@
         </div>
         <div class="col-xs-6">
           <div class="">
-            <a class="btn choice" id="random">Random duo</a>
+            <%= link_to 'Random duo',users_random_path ,class: "btn choice", id: "random", method: :post, remote: true %>
           </div>
         </div>
       </div>
       <div id="colleagues-choice">
         <%= f.association :users, collection: User.where.not(id: current_user.id), label: false, label_method: :full_name, value_method: :id, class: "form-control text-center" %>
       </div>
-      <div id="random-choice">
-          BKZBZBZ
-      </div>
+      <div id="random-choice"></div>
     </div>
     <br>
     <div class="text-center">
