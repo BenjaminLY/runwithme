@@ -27,6 +27,7 @@ class EventsController < ApplicationController
 
   def show
     @message = Message.new(event_id: @event.id)
+    @events = Event.where.not(latitude: nil, longitude: nil)
     @hash = Gmaps4rails.build_markers(@event) do |event, marker|
       if event.latitude && event.longitude
         marker.lat event.latitude

@@ -129,7 +129,8 @@
             <%= link_to "Back to events", events_path %>
           </div>
         <% if @event.latitude &&  @event.longitude %>
-          <%= render "static_map", event: @event %>
+          <%= render "events/static_map", event: @event %>
+          <!-- <div id="map" style="width: 100%; height: 600px;"></div> -->
         <% end %>
       </div>
     </div>
@@ -156,10 +157,10 @@
    </div>
  </div>
 
-  <%# content_for :after_js do %>
+ <!--  <%# content_for :after_js do %>
     <%# if @event.latitude &&  @event.longitude %>
 
-      <!-- <script>
+      <script>
         $(document).ready(function() {
           var handler = Gmaps.build('Google');
           handler.buildMap({ internal: { id: 'map' } }, function() {
@@ -173,7 +174,7 @@
             }
           });
         });
-      </script> -->
+      </script>
     <%# end %>
-  <%# end %>
+  <%#end %> -->
 
