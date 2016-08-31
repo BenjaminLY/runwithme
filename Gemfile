@@ -22,8 +22,6 @@ gem "cloudinary", "1.1.0"
 gem 'attachinary', github: 'assembler/attachinary'
 gem "jquery-fileupload-rails"
 gem "geocoder"
-gem "coffee-rails"
-gem "gmaps4rails"
 gem "pundit"
 gem "simple_calendar", "~> 2.0"
 gem 'public_activity'
