@@ -1,0 +1,18 @@
+<% class_name = (message.user == current_user) ? "reverse" : "" %>
+
+<div class="message <%= class_name %>" id="message_<%= message.id %>">
+  <%= render "users/avatar_xsmall", user: message.user %>
+
+  <div class="message-box">
+    <div class="message-header">
+      <p>
+        <strong> <%= message.user.first_name %> <%= message.user.last_name %></strong> -
+        <%= time_ago_in_words(message.created_at) %> ago
+      </p>
+    </div>
+    <div class="message-content">
+      <p><%= message.content %></p>
+    </div>
+  </div>
+
+</div>
