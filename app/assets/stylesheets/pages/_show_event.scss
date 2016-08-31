@@ -26,8 +26,8 @@
     .organizer {
       margin-top: 10px;
       p {
-      margin-bottom: 0px;
-    }
+        margin-bottom: 0px;
+      }
     }
 	}
 	.event-details {
@@ -37,22 +37,17 @@
       width: 60%;
       margin-right: 20px;
       border-radius: 12px;
-      padding: 20px;
       background: white;
+		}
+    .description-container {
       height: 500px;
       overflow: scroll;
-			.messages {
-				h4 {
-					border-bottom: 3px solid $blue;
-				}	margin-bottom: 15px;
-			}
-        .message_avatar {
-          display: flex;
-          p {
-            margin-left: 5px;
-          }
-        }
-		}
+      padding: 20px;
+    }
+    .description-footer {
+      padding: 20px;
+      background: rgba(249, 249, 249, 0.38);
+    }
 		.participation {
 			width: 40%;
 			border-radius: 12px;
@@ -134,3 +129,7 @@
       margin-bottom: 30px;
     }
 }
+
+
+
+
