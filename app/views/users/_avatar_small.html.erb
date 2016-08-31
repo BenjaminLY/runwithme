@@ -1,8 +1,8 @@
 	<div data-toggle="tooltip", title="<%= user.first_name.capitalize %> <%= user.last_name.capitalize %> <%= user.job_title.downcase %>" >
 	<% if user.photo? %>
-			<%= cl_image_tag user.photo.path, crop: :fill, class: "avatar"%>
+			<%= cl_image_tag user.photo.path, width: 50, height: 50, crop: :fill, class: "avatar"%>
 	<% else %>
-			<%= image_tag "avatar.jpg", crop: :fill, class: "avatar"%>
+			<%= image_tag "avatar.jpg", width: 50, height: 50, crop: :fill, class: "avatar"%>
 	<% end %>
 	</div>
 
