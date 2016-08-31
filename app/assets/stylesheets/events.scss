@@ -67,10 +67,11 @@
   flex: 0 0 15%;
   font-size: 25px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   a {
     margin-left: -18px;
+    padding-right: 57px;
   }
 }
 
@@ -81,7 +82,7 @@
 
 .index-menu {
   background-color: #90C1D4;
-  margin-top: 32px;
+  margin-top: 45px;
   border-radius: 5px;
   display: flex;
   justify-content: space-around;
@@ -95,8 +96,10 @@
 
 
 .events-list-title {
-  color: black;
+  color: white;
   margin-bottom: 35px;
+  padding-top: 70px;
+  margin-bottom: -7px;
 }
 
 .events-date {
@@ -255,6 +258,15 @@
   }
 }
 
+.event-banner {
+  height: 276px;
+  background-size: cover;
+}
+
 .all-child.active {
   @extend .hvr-underline-from-left:hover;
+}
+
+.color-icon {
+  color: #90C1D4;
 }

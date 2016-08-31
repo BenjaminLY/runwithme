@@ -1,0 +1,9 @@
+
+<div class = "white-background">
+  <h5 pad-bot>
+    <i class="fa fa-map-marker color-icon" aria-hidden="true"></i>
+    Adresse de l'activité : <%= @event.address %>
+  </h5>
+  <div class="banner-map" style='background-image: url("https://maps.googleapis.com/maps/api/staticmap?center=<%= @event.address %>&zoom=15&key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>&size=1200x600&sensor=false&maptype=roadmap&markers=color:red|<%= @event.address %>"); height: 300px; background-size: cover;background-position: center center'>
+  </div>
+</div>
