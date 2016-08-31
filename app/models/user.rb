@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   belongs_to :company
+
+  RUNNING_TYPE = ["fractionné", "endurance", "marche rapide", "décontracté"]
+
   has_many :events, dependent: :destroy
   has_many :participations, dependent: :destroy
   has_many :messages, dependent: :destroy
