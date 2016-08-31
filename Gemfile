@@ -36,6 +36,8 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-datepicker'
   gem 'rails-assets-chosen'
   gem 'rails-assets-Hover'
+  gem "coffee-rails"
+  gem "gmaps4rails"
 end
 
 group :development, :test do
