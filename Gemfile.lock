@@ -257,12 +257,12 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass
   cloudinary (= 1.1.0)
-  coffee-rails
+  coffee-rails!
   devise!
   figaro
   font-awesome-sass
   geocoder
-  gmaps4rails
+  gmaps4rails!
   jbuilder (~> 2.0)
   jquery-fileupload-rails
   jquery-rails
