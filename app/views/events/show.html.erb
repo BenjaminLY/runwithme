@@ -73,20 +73,29 @@
           <div class="event-details">
             <div class="description">
               <div class="description-container">
-                <div>
-                  <% unless @event.address.blank? %>
-                    <h4><%= "Adresse de l'activité" %></h4>
-                    <p><%= @event.address %></p>
-                  <% end %>
-                </div>
+                <!-- <div>
+                  <%# unless @event.address.blank? %>
+                    <h4>
+                      <i class="fa fa-map-marker" aria-hidden="true"></i>
+                      <%#= "Adresse de l'activité" %>
+                    </h4>
+                    <p><%#= @event.address %></p>
+                  <%# end %>
+                </div> -->
                 <div>
                   <% unless @event.description.blank? %>
-                    <h4><%= "Description de l'activité" %></h4>
+                    <h4>
+                      <i class="fa fa-pencil-square-o color-icon" aria-hidden="true"></i>
+                      <%= "Description de l'activité" %>
+                    </h4>
                     <p><%= @event.description %></p>
                   <% end %>
                 </div>
                 <div class="messages">
-                  <h4><%= "Messages" %></h4>
+                  <h4>
+                    <i class="fa fa-comments color-icon" aria-hidden="true"></i>
+                    <%= "Messages" %>
+                  </h4>
                   <% unless @event.messages.empty? %>
                     <% @event.messages.each do |message| %>
                         <%= render 'events/message', message: message %>
@@ -107,6 +116,7 @@
               <h4><%= "Vos selfies!" %></h4>
               <div class="photos_btn">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPhotos">
+                  <i class="fa fa-camera-retro" aria-hidden="true"></i>
                    Postez vos selfies!
                 </button>
               </div>
@@ -126,6 +136,7 @@
               </div>
           </div>
           <div class="back_events">
+            <i class="fa fa-arrow-left color-icon" aria-hidden="true"></i>
             <%= link_to "Back to events", events_path %>
           </div>
         <% if @event.latitude &&  @event.longitude %>
