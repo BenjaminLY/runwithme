@@ -70,6 +70,18 @@
             <% end %>
             </div>
           </div>
+          <div class="mybuddies">
+            <h3 class="mybuddies-title">Mes selfies de run</h3>
+            <div class="mybuddies_avatars">
+            <% @user.events_as_participant.each do |event| %>
+                  <% unless event.photos.nil? %>
+                    <% event.photos.each do |photo| %>
+                      <%= cl_image_tag photo.path, width: 250, height: 250, crop: :fill %>
+                    <% end %>
+                  <% end %>
+            <% end %>
+            </div>
+          </div>
     </div>
   </div>
 </div>
