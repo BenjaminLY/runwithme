@@ -245,7 +245,12 @@
   }
 }
 
-.hvr-underline-from-left:before {
-  background: white;
+.hvr-underline-from-left {
+  &:before {
+    background: white;
+  }
 }
 
+.all-child.active {
+  @extend .hvr-underline-from-left:hover;
+}
