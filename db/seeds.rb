@@ -49,7 +49,7 @@ user_12 = User.create!(email: "gildas@gmail.com", password: "testtest", first_na
 puts "#{user_4} a bien été créé'"
 user_13 = User.create!(email: "victor@gmail.com", password: "testtest", first_name: "victor", last_name: "kros" , job_title: "Ingénieur", company_id: company_1.id, photo: seed_image('joe'))
 puts "#{user_4} a bien été créé'"
-user_14 = User.create!(email: "victor@gmail.com", password: "testtest", first_name: "victor", last_name: "leroy" , job_title: "Comptable", company_id: company_1.id, photo: seed_image('joe'))
+user_14 = User.create!(email: "victor2@gmail.com", password: "testtest", first_name: "victor", last_name: "leroy" , job_title: "Comptable", company_id: company_1.id, photo: seed_image('joe'))
 puts "#{user_4} a bien été créé'"
 user_15 = User.create!(email: "pauline@gmail.com", password: "testtest", first_name: "pauline", last_name: "peco" , job_title: "Directrice marketing", company_id: company_2.id, photo: seed_image('joe'))
 puts "#{user_4} a bien été créé'"
