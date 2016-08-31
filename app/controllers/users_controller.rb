@@ -3,15 +3,6 @@ class UsersController < ApplicationController
 
   skip_after_action :verify_authorized
 
-  def search
-    @users = User.order(:first_name)
-    @users = @users.where("first_name like ?", "%#{params[:term]}%") if params[:term]
-    respond_to do |format|
-      format.html  # index.html.erb
-      format.json  { render :json => @users.map(&:name) }
-    end
-  end
-
   def profile
   end
 

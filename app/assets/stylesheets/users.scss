@@ -1,29 +1,31 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.profil {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.profil_header {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 12px;
+  margin-bottom: 50px;
+}
+
 
 .avatar-description {
-  // text-align: center;
+  text-align: center;
+  width: 25%;
   font-size: 15px;
-  border: white 1px solid;
-  // border-radius: 12px;
-  height: 350px;
   background-color: white;
-  padding: 40px 40px;
+  padding: 25px 20px;
   margin-top: 50px;
-
-  h2 {
-    font-size: 24px;
+  border-radius: 12px;
+  h5 {
+    margin-bottom: 5px;
   }
-
-  h3 {
-    font-size: 17px;
-  }
-
-  h4 {
-    font-size: 18px;
-  }
-
 }
 
 .wrapper-grey {
@@ -34,11 +36,11 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border: white 1px solid;
   background-color: white;
   // border-radius: 12px;
-  height: 350px;
   margin-top:50px;
+  width: 70%;
+  border-radius: 12px;
 }
 
 .icon-wrapper {
@@ -71,18 +73,46 @@
   font-size: 70px;
 }
 
-.myevents {
-  border: white 1px solid;
+.mybuddies {
   background-color: white;
-  // border-radius: 12px;
-  margin-top: 30px;
-  // margin-left: 13px;
-  // margin-right: 13px;
-  // padding-top: 59px;
-  // padding-bottom: 59px;
-  // position: relative;
-  // height: 155px;
+  border-radius: 12px;
+  margin-bottom: 50px;
+  text-align: center;
+  h3 {
+    color: $blue;
+    margin-bottom: 0px;
+  }
 }
+
+.mybuddies-title {
+   position: relative;
+   z-index: 4;
+   overflow: hidden;
+   text-align: center;
+   color: $blue;
+ &:before, &:after {
+     position: absolute;
+     top: 51%;
+     overflow: hidden;
+     width: 50%;
+     height: 1px;
+     content: '\a0';
+     background-color: $blue;
+ }
+ &:before {
+     margin-left: -50%;
+     text-align: right;
+ }
+}
+
+.mybuddies_avatars {
+  display: flex;
+  align-items: center;
+  img{
+    margin: 20px 0px 10px 20px;
+  }
+}
+
 
 .event-next {
   text-align: center;

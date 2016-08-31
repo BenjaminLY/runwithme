@@ -9,7 +9,7 @@ class Event < ApplicationRecord
   include PublicActivity::Common
   # tracked owner: ->(controller, model) { controller && controller.current_user }
 
-  MEETING = ["Run rapide", "Run fractionné", "Run endurance", "Run blabla", "Marche rapide", "Marche plaisante"]
+  MEETING = ["Run rapide", "Run fractionné", "Run endurance", "Blala run", "Marche rapide", "Marche plaisante"]
 
   validates :type_of, inclusion: { in: MEETING }
   validates :datetime, presence: true

@@ -69,7 +69,7 @@ puts "#{user_4} a bien été créé'"
 attributes = [
   {
     user_id: user_1.id,
-    type_of: "Endurance run",
+    type_of: "Run rapide",
     datetime: DateTime.new(2016, 8, 20),
     private: true,
     description: "Course intensive avec un objectif temps déterminé",
@@ -78,7 +78,7 @@ attributes = [
   },
   {
     user_id: user_2.id,
-    type_of: "Speed walk",
+    type_of: "Run rapide",
     datetime: DateTime.new(2016, 9, 10),
     private: false,
     description: "Une belle marche dans le quartier populaire d'Oberkampf",
@@ -88,7 +88,7 @@ attributes = [
   },
   {
     user_id: user_3.id,
-    type_of: "Cool run",
+    type_of: "Run rapide",
     datetime: DateTime.new(2016, 12, 12),
     private: false,
     meeting_point: "Buttes Chaumont",
@@ -96,7 +96,7 @@ attributes = [
   },
   {
     user_id: user_4.id,
-    type_of: "Endurance run",
+    type_of: "Run rapide",
     datetime: DateTime.new(2016, 9, 30),
     private: false,
     description: "Let's run run run",
@@ -106,7 +106,7 @@ attributes = [
   },
   {
     user_id: user_4.id,
-    type_of: "Endurance run",
+    type_of: "Run rapide",
     datetime: DateTime.new(2016, 9, 30),
     private: false,
     description: "Let's run run run",
@@ -116,7 +116,7 @@ attributes = [
   },
   {
     user_id: user_4.id,
-    type_of: "Endurance run",
+    type_of: "Run rapide",
     datetime: DateTime.new(2016, 9, 30),
     private: false,
     description: "Running entre collègues",
@@ -126,7 +126,7 @@ attributes = [
   },
   {
     user_id: user_4.id,
-    type_of: "Endurance run",
+    type_of: "Run rapide",
     datetime: DateTime.new(2016, 9, 30),
     private: true,
     description: "J'aime les fractionnés",
@@ -136,7 +136,7 @@ attributes = [
   },
   {
     user_id: user_4.id,
-    type_of: "Endurance run",
+    type_of: "Run rapide",
     datetime: DateTime.new(2016, 9, 30),
     private: true,
     description: "Let's run run run",
@@ -146,7 +146,7 @@ attributes = [
   },
   {
     user_id: user_4.id,
-    type_of: "Endurance run",
+    type_of: "Run rapide",
     datetime: DateTime.new(2016, 9, 30),
     private: true,
     description: "Let's run run run",
