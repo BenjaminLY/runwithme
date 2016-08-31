@@ -15,11 +15,11 @@ User.destroy_all
 Company.destroy_all
 
 
-company_1 = Company.create!(name: "Hermes", address: "24 rue du Faubourg, Saint-Honoré 75008 Paris", name_of_contact: "Georges Kelly", phone_number: "0140174600", email: "georges.kelly@hermes.com" )
+company_1 = Company.create!(name: "Club Med", address: "24 rue du Faubourg, Saint-Honoré 75008 Paris", name_of_contact: "Georges Kelly", phone_number: "0140174600", email: "georges.kelly@hermes.com" )
 puts "#{company_1} a bien été créée"
-company_2 = Company.create!(name: "LVMH", address: "22 avenue Montaigne, 75008 Paris", name_of_contact: "Vicky Adler", phone_number: "0144132222", email: "vicky.adler@lvmh.com")
+company_2 = Company.create!(name: "Pierre et vacances", address: "22 avenue Montaigne, 75008 Paris", name_of_contact: "Vicky Adler", phone_number: "0144132222", email: "vicky.adler@lvmh.com")
 puts "#{company_2} a bien été créée"
-company_3 = Company.create!(name: "Danone", address: "17 boulevard Haussmann, 75009 Paris", name_of_contact: "Gerard Lactee", phone_number: "0144352020", email: "gerard.lactee@danone.com")
+company_3 = Company.create!(name: "Uber", address: "17 boulevard Haussmann, 75009 Paris", name_of_contact: "Gerard Lactee", phone_number: "0144352020", email: "gerard.lactee@danone.com")
 puts "#{company_3} a bien été créée"
 
 
@@ -27,9 +27,41 @@ user_1 = User.create!(email: "coline@gmail.com", password: "testtest", first_nam
 puts "#{user_1} a bien été créé'"
 user_2 = User.create!(email: "benjamin@gmail.com", password: "testtest", first_name: "benjamin" , last_name: "lyphoudt", job_title: "Webmaster", company_id: company_2.id, photo: seed_image('benjamin'))
 puts "#{user_2} a bien été créé'"
-user_3 = User.create!(email: "abdel@gmail.com", password: "testtest", first_name: "abdel", last_name: "malik" , job_title: "Juriste", company_id: company_3.id, photo: seed_image('abdel'))
+user_3 = User.create!(email: "abdel@gmail.com", password: "testtest", first_name: "abdel", last_name: "malik" , job_title: "Juriste", company_id: company_1.id, photo: seed_image('abdel'))
 puts "#{user_3} a bien été créé'"
-user_4 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joe", last_name: "star" , job_title: "Comptable", company_id: company_3.id, photo: seed_image('joe'))
+user_5 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "Georges", last_name: "Dupont" , job_title: "Comptable", company_id: company_2.id, photo: seed_image('joe'))
+puts "#{user_4} a bien été créé'"
+user_6 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "Johny", last_name: "Halliday" , job_title: "Comptable", company_id: company_2.id, photo: seed_image('joe'))
+puts "#{user_4} a bien été créé'"
+user_7 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "Elon", last_name: "Musk" , job_title: "DRH", company_id: company_2.id, photo: seed_image('joe'))
+puts "#{user_4} a bien été créé'"
+user_8 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "Travis", last_name: "Kalanick" , job_title: "CEO", company_id: company_3.id, photo: seed_image('joe'))
+puts "#{user_4} a bien été créé'"
+user_9 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "Garret", last_name: "Camp" , job_title: "CTO", company_id: company_3.id, photo: seed_image('joe'))
+puts "#{user_4} a bien été créé'"
+user_10 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "Gerard", last_name: "Bremond" , job_title: "PDG", company_id: company_2.id, photo: seed_image('joe'))
+puts "#{user_4} a bien été créé'"
+user_11 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joe", last_name: "star" , job_title: "Comptable", company_id: company_1.id, photo: seed_image('joe'))
+puts "#{user_4} a bien été créé'"
+user_12 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joe", last_name: "star" , job_title: "Comptable", company_id: company_3.id, photo: seed_image('joe'))
+puts "#{user_4} a bien été créé'"
+user_13 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joe", last_name: "star" , job_title: "Comptable", company_id: company_1.id, photo: seed_image('joe'))
+puts "#{user_4} a bien été créé'"
+user_14 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joe", last_name: "star" , job_title: "Comptable", company_id: company_1.id, photo: seed_image('joe'))
+puts "#{user_4} a bien été créé'"
+user_15 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joe", last_name: "star" , job_title: "Comptable", company_id: company_2.id, photo: seed_image('joe'))
+puts "#{user_4} a bien été créé'"
+user_16 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joe", last_name: "star" , job_title: "Comptable", company_id: company_3.id, photo: seed_image('joe'))
+puts "#{user_4} a bien été créé'"
+user_17 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joe", last_name: "star" , job_title: "Comptable", company_id: company_3.id, photo: seed_image('joe'))
+puts "#{user_4} a bien été créé'"
+user_18 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joe", last_name: "star" , job_title: "Comptable", company_id: company_1.id, photo: seed_image('joe'))
+puts "#{user_4} a bien été créé'"
+user_19 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joe", last_name: "star" , job_title: "Comptable", company_id: company_2.id, photo: seed_image('joe'))
+puts "#{user_4} a bien été créé'"
+user_20 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joe", last_name: "star" , job_title: "Comptable", company_id: company_1.id, photo: seed_image('joe'))
+puts "#{user_4} a bien été créé'"
+user_21 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joe", last_name: "star" , job_title: "Comptable", company_id: company_2.id, photo: seed_image('joe'))
 puts "#{user_4} a bien été créé'"
 
 attributes = [
