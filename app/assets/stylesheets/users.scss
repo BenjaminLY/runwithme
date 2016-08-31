@@ -11,6 +11,7 @@
   display: flex;
   justify-content: space-between;
   border-radius: 12px;
+  margin-bottom: 50px;
 }
 
 
@@ -75,10 +76,11 @@
 .mybuddies {
   background-color: white;
   border-radius: 12px;
-  margin-top: 50px;
+  margin-bottom: 50px;
   text-align: center;
   h3 {
     color: $blue;
+    margin-bottom: 0px;
   }
 }
 
@@ -102,6 +104,15 @@
      text-align: right;
  }
 }
+
+.mybuddies_avatars {
+  display: flex;
+  align-items: center;
+  img{
+    margin: 20px 0px 10px 20px;
+  }
+}
+
 
 .event-next {
   text-align: center;

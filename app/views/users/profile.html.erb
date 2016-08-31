@@ -57,7 +57,17 @@
           <div class="mybuddies">
             <h3 class="mybuddies-title">Mes collègues de run</h3>
             <div class="mybuddies_avatars">
-            <%= @user.my_run_buddies %>
+            <% @user.my_run_buddies.each do |buddy| %>
+              <%= render 'users/avatar', user: buddy %>
+            <% end %>
+            </div>
+          </div>
+          <div class="mybuddies">
+            <h3 class="mybuddies-title">Mes adversaires de run</h3>
+            <div class="mybuddies_avatars">
+            <% @user.my_run_buddies.each do |buddy| %>
+              <%= render 'users/avatar', user: buddy %>
+            <% end %>
             </div>
           </div>
     </div>
