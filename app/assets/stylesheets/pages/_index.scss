@@ -2,6 +2,7 @@
 @import "login";
 @import "show_event";
 @import "users-profile";
+@import "users-edit";
 
 .pad {
   background-color: #ffffff;
@@ -66,9 +67,9 @@
   opacity: 0.8;
 }
 
-.grey-wrapper {
-  background-image: url('runners-train.jpg');
-  background-size: cover !important;
-  min-height: 100vh;
-}
+// .grey-wrapper {
+//   background-image: url('runners-train.jpg');
+//   background-size: cover !important;
+//   min-height: 100vh;
+// }
 

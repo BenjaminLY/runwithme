@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   belongs_to :company
 
-  RUNNING_TYPE = ["fractionné", "endurance", "marche rapide", "décontracté"]
+  RUNNING_TYPE = ["Running rapide", "Running fractionné", "Running endurance", "Running blabla", "Marche rapide", "Marche plaisante"]
+
+  RUNNER_LEVEL = ["Turtle (débutant)", "Bunny (intermédiaire)", "Gazelle (confirmé)"]
 
   has_many :events, dependent: :destroy
   has_many :participations, dependent: :destroy
