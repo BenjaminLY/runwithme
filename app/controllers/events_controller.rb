@@ -4,16 +4,18 @@ class EventsController < ApplicationController
   def index
     @public_events = policy_scope(Event).where(private: false)
     @my_private_events = policy_scope(Event).my_private_events(current_user)
-    if params[:filter] == 'public'
+    @filter = params[:filter]
+
+    if @filter == 'public'
       @events = Event.where(private: false)
-    elsif params[:filter] == 'Own_run'
+    elsif @filter == 'Own_run'
       @events = Event.where(user_id: current_user)
-    elsif params[:filter] == 'private'
+    elsif @filter == 'private'
       # @events = policy_scope(Event).my_private_events(current_user)
       @events = current_user.private_events
-    elsif params[:filter] == 'refused'
+    elsif @filter == 'refused'
       @events = currener.refused_events
-    elsif params[:filter] == 'challenge'
+    elsif @filter == 'challenge'
       @events = Event.joins(:user).where.not(users: {company: current_user.company})
     else
       @events = Event.where(private: false) + current_user.private_events

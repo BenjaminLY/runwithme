@@ -4,10 +4,10 @@
     <div class="row">
       <div class="col-xs-12 col-md-10 col-md-offset-1 blue-nav">
         <ul class="nav index-menu">
-          <li class="all-child hvr-underline-from-left"><%= link_to 'Mes runs', events_path(filter: 'Own_run') %></li>
-          <li class="all-child hvr-underline-from-left"><%= link_to 'Défis publics', events_path(filter: 'public') %></li>
-          <li class="all-child hvr-underline-from-left"><%= link_to 'Défis reçus', events_path(filter: 'private') %></li>
-          <li class="all-child hvr-underline-from-left"><%= link_to 'Challenges Entreprises', events_path(filter: 'challenge') %></li>
+          <li class="all-child hvr-underline-from-left <%= event_css_class_name("Own_run") %>"><%= link_to 'Mes runs', events_path(filter: 'Own_run') %></li>
+          <li class="all-child hvr-underline-from-left <%= event_css_class_name("public") %>"><%= link_to 'Défis publics', events_path(filter: 'public') %></li>
+          <li class="all-child hvr-underline-from-left <%= event_css_class_name("private") %>"><%= link_to 'Défis reçus', events_path(filter: 'private') %></li>
+          <li class="all-child hvr-underline-from-left <%= event_css_class_name("challenge") %>"><%= link_to 'Challenges Entreprises', events_path(filter: 'challenge') %></li>
           <!-- li class="all-child">
             <%#= link_to events_path(filter: 'refused') do %>
               <i class="fa fa-trash-o" aria-hidden="true"></i>
