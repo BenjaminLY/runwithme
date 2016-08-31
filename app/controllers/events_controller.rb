@@ -16,7 +16,7 @@ class EventsController < ApplicationController
     elsif params[:filter] == 'challenge'
       @events = Event.joins(:user).where.not(users: {company: current_user.company})
     else
-      @events = policy_scope(Event).public + current_user.private_events
+      @events = Event.where(private: false) + current_user.private_events
       @events.sort_by! { |ev| ev[:datetime].to_i }
     end
     # @events = @events.group_by(&:datetime)
