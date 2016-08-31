@@ -24,7 +24,7 @@
               <%= f.input :job_title, label: "Intitulé de ton poste" %>
             </div>
             <div class="col-xs-12 col-sm-6">
-              <%= f.input :run_level, label: "Ton niveau de runner" %>
+              <%= f.input :run_level, label: "Ton niveau de runner", collection: User::RUNNER_LEVEL %>
             </div>
             <div class="col-xs-12 col-sm-6">
               <%= f.input :expectation, label: "Ton type de running", collection: User::RUNNING_TYPE %>
@@ -34,7 +34,7 @@
             </div>
             <div class="col-xs-12">
               <div class="actions text-center">
-                <%= f.button :submit, class: 'btn-medium-full btn-medium-full-black btn-full-width'%>
+                <%= f.button :submit, value: "Mettre à jour", class: 'btn-medium-full btn-medium-full-black btn-full-width'%>
                 <%#= link_to "Destroy my account", registration_path(current_user), method: :delete, data: { confirm: "Are you sure?" }, class: "btn-medium-full btn-medium-full-black"  %>
               </div>
             </div>

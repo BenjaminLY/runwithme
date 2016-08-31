@@ -69,6 +69,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  a {
+    margin-left: -18px;
+  }
 }
 
 #create_participation {
@@ -92,9 +95,10 @@
 
 
 .events-list-title {
-  color: grey;
+  color: black;
   margin-bottom: 35px;
 }
+
 .events-date {
   color: white;
   width: 100%;
@@ -117,7 +121,7 @@
 }
 .events-counter {
   margin-top: 0;
-  color: #4C4C4C;
+  color: black;
 }
 .events-content {
   display: flex;
