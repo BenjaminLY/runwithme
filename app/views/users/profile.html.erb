@@ -1,85 +1,65 @@
 <div class="wrapper-grey">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-md-3">
-        <div class="avatar-description">
-          <%= render 'avatar', user: @user %>
-          <h2><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h2>
-          <h3><%= @user.job_title.capitalize %>
-          <!-- <img src="http://www.reputatiolab.com/wp-content/uploads/2015/01/logo-societe-generale-1024x1007.jpg", class="avatar pad-logo-company"> -->
-          </h3>
-          <h4 class="pad-name-company pad-bot">
-          Société générale
-          </h4>
-          <br>
-         <div>
-          <%= link_to "Editer mon profil", edit_user_path(@user), class: 'btn-blue-edit' %>
-         </div>
-        </div>
-      </div>
-      <div class= "col-xs-12 col-md-9">
-        <div class="stats">
-          <div class="icon-wrapper text-center">
-            <div id="participations">
-              <p class="event-next">
-                Nb de courses
-                <span class="fix-editor">&nbsp;</span>
-              </p>
+      <div class="col-xs-10 col-xs-offset-1">
+        <div class="profil">
+          <div class="profil_header">
+            <div class="avatar-description">
+              <%= render 'avatar', user: @user %>
+              <h4><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h4>
+              <h5><%= @user.job_title.capitalize %></h5>
+              <h5><%= @user.company.name %></h5>
+              <br>
+             <div>
+              <%= link_to "Editer mon profil", edit_user_path(@user), class: 'btn-blue-edit' %>
+             </div>
             </div>
-            <div id="number-participations">
-              <p>
-                <span class="number">5</span>
-              </p>
-            </div>
-          </div>
-          <div class="icon-wrapper text-center">
-            <div id="speed">
-              <p class="event-next">
-                Vitesse moyenne
-                <span class="fix-editor">&nbsp;</span>
-              </p>
-            </div>
-            <div id="speed-number">
-              <p>
-                <span class="number">13</span>km/h
-              </p>
-            </div>
-          </div>
-          <div class="icon-wrapper text-center">
-            <div id="distance">
-              <p class="event-next">
-                Distance parcourue
-                <span class="fix-editor">&nbsp;</span>
-              </p>
-            </div>
-            <div id="distance-number">
-              <span class="number">80</span>km
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="myevents col-xs-12 col-md-12">
-        <h1 class="event-next">
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-          Prochaines courses
-          <div class="triangle_inside_line pad-bot" id="triangle_show"></div>
-        </h1>
-          <div class="events_to_show" style="display:none;">
-            <% @user.events_as_participant.each do |event| %>
-              <div class="events" id="event_<%#= event.id %>">
-                <%= render 'events/event', event: event %>
+            <div class="stats">
+              <div class="icon-wrapper text-center">
+                <div id="participations">
+                  <p class="event-next">
+                    Nb de courses
+                    <span class="fix-editor">&nbsp;</span>
+                  </p>
+                </div>
+                <div id="number-participations">
+                  <p>
+                    <span class="number">5</span>
+                  </p>
+                </div>
               </div>
-            <% end %>
-          </div>
-        </div>
-        <!-- <div>
-          <%# @user.events_as_participant.each do |event| %>
-            <div class="events" id="event_<%#= event.id %>">
-              <%#= render 'events/event', event: event %>
+              <div class="icon-wrapper text-center">
+                <div id="speed">
+                  <p class="event-next">
+                    Vitesse moyenne
+                    <span class="fix-editor">&nbsp;</span>
+                  </p>
+                </div>
+                <div id="speed-number">
+                  <p>
+                    <span class="number">13</span>km/h
+                  </p>
+                </div>
+              </div>
+              <div class="icon-wrapper text-center">
+                <div id="distance">
+                  <p class="event-next">
+                    Distance parcourue
+                    <span class="fix-editor">&nbsp;</span>
+                  </p>
+                </div>
+                <div id="distance-number">
+                  <span class="number">80</span>km
+                </div>
+              </div>
             </div>
-          <%# end %>
-        </div> -->
-      <!-- </div> -->
+          </div>
+          <div class="mybuddies">
+            <h3 class="mybuddies-title">Mes collègues de run</h3>
+            <div class="mybuddies_avatars">
+            <%= @user.my_run_buddies %>
+            </div>
+          </div>
     </div>
   </div>
 </div>
