@@ -47,6 +47,18 @@
   }
 }
 
+.btn-full-width {
+  width: 100%;
+}
+
+.btn-medium-full-black {
+  color: black;
+  border: 1px solid black;
+  &:hover {
+    color: black;
+  }
+}
+
 .btn-treehouse {
   color: white;
   padding: 10px 15px;
