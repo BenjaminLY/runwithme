@@ -37,11 +37,6 @@
   padding-bottom: 16px;
 }
 
-.container {
-  padding-bottom: 40px;
-}
-
-
 #events {
   color: #90c1d4;
   font-weight:  bold;
@@ -51,6 +46,12 @@
 .pages-wrapper {
   min-height: 90vh;
   margin-top: 70px;
+  background-size: cover !important;
+}
+.users-edit {
+  .pages-wrapper {
+    padding-bottom: 60px;
+  }
 }
 .pages-home {
   .pages-wrapper {
