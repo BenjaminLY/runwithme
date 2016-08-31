@@ -1,3 +1,7 @@
+<style>
+
+</style>
+
 <div class="banner" style="background-image: url('<%= image_path 'sign_in_2.jpg' %>') " id="sign_in" >
   <div class="container">
     <div class="row">
@@ -8,15 +12,44 @@
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= f.error_notification %>
 
-          <div class="form-inputs">
-            <%= f.input :first_name, label: false, required: true, placeholder: 'Prénom*' %>
-            <%= f.input :last_name, label: false, required: true, placeholder: 'Nom*' %>
-            <%= f.input :job_title, label: false, required: true, placeholder: 'Poste occupé*' %>
-            <%= f.input :email, label: false, required: true, autofocus: true, placeholder: 'Email*' %>
-            <%= f.input :password, label: false, required: true, placeholder: 'Mot de passe*' %>
-            <%= f.input :password_confirmation,label: false, placeholder: 'Confirmer le Mot de passe*', required: true %>
-            <%#= f.input :photo, label: 'Profile picture', as: :attachinary%>
-          <br>
+          <div class="form-inputs text-center">
+            <div class="row">
+              <div class="col-xs-6">
+                <%= f.input :first_name, label: false, required: true, placeholder: 'Prénom*' %>
+              </div>
+              <div class="col-xs-6">
+                <%= f.input :last_name, label: false, required: true, placeholder: 'Nom*' %>
+              </div>
+            </div>
+            <%= f.label 'Niveau', class: 'form-title' %>
+            <div class="row">
+              <div class="icon-thread">
+                <div class="col-xs-4">
+                  <input type="radio" id="tortue" name="user[run_level]" value="Débutant">
+                  <label for="tortue" data-toggle="tooltip" title="Débutant">
+                    <%= image_tag 'tortue.png', class: 'level' %>
+                  </label>
+                </div>
+                <div class="col-xs-4">
+                  <input type="radio" id="lapin" name="user[run_level]" value="Intermédiaire" >
+                  <label for="lapin" data-toggle="tooltip" title="Intermédiaire">
+                    <%= image_tag 'lapin.png', class: 'level' %>
+                  </label>
+                </div>
+                <div class="col-xs-4">
+                  <input type="radio" id="gazelle" name="user[run_level]" value="Confirmé" >
+                  <label for="gazelle" data-toggle="tooltip" title="Confirmé" >
+                    <%= image_tag 'gazelle.png', class: 'level' %>
+                  </label>
+                </div>
+              </div>
+            </div>
+              <%= f.input :job_title, label: false, required: true, placeholder: 'Poste occupé*' %>
+              <%= f.input :email, label: false, required: true, autofocus: true, placeholder: 'Email*' %>
+              <%= f.input :password, label: false, required: true, placeholder: 'Mot de passe*' %>
+              <%= f.input :password_confirmation,label: false, placeholder: 'Confirmer le Mot de passe*', required: true %>
+              <%#= f.input :photo, label: 'Profile picture', as: :attachinary%>
+          </div>
           <div class="form-actions">
             <%= f.button :submit, "M'inscrire", class: 'btn-blue-edit text-color-log' %>
           </div>
