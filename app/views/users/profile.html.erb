@@ -6,7 +6,7 @@
           <div class="profil_header">
             <div class="avatar-description">
               <%= render 'avatar', user: @user %>
-              <h4><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h4>
+              <h4><%= @user.full_name %></h4>
               <h5><%= @user.job_title.capitalize %></h5>
               <h5><%= @user.company.name %></h5>
               <br>
@@ -65,7 +65,7 @@
           <div class="mybuddies">
             <h3 class="mybuddies-title">Mes adversaires de run</h3>
             <div class="mybuddies_avatars">
-            <% @user.my_run_buddies.each do |buddy| %>
+            <% @user.adversaires_buddies.each do |buddy| %>
               <%= render 'users/avatar', user: buddy %>
             <% end %>
             </div>

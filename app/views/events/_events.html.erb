@@ -1,0 +1,25 @@
+<h4 class="events-counter"> <%= pluralize events.size, "résultat" %></h4>
+<% today = Date.today %>
+<% events.each do |date, e| %>
+  <div class="events-date-bg">
+    <div class="events-date">
+      <div>
+        <i class="fa fa-calendar" aria-hidden="true"></i>
+        <% if date == today %>
+          Aujourd'hui
+        <% elsif date == (today + 1.days) %>
+          Demain
+        <% else %>
+          <%= date.strftime('%e %B %Y') %>
+        <% end %>
+      </div>
+    </div>
+    <div class="box">
+    <% e.each do |event| %>
+      <div class="ev" id="event_<%= event.id %>">
+        <%= render 'event', event: event %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+<% end %>

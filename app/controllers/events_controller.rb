@@ -10,6 +10,7 @@ class EventsController < ApplicationController
       @events = Event.where(private: false)
     elsif @filter == 'Own_run'
       @events = Event.where(user_id: current_user)
+      @my_participations = current_user.events_only_as_participant
     elsif @filter == 'private'
       # @events = policy_scope(Event).my_private_events(current_user)
       @events = current_user.private_events
@@ -23,6 +24,7 @@ class EventsController < ApplicationController
     end
     # @events = @events.group_by(&:datetime)
     @events = @events.group_by{ |e| e.datetime.to_date }
+    @my_participations = @my_participations.group_by{ |e| e.datetime.to_date } if @my_participations
   end
 
   def show
