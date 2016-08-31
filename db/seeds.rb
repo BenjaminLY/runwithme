@@ -103,7 +103,7 @@ attributes = [
     address: "Place de la Bastille",
     meeting_point: "Place de la Bastille",
     trail_goal: 21,
-  }
+  },
   {
     user_id: user_4.id,
     type_of: "Endurance run",
