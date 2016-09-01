@@ -35,7 +35,7 @@ user_5 = User.create!(email: "george@gmail.com", password: "testtest", first_nam
 puts "#{user_4} a bien été créé'"
 user_6 = User.create!(email: "joe@gmail.com", password: "testtest", first_name: "joé", last_name: "Star" , job_title: "Business Developper", company_id: company_1.id, photo: seed_image('joe'), run_level: "Gazelle (confirmé)" )
 puts "#{user_4} a bien été créé'"
-user_7 = User.create!(email: "musk@gmail.com", password: "testtest", first_name: "Elon", last_name: "Musk" , job_title: "DRH", company_id: company_2.id, photo: seed_image('joe'), run_level: "Gazelle (confirmé)" )
+user_7 = User.create!(email: "musk@gmail.com", password: "testtest", first_name: "Elon", last_name: "Musk" , job_title: "DRH", company_id: company_2.id, photo: seed_image('Elon'), run_level: "Gazelle (confirmé)" )
 puts "#{user_4} a bien été créé'"
 user_8 = User.create!(email: "travis@gmail.com", password: "testtest", first_name: "Travis", last_name: "Kalanick" , job_title: "CEO", company_id: company_3.id, photo: seed_image('travis_kalanick'), run_level: "Bunny (intermédiaire)" )
 puts "#{user_4} a bien été créé'"
