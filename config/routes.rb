@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
   end
   get '/profile' => 'users#profile'
-  get '/search' => 'users#search'
+  post '/users/random' => 'users#random'
   resources :users, only: [ :edit, :update, :destroy ]
   resources :participations, only: [:update, :destroy]
   resources :activities, only: [:index]

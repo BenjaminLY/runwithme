@@ -1,0 +1,16 @@
+.random-card {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+.random-card-box {
+  display: flex;
+}
+.random-card-description {
+  text-align: left;
+  margin-left: 30px;
+}
+.random-card-description p:nth-child(2) {
+  font-weight: lighter;
+  font-size: 14px;
+}
