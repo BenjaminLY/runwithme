@@ -89,7 +89,7 @@ attributes = [
   {
     user_id: user_2.id,
     type_of: "Run fractionné",
-    datetime: DateTime.new(2016, 9, 10),
+    datetime: DateTime.new(2016,9,10,13,00,0),
     private: false,
     description: "Un run fractionné pour s'entrainer au 20km de Paris",
     meeting_point: "A la cafet du RDC",
@@ -99,7 +99,7 @@ attributes = [
   {
     user_id: user_7.id,
     type_of: "Run endurance",
-    datetime: DateTime.new(2016, 12, 12),
+    datetime: DateTime.new(2016, 12, 12,14,00,0),
     private: false,
     meeting_point: "En bas de la tour",
     time_goal: 55,
@@ -107,7 +107,7 @@ attributes = [
   {
     user_id: user_9.id,
     type_of: "Marche rapide",
-    datetime: DateTime.new(2016, 9, 30),
+    datetime: DateTime.new(2016, 9, 30,11,30,0),
     private: true,
     description: "Faire une marche rapide pour faire une activité en douceur et prendre l'air",
     address: "Parc de la Vilette",
@@ -117,7 +117,7 @@ attributes = [
   {
     user_id: user_1.id,
     type_of: "Blabla run",
-    datetime: DateTime.new(2016, 9, 30),
+    datetime: DateTime.new(2016, 9, 30,12,30,0),
     private: true,
     description: "Faire une course tranquille pour papoter en même temps",
     address: "Parc de la Vilette",
@@ -127,7 +127,7 @@ attributes = [
   {
     user_id: user_2.id,
     type_of: "Marche plaisante",
-    datetime: DateTime.new(2016, 9, 30),
+    datetime: DateTime.new(2016, 9, 30,13,00,0),
     private: false,
     description: "Prendre l'air dans le parc de la vilette",
     address: "Parc de la Vilette",
@@ -137,7 +137,7 @@ attributes = [
   {
     user_id: user_14.id,
     type_of: "Run rapide",
-    datetime: DateTime.new(2016, 9, 30),
+    datetime: DateTime.new(2016, 9, 30,12,00,0),
     private: false,
     description: "Défier nos concurrents",
     address: "Parc de la Vilette",
@@ -147,7 +147,7 @@ attributes = [
   {
     user_id: user_9.id,
     type_of: "Run rapide",
-    datetime: DateTime.new(2016, 9, 30),
+    datetime: DateTime.new(2016, 9, 30,13,30,0),
     private: true,
     description: "S'entrainer pour le semi-marathon",
     address: "Buttes Chaumont",
@@ -157,7 +157,7 @@ attributes = [
   {
     user_id: user_16.id,
     type_of: "Run endurance",
-    datetime: DateTime.new(2016, 9, 30),
+    datetime: DateTime.new(2016, 9, 30,12,00,0),
     private: false,
     description: "Défiez nos voisins",
     address: "Canal de l'Ourc",
