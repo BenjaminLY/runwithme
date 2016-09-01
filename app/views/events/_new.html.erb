@@ -1,6 +1,5 @@
-
   <%= simple_form_for([event], remote: true) do |f| %>
-    <%= f.error_notification %>
+    <%#= f.error_notification %>
     <div class="form-group">
       <div class="row error-msg-form">
         <div class="col-xs-6">
@@ -35,17 +34,34 @@
     </div>
     <div class="row">
       <div class="col-xs-12 col-md-6">
-        <%= f.input :time_goal,label: false ,placeholder: "Mins*", input_html: { min: '1' } %>
+        <%= f.input :time_goal,label: false ,placeholder: "Minutes*", input_html: { min: '1' } %>
       </div>
       <div class="col-xs-12 col-md-6">
         <%= f.input :trail_goal,label: false ,placeholder: "Kms*", input_html: { min: '1' } %>
       </div>
     </div>
     <%= f.input :meeting_point, label: false , placeholder: 'Lieu de rendez-vous*' %>
-    <%= f.association :users, collection: User.where.not(id: current_user.id), label: "Inviter ses amis", label_method: :full_name, value_method: :id, class: "form-control" %>
+    <div class="text-center" id="private-suite">
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="">
+            <a class="btn choice" id="colleagues">Ajouter vos collègues</a>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="">
+            <%= link_to 'Random challenger',users_random_path ,class: "btn choice", id: "random", method: :post, remote: true %>
+          </div>
+        </div>
+      </div>
+      <div id="colleagues-choice">
+        <%= f.association :users, collection: User.where.not(id: current_user.id), label: false, label_method: :full_name, value_method: :id, class: "form-control text-center" %>
+      </div>
+      <div id="random-choice"></div>
+    </div>
     <br>
     <div class="text-center">
-      <%= f.button :submit, class: "btn-primary" %>
+      <%= f.button :submit, class: "btn-primary", value: "Challenger" %>
     </div>
   <% end %>
 
@@ -55,6 +71,7 @@
         setEventType();
         callDatePicker();
         setChosenSelect();
+        setPrivateChoice();
       })
     </script>
   <% end %>
