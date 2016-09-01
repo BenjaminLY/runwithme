@@ -55,7 +55,7 @@
         </div>
       </div>
       <div id="colleagues-choice">
-        <%= f.association :users, collection: User.where(company_id: current_user.company_id, run_level: current_user.run_level).where.not(id: current_user.id), label: false, label_method: :full_name, value_method: :id, class: "form-control text-center" %>
+        <%= f.association :users, collection: User.where(company_id: current_user.company_id).where.not(id: current_user.id), label: false, label_method: :full_name, value_method: :id, class: "form-control text-center" %>
       </div>
       <div id="random-choice"></div>
     </div>
