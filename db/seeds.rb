@@ -87,7 +87,7 @@ attributes = [
     trail_goal: 5,
   },
   {
-    user_id: user_3.id,
+    user_id: user_7.id,
     type_of: "Run rapide",
     datetime: DateTime.new(2016, 12, 12),
     private: false,
@@ -145,7 +145,7 @@ attributes = [
     trail_goal: 21,
   },
   {
-    user_id: user_8.id,
+    user_id: user_7.id,
     type_of: "Run rapide",
     datetime: DateTime.new(2016, 9, 30),
     private: true,
