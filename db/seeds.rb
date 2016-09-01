@@ -15,9 +15,9 @@ User.destroy_all
 Company.destroy_all
 
 
-company_1 = Company.create!(name: "Club Med", address: "24 rue du Faubourg, Saint-Honoré 75008 Paris", name_of_contact: "Georges Kelly", phone_number: "0140174600", email: "georges.kelly@hermes.com" )
+company_1 = Company.create!(name: "Club Med", address: "11 rue de Cambrai, 75019 Paris", name_of_contact: "Jeremie Hoss", phone_number: "0140174600", email: "jeremiehoss@clubmed.com" )
 puts "#{company_1} a bien été créée"
-company_2 = Company.create!(name: "Pierre et vacances", address: "22 avenue Montaigne, 75008 Paris", name_of_contact: "Vicky Adler", phone_number: "0144132222", email: "vicky.adler@lvmh.com")
+company_2 = Company.create!(name: "Pierre et vacances", address: "11 rue de Cambrai, 75019 Paris", name_of_contact: "Vicky Adler", phone_number: "0144132222", email: "vicky.adler@lvmh.com")
 puts "#{company_2} a bien été créée"
 company_3 = Company.create!(name: "Uber", address: "17 boulevard Haussmann, 75009 Paris", name_of_contact: "Gerard Lactee", phone_number: "0144352020", email: "gerard.lactee@danone.com")
 puts "#{company_3} a bien été créée"
