@@ -32,17 +32,31 @@
       </button>
 
       <!-- Notification -->
-      <%= link_to activities_path, class: "navbar-wagon-item navbar-wagon-link" do %>
-        <div class="badge-container">
-          <i class="fa fa-bell-o no-btn" style="color: white;"></i>
-          <% nbr_activities = @activities.where(read_at: nil).count %>
-          <% unless nbr_activities == 0 %>
-            <div class="badge badge-blue-light no-btn">
-            <%= nbr_activities %>
-            </div>
+      <div class="dropdown">
+        <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link dropdown-toggle", "data-toggle" => "dropdown" do %>
+          <div class="badge-container">
+            <i class="fa fa-bell-o no-btn" style="color: white;"></i>
+            <% nbr_activities = @activities.where(read_at: nil).count %>
+            <% unless nbr_activities == 0 %>
+              <div class="badge badge-blue-light no-btn">
+              <%= nbr_activities %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu ul_pad">
+          <% activities.each do |notification| %>
+            <li class="border_notif" id="activity_link_<%= notification.id %>">
+              <%= link_to activity_path(notification), method: :patch, remote: true do %>
+                <div class="activity unread-activity" id="notification-<%= notification.id %>" data-id="<%= notification.id %>">
+                  Run <%= notification.title %> a été créé par <%= user.name%>
+                </div>
+              <% end %>
+            </li>
           <% end %>
-        </div>
-      <% end %>
+        </ul>
+      </div>
+
 
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
