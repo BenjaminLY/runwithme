@@ -95,7 +95,7 @@ attributes = [
     time_goal: 45,
   },
   {
-    user_id: user_4.id,
+    user_id: user_9.id,
     type_of: "Run rapide",
     datetime: DateTime.new(2016, 9, 30),
     private: false,
@@ -105,7 +105,7 @@ attributes = [
     trail_goal: 21,
   },
   {
-    user_id: user_4.id,
+    user_id: user_1.id,
     type_of: "Run rapide",
     datetime: DateTime.new(2016, 9, 30),
     private: false,
@@ -115,7 +115,7 @@ attributes = [
     trail_goal: 21,
   },
   {
-    user_id: user_4.id,
+    user_id: user_2.id,
     type_of: "Run rapide",
     datetime: DateTime.new(2016, 9, 30),
     private: false,
@@ -125,7 +125,7 @@ attributes = [
     trail_goal: 17,
   },
   {
-    user_id: user_4.id,
+    user_id: user_8.id,
     type_of: "Run rapide",
     datetime: DateTime.new(2016, 9, 30),
     private: true,
@@ -135,7 +135,7 @@ attributes = [
     trail_goal: 30,
   },
   {
-    user_id: user_4.id,
+    user_id: user_9.id,
     type_of: "Run rapide",
     datetime: DateTime.new(2016, 9, 30),
     private: true,
@@ -145,7 +145,7 @@ attributes = [
     trail_goal: 21,
   },
   {
-    user_id: user_4.id,
+    user_id: user_8.id,
     type_of: "Run rapide",
     datetime: DateTime.new(2016, 9, 30),
     private: true,
