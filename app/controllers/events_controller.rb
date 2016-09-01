@@ -7,7 +7,7 @@ class EventsController < ApplicationController
     @filter = params[:filter]
 
     if @filter == 'public'
-      @events = Event.where(private: false)
+      @events = Event.joins(:user).where(private: false, users: {company: current_user.company})
     elsif @filter == 'Own_run'
       @events = Event.where(user_id: current_user)
       @my_participations = current_user.events_only_as_participant
