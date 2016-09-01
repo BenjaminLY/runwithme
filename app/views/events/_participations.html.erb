@@ -2,7 +2,7 @@
 
   <div class="participation_all">
     <div class="participation_header">
-      <div><h4>Les poules qui ont dit oui!</h4></div>
+      <div><h4>Les Runners qui ont dit oui!</h4></div>
       <div class="participation_icone">
         <% if @event.joined?(current_user) %>
           <%= link_to participation_path(participation, status: "going", type: "show"), method: :patch, remote: true, class: (participation.status == "going" ? "going" : "" )  do %>
@@ -25,10 +25,10 @@
       <% end %>
     </div>
   </div>
-  <hr>
+  <hr class="blue-line">
   <div class="participation_all">
     <div class="participation_header">
-      <div><h4>Les poules qui hésitent encore!</h4></div>
+      <div><h4>Les Runners qui hésitent encore!</h4></div>
       <div class="participation_icone">
         <% if @event.joined?(current_user) %>
           <%= link_to participation_path(participation, status: "maybe", type: "show"), method: :patch, remote: true, class: (participation.status == "maybe" ? "maybe" : "" ) do %>
@@ -51,10 +51,10 @@
       <% end %>
     </div>
   </div>
-  <hr>
+  <hr class="blue-line">
   <div class="participation_all">
     <div class="participation_header">
-      <div><h4>Les poules qui ont dit non!</h4></div>
+      <div><h4>Les Runners qui ont dit non!</h4></div>
       <div class="participation_icone">
         <% if @event.joined?(current_user) %>
           <%= link_to participation_path(participation, status: "can t go", type: "show"), method: :patch, remote: true, class: (participation.status == "can t go" ? "dont_go" : "" ) do %>

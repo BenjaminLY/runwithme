@@ -8,7 +8,7 @@
   <% when "Blala run" %>
     <% photo = "chatting_run.jpg" %>
   <% when "Marche rapide" %>
-    <% photo = "speed_walk.jpg" %>
+    <% photo = "runners-feet.jpg" %>
   <% else %>
     <% photo = "pleasant_walk.jpg" %>
   <% end %>
@@ -20,46 +20,52 @@
         <div class="event">
           <div class="event_header">
             <div class='event-date'>
-              <div>
-                <h3> <%= @event.datetime.strftime('%e %B %Y') %> </h3>
+              <div class= "date-show">
+                <h3> <%= @event.datetime.strftime('%e %B %Y') %> - <%= @event.datetime.strftime('%H:%M') %> </h3>
+                <div class="public_private">
+                  <% if @event.private %>
+                    <%= "PRIVE" %>
+                  <% else %>
+                    <%= "PUBLIC" %>
+                  <% end  %>
+                </div>
               </div>
-              <div>
-                <h3> <%= @event.datetime.strftime('%H:%M') %> </h3>
-              </div>
-              <div class="public_private">
-              <% if @event.private %>
-                <%= "PRIVE" %>
-              <% else %>
-                <%= "PUBLIC" %>
-              <% end  %>
-              </div>
-            </div>
-            <div class="event_type">
-              <div>
-                <h3>
-                 <%= @event.type_of %> -
-                   <% if @event.time_goal %>
-                     <%= @event.time_goal_to_s %>
-                   <% end %>
-                   <% if @event.trail_goal %>
-                      <%= @event.trail_goal %> km
-                   <% end %>
-                </h3>
-              </div>
-              <div>
-                <h3>RDV - <%= @event.meeting_point %> </h3>
-              </div>
-              <div>
-                <% if policy(@event).edit? %>
-                  <%= link_to edit_event_path(@event) do %>
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
+              <div class="event_type">
+                <div class="detailed-type">
+                  <h3>
+                   <%= @event.type_of %> -
+                     <% if @event.time_goal %>
+                       <%= @event.time_goal_to_s %>
+                     <% end %>
+                     <% if @event.trail_goal %>
+                        <%= @event.trail_goal %> km
+                     <% end %>
+                  </h3>
+                </div>
+                <div>
+                  <% if @event.user.run_level == "Débutant" %>
+                    <%= image_tag 'tortue.png', class: 'level' %>
+                  <% elsif %>
+                    <%= image_tag 'lapin.png', class: 'level' %>
+                  <% else %>
+                    <%= image_tag 'gazelle.png', class: 'level' %>
                   <% end %>
-                <% end %>
-                <% if policy(@event).destroy? %>
-                  <%= link_to event_path, method: :delete do %>
-                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </div>
+                <div class="detailed-place">
+                  <p>RDV - <%= @event.meeting_point %> </p>
+                </div>
+                <div>
+                  <% if policy(@event).edit? %>
+                    <%= link_to edit_event_path(@event) do %>
+                      <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <% end %>
                   <% end %>
-                <% end %>
+                  <% if policy(@event).destroy? %>
+                    <%= link_to event_path, method: :delete do %>
+                      <i class="fa fa-trash" aria-hidden="true"></i>
+                    <% end %>
+                  <% end %>
+                </div>
               </div>
             </div>
             <div class="text-center">
@@ -82,7 +88,7 @@
                     <p><%#= @event.address %></p>
                   <%# end %>
                 </div> -->
-                <div>
+                <div class="description-activity">
                   <% unless @event.description.blank? %>
                     <h4>
                       <i class="fa fa-pencil-square-o color-icon" aria-hidden="true"></i>
@@ -137,7 +143,7 @@
           </div>
           <div class="back_events">
             <i class="fa fa-arrow-left color-icon" aria-hidden="true"></i>
-            <%= link_to "Back to events", events_path %>
+            <%= link_to "Revenir aux événements", events_path %>
           </div>
         <% if @event.latitude &&  @event.longitude %>
           <%= render "events/static_map", event: @event %>
