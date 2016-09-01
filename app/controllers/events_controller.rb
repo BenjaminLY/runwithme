@@ -14,6 +14,7 @@ class EventsController < ApplicationController
     elsif @filter == 'private'
       # @events = policy_scope(Event).my_private_events(current_user)
       @events = current_user.private_events
+      p @events
     elsif @filter == 'refused'
       @events = currener.refused_events
     elsif @filter == 'challenge'
