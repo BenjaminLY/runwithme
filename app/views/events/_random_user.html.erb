@@ -1,0 +1,16 @@
+<div class="random-card">
+  <div class="random-card-box">
+    <div>
+      <% if user.photo? %>
+        <%= cl_image_tag user.photo.path, class: 'ev-avatar', width: 200, height: 200, crop: :fill  %>
+      <% else %>
+        <%= image_tag 'avatar.jpg', class: 'ev-avatar', width: 200, height: 200, crop: :fill %>
+      <% end %>
+    </div>
+    <div class="random-card-description">
+      <p><%= user.first_name.capitalize %> <%= user.last_name.capitalize %></p>
+      <p><%= user.job_title.capitalize %></p>
+      <input class="hidden form-control" type="hidden" name="event[user_id]" id="event_private" value="<%= user.id %>">
+    </div>
+  </div>
+</div>

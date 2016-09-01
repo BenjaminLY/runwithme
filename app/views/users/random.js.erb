@@ -1,0 +1,5 @@
+console.log("<%= @random_user.id %>")
+
+$('#random-choice').html("<%= j render 'events/random_user', user: @random_user %>");
+// setPrivateChoice();
+$('#random-choice').show();
