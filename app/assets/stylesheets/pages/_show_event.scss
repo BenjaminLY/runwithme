@@ -18,6 +18,7 @@
 			border-radius: 3px;
 			width: 100px;
 			padding: 5px;
+      font-size: 13px;
 		}
 		.event_type {
 			a {
@@ -26,7 +27,7 @@
 			}
 		}
     .organizer {
-      margin-top: 10px;
+      // margin-top: 10px;
       p {
         margin-bottom: 0px;
       }
@@ -35,7 +36,7 @@
 
 	.event-details {
 		display: flex;
-		margin-top: 20px;
+	  margin-top: -40px;
     .description {
       width: 60%;
       margin-right: 20px;
@@ -87,10 +88,35 @@
 				.particpation_avatar {
 					display: flex;
 					.avatar_user {
-						padding: 5px;
+            position: relative;
+            margin: 5px;
+            .icon-hover {
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              right: 0;
+              left: 0;
+              opacity: 0;
+              background: #90c1d4;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 50px;
+              width: 50px;
+              img {
+                width: 40px;
+              }
+            }
+            &:hover {
+              .icon-hover {
+                opacity: 1;
+              }
+            }
 					}
 				}
-			}
+      }
+
 			hr {
 				border: 2px solid $blue;
 
@@ -149,22 +175,38 @@
 .date-show {
   display: flex;
   align-items: center;
-  h3 {
-    font-size: 16px;
+  span {
+    //font-size: 12px;
     margin: 0;
     margin-right: 15px;
   }
 }
 
 .detailed-type {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
   h3 {
     font-size: 24px;
+    margin: 0;
+    margin-right: 24px;
+  }
+  p {
+    margin-bottom: 0;
   }
 }
 
 .detailed-place {
   p {
     margin-bottom: 0;
+  }
+}
+
+.organizer-avatar {
+  display: flex;
+  align-items: center;
+  img {
+    margin-right: 20px;
   }
 }
 

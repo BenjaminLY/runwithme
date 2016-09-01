@@ -21,7 +21,7 @@
           <div class="event_header">
             <div class='event-date'>
               <div class= "date-show">
-                <h3> <%= @event.datetime.strftime('%e %B %Y') %> - <%= @event.datetime.strftime('%H:%M') %> </h3>
+                <span> <%= @event.datetime.strftime('%e %B %Y') %> - <%= @event.datetime.strftime('%H:%M') %> </span>
                 <div class="public_private">
                   <% if @event.private %>
                     <%= "PRIVE" %>
@@ -41,17 +41,6 @@
                         <%= @event.trail_goal %> km
                      <% end %>
                   </h3>
-                </div>
-                <div>
-                  <% if @event.user.run_level == "Débutant" %>
-                    <%= image_tag 'tortue.png', class: 'level' %>
-                  <% elsif %>
-                    <%= image_tag 'lapin.png', class: 'level' %>
-                  <% else %>
-                    <%= image_tag 'gazelle.png', class: 'level' %>
-                  <% end %>
-                </div>
-                <div class="detailed-place">
                   <p>RDV - <%= @event.meeting_point %> </p>
                 </div>
                 <div>
@@ -68,11 +57,10 @@
                 </div>
               </div>
             </div>
-            <div class="text-center">
+            <div class="organizer-avatar">
               <%= render "users/avatar", user: @event.user %>
               <div class="organizer">
-                <p>Organisé par</p>
-                <p> <%= @event.user.first_name.capitalize %> <%= @event.user.last_name.capitalize  %></p>
+                <p>Organisé par <%= @event.user.first_name.capitalize %> <%= @event.user.last_name.capitalize  %></p>
               </div>
             </div>
           </div>
