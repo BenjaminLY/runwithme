@@ -10,7 +10,7 @@ function setPrivateChoice() {
   $('#random').click(function () {
     $(this).addClass('private-choice');
     $('#colleagues').removeClass('private-choice');
-    $('#random-choice').show();
     $('#colleagues-choice').hide();
+    $('#random-choice').show();
   });
 }

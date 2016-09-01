@@ -4,11 +4,11 @@ class UsersController < ApplicationController
   skip_after_action :verify_authorized
 
   def random
-    @random_user = User.where(run_level: current_user.run_level).where.not(id: current_user.id)
-    @random_user.sample
+    @users = User.where(run_level: current_user.run_level).where.not(id: current_user.id)
+    @random_user = @users.sample
     respond_to do |format|
-      format.html  # index.html.erb
-      format.json
+      format.html
+      format.js
     end
   end
 
