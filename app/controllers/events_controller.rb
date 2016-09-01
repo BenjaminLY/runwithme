@@ -47,7 +47,9 @@ class EventsController < ApplicationController
   def create
     invited_users_id = params['event']['user_ids']
     invited_users_id.shift
-
+    if params['event']['user_id'].present?
+      invited_users_id << params['event']['user_id']
+    end
     params = event_params
 
     if params['datetime'].present?

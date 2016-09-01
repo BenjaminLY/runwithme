@@ -10,6 +10,7 @@
     <div class="random-card-description">
       <p><%= user.first_name.capitalize %> <%= user.last_name.capitalize %></p>
       <p><%= user.job_title.capitalize %></p>
+      <input class="hidden form-control" type="hidden" name="event[user_id]" id="event_private" value="<%= user.id %>">
     </div>
   </div>
 </div>
