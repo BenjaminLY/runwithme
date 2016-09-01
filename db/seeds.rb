@@ -42,7 +42,7 @@ puts "#{user_4} a bien été créé"
 user_6 = User.create!(email: "joe@clubmed.com", password: "testtest", first_name: "joé", last_name: "marc" , job_title: "Business Analyst", company_id: company_1.id, photo: seed_image('joe'), run_level: "Confirmé")
 puts "#{user_4} a bien été créé"
 
-user_7 = User.create!(email: "musk@clubmed.com", password: "testtest", first_name: "elon", last_name: "musk" , job_title: "DRH", company_id: company_1.id, photo: seed_image('elon'), run_level: "Confirmé")
+user_7 = User.create!(email: "musk@clubmed.com", password: "testtest", first_name: "elon", last_name: "musk" , job_title: "DRH", company_id: company_1.id, photo: seed_image('Elon'), run_level: "Confirmé")
 user_8 = User.create!(email: "travis@clubmed.com", password: "testtest", first_name: "travis", last_name: "Kalanick" , job_title: "CEO", company_id: company_1.id, photo: seed_image('travis_kalanick'), run_level: "Intermédiaire" )
 puts "#{user_4} a bien été créé"
 
