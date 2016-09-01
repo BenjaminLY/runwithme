@@ -10,8 +10,14 @@
   margin-bottom: 30px;
 }
 
+.events_content{
+  h4 {
+    padding-bottom: 5px;
+  }
+}
 .ev {
   height: 120px;
+  margin-bottom: 20px;
 }
 
 .ev-header {
@@ -67,8 +73,12 @@
   flex: 0 0 15%;
   font-size: 25px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  a {
+    margin-left: -18px;
+    padding-right: 57px;
+  }
 }
 
 #create_participation {
@@ -78,7 +88,7 @@
 
 .index-menu {
   background-color: #90C1D4;
-  margin-top: 32px;
+  margin-top: 45px;
   border-radius: 5px;
   display: flex;
   justify-content: space-around;
@@ -92,9 +102,12 @@
 
 
 .events-list-title {
-  color: grey;
+  color: white;
   margin-bottom: 35px;
+  padding-top: 70px;
+  margin-bottom: -7px;
 }
+
 .events-date {
   color: white;
   width: 100%;
@@ -117,7 +130,7 @@
 }
 .events-counter {
   margin-top: 0;
-  color: #4C4C4C;
+  color: black;
 }
 .events-content {
   display: flex;
@@ -245,7 +258,21 @@
   }
 }
 
-.hvr-underline-from-left:before {
-  background: white;
+.hvr-underline-from-left {
+  &:before {
+    background: white;
+  }
 }
 
+.event-banner {
+  height: 276px;
+  background-size: cover;
+}
+
+.all-child.active {
+  @extend .hvr-underline-from-left:hover;
+}
+
+.color-icon {
+  color: #90C1D4;
+}

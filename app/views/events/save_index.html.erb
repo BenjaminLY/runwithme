@@ -1,0 +1,33 @@
+<div class="grey-wrapper pad-top pad-bot">
+  <div class="container opacity">
+    <h2 class="events-list-title text-center">Prochains événements</h2>
+    <div class="row">
+      <div class="col-xs-12 col-md-10 col-md-offset-1 blue-nav">
+        <ul class="nav index-menu">
+          <li class="all-child hvr-underline-from-left <%= event_css_class_name("Own_run") %>"><%= link_to 'Mes runs', events_path(filter: 'Own_run') %></li>
+          <li class="all-child hvr-underline-from-left <%= event_css_class_name("public") %>"><%= link_to 'Défis publics', events_path(filter: 'public') %></li>
+          <li class="all-child hvr-underline-from-left <%= event_css_class_name("private") %>"><%= link_to 'Défis reçus', events_path(filter: 'private') %></li>
+          <li class="all-child hvr-underline-from-left <%= event_css_class_name("challenge") %>"><%= link_to 'Challenges Entreprises', events_path(filter: 'challenge') %></li>
+          <!-- li class="all-child">
+            <%#= link_to events_path(filter: 'refused') do %>
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            <# end %>
+          </li> -->
+        </ul>
+      </div>
+      <div class="col-xs-12 col-md-10 col-md-offset-1">
+        <h4 class="events-counter"> <%= pluralize @events.size, "résultat" %></h4>
+        <% today = Date.today %>
+        <% @events.each do |date, events| %>
+          <div class="events-date-bg">
+            <div class="events-date">
+              <div>
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                <% if date == today %>
+                  Aujourd'hui
+                <% elsif date == (today + 1.days) %>
+                  Demain
+                <% else %>
+                  <%= date.strftime('%e %B %Y') %>
+                <% end %>
+              </div>

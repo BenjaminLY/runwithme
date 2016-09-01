@@ -9,7 +9,7 @@ class Event < ApplicationRecord
   include PublicActivity::Common
   # tracked owner: ->(controller, model) { controller && controller.current_user }
 
-  MEETING = ["Interval run", "Endurance run", "Cool run", "Chatting run", "Speed walk", "Pleasant walk"]
+  MEETING = ["Run rapide", "Run fractionné", "Run endurance", "Blala run", "Marche rapide", "Marche plaisante"]
 
   validates :type_of, inclusion: { in: MEETING }
   validates :datetime, presence: true
@@ -41,10 +41,6 @@ class Event < ApplicationRecord
     self.participations.map(&:user).include?(user)
   end
 
-  def self.public
-    Event.where(private: false)
-  end
-
   def self.my_private_events(user)
     events = Event.where(private: true)
     events.map do |event|
@@ -53,4 +49,3 @@ class Event < ApplicationRecord
     events
   end
 end
-

@@ -1,5 +1,10 @@
 class User < ApplicationRecord
   belongs_to :company
+
+  RUNNING_TYPE = ["Running rapide", "Running fractionné", "Running endurance", "Running blabla", "Marche rapide", "Marche plaisante"]
+
+  RUNNER_LEVEL = ["Turtle (débutant)", "Bunny (intermédiaire)", "Gazelle (confirmé)"]
+
   has_many :events, dependent: :destroy
   has_many :participations, dependent: :destroy
   has_many :messages, dependent: :destroy
@@ -18,9 +23,20 @@ class User < ApplicationRecord
   end
 
   def events_as_participant
-  	self.participations.map do |participation|
-  		participation.event
-  	end
+  	participations.map(&:event)
+  end
+
+  def events_only_as_participant
+    events_as_participant.select {|event| event.user != self}
+  end
+
+  def my_run_buddies
+    events_as_participant.map{|event| event.users.where.not(id: self.id).where(users: {company: self.company})}.flatten.uniq
+  end
+
+  def adversaires_buddies
+    events_as_participant.map{|event| event.users.where.not(id: self.id, users: {company: self.company})}.flatten.uniq
+
   end
 
   def private_events

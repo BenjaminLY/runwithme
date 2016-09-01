@@ -4,25 +4,32 @@ class EventsController < ApplicationController
   def index
     @public_events = policy_scope(Event).where(private: false)
     @my_private_events = policy_scope(Event).my_private_events(current_user)
-    if params[:filter] == 'public'
-      @events = policy_scope(Event).public
-    elsif params[:filter] == 'Own_run'
+    @filter = params[:filter]
+
+    if @filter == 'public'
+      @events = Event.where(private: false)
+    elsif @filter == 'Own_run'
       @events = Event.where(user_id: current_user)
-    elsif params[:filter] == 'private'
+      @my_participations = current_user.events_only_as_participant
+    elsif @filter == 'private'
       # @events = policy_scope(Event).my_private_events(current_user)
       @events = current_user.private_events
-    elsif params[:filter] == 'refused'
+    elsif @filter == 'refused'
       @events = currener.refused_events
+    elsif @filter == 'challenge'
+      @events = Event.joins(:user).where.not(users: {company: current_user.company})
     else
-      @events = policy_scope(Event).public + current_user.private_events
+      @events = Event.where(private: false) + current_user.private_events
       @events.sort_by! { |ev| ev[:datetime].to_i }
     end
     # @events = @events.group_by(&:datetime)
-    @events = @events.group_by{ |e| e.datetime.to_date }
+    @events_sorted = @events.group_by{ |e| e.datetime.to_date }
+    @my_participations_sorted = @my_participations.group_by{ |e| e.datetime.to_date } if @my_participations
   end
 
   def show
     @message = Message.new(event_id: @event.id)
+    @events = Event.where.not(latitude: nil, longitude: nil)
     @hash = Gmaps4rails.build_markers(@event) do |event, marker|
       if event.latitude && event.longitude
         marker.lat event.latitude

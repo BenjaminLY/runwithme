@@ -3,6 +3,7 @@
 @import "show_event";
 @import "users-profile";
 @import "new_event_form";
+@import "users-edit";
 
 .pad {
   background-color: #ffffff;
@@ -38,11 +39,6 @@
   padding-bottom: 16px;
 }
 
-.container {
-  padding-bottom: 40px;
-}
-
-
 #events {
   color: #90c1d4;
   font-weight:  bold;
@@ -52,6 +48,12 @@
 .pages-wrapper {
   min-height: 90vh;
   margin-top: 70px;
+  background-size: cover !important;
+}
+.users-edit {
+  .pages-wrapper {
+    padding-bottom: 60px;
+  }
 }
 .pages-home {
   .pages-wrapper {
@@ -65,3 +67,20 @@
 .opacity {
   opacity: 0.8;
 }
+
+.index-menu {
+  transform: translateY(-50%);
+  background: white;
+}
+
+.allevents {
+  margin-top:-45px;
+  margin-bottom: -14px;
+}
+
+// .grey-wrapper {
+//   background-image: url('runners-train.jpg');
+//   background-size: cover !important;
+//   min-height: 100vh;
+// }
+

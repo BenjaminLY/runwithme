@@ -1,18 +1,48 @@
-  <%= render 'avatar', user: @user %>
-    <div class="col-xs-12 col-sm-5 col-sm-offset-4">
-      <%= simple_form_for(@user) do |f| %>
-        <%= f.input :photo, as: :attachinary %>
-        <%= f.input :first_name, label: "First Name" %>
-        <%= f.input :last_name, label: "Last Name" %>
-        <%= f.input :email, :readonly => true %>
-        <%= f.input :job_title, label: "Job" %>
-        <%= f.input :run_level, label: "Level of running" %>
-        <%= f.input :expectation, label: "Type of running : " %>
-        <%= f.input :description, label: "About you :" %>
-        <div class="actions text-center">
-          <%= f.button :submit, class: 'btn-medium-full'%>
-          <%= link_to "Destroy my account", registration_path(current_user), method: :delete, data: { confirm: "Are you sure?" }, class: "btn-medium-full"  %>
-          <%= link_to "Back to my profile", profile_path(@user), class: "btn-medium-full"  %>
-        </div>
-      <% end %>
+  <%#= render 'avatar', user: @user %>
+<div class="container">
+  <div class="row">
+    <div class="wrapper-white">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+
+        <br>
+        <%= simple_form_for(@user) do |f| %>
+          <div class="row">
+            <div class="col-xs-12">
+              <%= f.input :photo, as: :attachinary %>
+            </div>
+            <br>
+            <div class="col-xs-12 col-sm-6">
+              <%= f.input :first_name, label: "Prénom" %>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <%= f.input :last_name, label: "Nom de famille" %>
+            </div>
+            <div class="col-xs-12">
+              <%= f.input :email, :readonly => true %>
+            </div>
+            <div class="col-xs-12">
+              <%= f.input :job_title, label: "Intitulé de ton poste" %>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <%= f.input :run_level, label: "Ton niveau de runner", collection: User::RUNNER_LEVEL %>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <%= f.input :expectation, label: "Ton type de running", collection: User::RUNNING_TYPE %>
+            </div>
+            <div class="col-xs-12">
+              <%= f.input :description, label: "À propos de toi" %>
+            </div>
+            <div class="col-xs-12">
+              <div class="actions text-center">
+                <%= f.button :submit, value: "Mettre à jour", class: 'btn-medium-full btn-medium-full-black btn-full-width'%>
+                <%#= link_to "Destroy my account", registration_path(current_user), method: :delete, data: { confirm: "Are you sure?" }, class: "btn-medium-full btn-medium-full-black"  %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
+  </div>
+</div>
+
+

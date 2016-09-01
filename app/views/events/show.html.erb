@@ -1,13 +1,13 @@
 <% case @event.type_of %>
-  <% when "Interval run"%>
+  <% when "Run fractionné" %>
     <% photo = "interval.jpg" %>
-  <% when "Endurance run"%>
+  <% when "Run endurance" %>
     <% photo = "endurance.jpg" %>
-  <% when "Cool run" %>
+  <% when "Run rapide" %>
     <% photo = "cool_run.jpg" %>
-  <% when "Chatting run" %>
+  <% when "Blala run" %>
     <% photo = "chatting_run.jpg" %>
-  <% when "Speed walk" %>
+  <% when "Marche rapide" %>
     <% photo = "speed_walk.jpg" %>
   <% else %>
     <% photo = "pleasant_walk.jpg" %>
@@ -72,68 +72,76 @@
           </div>
           <div class="event-details">
             <div class="description">
-              <div>
-                <% unless @event.address.blank? %>
-                  <h4><%= "Adresse de l'activité" %></h4>
-                  <p><%= @event.address %></p>
-                <% end %>
-              </div>
-              <div>
-                <% unless @event.description.blank? %>
-                  <h4><%= "Description de l'activité" %></h4>
-                  <p><%= @event.description %></p>
-                <% end %>
-              </div>
-              <div class="messages">
-                <h4><%= "Messages" %></h4>
-                <% unless @event.messages.empty? %>
-                  <div class="message">
+              <div class="description-container">
+                <!-- <div>
+                  <%# unless @event.address.blank? %>
+                    <h4>
+                      <i class="fa fa-map-marker" aria-hidden="true"></i>
+                      <%#= "Adresse de l'activité" %>
+                    </h4>
+                    <p><%#= @event.address %></p>
+                  <%# end %>
+                </div> -->
+                <div>
+                  <% unless @event.description.blank? %>
+                    <h4>
+                      <i class="fa fa-pencil-square-o color-icon" aria-hidden="true"></i>
+                      <%= "Description de l'activité" %>
+                    </h4>
+                    <p><%= @event.description %></p>
+                  <% end %>
+                </div>
+                <div class="messages">
+                  <h4>
+                    <i class="fa fa-comments color-icon" aria-hidden="true"></i>
+                    <%= "Messages" %>
+                  </h4>
+                  <% unless @event.messages.empty? %>
                     <% @event.messages.each do |message| %>
-                    <% unless message.created_at.strftime('%e %B %Y') == Message.where(event_id: message.event_id).last(2).first.created_at.strftime('%e %B %Y') %>
-                      <%= message.created_at.strftime('%e %B %Y') %>
+                        <%= render 'events/message', message: message %>
                     <% end %>
-                      <%= render 'events/messages', message: message %>
-                      <hr>
-                    <% end %>
-                  </div>
-                <% end %>
+                  <% end %>
+                </div>
               </div>
-              <div class="message_box">
-                <%= render 'events/message_box', event: @event, message: @message %>
+              <div class="description-footer">
+                <%= render 'events/message_box' %>
               </div>
-          </div>
-          <div class="participation">
-            <%= render "events/participations", event: @event %>
-          </div>
-        </div>
-        <div class="photos">
-          <div class="photos_header">
-            <h4><%= "Vos selfies!" %></h4>
-            <div class="photos_btn">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPhotos">
-                 Postez vos selfies!
-              </button>
+            </div>
+            <div class="participation">
+              <%= render "events/participations", event: @event %>
             </div>
           </div>
-          <div class="container">
-            <div class="row">
-              <% unless @event.photos.nil? %>
-                <% @event.photos.each do |photo| %>
-                  <div class="col-xs-4 col-sm-3 col-sm-2">
-                    <div class="photo pad-top">
-                      <%= cl_image_tag photo.path, width: 250, height: 250, crop: :fill %>
+          <div class="photos">
+            <div class="photos_header">
+              <h4><%= "Vos selfies!" %></h4>
+              <div class="photos_btn">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addPhotos">
+                  <i class="fa fa-camera-retro" aria-hidden="true"></i>
+                   Postez vos selfies!
+                </button>
+              </div>
+            </div>
+            <div class="container">
+              <div class="row">
+                <% unless @event.photos.nil? %>
+                  <% @event.photos.each do |photo| %>
+                    <div class="col-xs-4 col-sm-3 col-sm-2">
+                      <div class="photo pad-top">
+                        <%= cl_image_tag photo.path, width: 250, height: 250, crop: :fill %>
+                      </div>
                     </div>
-                  </div>
+                  <% end %>
                 <% end %>
-              <% end %>
+                </div>
               </div>
-            </div>
-        </div>
-        <div class="back_events">
-          <%= link_to "Back to events", events_path %>
-        </div>
+          </div>
+          <div class="back_events">
+            <i class="fa fa-arrow-left color-icon" aria-hidden="true"></i>
+            <%= link_to "Back to events", events_path %>
+          </div>
         <% if @event.latitude &&  @event.longitude %>
-          <div id="map" style="width: 100%; height: 600px;"></div>
+          <%= render "events/static_map", event: @event %>
+          <!-- <div id="map" style="width: 100%; height: 600px;"></div> -->
         <% end %>
       </div>
     </div>
@@ -160,14 +168,14 @@
    </div>
  </div>
 
-  <% content_for :after_js do %>
-    <% if @event.latitude &&  @event.longitude %>
+ <!--  <%# content_for :after_js do %>
+    <%# if @event.latitude &&  @event.longitude %>
 
       <script>
         $(document).ready(function() {
           var handler = Gmaps.build('Google');
           handler.buildMap({ internal: { id: 'map' } }, function() {
-            markers = handler.addMarkers(<%= raw @hash.to_json %>);
+            markers = handler.addMarkers(<%#= raw @hash.to_json %>);
             handler.bounds.extendWith(markers);
             handler.fitMapToBounds();
             if (markers.length == 0) {
@@ -178,6 +186,6 @@
           });
         });
       </script>
-    <% end %>
-  <% end %>
+    <%# end %>
+  <%#end %> -->
 
