@@ -1,6 +1,10 @@
 var alert = $('<div class="alert alert-info"> Votre participation a bien été enregistrée </div>').hide();
 <% if @type == "index" %>
-  $('#event_<%= @participation.event.id %>').html('<%= j render "events/event", event: @participation.event %>');
+  <% if @filter == 'challenge' %>
+   $('#event_<%= @participation.event.id %>').html('<%= j render "events/challenge", event: @participation.event %>')
+  <% else %>
+   $('#event_<%= @participation.event.id %>').html('<%= j render "events/event", event: @participation.event %>')
+  <% end %>
   $('#event_<%= @participation.event.id %>').append(alert);
   alert.slideDown(1500);
   alert.slideUp(1000);

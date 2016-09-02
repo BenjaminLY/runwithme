@@ -26,7 +26,7 @@
         <% end %>
       </span>
     <% end %>
-    <div style="flex: 0 0 40%;">
+    <div style="position: absolute;left: 420px;">
       <% if event.user.company.name == "Pierre et Vacances" %>
         <% company_image = "pierrevacances.jpg" %>
       <% else %>
@@ -74,7 +74,7 @@
         </div>
       <% else %>
         <div  class="ev-validations" id="create_participation">
-          <%= link_to event_participations_path(event, status: "going"), method: :post, remote: true do %>
+          <%= link_to event_participations_path(event, status: "going", filter: 'challenge'), method: :post, remote: true do %>
             <i class="fa fa-check" data-toggle="tooltip" title="J'y vais!"></i>
           <% end %>
           <%= link_to event_participations_path(event, status: "maybe"), method: :post, remote: true do %>

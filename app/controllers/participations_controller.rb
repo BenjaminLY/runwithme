@@ -4,6 +4,7 @@ class ParticipationsController < ApplicationController
 	skip_after_action :verify_authorized
 
 	def create
+    @filter = params[:filter]
 		@participation = Participation.new(status: params[:status])
 		@participation.user = current_user
 		@participation.event = @event
