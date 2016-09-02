@@ -33,9 +33,9 @@
 }
 
 .stats {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  // display: flex;
+  // justify-content: space-around;
+  // align-items: center;
   background-color: white;
   // border-radius: 12px;
   margin-top:50px;
@@ -70,7 +70,7 @@
 // }
 
 .number {
-  font-size: 70px;
+  font-size: 75px;
 }
 
 .mybuddies {
@@ -116,8 +116,8 @@
 
 .event-next {
   text-align: center;
-  font-size: 24px;
-  color: #90C1D4;
+  font-size: 18px;
+  color: #333;
 }
 
 .size_text {

@@ -1,0 +1,6 @@
+<% @activities.each do |activity| %>
+  <div class="notification">
+  <%= activity.owner.first_name.capitalize %> <%= activity.owner.last_name.capitalize %>
+  <%= render_activity activity %>
+  </div>
+<% end %>
