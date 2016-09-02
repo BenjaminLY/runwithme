@@ -2,7 +2,7 @@
   <!-- Logo -->
   <div class="navbar-wagon-left">
     <% if user_signed_in? %>
-      <%= link_to t(".top_call_to_action", default: "Tous les Run"), events_path, class: "no-btn" %>
+      <%= link_to t(".top_call_to_action", default: "Prochains Run"), events_path, class: "no-btn" %>
     <% else %>
       <%= link_to "Je suis une société", '#' %>
     <%end %>
@@ -57,21 +57,24 @@
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to profile_path do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profil") %>
+               <%= t(".profile", default: "Profil") %>
               <% end %>
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Se déconnecter") %>
+                <%= t(".sign_out", default: "Se déconnecter") %>
               <% end %>
             </li>
           </ul>
         </div>
       </div>
+<!--
+      <i class="fa fa-user"></i>
+      <i class="fa fa-sign-out"></i> -->
 
     <% else %>
 
-      <!-- Login text link -->
+      <!-- Login text link
       <%= link_to t(".sign_in", default: "Inscription"), new_user_registration_path, class: "btn-medium", id: "login-btn" %>
      <!--  <i class="fa fa-search"></i> -->
     <% end %>
