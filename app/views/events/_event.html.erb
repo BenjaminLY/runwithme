@@ -1,5 +1,3 @@
-
-
   <div class="ev-header">
     <div class="ev-time">
       <%= event.datetime.strftime('%R') %>
@@ -26,7 +24,7 @@
         <% if event.time_goal %>
           <%= event.time_goal_to_s %>
         <% else %>
-          <%= event.trail_goal %> km(s)
+          <%= event.trail_goal %> kms
         <% end %>
       </span>
     <% end %>
