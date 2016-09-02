@@ -43,7 +43,7 @@
                   </h3>
                   <p>RDV - <%= @event.meeting_point %> </p>
                 </div>
-                <div>
+                <div class="event_update_delete">
                   <% if policy(@event).edit? %>
                     <%= link_to edit_event_path(@event) do %>
                       <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -96,8 +96,8 @@
                     <% end %>
                   <% end %>
                 </div>
-              </div>
-              <div class="description-footer">
+              </div>ass="description-
+              <div clfooter">
                 <%= render 'events/message_box' %>
               </div>
             </div>
