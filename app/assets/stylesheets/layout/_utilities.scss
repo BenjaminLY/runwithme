@@ -97,3 +97,14 @@
     padding-left: 0;
   }
 }
+
+.notification {
+  padding: 10px 2px;
+  font-size: 14px;
+  color: #333333;
+}
+
+.notification > a:hover {
+  text-decoration: none;
+  color: $dark-blue;
+}

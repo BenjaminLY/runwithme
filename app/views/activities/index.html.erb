@@ -1,24 +1,17 @@
-<div class="container">
-  <div class="row">
-    <div class="text-center">
-      <h3>
-        Notifications
-      </h3>
-      <% @activities.each do |activity| %>
-        <div class="col-xs-12 col-md-10 col-md-offset-1">
-          <div class="activity">
-            <h5>
-              <strong>
-                <%= activity.owner.first_name.capitalize %> <%= activity.owner.last_name.capitalize %>
-              </strong>
-              <%= render_activity activity %>
-            </h5>
-          </div>
-        </div>
-      <% end %>
+<h3>
+  Notifications
+</h3>
+<% @activities.each do |activity| %>
+    <div class="#activity">
+      <h5>
+        <strong>
+          <%= activity.owner.first_name.capitalize %> <%= activity.owner.last_name.capitalize %>
+        </strong>
+        <%= render_activity activity %>
+      </h5>
     </div>
   </div>
-</div>
+<% end %>
 
 
 
