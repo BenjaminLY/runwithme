@@ -6,6 +6,7 @@ function setPrivateChoice() {
     $('#random').removeClass('private-choice');
     $('#colleagues-choice').show();
     $('#random-choice').hide();
+    $('#random-choice').empty();
   });
   $('#random').click(function () {
     $(this).addClass('private-choice');
