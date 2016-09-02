@@ -17,7 +17,11 @@
     <div class="box">
     <% e.each do |event| %>
       <div class="ev" id="event_<%= event.id %>">
-        <%= render 'event', event: event %>
+        <% if @filter == 'challenge' %>
+          <%= render 'challenge', event: event %>
+        <% else %>
+          <%= render 'event', event: event %>
+        <% end %>
       </div>
     <% end %>
     </div>

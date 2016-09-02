@@ -4,11 +4,7 @@
     <div class="ev-time">
       <%= event.datetime.strftime('%R') %>
     </div>
-    <% if event.private %>
-      <div class="ev-status">Privé</div>
-    <% else %>
-      <div class="ev-status">Public</div>
-    <% end %>
+    <div class="ev-status" style="border-color: #0743A4; color: #0743A4;">Challenge</div>
   </div>
 
   <div class="ev-content">
@@ -30,6 +26,16 @@
         <% end %>
       </span>
     <% end %>
+    <div style="flex: 0 0 40%;">
+      <% if event.user.company.name == "Pierre et Vacances" %>
+        <% company_image = "pierrevacances.jpg" %>
+      <% else %>
+        <% company_image = "uber.jpg" %>
+      <% end %>
+      <%= image_tag company_image, class: 'ev-avatar', width: 200, height: 200 %>
+      <span style="font-size: 14px; margin: 0 5px;">vs</span>
+      <%= image_tag 'clubmed.png', class: 'ev-avatar', width: 200, height: 200 %>
+    </div>
 
       <% if event.joined?(current_user) %>
       <div class="ev-validations">

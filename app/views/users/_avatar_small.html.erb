@@ -1,8 +1,17 @@
-	<div data-toggle="tooltip", title="<%= user.first_name.capitalize %> <%= user.last_name.capitalize %> <%= user.job_title.downcase %>" >
-	<% if user.photo? %>
-			<%= cl_image_tag user.photo.path, width: 50, height: 50, crop: :fill, class: "avatar"%>
-	<% else %>
-			<%= image_tag "avatar.jpg", width: 50, height: 50, crop: :fill, class: "avatar"%>
-	<% end %>
+	<div data-toggle="tooltip" data-placement="bottom" title="<%= user.first_name.capitalize %> <%= user.last_name.capitalize %> <%= user.job_title.downcase %>" >
+  	<% if user.photo? %>
+  			<%= cl_image_tag user.photo.path, width: 50, height: 50, crop: :fill, class: "avatar"%>
+        <div class="icon-hover">
+          <% if user.run_level == "Débutant" %>
+            <%= image_tag 'tortue.png'%>
+          <% elsif user.run_level == "Intermédiaire" %>
+            <%= image_tag 'lapin.png'%>
+          <% else %>
+            <%= image_tag 'gazelle.png'%>
+          <% end %>
+        </div>
+  	<% else %>
+  			<%= image_tag "avatar.jpg", width: 50, height: 50, crop: :fill, class: "avatar"%>
+  	<% end %>
 	</div>
 

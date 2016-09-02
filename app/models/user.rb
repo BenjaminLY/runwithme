@@ -40,9 +40,7 @@ class User < ApplicationRecord
   end
 
   def private_events
-    private_events = self.events_as_participant.select do |event|
-      event.private && event.user_id =! self.id
-    end
+    private_events = self.events_as_participant.select {|event| event.private && event.user_id != self.id}
   end
 
   def refused_events

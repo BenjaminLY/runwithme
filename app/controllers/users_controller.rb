@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   skip_after_action :verify_authorized
 
   def random
-    @users = User.where(run_level: current_user.run_level).where.not(id: current_user.id)
+    @users = User.where(run_level: current_user.run_level, company_id: current_user.company_id).where.not(id: current_user.id)
     @random_user = @users.sample
     respond_to do |format|
       format.html
