@@ -21,7 +21,6 @@
           <div class="event_header">
             <div class='event-date'>
               <div class= "date-show">
-                <span> <%= @event.datetime.strftime('%e %B %Y') %> - <%= @event.datetime.strftime('%H:%M') %> </span>
                 <div class="public_private">
                   <% if @event.private %>
                     <%= "PRIVE" %>
@@ -29,6 +28,7 @@
                     <%= "PUBLIC" %>
                   <% end  %>
                 </div>
+                <span style="margin-left: 20px;"> <%= @event.datetime.strftime('%e %B %Y') %> - <%= @event.datetime.strftime('%H:%M') %> </span>
               </div>
               <div class="event_type">
                 <div class="detailed-type">
@@ -41,19 +41,21 @@
                         <%= @event.trail_goal %> km
                      <% end %>
                   </h3>
-                  <p>RDV - <%= @event.meeting_point %> </p>
+                  <p>
+                    <% if policy(@event).edit? %>
+                      <%= link_to edit_event_path(@event) do %>
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                      <% end %>
+                    <% end %>
+                    <% if policy(@event).destroy? %>
+                      <%= link_to event_path, method: :delete do %>
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      <% end %>
+                    <% end %>
+                  </p>
                 </div>
                 <div class="event_update_delete">
-                  <% if policy(@event).edit? %>
-                    <%= link_to edit_event_path(@event) do %>
-                      <i class="fa fa-pencil" aria-hidden="true"></i>
-                    <% end %>
-                  <% end %>
-                  <% if policy(@event).destroy? %>
-                    <%= link_to event_path, method: :delete do %>
-                      <i class="fa fa-trash" aria-hidden="true"></i>
-                    <% end %>
-                  <% end %>
+                  <i class="fa fa-map-marker"></i> RDV - <%= @event.meeting_point %>
                 </div>
               </div>
             </div>
