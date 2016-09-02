@@ -1,0 +1,18 @@
+<div class="dropdown" style="margin-left: 25px;">
+  <div class="dropdown-toggle" , id="navbar-wagon-menu", data-toggle="dropdown", aria-hidden="true">
+    <span class= "white-name">
+      <div class="badge-container">
+        <i class="fa fa-bell-o no-btn" style="color: white;"></i>
+        <% nbr_activities = activities.count %>
+        <% unless nbr_activities == 0 %>
+          <div class="badge badge-blue-light no-btn">
+            <%= nbr_activities %>
+          </div>
+        <% end %>
+      </div>
+    </span>
+</div>
+<ul class="dropdown-menu dropdown-menu-right" style="width: 600px;padding: 20px 25px;">
+  <h4 style="color: #333333;">Notifications <i class="fa fa-times" style="font-size:14px;    position: absolute;right: 10px;top: 6px;color: grey;"></i></h4>
+  <%= render "activities/index", activities: activities %>
+</ul>

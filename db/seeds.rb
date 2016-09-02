@@ -24,7 +24,7 @@ puts "#{company_3} a bien été créée"
 
 
 
-user_1 = User.create!(email: "colinecolnat@clubmed.com", password: "testtest", first_name: "coline", last_name: "colnat", job_title: "Directrice de la communication", company_id: company_1.id, photo: seed_image('coline'), run_level: "Intermédiaire")
+user_1 = User.create!(email: "colinecolnat@clubmed.com", password: "testtest", first_name: "coline", last_name: "colnat", job_title: "Chef de Projets Web", company_id: company_1.id, photo: seed_image('coline'), run_level: "Intermédiaire")
 puts "#{user_1} a bien été créé"
 
 user_2 = User.create!(email: "benjamin@clubmed.com", password: "testtest", first_name: "benjamin" , last_name: "lyphoudt", job_title: "Responsable des achats", company_id: company_1.id, photo: seed_image('benjamin'), run_level: "Intermédiaire")
@@ -33,7 +33,7 @@ puts "#{user_2} a bien été créé"
 user_3 = User.create!(email: "abel@clubmed.com", password: "testtest", first_name: "abel", last_name: "mebkhout" , job_title: "Juriste", company_id: company_1.id, photo: seed_image('abdel'), run_level: "Débutant")
 puts "#{user_3} a bien été créé"
 
-user_4 = User.create!(email:"Constance@clubmed.com", password: "testtest", first_name: "constance", last_name: "toutlemonde" , job_title: "Product Owner", company_id: company_1.id, photo: seed_image('constance'), run_level: "Intermédiaire")
+user_4 = User.create!(email:"Constance@clubmed.com", password: "testtest", first_name: "constance", last_name: "toulemonde" , job_title: "Directrice de la communication", company_id: company_1.id, photo: seed_image('constance'), run_level: "Intermédiaire")
 puts "#{user_4} a bien été créé"
 
 user_5 = User.create!(email: "george@clubmed.com", password: "testtest", first_name: "georges", last_name: "taluit" , job_title: "Comptable", company_id: company_1.id, photo: seed_image('georges'), run_level: "Débutant")
