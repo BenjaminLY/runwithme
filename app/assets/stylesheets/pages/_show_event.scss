@@ -2,6 +2,9 @@
 	display: flex;
 	flex-direction: column;
 	// margin-top: -40px;
+  .event_update_delete {
+    margin-top: 20px;
+  }
 	.event_header {
 		display: flex;
 		justify-content: space-between;
@@ -13,6 +16,7 @@
 		.public_private{
 			background: $blue;
 			color: white;
+      margin-left: 20px;
 			font-weight: bold;
 			text-align: center;
 			border-radius: 3px;
