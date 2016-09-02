@@ -1,6 +1,9 @@
-<% @activities.each do |activity| %>
+<% activities.each do |activity| %>
   <div class="notification">
-  <%= activity.owner.first_name.capitalize %> <%= activity.owner.last_name.capitalize %>
-  <%= render_activity activity %>
+    <%= activity.owner.first_name.capitalize %> <%= activity.owner.last_name.capitalize %>
+    <%= render_activity activity %>
+    <%= link_to read_activity_path(activity), class: "pull-right", remote: true do %>
+      <i class="fa fa-check"></i>
+    <% end %>
   </div>
 <% end %>

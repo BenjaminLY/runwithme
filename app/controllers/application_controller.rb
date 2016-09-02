@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
       event_ids = current_user.events_as_participant.map do |event|
         event.id
       end
-      @activities = PublicActivity::Activity.order("created_at desc").where(trackable_id: event_ids)
+      @activities = PublicActivity::Activity.order("created_at desc").where(trackable_id: event_ids, read_at: nil)
     else
       @activities = []
     end

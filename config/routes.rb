@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :participations, only: [:update, :destroy]
   resources :activities, only: [:index]
   mount Attachinary::Engine => "/attachinary"
+  get 'activities/:id/done' => "activities#mark_as_read", as: :read_activity
 end
 
 
