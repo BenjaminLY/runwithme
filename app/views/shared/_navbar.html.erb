@@ -48,9 +48,10 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <div class="dropdown-toggle" , id="navbar-wagon-menu", data-toggle="dropdown", aria-hidden="true">
-            <i class="fa fa-user no-btn" id="character">
-            </i>
-            <span class= "white-name"> <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></span>
+            <span class= "white-name">
+              <i class="fa fa-user no-btn" id="character"></i>
+              <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %>
+            </span>
         </div>
          <%#= image_tag 'chicken-avatar-green.png', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
