@@ -4,6 +4,7 @@
 @import "users-profile";
 @import "new_event_form";
 @import "users-edit";
+@import "form_forgotten_password";
 
 .pad {
   background-color: #ffffff;
@@ -45,11 +46,17 @@
   font-size: 50px;
 }
 
-.pages-wrapper {
-  min-height: 90vh;
-  margin-top: 70px;
-  background-size: cover !important;
-}
+// .pages-wrapper {
+//   min-height: 90vh;
+//   margin-top: 150px;
+//   background-size: cover !important;
+// }
+
+// .form-actions{
+//   margin-bottom: 15px;
+// }
+
+
 .users-edit {
   .pages-wrapper {
     padding-bottom: 60px;
